@@ -11,10 +11,13 @@
 
 package gui_atm;
 
+import gestores_atm.GestorUtilizadores;
+import java.awt.Component;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,6 +28,8 @@ public class Frame_ATM  extends JFrame{
     /**
     * @param args the command line arguments
     */
+    GestorUtilizadores gerir_users = new GestorUtilizadores();
+
     public static void main(String args[]) {
         
                 System.out.println("Here");
@@ -324,7 +329,7 @@ public class Frame_ATM  extends JFrame{
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel3.setText("Pesquisar Filme");
 
         jLabel4.setText("Título:");
@@ -876,6 +881,11 @@ public class Frame_ATM  extends JFrame{
         jLabel2.setText("Password:");
 
         jPasswordField.setText("jPasswordField1");
+        jPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldActionPerformed(evt);
+            }
+        });
 
         jUsernameField.setText("jTextField1");
 
@@ -1496,16 +1506,31 @@ public class Frame_ATM  extends JFrame{
 
     private void jLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonActionPerformed
         // TODO logar o user!!!
+        System.out.println("user: "+jUsernameField.getText()+" pass:"+jPasswordField.getText());
+        String verificar_login = gerir_users.login(jUsernameField.getText(),jPasswordField.getText());
+        System.out.println("resposta: "+verificar_login);
+        Component frame = new Component() {};
+        if(verificar_login==null){
+            JOptionPane.showMessageDialog(frame,
+            "Dados de login incorrectos",
+            "O lobo é gay",
+            JOptionPane.WARNING_MESSAGE);
 
-        jDadosPanel.setVisible(false);
-        jPanel3.setVisible(false);
-        jEntregaPanel.setVisible(false);
-        jLoginPanel.setVisible(false);
-        jHistoricoPanel.setVisible(false);
-        jMenuPanel.setVisible(true);
-        jResultadosPanel.setVisible(false);
-        jPesquisarPanel.setVisible(false);
+        }else{
+            jDadosPanel.setVisible(false);
+            jPanel3.setVisible(false);
+            jEntregaPanel.setVisible(false);
+            jLoginPanel.setVisible(false);
+            jHistoricoPanel.setVisible(false);
+            jMenuPanel.setVisible(true);
+            jResultadosPanel.setVisible(false);
+            jPesquisarPanel.setVisible(false);
+        }
     }//GEN-LAST:event_jLoginButtonActionPerformed
+
+    private void jPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldActionPerformed
 /*
      * Botões _______________Botões___________________Botões__________Botões
      *
