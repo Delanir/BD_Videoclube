@@ -1179,7 +1179,7 @@
                               <Component id="adicionaGenero2" alignment="1" pref="214" max="32767" attributes="1"/>
                               <Component id="eliminaFilmes2" alignment="0" pref="214" max="32767" attributes="1"/>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jToggleButton21" alignment="1" max="32767" attributes="1"/>
+                                  <Component id="pesquisarFilmes2" alignment="1" max="32767" attributes="1"/>
                                   <Component id="jToggleButton18" alignment="0" pref="214" max="32767" attributes="1"/>
                                   <Component id="jToggleButton17" alignment="0" max="32767" attributes="1"/>
                               </Group>
@@ -1200,7 +1200,7 @@
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="adicionaGenero2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                          <Component id="jToggleButton21" min="-2" max="-2" attributes="0"/>
+                          <Component id="pesquisarFilmes2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="241" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1231,10 +1231,13 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminaFilmes2ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JToggleButton" name="jToggleButton21">
+                <Component class="javax.swing.JToggleButton" name="pesquisarFilmes2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Pesquisar Filme"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pesquisarFilmes2ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JToggleButton" name="adicionaGenero2">
                   <Properties>
@@ -1943,7 +1946,7 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="jLabel90" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="jToggleButton31" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="voltarPesquisarFilmes" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jToggleButton20" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -2005,7 +2008,7 @@
                           <Component id="jToggleButton20" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jToggleButton31" min="-2" max="-2" attributes="0"/>
+                      <Component id="voltarPesquisarFilmes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="220" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -2016,45 +2019,83 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pesquisar:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel86">
               <Properties>
                 <Property name="text" type="java.lang.String" value="T&#xed;tulo:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel87">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Produtora:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel88">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pa&#xed;s:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel89">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ID:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel90">
               <Properties>
                 <Property name="text" type="java.lang.String" value="IMBD RATING: Between"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel91">
               <Properties>
                 <Property name="text" type="java.lang.String" value="And"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JSpinner" name="jSpinner4">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jSpinner4.setModel(new SpinnerNumberModel(1.0,1,10,0.1));"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JSpinner" name="jSpinner5">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jSpinner5.setModel(new SpinnerNumberModel(10.0,1,10,0.1));"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel92">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Realizador:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField44">
               <Properties>
@@ -2089,10 +2130,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton20ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JToggleButton" name="jToggleButton31">
+            <Component class="javax.swing.JToggleButton" name="voltarPesquisarFilmes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Voltar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voltarPesquisarFilmesActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -3418,7 +3462,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="615" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -3430,7 +3474,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="455" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>

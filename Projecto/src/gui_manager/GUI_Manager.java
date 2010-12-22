@@ -211,7 +211,7 @@ public class GUI_Manager extends javax.swing.JFrame {
         jToggleButton17 = new javax.swing.JToggleButton();
         jToggleButton18 = new javax.swing.JToggleButton();
         eliminaFilmes2 = new javax.swing.JToggleButton();
-        jToggleButton21 = new javax.swing.JToggleButton();
+        pesquisarFilmes2 = new javax.swing.JToggleButton();
         adicionaGenero2 = new javax.swing.JToggleButton();
         jSairButton2 = new javax.swing.JButton();
         ficheirosFrame = new javax.swing.JFrame();
@@ -274,23 +274,25 @@ public class GUI_Manager extends javax.swing.JFrame {
         listarFormatoEliminar = new javax.swing.JButton();
         pesquisarFilmesFrame = new javax.swing.JFrame();
         jPesqisaFilmesPanel = new javax.swing.JPanel();
-        jLabel85 = new javax.swing.JLabel();
-        jLabel86 = new javax.swing.JLabel();
-        jLabel87 = new javax.swing.JLabel();
-        jLabel88 = new javax.swing.JLabel();
-        jLabel89 = new javax.swing.JLabel();
-        jLabel90 = new javax.swing.JLabel();
-        jLabel91 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel85 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel86 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel87 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel88 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel89 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel90 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel91 = new javax.swing.JLabel();
         jSpinner4 = new javax.swing.JSpinner();
+        jSpinner4.setModel(new SpinnerNumberModel(1.0,1,10,0.1));
         jSpinner5 = new javax.swing.JSpinner();
-        jLabel92 = new javax.swing.JLabel();
+        jSpinner5.setModel(new SpinnerNumberModel(10.0,1,10,0.1));
+        javax.swing.JLabel jLabel92 = new javax.swing.JLabel();
         jTextField44 = new javax.swing.JTextField();
         jTextField45 = new javax.swing.JTextField();
         jTextField46 = new javax.swing.JTextField();
         jTextField47 = new javax.swing.JTextField();
         jTextField48 = new javax.swing.JTextField();
         jToggleButton20 = new javax.swing.JToggleButton();
-        jToggleButton31 = new javax.swing.JToggleButton();
+        voltarPesquisarFilmes = new javax.swing.JToggleButton();
         generosFrame = new javax.swing.JFrame();
         jGenerosPanel = new javax.swing.JPanel();
         jScrollPane21 = new javax.swing.JScrollPane();
@@ -1144,7 +1146,12 @@ public class GUI_Manager extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton21.setText("Pesquisar Filme");
+        pesquisarFilmes2.setText("Pesquisar Filme");
+        pesquisarFilmes2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisarFilmes2ActionPerformed(evt);
+            }
+        });
 
         adicionaGenero2.setText("Adicionar novo Género");
         adicionaGenero2.addActionListener(new java.awt.event.ActionListener() {
@@ -1163,7 +1170,7 @@ public class GUI_Manager extends javax.swing.JFrame {
                     .addComponent(adicionaGenero2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                     .addComponent(eliminaFilmes2, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                     .addGroup(jFilmesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jToggleButton21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pesquisarFilmes2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jToggleButton18, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                         .addComponent(jToggleButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(220, 220, 220))
@@ -1180,7 +1187,7 @@ public class GUI_Manager extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(adicionaGenero2)
                 .addGap(29, 29, 29)
-                .addComponent(jToggleButton21)
+                .addComponent(pesquisarFilmes2)
                 .addContainerGap(241, Short.MAX_VALUE))
         );
 
@@ -1814,7 +1821,12 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
         }
     });
 
-    jToggleButton31.setText("Voltar");
+    voltarPesquisarFilmes.setText("Voltar");
+    voltarPesquisarFilmes.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            voltarPesquisarFilmesActionPerformed(evt);
+        }
+    });
 
     javax.swing.GroupLayout jPesqisaFilmesPanelLayout = new javax.swing.GroupLayout(jPesqisaFilmesPanel);
     jPesqisaFilmesPanel.setLayout(jPesqisaFilmesPanelLayout);
@@ -1842,7 +1854,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
                             .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel90)
                                 .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jToggleButton31)
+                                    .addComponent(voltarPesquisarFilmes)
                                     .addComponent(jToggleButton20)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1889,7 +1901,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
                 .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jToggleButton20))
             .addGap(26, 26, 26)
-            .addComponent(jToggleButton31)
+            .addComponent(voltarPesquisarFilmes)
             .addContainerGap(220, Short.MAX_VALUE))
     );
 
@@ -2824,7 +2836,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     pesquisarClienteFrame.getContentPane().setLayout(pesquisarClienteFrameLayout);
     pesquisarClienteFrameLayout.setHorizontalGroup(
         pesquisarClienteFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 400, Short.MAX_VALUE)
+        .addGap(0, 615, Short.MAX_VALUE)
         .addGroup(pesquisarClienteFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pesquisarClienteFrameLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -2833,7 +2845,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     );
     pesquisarClienteFrameLayout.setVerticalGroup(
         pesquisarClienteFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 300, Short.MAX_VALUE)
+        .addGap(0, 455, Short.MAX_VALUE)
         .addGroup(pesquisarClienteFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pesquisarClienteFrameLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -3005,6 +3017,8 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
 
     private void jPesquisarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPesquisarButtonActionPerformed
         // TODO add your handling code here:
+        pesquisarFilmesFrame.setVisible(true);
+        transferFocus();
     }//GEN-LAST:event_jPesquisarButtonActionPerformed
 
     private void jGeneroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGeneroButtonActionPerformed
@@ -3151,6 +3165,23 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
         jTextArea12.setText(output);
     }//GEN-LAST:event_adicionarStockActionPerformed
 
+    private void pesquisarFilmes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarFilmes2ActionPerformed
+        // TODO add your handling code here:
+        pesquisarFilmesFrame.setVisible(true);
+        transferFocus();
+    }//GEN-LAST:event_pesquisarFilmes2ActionPerformed
+
+    private void voltarPesquisarFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarPesquisarFilmesActionPerformed
+        // TODO add your handling code here:
+        jTextField44.setText(null);
+         jTextField45.setText(null);
+          jTextField46.setText(null);
+           jTextField47.setText(null);
+            jTextField48.setText(null);
+        pesquisarFilmesFrame.setVisible(false);
+      pesquisarFilmesFrame.transferFocusBackward();
+    }//GEN-LAST:event_voltarPesquisarFilmesActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -3286,15 +3317,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
-    private javax.swing.JLabel jLabel85;
-    private javax.swing.JLabel jLabel86;
-    private javax.swing.JLabel jLabel87;
-    private javax.swing.JLabel jLabel88;
-    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel90;
-    private javax.swing.JLabel jLabel91;
-    private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
@@ -3417,13 +3440,11 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     private javax.swing.JToggleButton jToggleButton17;
     private javax.swing.JToggleButton jToggleButton18;
     private javax.swing.JToggleButton jToggleButton20;
-    private javax.swing.JToggleButton jToggleButton21;
     private javax.swing.JToggleButton jToggleButton23;
     private javax.swing.JToggleButton jToggleButton24;
     private javax.swing.JToggleButton jToggleButton25;
     private javax.swing.JToggleButton jToggleButton26;
     private javax.swing.JToggleButton jToggleButton27;
-    private javax.swing.JToggleButton jToggleButton31;
     private javax.swing.JToggleButton jToggleButton34;
     private javax.swing.JTextField jUsernameField;
     private javax.swing.JButton jVenderATMButton;
@@ -3437,6 +3458,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     private javax.swing.JPanel mainPanel;
     private javax.swing.JFrame notificarClientesFrame;
     private javax.swing.JFrame pesquisarClienteFrame;
+    private javax.swing.JToggleButton pesquisarFilmes2;
     private javax.swing.JFrame pesquisarFilmesFrame;
     private javax.swing.JFrame resultadosFrame;
     private javax.swing.JTextArea textDescricaoAdicionaFilme;
@@ -3447,6 +3469,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     private javax.swing.JTextField textTituloAdicionaFilme;
     private javax.swing.JToggleButton voltarAdcionaFilmes;
     private javax.swing.JToggleButton voltarEliminaFilmes;
+    private javax.swing.JToggleButton voltarPesquisarFilmes;
     // End of variables declaration//GEN-END:variables
 
 }
