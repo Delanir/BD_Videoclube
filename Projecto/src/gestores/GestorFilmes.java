@@ -73,8 +73,16 @@ public class GestorFilmes
 	 * @param pais
 	 * @return lista com resultados
 	 */
-	public String searchMovie(String id,String titulo, int anoInicio,int anoFim, double imdbBegin, double imdbEnd, String realizador, String produtor, String pais) {
-		return null;
+	public String[] searchMovie(String id,String titulo, int anoInicio,int anoFim, double imdbBegin, double imdbEnd, String realizador, String produtor, String pais) {
+            String []listaResultados= new String[6];
+            listaResultados[0]="222";
+            listaResultados[1]="Toy Story 3";
+            listaResultados[2]="34";
+            listaResultados[3]="Inception";
+            listaResultados[2]="4";
+            listaResultados[3]="The Pianist";
+            
+            return listaResultados;
 	}
 
 	/**

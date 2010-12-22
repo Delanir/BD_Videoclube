@@ -3157,7 +3157,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         
         //Fazer a pesquisa
         //TODO fazer parsing do output do método
-        gestorFilmes.searchMovie(textIdPesquisaFilmes.getText(), 
+        String []lista;
+        lista=gestorFilmes.searchMovie(textIdPesquisaFilmes.getText(),
                 textTituloPesquisaFilmes.getText(),
                 (Integer)anoPesquisaFilmeSpinner1.getValue(),
                 (Integer)anoPesquisaFilmeSpinner2.getValue(),
@@ -3166,6 +3167,18 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                 textRealizadorPesquisaFilmes.getText(),
                 textProdutorPesquisaFilmes.getText(),
                 (String) countriesList1.getSelectedItem());
+
+        String[] strings= new String[lista.length/2];
+        String[] id= new String[lista.length/2];
+        for(int i=0; i<lista.length/2;i++){
+            strings[i]=lista[2*i+1];
+            id[i]=lista[2*i];
+        }
+        jList4.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
         //Reset aos campos
          textRealizadorPesquisaFilmes.setText(null);
          textIdPesquisaFilmes.setText(null);
