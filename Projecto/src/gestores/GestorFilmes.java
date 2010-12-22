@@ -73,7 +73,7 @@ public class GestorFilmes
 	 * @param pais
 	 * @return lista com resultados
 	 */
-	public String searchMovie(String titulo, String ano, String imdbBegin, String imdbEnd, String realizador, String produtor, String pais) {
+	public String searchMovie(String id,String titulo, int anoInicio,int anoFim, double imdbBegin, double imdbEnd, String realizador, String produtor, String pais) {
 		return null;
 	}
 
