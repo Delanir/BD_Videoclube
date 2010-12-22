@@ -286,13 +286,19 @@ public class GUI_Manager extends javax.swing.JFrame {
         jSpinner5 = new javax.swing.JSpinner();
         jSpinner5.setModel(new SpinnerNumberModel(10.0,1,10,0.1));
         javax.swing.JLabel jLabel92 = new javax.swing.JLabel();
-        jTextField44 = new javax.swing.JTextField();
-        jTextField45 = new javax.swing.JTextField();
-        jTextField46 = new javax.swing.JTextField();
-        jTextField47 = new javax.swing.JTextField();
-        jTextField48 = new javax.swing.JTextField();
-        jToggleButton20 = new javax.swing.JToggleButton();
+        textRealizadorPesquisaFilmes = new javax.swing.JTextField();
+        textIdPesquisaFilmes = new javax.swing.JTextField();
+        textTituloPesquisaFilmes = new javax.swing.JTextField();
+        textProdutorPesquisaFilmes = new javax.swing.JTextField();
+        pesquisarFilme = new javax.swing.JToggleButton();
         voltarPesquisarFilmes = new javax.swing.JToggleButton();
+        countriesList1 = new javax.swing.JComboBox();
+        jLabel94 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel95 = new javax.swing.JLabel();
+        anoPesquisaFilmeSpinner1 = new javax.swing.JSpinner();
+        anoAdicionaFilmeSpinner.setModel(new SpinnerNumberModel(2010,1917,2300,1));
+        anoPesquisaFilmeSpinner2 = new javax.swing.JSpinner();
+        anoAdicionaFilmeSpinner.setModel(new SpinnerNumberModel(2010,1917,2300,1));
         generosFrame = new javax.swing.JFrame();
         jGenerosPanel = new javax.swing.JPanel();
         jScrollPane21 = new javax.swing.JScrollPane();
@@ -1804,20 +1810,10 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
 
     jLabel92.setText("Realizador:");
 
-    jTextField44.setText("jTextField44");
-
-    jTextField45.setText("jTextField45");
-
-    jTextField46.setText("jTextField46");
-
-    jTextField47.setText("jTextField47");
-
-    jTextField48.setText("jTextField48");
-
-    jToggleButton20.setText("Procurar");
-    jToggleButton20.addActionListener(new java.awt.event.ActionListener() {
+    pesquisarFilme.setText("Procurar");
+    pesquisarFilme.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jToggleButton20ActionPerformed(evt);
+            pesquisarFilmeActionPerformed(evt);
         }
     });
 
@@ -1828,49 +1824,254 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
         }
     });
 
-    javax.swing.GroupLayout jPesqisaFilmesPanelLayout = new javax.swing.GroupLayout(jPesqisaFilmesPanel);
-    jPesqisaFilmesPanel.setLayout(jPesqisaFilmesPanelLayout);
-    jPesqisaFilmesPanelLayout.setHorizontalGroup(
-        jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    countriesList1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Afghanistan",
+        "Albania",
+        "Algeria",
+        "Andorra",
+        "Angola",
+        "Antigua",
+        "Argentina",
+        "Armenia",
+        "Australia",
+        "Austria",
+        "Azerbaijan",
+        "Bahamas",
+        "Bahrain",
+        "Bangladesh",
+        "Barbados",
+        "Belarus",
+        "Belgium",
+        "Belize",
+        "Benin",
+        "Bhutan",
+        "Bolivia",
+        "Bosnia Herzegovina",
+        "Botswana",
+        "Brazil",
+        "Brunei",
+        "Bulgaria",
+        "Burkina",
+        "Burundi",
+        "Cambodia",
+        "Cameroon",
+        "Canada",
+        "Cape Verde",
+        "Central African Rep",
+        "Chad",
+        "Chile",
+        "China",
+        "Colombia",
+        "Comoros",
+        "Congo",
+        "Costa Rica",
+        "Croatia",
+        "Cuba",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Djibouti",
+        "Dominica",
+        "Dominican Republic",
+        "East Timor",
+        "Ecuador",
+        "Egypt",
+        "El Salvador",
+        "Equatorial Guinea",
+        "Eritrea",
+        "Estonia",
+        "Ethiopia",
+        "Fiji",
+        "Finland",
+        "France",
+        "Gabon",
+        "Gambia",
+        "Georgia",
+        "Germany",
+        "Ghana",
+        "Greece",
+        "Grenada",
+        "Guatemala",
+        "Guinea",
+        "Guinea-Bissau",
+        "Guyana",
+        "Haiti",
+        "Honduras",
+        "Hungary",
+        "Iceland",
+        "India",
+        "Indonesia",
+        "Iran",
+        "Iraq",
+        "Ireland",
+        "Israel",
+        "Italy",
+        "Ivory Coast",
+        "Jamaica",
+        "Japan",
+        "Jordan",
+        "Kazakhstan",
+        "Kenya",
+        "Kiribati",
+        "Korea North",
+        "Korea South",
+        "Kosovo",
+        "Kuwait",
+        "Kyrgyzstan",
+        "Laos",
+        "Latvia",
+        "Lebanon",
+        "Lesotho",
+        "Liberia",
+        "Libya",
+        "Liechtenstein",
+        "Lithuania",
+        "Luxembourg",
+        "Macedonia",
+        "Madagascar",
+        "Malawi",
+        "Malaysia",
+        "Maldives",
+        "Mali",
+        "Malta",
+        "Marshall Islands",
+        "Mauritania",
+        "Mauritius",
+        "Mexico",
+        "Micronesia",
+        "Moldova",
+        "Monaco",
+        "Mongolia",
+        "Montenegro",
+        "Morocco",
+        "Mozambique",
+        "Myanmar",
+        "Namibia",
+        "Nauru",
+        "Nepal",
+        "Netherlands",
+        "New Zealand",
+        "Nicaragua",
+        "Niger",
+        "Nigeria",
+        "Norway",
+        "Oman",
+        "Pakistan",
+        "Palau",
+        "Panama",
+        "Papua New Guinea",
+        "Paraguay",
+        "Peru",
+        "Philippines",
+        "Poland",
+        "Portugal",
+        "Qatar",
+        "Romania",
+        "Russian Federation",
+        "Rwanda",
+        "St Kitts & Nevis",
+        "St Lucia",
+        "Saint Vincent & the Grenadines",
+        "Samoa",
+        "San Marino",
+        "Sao Tome & Principe",
+        "Saudi Arabia",
+        "Senegal",
+        "Serbia",
+        "Seychelles",
+        "Sierra Leone",
+        "Singapore",
+        "Slovakia",
+        "Slovenia",
+        "Solomon Islands",
+        "Somalia",
+        "South Africa",
+        "Spain",
+        "Sri Lanka",
+        "Sudan",
+        "Suriname",
+        "Swaziland",
+        "Sweden",
+        "Switzerland",
+        "Syria",
+        "Taiwan",
+        "Tajikistan",
+        "Tanzania",
+        "Thailand",
+        "Togo",
+        "Tonga",
+        "Trinidad & Tobago",
+        "Tunisia",
+        "Turkey",
+        "Turkmenistan",
+        "Tuvalu",
+        "Uganda",
+        "Ukraine",
+        "United Arab Emirates",
+        "United Kingdom",
+        "United States",
+        "Uruguay",
+        "Uzbekistan",
+        "Vanuatu",
+        "Vatican City",
+        "Venezuela",
+        "Vietnam",
+        "Yemen",
+        "Zambia",
+        "Zimbabwe" }));
+
+jLabel94.setText("Ano: Between");
+
+jLabel95.setText("And");
+
+javax.swing.GroupLayout jPesqisaFilmesPanelLayout = new javax.swing.GroupLayout(jPesqisaFilmesPanel);
+jPesqisaFilmesPanel.setLayout(jPesqisaFilmesPanelLayout);
+jPesqisaFilmesPanelLayout.setHorizontalGroup(
+jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+.addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+    .addGap(58, 58, 58)
+    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(jLabel85)
         .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-            .addGap(58, 58, 58)
             .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel85)
-                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel86)
-                        .addComponent(jLabel89))
-                    .addGap(44, 44, 44)
-                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(75, 75, 75)
-                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-                            .addComponent(jLabel92)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-                            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel90)
-                                .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(voltarPesquisarFilmes)
-                                    .addComponent(jToggleButton20)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(jLabel91)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
                     .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel87)
                         .addComponent(jLabel88))
                     .addGap(18, 18, 18)
                     .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addContainerGap(132, Short.MAX_VALUE))
+                        .addComponent(countriesList1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textProdutorPesquisaFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel86)
+                        .addComponent(jLabel89))
+                    .addGap(40, 40, 40)
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(textIdPesquisaFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                        .addComponent(textTituloPesquisaFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))))
+            .addGap(77, 77, 77)
+            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                    .addComponent(jLabel92)
+                    .addGap(18, 18, 18)
+                    .addComponent(textRealizadorPesquisaFilmes))
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(voltarPesquisarFilmes)
+                            .addComponent(pesquisarFilme))
+                        .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel94)
+                            .addComponent(jLabel90)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel95)
+                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGap(12, 12, 12)
+            .addComponent(jLabel91)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+    .addGap(132, 132, 132))
     );
     jPesqisaFilmesPanelLayout.setVerticalGroup(
         jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1881,8 +2082,8 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
             .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel89)
                 .addComponent(jLabel92)
-                .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(textRealizadorPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textIdPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel86)
@@ -1890,18 +2091,23 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
                 .addComponent(jLabel91)
                 .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(textTituloPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(18, 18, 18)
-            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel87)
-                .addComponent(jTextField47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel88)
-                .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jToggleButton20))
-            .addGap(26, 26, 26)
-            .addComponent(voltarPesquisarFilmes)
+            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel87)
+                        .addComponent(textProdutorPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel88)
+                        .addComponent(pesquisarFilme)
+                        .addComponent(countriesList1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(26, 26, 26)
+                    .addComponent(voltarPesquisarFilmes))
+                .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel94)
+                    .addComponent(jLabel95)))
             .addContainerGap(220, Short.MAX_VALUE))
     );
 
@@ -1909,16 +2115,26 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     pesquisarFilmesFrame.getContentPane().setLayout(pesquisarFilmesFrameLayout);
     pesquisarFilmesFrameLayout.setHorizontalGroup(
         pesquisarFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 628, Short.MAX_VALUE)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pesquisarFilmesFrameLayout.createSequentialGroup()
+            .addContainerGap(439, Short.MAX_VALUE)
+            .addComponent(anoPesquisaFilmeSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(50, 50, 50)
+            .addComponent(anoPesquisaFilmeSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(191, 191, 191))
         .addGroup(pesquisarFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pesquisarFilmesFrameLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 29, Short.MAX_VALUE)
                 .addComponent(jPesqisaFilmesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 30, Short.MAX_VALUE)))
     );
     pesquisarFilmesFrameLayout.setVerticalGroup(
         pesquisarFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 459, Short.MAX_VALUE)
+        .addGroup(pesquisarFilmesFrameLayout.createSequentialGroup()
+            .addGap(125, 125, 125)
+            .addGroup(pesquisarFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(anoPesquisaFilmeSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(anoPesquisaFilmeSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(314, Short.MAX_VALUE))
         .addGroup(pesquisarFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pesquisarFilmesFrameLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -2937,9 +3153,43 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
         ficheirosFrame.transferFocusBackward();
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
-    private void jToggleButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton20ActionPerformed
+    private void pesquisarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarFilmeActionPerformed
+        
+        //Fazer a pesquisa
+        //TODO fazer parsing do output do método
+        String []lista;
+        lista=gestorFilmes.searchMovie(textIdPesquisaFilmes.getText(),
+                textTituloPesquisaFilmes.getText(),
+                (Integer)anoPesquisaFilmeSpinner1.getValue(),
+                (Integer)anoPesquisaFilmeSpinner2.getValue(),
+                (Double)jSpinner4.getValue(),
+                (Double)jSpinner5.getValue(),
+                textRealizadorPesquisaFilmes.getText(),
+                textProdutorPesquisaFilmes.getText(),
+                (String) countriesList1.getSelectedItem());
+
+        String[] strings= new String[lista.length/2];
+        String[] id= new String[lista.length/2];
+        for(int i=0; i<lista.length/2;i++){
+            strings[i]=lista[2*i+1];
+            id[i]=lista[2*i];
+        }
+        jList4.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        //Reset aos campos
+         textRealizadorPesquisaFilmes.setText(null);
+         textIdPesquisaFilmes.setText(null);
+          textTituloPesquisaFilmes.setText(null);
+           textProdutorPesquisaFilmes.setText(null);
+
+        pesquisarFilmesFrame.setVisible(false);
+      pesquisarFilmesFrame.transferFocusBackward();
+      resultadosFrame.setVisible(true);
+      transferFocus();
+    }//GEN-LAST:event_pesquisarFilmeActionPerformed
 
     private void jSairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButtonActionPerformed
         // TODO invalidar sessão
@@ -3173,11 +3423,11 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
 
     private void voltarPesquisarFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarPesquisarFilmesActionPerformed
         // TODO add your handling code here:
-        jTextField44.setText(null);
-         jTextField45.setText(null);
-          jTextField46.setText(null);
-           jTextField47.setText(null);
-            jTextField48.setText(null);
+        textRealizadorPesquisaFilmes.setText(null);
+         textIdPesquisaFilmes.setText(null);
+          textTituloPesquisaFilmes.setText(null);
+           textProdutorPesquisaFilmes.setText(null);
+            
         pesquisarFilmesFrame.setVisible(false);
       pesquisarFilmesFrame.transferFocusBackward();
     }//GEN-LAST:event_voltarPesquisarFilmesActionPerformed
@@ -3192,7 +3442,10 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     private javax.swing.JFrame adicionarFilmeFrame;
     private javax.swing.JToggleButton adicionarStock;
     private javax.swing.JSpinner anoAdicionaFilmeSpinner;
+    private javax.swing.JSpinner anoPesquisaFilmeSpinner1;
+    private javax.swing.JSpinner anoPesquisaFilmeSpinner2;
     private javax.swing.JComboBox countriesList;
+    private javax.swing.JComboBox countriesList1;
     private javax.swing.JToggleButton eliminaFilmes;
     private javax.swing.JToggleButton eliminaFilmes2;
     private javax.swing.JSpinner eliminaSpinner;
@@ -3319,6 +3572,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     private javax.swing.JLabel jLabel84;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
@@ -3422,11 +3676,6 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     private javax.swing.JTextField jTextField41;
     private javax.swing.JTextField jTextField42;
     private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField44;
-    private javax.swing.JTextField jTextField45;
-    private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
@@ -3439,7 +3688,6 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     private javax.swing.JToggleButton jToggleButton16;
     private javax.swing.JToggleButton jToggleButton17;
     private javax.swing.JToggleButton jToggleButton18;
-    private javax.swing.JToggleButton jToggleButton20;
     private javax.swing.JToggleButton jToggleButton23;
     private javax.swing.JToggleButton jToggleButton24;
     private javax.swing.JToggleButton jToggleButton25;
@@ -3458,15 +3706,20 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     private javax.swing.JPanel mainPanel;
     private javax.swing.JFrame notificarClientesFrame;
     private javax.swing.JFrame pesquisarClienteFrame;
+    private javax.swing.JToggleButton pesquisarFilme;
     private javax.swing.JToggleButton pesquisarFilmes2;
     private javax.swing.JFrame pesquisarFilmesFrame;
     private javax.swing.JFrame resultadosFrame;
     private javax.swing.JTextArea textDescricaoAdicionaFilme;
     private javax.swing.JTextArea textEliminaFilmes;
     private javax.swing.JTextField textGenero;
+    private javax.swing.JTextField textIdPesquisaFilmes;
     private javax.swing.JTextField textProdutorAdicionaFilme;
+    private javax.swing.JTextField textProdutorPesquisaFilmes;
     private javax.swing.JTextField textRealizadorAdicionaFilme;
+    private javax.swing.JTextField textRealizadorPesquisaFilmes;
     private javax.swing.JTextField textTituloAdicionaFilme;
+    private javax.swing.JTextField textTituloPesquisaFilmes;
     private javax.swing.JToggleButton voltarAdcionaFilmes;
     private javax.swing.JToggleButton voltarEliminaFilmes;
     private javax.swing.JToggleButton voltarPesquisarFilmes;
