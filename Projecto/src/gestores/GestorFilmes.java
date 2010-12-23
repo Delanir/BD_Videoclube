@@ -5,6 +5,9 @@
 
 package gestores;
 
+import outros.Filme;
+import javax.swing.ImageIcon;
+
 /**
  * Trata da gestão de filmes
  * @author Daniela
@@ -75,15 +78,30 @@ public class GestorFilmes
 	 */
 	public String[] searchMovie(String id,String titulo, int anoInicio,int anoFim, double imdbBegin, double imdbEnd, String realizador, String produtor, String pais) {
             String []listaResultados= new String[6];
-            listaResultados[0]="222";
-            listaResultados[1]="Toy Story 3";
-            listaResultados[2]="34";
-            listaResultados[3]="Inception";
-            listaResultados[2]="4";
-            listaResultados[3]="The Pianist";
+            listaResultados[0]="222 Apocalipse Now";
+            listaResultados[1]="2 Toy Story 3";
+            listaResultados[2]="34 Tangled";
+            listaResultados[3]="666 Inception";
+            listaResultados[2]="4 Titanic";
+            listaResultados[3]="1 The Pianist";
             
             return listaResultados;
 	}
+
+        public Filme getFilme(String id){
+            String []generos={"Acção","Historical"};
+            Filme f=new Filme("Inglorious Basterds",2010,generos,
+            "Tarantino",
+            "20th Century Fox",
+            "USA",
+            new ImageIcon("MV5BMTI5Mjc2MTE3OV5BMl5BanBnXkFtZTcwNTc2MzI2Mg@@._V1._CR341,0,1365,1365_SS80_.jpg"),
+            "In Nazi-occupied France during World War II, a group of " +
+                    "Jewish-American soldiers known as \"The Basterds\" are " +
+                    "chosen specifically to spread fear throughout the Third " +
+                    "Reich by scalping and brutally killing Nazis. ",
+            8.4);
+            return f ;
+        }
 
 	/**
 	 * Query à bd para ver quantas unidades disponiveis do filme há

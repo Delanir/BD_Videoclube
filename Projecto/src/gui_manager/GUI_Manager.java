@@ -20,6 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.ListModel;
 import javax.swing.SpinnerNumberModel;
+import outros.Filme;
+import outros.OurListModel;
 
 /**
  *
@@ -295,10 +297,10 @@ public class GUI_Manager extends javax.swing.JFrame {
         countriesList1 = new javax.swing.JComboBox();
         jLabel94 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel95 = new javax.swing.JLabel();
-        anoPesquisaFilmeSpinner1 = new javax.swing.JSpinner();
-        anoAdicionaFilmeSpinner.setModel(new SpinnerNumberModel(2010,1917,2300,1));
-        anoPesquisaFilmeSpinner2 = new javax.swing.JSpinner();
-        anoAdicionaFilmeSpinner.setModel(new SpinnerNumberModel(2010,1917,2300,1));
+        jSpinner1 = new javax.swing.JSpinner();
+        jSpinner1.setModel(new SpinnerNumberModel(2010,1917,2300,1));
+        jSpinner3 = new javax.swing.JSpinner();
+        jSpinner3.setModel(new SpinnerNumberModel(2010,1917,2300,1));
         generosFrame = new javax.swing.JFrame();
         jGenerosPanel = new javax.swing.JPanel();
         jScrollPane21 = new javax.swing.JScrollPane();
@@ -312,16 +314,13 @@ public class GUI_Manager extends javax.swing.JFrame {
         resultadosFrame = new javax.swing.JFrame();
         jResultadosFilmePanel = new javax.swing.JPanel();
         jSeparator4 = new javax.swing.JSeparator();
-        jTextField36 = new javax.swing.JTextField();
+        paisResultadosFilme = new javax.swing.JTextField();
         jLabel74 = new javax.swing.JLabel();
         jScrollPane18 = new javax.swing.JScrollPane();
         jTextArea14 = new javax.swing.JTextArea();
         jLabel75 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel76 = new javax.swing.JLabel();
-        jTextField38 = new javax.swing.JTextField();
-        jTextField39 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
+        imdbResultadosFilme = new javax.swing.JTextField();
+        anoResultadosFilme = new javax.swing.JTextField();
         jLabel77 = new javax.swing.JLabel();
         jScrollPane19 = new javax.swing.JScrollPane();
         jList4 = new javax.swing.JList();
@@ -329,15 +328,16 @@ public class GUI_Manager extends javax.swing.JFrame {
         jLabel78 = new javax.swing.JLabel();
         jLabel79 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
-        jTextField41 = new javax.swing.JTextField();
+        tituloResultadosFilme = new javax.swing.JTextField();
         jLabel81 = new javax.swing.JLabel();
         jLabel82 = new javax.swing.JLabel();
-        jTextField42 = new javax.swing.JTextField();
+        realizadorResultadosFilme = new javax.swing.JTextField();
         jLabel83 = new javax.swing.JLabel();
-        jTextField43 = new javax.swing.JTextField();
+        produtorResultadosFilme = new javax.swing.JTextField();
         jLabel84 = new javax.swing.JLabel();
         jScrollPane20 = new javax.swing.JScrollPane();
-        jTextArea15 = new javax.swing.JTextArea();
+        jList5 = new javax.swing.JList();
+        jLabel76 = new javax.swing.JLabel();
         adicionarClienteFrame = new javax.swing.JFrame();
         jAdicionarClientePanel = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
@@ -1794,6 +1794,12 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
 
+    pesquisarFilmesFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+        public void windowClosing(java.awt.event.WindowEvent evt) {
+            pesquisarFilmesFrameWindowClosing(evt);
+        }
+    });
+
     jLabel85.setText("Pesquisar:");
 
     jLabel86.setText("Título:");
@@ -2061,16 +2067,24 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                             .addComponent(voltarPesquisarFilmes)
                             .addComponent(pesquisarFilme))
                         .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel94)
+                            .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel94)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel90)))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel95)
                         .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGap(12, 12, 12)
-            .addComponent(jLabel91)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                    .addGap(12, 12, 12)
+                    .addComponent(jLabel91)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                    .addGap(18, 18, 18)
+                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
     .addGap(132, 132, 132))
     );
     jPesqisaFilmesPanelLayout.setVerticalGroup(
@@ -2107,7 +2121,9 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                     .addComponent(voltarPesquisarFilmes))
                 .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel94)
-                    .addComponent(jLabel95)))
+                    .addComponent(jLabel95)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap(220, Short.MAX_VALUE))
     );
 
@@ -2115,31 +2131,17 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     pesquisarFilmesFrame.getContentPane().setLayout(pesquisarFilmesFrameLayout);
     pesquisarFilmesFrameLayout.setHorizontalGroup(
         pesquisarFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pesquisarFilmesFrameLayout.createSequentialGroup()
-            .addContainerGap(439, Short.MAX_VALUE)
-            .addComponent(anoPesquisaFilmeSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(50, 50, 50)
-            .addComponent(anoPesquisaFilmeSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(191, 191, 191))
-        .addGroup(pesquisarFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pesquisarFilmesFrameLayout.createSequentialGroup()
-                .addGap(0, 29, Short.MAX_VALUE)
-                .addComponent(jPesqisaFilmesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 30, Short.MAX_VALUE)))
+        .addGroup(pesquisarFilmesFrameLayout.createSequentialGroup()
+            .addGap(0, 29, Short.MAX_VALUE)
+            .addComponent(jPesqisaFilmesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 30, Short.MAX_VALUE))
     );
     pesquisarFilmesFrameLayout.setVerticalGroup(
         pesquisarFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(pesquisarFilmesFrameLayout.createSequentialGroup()
-            .addGap(125, 125, 125)
-            .addGroup(pesquisarFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(anoPesquisaFilmeSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(anoPesquisaFilmeSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(314, Short.MAX_VALUE))
-        .addGroup(pesquisarFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pesquisarFilmesFrameLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPesqisaFilmesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)))
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jPesqisaFilmesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
     );
 
     generosFrame.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -2238,8 +2240,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
 
-    jTextField36.setEditable(false);
-    jTextField36.setText("jTextField10");
+    paisResultadosFilme.setEditable(false);
 
     jLabel74.setText("País:");
 
@@ -2249,36 +2250,9 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     jLabel75.setText("Descrição:");
 
-    jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-    jPanel1.setForeground(new java.awt.Color(255, 153, 153));
+    imdbResultadosFilme.setEditable(false);
 
-    jLabel76.setText("CAPA");
-
-    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-    jPanel1.setLayout(jPanel1Layout);
-    jPanel1Layout.setHorizontalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel1Layout.createSequentialGroup()
-            .addGap(35, 35, 35)
-            .addComponent(jLabel76)
-            .addContainerGap(53, Short.MAX_VALUE))
-    );
-    jPanel1Layout.setVerticalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel1Layout.createSequentialGroup()
-            .addGap(71, 71, 71)
-            .addComponent(jLabel76)
-            .addContainerGap(96, Short.MAX_VALUE))
-    );
-
-    jTextField38.setEditable(false);
-    jTextField38.setText("jTextField9");
-
-    jTextField39.setEditable(false);
-    jTextField39.setText("jTextField8");
-
-    jTextField40.setEditable(false);
-    jTextField40.setText("jTextField7");
+    anoResultadosFilme.setEditable(false);
 
     jLabel77.setText("Resultados:");
 
@@ -2288,6 +2262,12 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
         public int getSize() { return strings.length; }
         public Object getElementAt(int i) { return strings[i]; }
+    });
+    jList4.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+    jList4.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jList4MouseClicked(evt);
+        }
     });
     jScrollPane19.setViewportView(jList4);
 
@@ -2300,26 +2280,28 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     jLabel80.setText("Género:");
 
-    jTextField41.setEditable(false);
-    jTextField41.setText("jTextField1");
+    tituloResultadosFilme.setEditable(false);
 
     jLabel81.setText("Ano:");
 
     jLabel82.setText("Realizador:");
 
-    jTextField42.setEditable(false);
-    jTextField42.setText("jTextField2");
+    realizadorResultadosFilme.setEditable(false);
 
     jLabel83.setText("Produtor:");
 
-    jTextField43.setEditable(false);
-    jTextField43.setText("jTextField3");
+    produtorResultadosFilme.setEditable(false);
 
     jLabel84.setText("IMDB RATING: ");
 
-    jTextArea15.setColumns(20);
-    jTextArea15.setRows(5);
-    jScrollPane20.setViewportView(jTextArea15);
+    jList5.setModel(new javax.swing.AbstractListModel() {
+        String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+        public int getSize() { return strings.length; }
+        public Object getElementAt(int i) { return strings[i]; }
+    });
+    jScrollPane20.setViewportView(jList5);
+
+    jLabel76.setText("Capa");
 
     javax.swing.GroupLayout jResultadosFilmePanelLayout = new javax.swing.GroupLayout(jResultadosFilmePanel);
     jResultadosFilmePanel.setLayout(jResultadosFilmePanelLayout);
@@ -2334,54 +2316,51 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
+                            .addGap(280, 280, 280)
+                            .addComponent(jLabel78)
+                            .addGap(64, 64, 64))
+                        .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                             .addGap(81, 81, 81)
                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel77)
-                                .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                            .addGap(36, 36, 36)
-                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                                    .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(127, 127, 127)
-                                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                                            .addGap(134, 134, 134)
-                                            .addComponent(jLabel78))
                                         .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel82)
                                                 .addComponent(jLabel80)
                                                 .addComponent(jLabel79)
+                                                .addComponent(jLabel74)
                                                 .addComponent(jLabel75))
-                                            .addGap(18, 18, 18)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                                                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(71, 71, 71)
+                                                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                                                        .addComponent(realizadorResultadosFilme)
+                                                        .addComponent(tituloResultadosFilme)
+                                                        .addComponent(paisResultadosFilme))
+                                                    .addGap(52, 52, 52)
                                                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jLabel83)
                                                         .addComponent(jLabel81)
-                                                        .addComponent(jLabel84)))
-                                                .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                                                    .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jLabel74)
+                                                        .addComponent(jLabel84))
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                            .addGap(64, 64, 64)))
+                                                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(imdbResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
+                                                            .addComponent(anoResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(110, 110, 110)
+                                                            .addComponent(jLabel76))
+                                                        .addComponent(produtorResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(41, 41, 41))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jResultadosFilmePanelLayout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(80, 80, 80)))
+                                    .addComponent(jScrollPane19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(111, 111, 111)))
                     .addGap(20, 20, 20)))
             .addGap(283, 283, 283))
     );
@@ -2392,67 +2371,61 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
             .addComponent(jLabel78)
             .addGap(9, 9, 9)
             .addComponent(jLabel77)
-            .addGap(18, 18, 18)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(tituloResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel81)
+                .addComponent(jLabel79)
+                .addComponent(anoResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel76))
             .addGap(18, 18, 18)
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                    .addGap(22, 22, 22)
-                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel81)
-                        .addComponent(jLabel79)
-                        .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel74)
-                        .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel80)
-                        .addComponent(jLabel83)
-                        .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel82)
-                        .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel84)
-                        .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel75)
-                        .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel80)
+                    .addComponent(jLabel83)
+                    .addComponent(produtorResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel82)
+                .addComponent(realizadorResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel84)
+                .addComponent(imdbResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(18, 18, 18)
+            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel74)
+                .addComponent(paisResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                    .addGap(19, 19, 19)
-                    .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(42, 42, 42)
+                    .addComponent(jLabel75))
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                    .addGap(30, 30, 30)
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(46, 46, 46))
+                    .addGap(18, 18, 18)
+                    .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGap(28, 28, 28)
+            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(332, 332, 332)
+            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(135, 135, 135))
     );
 
     javax.swing.GroupLayout resultadosFrameLayout = new javax.swing.GroupLayout(resultadosFrame.getContentPane());
     resultadosFrame.getContentPane().setLayout(resultadosFrameLayout);
     resultadosFrameLayout.setHorizontalGroup(
         resultadosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 1006, Short.MAX_VALUE)
-        .addGroup(resultadosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(resultadosFrameLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jResultadosFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resultadosFrameLayout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jResultadosFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap())
     );
     resultadosFrameLayout.setVerticalGroup(
         resultadosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 633, Short.MAX_VALUE)
-        .addGroup(resultadosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(resultadosFrameLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jResultadosFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resultadosFrameLayout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jResultadosFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap())
     );
 
     adicionarClienteFrame.setMinimumSize(new java.awt.Dimension(800, 600));
@@ -3160,8 +3133,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         String []lista;
         lista=gestorFilmes.searchMovie(textIdPesquisaFilmes.getText(),
                 textTituloPesquisaFilmes.getText(),
-                (Integer)anoPesquisaFilmeSpinner1.getValue(),
-                (Integer)anoPesquisaFilmeSpinner2.getValue(),
+                (Integer)jSpinner1.getValue(),
+                (Integer)jSpinner3.getValue(),
                 (Double)jSpinner4.getValue(),
                 (Double)jSpinner5.getValue(),
                 textRealizadorPesquisaFilmes.getText(),
@@ -3174,11 +3147,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
             strings[i]=lista[2*i+1];
             id[i]=lista[2*i];
         }
-        jList4.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        jList4.setModel(new OurListModel(lista) );
         //Reset aos campos
          textRealizadorPesquisaFilmes.setText(null);
          textIdPesquisaFilmes.setText(null);
@@ -3432,6 +3401,34 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
       pesquisarFilmesFrame.transferFocusBackward();
     }//GEN-LAST:event_voltarPesquisarFilmesActionPerformed
 
+    private void pesquisarFilmesFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_pesquisarFilmesFrameWindowClosing
+       //Reset aos campos
+         textRealizadorPesquisaFilmes.setText(null);
+         textIdPesquisaFilmes.setText(null);
+          textTituloPesquisaFilmes.setText(null);
+           textProdutorPesquisaFilmes.setText(null);
+
+        pesquisarFilmesFrame.setVisible(false);
+      pesquisarFilmesFrame.transferFocusBackward();
+    }//GEN-LAST:event_pesquisarFilmesFrameWindowClosing
+
+    private void jList4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList4MouseClicked
+        // TODO add your handling code here:
+        String idMovie=((String)jList4.getSelectedValue()).split(" ")[0];
+        Filme f=gestorFilmes.getFilme(idMovie);
+
+        tituloResultadosFilme.setText(f.getTitulo());
+        jList5.setModel(new OurListModel(f.getGeneros()));
+        realizadorResultadosFilme.setText(f.getRealizador());
+        anoResultadosFilme.setText(f.getAno()+"");
+        paisResultadosFilme.setText(f.getPais());
+        imdbResultadosFilme.setText(f.getRatingIMDB()+"");
+        produtorResultadosFilme.setText(f.getProdutor());
+        jTextArea14.setText(f.getDescricao());
+
+        jLabel76.setIcon(f.getCapa());
+    }//GEN-LAST:event_jList4MouseClicked
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -3442,8 +3439,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JFrame adicionarFilmeFrame;
     private javax.swing.JToggleButton adicionarStock;
     private javax.swing.JSpinner anoAdicionaFilmeSpinner;
-    private javax.swing.JSpinner anoPesquisaFilmeSpinner1;
-    private javax.swing.JSpinner anoPesquisaFilmeSpinner2;
+    private javax.swing.JTextField anoResultadosFilme;
     private javax.swing.JComboBox countriesList;
     private javax.swing.JComboBox countriesList1;
     private javax.swing.JToggleButton eliminaFilmes;
@@ -3454,6 +3450,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JFrame ficheirosFrame;
     private javax.swing.JFrame generosFrame;
     private javax.swing.JTextField idEliminaFilmes;
+    private javax.swing.JTextField imdbResultadosFilme;
     private javax.swing.JPanel jATMManagerPanel;
     private javax.swing.JToggleButton jActualizarStockButton;
     private javax.swing.JButton jAdicionarATMButton;
@@ -3577,6 +3574,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
     private javax.swing.JList jList4;
+    private javax.swing.JList jList5;
     private javax.swing.JList jList6;
     private javax.swing.JButton jLoginButton;
     private javax.swing.JPanel jLoginPanel;
@@ -3584,7 +3582,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JPanel jMenuOperatorPanel;
     private javax.swing.JPanel jNotificarClientePanel;
     private javax.swing.JButton jNotificarClientesButton;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
@@ -3626,7 +3623,9 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JSpinner jSpinner5;
     private javax.swing.JTabbedPane jTabbedPane2;
@@ -3635,7 +3634,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextArea jTextArea11;
     private javax.swing.JTextArea jTextArea12;
     private javax.swing.JTextArea jTextArea14;
-    private javax.swing.JTextArea jTextArea15;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
@@ -3668,14 +3666,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
@@ -3705,10 +3696,13 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JButton listarFormatoEliminar;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JFrame notificarClientesFrame;
+    private javax.swing.JTextField paisResultadosFilme;
     private javax.swing.JFrame pesquisarClienteFrame;
     private javax.swing.JToggleButton pesquisarFilme;
     private javax.swing.JToggleButton pesquisarFilmes2;
     private javax.swing.JFrame pesquisarFilmesFrame;
+    private javax.swing.JTextField produtorResultadosFilme;
+    private javax.swing.JTextField realizadorResultadosFilme;
     private javax.swing.JFrame resultadosFrame;
     private javax.swing.JTextArea textDescricaoAdicionaFilme;
     private javax.swing.JTextArea textEliminaFilmes;
@@ -3720,6 +3714,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextField textRealizadorPesquisaFilmes;
     private javax.swing.JTextField textTituloAdicionaFilme;
     private javax.swing.JTextField textTituloPesquisaFilmes;
+    private javax.swing.JTextField tituloResultadosFilme;
     private javax.swing.JToggleButton voltarAdcionaFilmes;
     private javax.swing.JToggleButton voltarEliminaFilmes;
     private javax.swing.JToggleButton voltarPesquisarFilmes;
