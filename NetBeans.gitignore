@@ -4,6 +4,8 @@
 #netbeans ignore personal stuff 
 Projecto/nbproject/private/
 
+#netbeans ignore classes
+Projecto/build/
 
 ## generic files to ignore
 *~

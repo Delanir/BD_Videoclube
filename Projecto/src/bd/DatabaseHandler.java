@@ -26,6 +26,7 @@ public class DatabaseHandler
 			/**/
 		} else
 			System.out.println("deu bode");
+		dbh.close();
 	}
 
 	/**
