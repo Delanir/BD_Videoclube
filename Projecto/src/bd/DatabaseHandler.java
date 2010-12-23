@@ -9,6 +9,8 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.Icon;
+
 import outros.Consts;
 import outros.Utils;
 
@@ -36,7 +38,9 @@ public class DatabaseHandler
 	public DatabaseHandler() {
 		open();
 	}
+	
 
+	/* ---------------------------- LIGAÇÃO ---------------------------- */
 	/**
 	 * Cria uma ligação à BD.
 	 */
@@ -44,7 +48,8 @@ public class DatabaseHandler
 		try {
 			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
 			Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
-			this.conn = DriverManager.getConnection(Consts.ORACLE_URL, Consts.ORACLE_USER, Consts.ORACLE_PASS);
+			this.conn = DriverManager.getConnection(Consts.ORACLE_URL, Consts.ORACLE_USER,
+					Consts.ORACLE_PASS);
 		} catch (SQLException e) {
 			Utils.printError(e);
 		} catch (InstantiationException e) {
@@ -66,7 +71,53 @@ public class DatabaseHandler
 			Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
+	
+	/* ---------------------------- CLIENTES ---------------------------- */
+	// "ID_PESSOA", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"
+	/* ---------------------------- EMPREGADOS ---------------------------- */
+	// "ID_PESSOA", "IS_ADMIN", "SALARIO", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"
+	/* ---------------------------- FILME/GÉNERO ---------------------------- */
+	// "ID_GEN", "ID_FIL"
+	/* ---------------------------- MÁQUINAS ATM ---------------------------- */
+	// "ID_MAQ", "PRECO", "VALIDO", "DATA_INSTALACAO"
+	/* ---------------------------- PAGAMENTOS ---------------------------- */
+	// "ID_REQ", "MONTANTE"
+	/* ---------------------------- REQUISIÇÕES ---------------------------- */
+	// "ID_REQ", "ID_FIL", "ID_MAQ", "EMP_ID_PESSOA", "ID_PESSOA", "DATA", "DATA_LIMITE", "DATA_ENTREGA"
+	/* ---------------------------- STOCKS ---------------------------- */
+	// "ID_FIL", "DISPONIVEIS", "QUANT", "CUSTO_COMPRA", "CUSTO_ALUGUER", "FORMATO"
+	
+	/* ---------------------------- FILMES ---------------------------- */
+	/**
+	 * Obtém os géneros de filme existentes.
+	 * @return Vector com [id, nome] de cada género.
+	 */
+	public Vector<String[]> getFilmes() {
+		String[] campos = { "ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS",
+				"PRODUTORA", "DESCRICAO", "CAPA", "VALIDO" };
+		return select("filmes", campos);
+	}
 
+	/**
+	 * Adiciona um género à BD.
+	 * @param nome o nome do género
+	 */
+	public void adicionaFilme(String titulo, int ano, String realizador, double ratingIMDB,
+							  String pais, String produtora, String descricao, Icon capa) {
+		String[] valores = { "seq_filme_id.NEXTVAL", p(titulo), p(ano), p(realizador),
+							 p(ratingIMDB), p(pais), p(produtora), p(descricao), "null" };
+		adicionaObjecto("generos", valores);
+	}
+
+	/**
+	 * Remove um filme da BD.
+	 * @param id o ID do filme
+	 */
+	public void removeFilme(String id) {
+		removeObjecto("filmes", "id_fil", id);
+	}
+	
+	/* ---------------------------- GÉNEROS ---------------------------- */
 	/**
 	 * Obtém os géneros de filme existentes.
 	 * @return Vector com [id, nome] de cada género.
@@ -101,6 +152,8 @@ public class DatabaseHandler
 		removeObjecto("generos", "nome_genero", nome);
 	}
 
+
+	/* ---------------------------- MÉTODOS GENÉRICOS ---------------------------- */
 	/**
 	 * Adiciona um objecto à BD. Função genérica.
 	 * @param tabela a tabela à qual adicionar o objecto.
@@ -165,5 +218,13 @@ public class DatabaseHandler
 		} catch (SQLException ex) {
 			Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
 		}
+	}
+	
+	/* ---------------------------- OUTROS ---------------------------- */
+	/**
+	 * Coloca plicas na "string" passada.
+	 */
+	private String p(Object o) {
+		return "'" + o + "'";
 	}
 }
