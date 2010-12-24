@@ -323,7 +323,7 @@ public class DatabaseHandler
 	 * @param nome o nome do formato a remover.
 	 */
 	public void removeFormatoNome(String nome) {
-		removeObjecto("formatos", "NOME_FORMATO", nome);
+		removeObjecto("formatos", "NOME_FORMATO", p(nome));
 	}
 
 	/* ----------------------------------------------------------------- */
@@ -370,7 +370,7 @@ public class DatabaseHandler
 	 * @param nome o nome do género a remover.
 	 */
 	public void removeGeneroNome(String nome) {
-		removeObjecto("generos", "NOME_GENERO", nome);
+		removeObjecto("generos", "NOME_GENERO", p(nome));
 	}
 
 	/* ---------------------------------------------------------------------- */
@@ -501,6 +501,7 @@ public class DatabaseHandler
 	 * @param id o ID da requisição a actualizar.
 	 * @param data_entrega a data de entrega do material da requisição.
 	 */
+	//TODO: ver como se adicionam datas. Não deve ser em string...
 	public void actualizaRequisicao(String id, String data_entrega) {
 		actualizaObjecto("requisicoes", "ID_REQ", id,
 				"DATA_ENTREGA",
@@ -518,7 +519,7 @@ public class DatabaseHandler
 	/* ---------------------------------------------------------------- */
 	/* ---------------------------- STOCKS ---------------------------- */
 	/* ---------------------------------------------------------------- */
-	
+	// TODO: STOCKS, YEAH
 
 	/* --------------------------------------------------------------------------- */
 	/* ---------------------------- MÉTODOS GENÉRICOS ---------------------------- */
