@@ -66,7 +66,7 @@ public class GestorClientes
 	 * Lista clientes activos no sistema
 	 * @return
 	 */
-	public String listaClientes() {
+	public String[] listaClientes() {
 		return null;
 	}
 
@@ -75,7 +75,7 @@ public class GestorClientes
 	 * @param id
 	 * @return
 	 */
-	public String deleteClient(String id) {
+	public String  deleteClient(String id) {
 		return null;
 	}
 
