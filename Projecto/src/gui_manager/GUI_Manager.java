@@ -205,10 +205,10 @@ public class GUI_Manager extends javax.swing.JFrame {
         jScrollPane12 = new javax.swing.JScrollPane();
         jList6 = new javax.swing.JList();
         jLabel41 = new javax.swing.JLabel();
-        jToggleButton15 = new javax.swing.JToggleButton();
-        jToggleButton16 = new javax.swing.JToggleButton();
-        jButton8 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        pesquisarClientes = new javax.swing.JToggleButton();
+        adicionarClientes = new javax.swing.JToggleButton();
+        eliminarClientes = new javax.swing.JButton();
+        notificarClientes = new javax.swing.JButton();
         jFilmesManagerPanel1 = new javax.swing.JPanel();
         jToggleButton17 = new javax.swing.JToggleButton();
         jToggleButton18 = new javax.swing.JToggleButton();
@@ -392,14 +392,12 @@ public class GUI_Manager extends javax.swing.JFrame {
         notificarClientesFrame = new javax.swing.JFrame();
         jNotificarClientePanel = new javax.swing.JPanel();
         jToggleButton23 = new javax.swing.JToggleButton();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel35 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel42 = new javax.swing.JLabel();
         jTextField17 = new javax.swing.JTextField();
         jScrollPane9 = new javax.swing.JScrollPane();
         jTextArea6 = new javax.swing.JTextArea();
-        jLabel52 = new javax.swing.JLabel();
-        jScrollPane13 = new javax.swing.JScrollPane();
-        jTextArea9 = new javax.swing.JTextArea();
+        javax.swing.JLabel jLabel52 = new javax.swing.JLabel();
         jToggleButton34 = new javax.swing.JToggleButton();
         pesquisarClienteFrame = new javax.swing.JFrame();
         jPesquisarClientePanel = new javax.swing.JPanel();
@@ -409,18 +407,20 @@ public class GUI_Manager extends javax.swing.JFrame {
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        jTextField21 = new javax.swing.JTextField();
-        jTextField22 = new javax.swing.JTextField();
-        jTextField23 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
-        jTextField25 = new javax.swing.JTextField();
-        jTextField26 = new javax.swing.JTextField();
+        telefonePesquisarClientes = new javax.swing.JTextField();
+        biPesquisarClientes = new javax.swing.JTextField();
+        nomePesquisarClientes = new javax.swing.JTextField();
+        emailPesquisarClientes = new javax.swing.JTextField();
+        moradaPesquisarClientes = new javax.swing.JTextField();
+        idPesquisarClientes = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
+        pesquisarClientesButton = new javax.swing.JToggleButton();
         jScrollPane10 = new javax.swing.JScrollPane();
+        jList7 = new javax.swing.JList();
+        jScrollPane22 = new javax.swing.JScrollPane();
         jTextArea7 = new javax.swing.JTextArea();
-        jToggleButton24 = new javax.swing.JToggleButton();
-        jToggleButton25 = new javax.swing.JToggleButton();
-        jToggleButton26 = new javax.swing.JToggleButton();
+        voltarPesquisarCliente = new javax.swing.JToggleButton();
+        jLabel96 = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
 
         jLoginButton.setText("Login");
@@ -1075,23 +1075,23 @@ public class GUI_Manager extends javax.swing.JFrame {
 
         jLabel41.setText("Clientes com pagamentos em atraso:");
 
-        jToggleButton15.setText("Pesquisar Clientes");
-        jToggleButton15.addActionListener(new java.awt.event.ActionListener() {
+        pesquisarClientes.setText("Pesquisar Clientes");
+        pesquisarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton15ActionPerformed(evt);
+                pesquisarClientesActionPerformed(evt);
             }
         });
 
-        jToggleButton16.setText("Adicionar Clientes");
-        jToggleButton16.addActionListener(new java.awt.event.ActionListener() {
+        adicionarClientes.setText("Adicionar Clientes");
+        adicionarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton16ActionPerformed(evt);
+                adicionarClientesActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Eliminar Clientes");
+        eliminarClientes.setText("Eliminar Clientes");
 
-        jButton10.setText("Notificar Clientes");
+        notificarClientes.setText("Notificar Clientes");
 
         javax.swing.GroupLayout jClientesManagerPanel1Layout = new javax.swing.GroupLayout(jClientesManagerPanel1);
         jClientesManagerPanel1.setLayout(jClientesManagerPanel1Layout);
@@ -1105,10 +1105,10 @@ public class GUI_Manager extends javax.swing.JFrame {
                     .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
                         .addGap(166, 166, 166)
                         .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jToggleButton15)
-                            .addComponent(jToggleButton16)
-                            .addComponent(jButton8)
-                            .addComponent(jButton10))))
+                            .addComponent(pesquisarClientes)
+                            .addComponent(adicionarClientes)
+                            .addComponent(eliminarClientes)
+                            .addComponent(notificarClientes))))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
         jClientesManagerPanel1Layout.setVerticalGroup(
@@ -1119,13 +1119,13 @@ public class GUI_Manager extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jToggleButton15)
+                .addComponent(pesquisarClientes)
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton16)
+                .addComponent(adicionarClientes)
                 .addGap(18, 18, 18)
-                .addComponent(jButton10)
+                .addComponent(notificarClientes)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8)
+                .addComponent(eliminarClientes)
                 .addContainerGap(144, Short.MAX_VALUE))
         );
 
@@ -2804,13 +2804,17 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
 
+    notificarClientesFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+        public void windowClosing(java.awt.event.WindowEvent evt) {
+            notificarClientesFrameWindowClosing(evt);
+        }
+    });
+
     jToggleButton23.setText("Enviar E-mail");
 
     jLabel35.setText("Notificar Cliente:");
 
-    jLabel42.setText("ID:");
-
-    jTextField17.setText("jTextField11");
+    jLabel42.setText("BI ou ID:");
 
     jTextArea6.setColumns(20);
     jTextArea6.setRows(5);
@@ -2818,11 +2822,12 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     jLabel52.setText("Mensagem:");
 
-    jTextArea9.setColumns(20);
-    jTextArea9.setRows(5);
-    jScrollPane13.setViewportView(jTextArea9);
-
     jToggleButton34.setText("Voltar");
+    jToggleButton34.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jToggleButton34ActionPerformed(evt);
+        }
+    });
 
     javax.swing.GroupLayout jNotificarClientePanelLayout = new javax.swing.GroupLayout(jNotificarClientePanel);
     jNotificarClientePanel.setLayout(jNotificarClientePanelLayout);
@@ -2837,17 +2842,15 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                         .addGroup(jNotificarClientePanelLayout.createSequentialGroup()
                             .addComponent(jLabel42)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel52)
-                        .addGroup(jNotificarClientePanelLayout.createSequentialGroup()
-                            .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(33, 33, 33)
-                            .addComponent(jToggleButton34))))
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jNotificarClientePanelLayout.createSequentialGroup()
                     .addGap(209, 209, 209)
-                    .addComponent(jToggleButton23)))
-            .addContainerGap(84, Short.MAX_VALUE))
+                    .addComponent(jToggleButton23)
+                    .addGap(33, 33, 33)
+                    .addComponent(jToggleButton34)))
+            .addContainerGap(101, Short.MAX_VALUE))
     );
     jNotificarClientePanelLayout.setVerticalGroup(
         jNotificarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2862,17 +2865,10 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
             .addComponent(jLabel52)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jNotificarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jNotificarClientePanelLayout.createSequentialGroup()
-                    .addGap(18, 18, 18)
-                    .addComponent(jToggleButton23)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(34, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jNotificarClientePanelLayout.createSequentialGroup()
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jToggleButton34)
-                    .addGap(48, 48, 48))))
+            .addGap(24, 24, 24)
+            .addGroup(jNotificarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jToggleButton23)
+                .addComponent(jToggleButton34)))
     );
 
     javax.swing.GroupLayout notificarClientesFrameLayout = new javax.swing.GroupLayout(notificarClientesFrame.getContentPane());
@@ -2882,19 +2878,25 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         .addGap(0, 553, Short.MAX_VALUE)
         .addGroup(notificarClientesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(notificarClientesFrameLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 22, Short.MAX_VALUE)
                 .addComponent(jNotificarClientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 23, Short.MAX_VALUE)))
     );
     notificarClientesFrameLayout.setVerticalGroup(
         notificarClientesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGap(0, 421, Short.MAX_VALUE)
         .addGroup(notificarClientesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(notificarClientesFrameLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 48, Short.MAX_VALUE)
                 .addComponent(jNotificarClientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 48, Short.MAX_VALUE)))
     );
+
+    pesquisarClienteFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+        public void windowClosing(java.awt.event.WindowEvent evt) {
+            pesquisarClienteFrameWindowClosing(evt);
+        }
+    });
 
     jLabel43.setText("ID:");
 
@@ -2908,138 +2910,139 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     jLabel48.setText("Nome:");
 
-    jTextField21.setText("jTextField5");
-
-    jTextField22.setText("jTextField7");
-
-    jTextField23.setText("jTextField6");
-
-    jTextField24.setText("jTextField8");
-
-    jTextField25.setText("jTextField9");
-
-    jTextField26.setText("jTextField26");
-
     jLabel49.setText("Pesquisar Cliente:");
 
+    pesquisarClientesButton.setText("Pesquisar Cliente");
+    pesquisarClientesButton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            pesquisarClientesButtonActionPerformed(evt);
+        }
+    });
+
+    jList7.setModel(new javax.swing.AbstractListModel() {
+        String[] strings = { ""};
+        public int getSize() { return strings.length; }
+        public Object getElementAt(int i) { return strings[i]; }
+    });
+    jScrollPane10.setViewportView(jList7);
+
     jTextArea7.setColumns(20);
+    jTextArea7.setEditable(false);
     jTextArea7.setRows(5);
-    jTextArea7.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-    jScrollPane10.setViewportView(jTextArea7);
+    jScrollPane22.setViewportView(jTextArea7);
 
-    jToggleButton24.setText("Pesquisar Cliente");
+    voltarPesquisarCliente.setText("Voltar");
+    voltarPesquisarCliente.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            voltarPesquisarClienteActionPerformed(evt);
+        }
+    });
 
-    jToggleButton25.setText("Listar Clientes");
-
-    jToggleButton26.setText("Voltar");
+    jLabel96.setText("Lista de Clientes:");
 
     javax.swing.GroupLayout jPesquisarClientePanelLayout = new javax.swing.GroupLayout(jPesquisarClientePanel);
     jPesquisarClientePanel.setLayout(jPesquisarClientePanelLayout);
     jPesquisarClientePanelLayout.setHorizontalGroup(
         jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPesquisarClientePanelLayout.createSequentialGroup()
-            .addContainerGap(438, Short.MAX_VALUE)
-            .addComponent(jToggleButton26)
-            .addGap(116, 116, 116))
         .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
-            .addGap(83, 83, 83)
+            .addContainerGap()
             .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel49)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
-                    .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
-                            .addComponent(jLabel43)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
-                            .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel44)
-                                .addComponent(jLabel48))
-                            .addGap(65, 65, 65)
-                            .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jToggleButton24, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel96)
+                    .addContainerGap())
+                .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
                     .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel46)
-                        .addComponent(jLabel45)
-                        .addComponent(jLabel47))
-                    .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel49)
                         .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
                             .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
+                                .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
+                                    .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel44)
+                                        .addComponent(jLabel48)
+                                        .addComponent(jLabel43))
+                                    .addGap(59, 59, 59)
+                                    .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(idPesquisarClientes)
+                                        .addComponent(biPesquisarClientes, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(nomePesquisarClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)))
+                                .addComponent(pesquisarClientesButton))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jToggleButton25)
-                                .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-            .addContainerGap(153, Short.MAX_VALUE))
+                                .addComponent(jLabel46)
+                                .addComponent(jLabel45)
+                                .addComponent(jLabel47))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(telefonePesquisarClientes)
+                                .addComponent(emailPesquisarClientes)
+                                .addComponent(moradaPesquisarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(53, 53, 53))
+                .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
+                    .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(voltarPesquisarCliente)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap())))
     );
     jPesquisarClientePanelLayout.setVerticalGroup(
         jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
             .addGap(41, 41, 41)
-            .addComponent(jLabel49)
-            .addGap(59, 59, 59)
             .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jLabel43)
-                .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel48)
-                    .addComponent(jLabel47))
-                .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
+                    .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
+                            .addComponent(jLabel49)
+                            .addGap(17, 17, 17)
+                            .addComponent(jLabel43))
+                        .addComponent(idPesquisarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nomePesquisarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel48)
+                        .addComponent(jLabel47)))
+                .addComponent(telefonePesquisarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(18, 18, 18)
             .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
                     .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(biPesquisarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel44))
                     .addGap(26, 26, 26))
                 .addGroup(jPesquisarClientePanelLayout.createSequentialGroup()
                     .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel46)
-                        .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(emailPesquisarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel45)
-                        .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-            .addGroup(jPesquisarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jToggleButton24)
-                .addComponent(jToggleButton25))
-            .addGap(18, 18, 18)
-            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(moradaPesquisarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGap(10, 10, 10)
+            .addComponent(pesquisarClientesButton)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jToggleButton26)
-            .addGap(20, 20, 20))
+            .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(26, 26, 26)
+            .addComponent(jLabel96)
+            .addGap(2, 2, 2)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(voltarPesquisarCliente)
+            .addContainerGap(24, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout pesquisarClienteFrameLayout = new javax.swing.GroupLayout(pesquisarClienteFrame.getContentPane());
     pesquisarClienteFrame.getContentPane().setLayout(pesquisarClienteFrameLayout);
     pesquisarClienteFrameLayout.setHorizontalGroup(
         pesquisarClienteFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 615, Short.MAX_VALUE)
-        .addGroup(pesquisarClienteFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pesquisarClienteFrameLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPesquisarClientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)))
+        .addGroup(pesquisarClienteFrameLayout.createSequentialGroup()
+            .addComponent(jPesquisarClientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(84, Short.MAX_VALUE))
     );
     pesquisarClienteFrameLayout.setVerticalGroup(
         pesquisarClienteFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 455, Short.MAX_VALUE)
-        .addGroup(pesquisarClienteFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pesquisarClienteFrameLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPesquisarClientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)))
+        .addGroup(pesquisarClienteFrameLayout.createSequentialGroup()
+            .addComponent(jPesquisarClientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(21, Short.MAX_VALUE))
     );
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -3095,7 +3098,9 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jPesquisarClientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPesquisarClientesButtonActionPerformed
-        // TODO add your handling code here:
+        jList7.setModel(new OurListModel(gestorClientes.listaClientes()));
+        pesquisarClienteFrame.setVisible(true);
+        transferFocus();
     }//GEN-LAST:event_jPesquisarClientesButtonActionPerformed
 
     private void jAdicionarClientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarClientesButtonActionPerformed
@@ -3110,13 +3115,16 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         transferFocus();
     }//GEN-LAST:event_jEliminarFilmeButtonActionPerformed
 
-    private void jToggleButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton15ActionPerformed
+    private void pesquisarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarClientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton15ActionPerformed
+        jList7.setModel(new OurListModel(gestorClientes.listaClientes()));
+        pesquisarClienteFrame.setVisible(true);
+        transferFocus();
+    }//GEN-LAST:event_pesquisarClientesActionPerformed
 
-    private void jToggleButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton16ActionPerformed
+    private void adicionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarClientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton16ActionPerformed
+    }//GEN-LAST:event_adicionarClientesActionPerformed
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
         //TODO : Código seleccionar fiheiro!
@@ -3429,27 +3437,69 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         jLabel76.setIcon(f.getCapa());
     }//GEN-LAST:event_jList4MouseClicked
 
+    private void pesquisarClienteFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_pesquisarClienteFrameWindowClosing
+        // TODO add your handling code here:
+        pesquisarClienteFrame.setVisible(false);
+      pesquisarClienteFrame.transferFocusBackward();
+    }//GEN-LAST:event_pesquisarClienteFrameWindowClosing
+
+    private void voltarPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarPesquisarClienteActionPerformed
+        // TODO add your handling code here:
+        pesquisarClienteFrame.setVisible(false);
+      pesquisarClienteFrame.transferFocusBackward();
+    }//GEN-LAST:event_voltarPesquisarClienteActionPerformed
+
+    private void pesquisarClientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarClientesButtonActionPerformed
+        jTextArea7.setText(
+                gestorClientes.procuraCliente(idPesquisarClientes.getText(),
+                nomePesquisarClientes.getText(),
+                telefonePesquisarClientes.getText(),
+                biPesquisarClientes.getText(),
+                emailPesquisarClientes.getText(),
+                moradaPesquisarClientes.getText()));
+    }//GEN-LAST:event_pesquisarClientesButtonActionPerformed
+
+    private void notificarClientesFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_notificarClientesFrameWindowClosing
+        // TODO add your handling code here:
+        jTextArea6.setText(null);
+        jTextField17.setText(null);
+        notificarClientesFrame.setVisible(false);
+      notificarClientesFrame.transferFocusBackward();
+    }//GEN-LAST:event_notificarClientesFrameWindowClosing
+
+    private void jToggleButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton34ActionPerformed
+        jTextArea6.setText(null);
+        jTextField17.setText(null);
+        notificarClientesFrame.setVisible(false);
+      notificarClientesFrame.transferFocusBackward();
+    }//GEN-LAST:event_jToggleButton34ActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionaGenero;
     private javax.swing.JToggleButton adicionaGenero2;
     private javax.swing.JFrame adicionarClienteFrame;
+    private javax.swing.JToggleButton adicionarClientes;
     private javax.swing.JButton adicionarFilme;
     private javax.swing.JFrame adicionarFilmeFrame;
     private javax.swing.JToggleButton adicionarStock;
     private javax.swing.JSpinner anoAdicionaFilmeSpinner;
     private javax.swing.JTextField anoResultadosFilme;
+    private javax.swing.JTextField biPesquisarClientes;
     private javax.swing.JComboBox countriesList;
     private javax.swing.JComboBox countriesList1;
     private javax.swing.JToggleButton eliminaFilmes;
     private javax.swing.JToggleButton eliminaFilmes2;
     private javax.swing.JSpinner eliminaSpinner;
     private javax.swing.JFrame eliminarClienteFrame;
+    private javax.swing.JButton eliminarClientes;
     private javax.swing.JFrame eliminarFilmesFrame;
+    private javax.swing.JTextField emailPesquisarClientes;
     private javax.swing.JFrame ficheirosFrame;
     private javax.swing.JFrame generosFrame;
     private javax.swing.JTextField idEliminaFilmes;
+    private javax.swing.JTextField idPesquisarClientes;
     private javax.swing.JTextField imdbResultadosFilme;
     private javax.swing.JPanel jATMManagerPanel;
     private javax.swing.JToggleButton jActualizarStockButton;
@@ -3460,11 +3510,9 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JPanel jAdicionarFilmePanel;
     private javax.swing.JToggleButton jAdicionarFilmesToggleButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -3512,7 +3560,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
@@ -3520,7 +3567,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
@@ -3531,7 +3577,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
@@ -3570,12 +3615,14 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel96;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
     private javax.swing.JList jList4;
     private javax.swing.JList jList5;
     private javax.swing.JList jList6;
+    private javax.swing.JList jList7;
     private javax.swing.JButton jLoginButton;
     private javax.swing.JPanel jLoginPanel;
     private javax.swing.JPanel jMenuAdministradorPanel;
@@ -3603,7 +3650,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
@@ -3613,6 +3659,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane21;
+    private javax.swing.JScrollPane jScrollPane22;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -3641,7 +3688,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextArea jTextArea7;
     private javax.swing.JTextArea jTextArea8;
-    private javax.swing.JTextArea jTextArea9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -3655,12 +3701,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
     private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField32;
@@ -3675,14 +3715,9 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JToggleButton jToggleButton12;
     private javax.swing.JToggleButton jToggleButton13;
     private javax.swing.JToggleButton jToggleButton14;
-    private javax.swing.JToggleButton jToggleButton15;
-    private javax.swing.JToggleButton jToggleButton16;
     private javax.swing.JToggleButton jToggleButton17;
     private javax.swing.JToggleButton jToggleButton18;
     private javax.swing.JToggleButton jToggleButton23;
-    private javax.swing.JToggleButton jToggleButton24;
-    private javax.swing.JToggleButton jToggleButton25;
-    private javax.swing.JToggleButton jToggleButton26;
     private javax.swing.JToggleButton jToggleButton27;
     private javax.swing.JToggleButton jToggleButton34;
     private javax.swing.JTextField jUsernameField;
@@ -3695,15 +3730,21 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JComboBox listaGenerosAdicionaFilmes;
     private javax.swing.JButton listarFormatoEliminar;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JTextField moradaPesquisarClientes;
+    private javax.swing.JTextField nomePesquisarClientes;
+    private javax.swing.JButton notificarClientes;
     private javax.swing.JFrame notificarClientesFrame;
     private javax.swing.JTextField paisResultadosFilme;
     private javax.swing.JFrame pesquisarClienteFrame;
+    private javax.swing.JToggleButton pesquisarClientes;
+    private javax.swing.JToggleButton pesquisarClientesButton;
     private javax.swing.JToggleButton pesquisarFilme;
     private javax.swing.JToggleButton pesquisarFilmes2;
     private javax.swing.JFrame pesquisarFilmesFrame;
     private javax.swing.JTextField produtorResultadosFilme;
     private javax.swing.JTextField realizadorResultadosFilme;
     private javax.swing.JFrame resultadosFrame;
+    private javax.swing.JTextField telefonePesquisarClientes;
     private javax.swing.JTextArea textDescricaoAdicionaFilme;
     private javax.swing.JTextArea textEliminaFilmes;
     private javax.swing.JTextField textGenero;
@@ -3717,6 +3758,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextField tituloResultadosFilme;
     private javax.swing.JToggleButton voltarAdcionaFilmes;
     private javax.swing.JToggleButton voltarEliminaFilmes;
+    private javax.swing.JToggleButton voltarPesquisarCliente;
     private javax.swing.JToggleButton voltarPesquisarFilmes;
     // End of variables declaration//GEN-END:variables
 
