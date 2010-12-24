@@ -6,7 +6,7 @@ public class Utils
 {
 	public static void printError(Exception e) {
 		System.out.println(e.toString() + " no m�todo " + e.getStackTrace()[0].getMethodName() + "() da classe " + e.getStackTrace()[0].getClassName());
-		e.printStackTrace();
+		//e.printStackTrace();
 	}
 
 	public static int toInt(String strnumber) {
