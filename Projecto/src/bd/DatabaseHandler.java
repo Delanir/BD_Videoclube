@@ -22,15 +22,16 @@ import outros.Utils;
 public class DatabaseHandler
 {
 	private Connection conn;
-
+	
+	/**
+	 * O método main. Apenas para propósitos de teste.
+	 * @param args os argumentos da linha de comandos.
+	 */
 	public static void main(String args[]) {
 		DatabaseHandler dbh = new DatabaseHandler();
 		if (dbh.conn != null) {
-			for(String[] sa : dbh.getFilmes()) {
-				for(String s : sa)
-					System.out.print(s + ", ");
-				System.out.println();
-			}
+			//Utils.printStringArrayVector(dbh.getFilmes());
+			System.out.println();
 		} else
 			System.out.println("deu bode");
 		dbh.close();
@@ -55,8 +56,7 @@ public class DatabaseHandler
 		try {
 			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
 			Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
-			this.conn = DriverManager.getConnection(Consts.ORACLE_URL, Consts.ORACLE_USER,
-					Consts.ORACLE_PASS);
+			this.conn = DriverManager.getConnection(Consts.ORACLE_URL, Consts.ORACLE_USER, Consts.ORACLE_PASS);
 		} catch (SQLException e) {
 			Utils.printError(e);
 		} catch (InstantiationException e) {
@@ -118,22 +118,33 @@ public class DatabaseHandler
 
 	/**
 	 * Adiciona um cliente à BD.
-	 * TODO: @param muitas cenas que não me apetece escrever.
+	 * @param nome o nome do cliente a adicionar.
+	 * @param bi o BI do cliente a adicionar.
+	 * @param password a password do cliente a adicionar.
+	 * @param morada a morada do cliente a adicionar.
+	 * @param email o e-mail do cliente a adicionar.
+	 * @param telefone o número de telefone do cliente a adicionar.
+	 * @param data_registo a data de registo do cliente a adicionar.
 	 */
-	//TODO: ver como se adicionam datas. Não deve ser em string...
 	public void adicionaCliente(String nome, String bi, String password, String morada, String email, String telefone, String data_registo) {
 		adicionaObjecto("clientes",
-				new String[]{"seq_pessoa_id.NEXTVAL", p(nome), bi, p(password), p(morada), p(email), telefone, "1", data_registo});
+						new String[]{"seq_pessoa_id.NEXTVAL", p(nome), bi, p(password), p(morada), p(email), telefone, "1", p(data_registo)});
 	}
 	
 	/**
 	 * Actualiza um cliente na BD.
-	 * TODO: @param muitas cenas que não me apetece escrever.
+	 * @param id o ID do cliente a actualizar.
+	 * @param nome o novo nome do cliente a actualizar.
+	 * @param bi o novo BI do cliente a actualizar.
+	 * @param password a nova password do cliente a actualizar.
+	 * @param morada a nova morada do cliente a actualizar.
+	 * @param email o novo e-mail do cliente a actualizar.
+	 * @param telefone o novo número de telefone do cliente a actualizar.
 	 */
 	public void actualizaCliente(String id, String nome, String bi, String password, String morada, String email, String telefone) {
 		actualizaObjecto("clientes", "ID_CLI", id,
-				getToSetCamposClientes(),
-				new String[]{p(nome), bi, p(password), p(morada), p(email), telefone});
+						 getToSetCamposClientes(),
+						 new String[]{p(nome), bi, p(password), p(morada), p(email), telefone});
 	}
 
 	/**
@@ -165,22 +176,37 @@ public class DatabaseHandler
 
 	/**
 	 * Adiciona um empregado à BD.
-	 * TODO: @param muitas cenas que não me apetece escrever.
+	 * @param is_admin "1" se o empregado a adicionar é administrador. "0" caso contrário.
+	 * @param salario o salário do empregado a adicionar.
+	 * @param nome o nome do empregado a adicionar.
+	 * @param bi o BI do empregado a adicionar.
+	 * @param password a password do empregado a adicionar.
+	 * @param morada a morada do empregado a adicionar.
+	 * @param email o e-mail do empregado a adicionar.
+	 * @param telefone o número de telefone do empregado a adicionar.
+	 * @param data_registo a data de registo do empregado a adicionar.
 	 */
-	//TODO: ver como se adicionam datas. Não deve ser em string...
-	public void adicionaEmpregado(String salario, String nome, String bi, String password, String morada, String email, String telefone, String data_registo) {
+	public void adicionaEmpregado(String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone, String data_registo) {
 		adicionaObjecto("empregados",
-				new String[]{"seq_pessoa_id.NEXTVAL", salario, p(nome), bi, p(password), p(morada), p(email), telefone, "1", data_registo});
+						new String[]{"seq_pessoa_id.NEXTVAL", is_admin, salario, p(nome), bi, p(password), p(morada), p(email), telefone, "1", p(data_registo)});
 	}
 	
 	/**
 	 * Actualiza um empregado na BD.
-	 * TODO: @param muitas cenas que não me apetece escrever.
+	 * @param id o ID do empregado a actualizar.
+	 * @param is_admin "1" se o empregado a actualizar fica definido como administrador. "0" caso contrário.
+	 * @param salario o novo salário do empregado a actualizar.
+	 * @param nome o novo nome do empregado a actualizar.
+	 * @param bi o novo BI do empregado a actualizar.
+	 * @param password a nova password do empregado a actualizar.
+	 * @param morada a nova morada do empregado a actualizar.
+	 * @param email o novo e-mail do empregado a actualizar.
+	 * @param telefone o novo número de telefone do empregado a actualizar.
 	 */
-	public void actualizaEmpregado(String id, String nome, String bi, String password, String morada, String email, String telefone) {
+	public void actualizaEmpregado(String id, String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone) {
 		actualizaObjecto("empregados", "ID_EMP", id,
-				getToSetCamposEmpregados(),
-				new String[]{p(nome), bi, p(password), p(morada), p(email), telefone});
+						 getToSetCamposEmpregados(),
+					 	 new String[]{is_admin, salario, p(nome), bi, p(password), p(morada), p(email), telefone});
 	}
 
 	/**
@@ -212,23 +238,38 @@ public class DatabaseHandler
 
 	/**
 	 * Adiciona um filme à BD.
-	 * TODO: @param muitas cenas que não me apetece escrever.
+	 * @param titulo o título do filme a adicionar.
+	 * @param ano o ano do filme a adicionar.
+	 * @param realizador o realizador do filme a adicionar.
+	 * @param ratingIMDB o rating da IMDB do filme a adicionar.
+	 * @param pais o país de origem do filme a adicionar.
+	 * @param produtora a produtora do filme a adicionar.
+	 * @param descricao a descrição do filme a adicionar.
+	 * @param capa a capa do filme a adicionar.
 	 */
 	//TODO: perceber como se adicionam Icons como elemento do tipo BLOB
 	public void adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, Icon capa) {
 		adicionaObjecto("filmes",
-				new String[]{"seq_filme_id.NEXTVAL", p(titulo), p(ano), p(realizador), p(ratingIMDB), p(pais), p(produtora), p(descricao), "null"});
+						new String[]{"seq_filme_id.NEXTVAL", p(titulo), p(ano), p(realizador), p(ratingIMDB), p(pais), p(produtora), p(descricao), "null"});
 	}
 	
 	/**
 	 * Actualiza um filme na BD.
-	 * TODO: @param muitas cenas que não me apetece escrever.
+	 * @param id o ID do filme a actualizar.
+	 * @param titulo o novo título do filme a actualizar.
+	 * @param ano o novo ano do filme a actualizar.
+	 * @param realizador o novo realizador do filme a actualizar.
+	 * @param ratingIMDB o novo rating da IMDB do filme a actualizar.
+	 * @param pais o novo país de origem do filme a actualizar.
+	 * @param produtora a nova produtora do filme a actualizar.
+	 * @param descricao a nova descrição do filme a actualizar.
+	 * @param capa a nova capa do filme a actualizar.
 	 */
 	//TODO: perceber como se adicionam Icons como elemento do tipo BLOB
 	public void actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, Icon capa) {
 		actualizaObjecto("filmes", "ID_FIL", id,
-				getToSetCamposFilmes(),
-				new String[]{p(titulo), ano, p(realizador), ratingIMDB, p(pais), p(produtora), p(descricao), "null"});
+						 getToSetCamposFilmes(),
+					 	 new String[]{p(titulo), ano, p(realizador), ratingIMDB, p(pais), p(produtora), p(descricao), "null"});
 	}
 
 	/**
@@ -265,7 +306,7 @@ public class DatabaseHandler
 	 */
 	public void adicionaFilmeGenero(String id_fil, String id_gen) {
 		adicionaObjecto("filme_genero",
-				new String[]{id_fil, id_gen});
+						new String[]{id_fil, id_gen});
 	}
 
 	/**
@@ -275,8 +316,8 @@ public class DatabaseHandler
 	 */
 	public void removeFilmeGenero(String id_fil, String id_gen) {
 		removeObjecto("filme_genero",
-				getCamposFilmeGenero(),
-				new String[]{id_fil, id_gen});
+					  getCamposFilmeGenero(),
+					  new String[]{id_fil, id_gen});
 	}
 
 	/* ------------------------------------------------------------------ */
@@ -296,7 +337,7 @@ public class DatabaseHandler
 	 */
 	public void adicionaFormato(String nome) {
 		adicionaObjecto("formatos",
-				new String[]{"seq_formato_id.NEXTVAL", p(nome)});
+						new String[]{"seq_formato_id.NEXTVAL", p(nome)});
 	}
 	
 	/**
@@ -306,8 +347,8 @@ public class DatabaseHandler
 	 */
 	public void actualizaFormato(String id, String nome) {
 		actualizaObjecto("formatos",  "ID_FOR", id,
-				getToSetCamposFormatos(),
-				new String[]{p(nome)});
+						 getToSetCamposFormatos(),
+						 new String[]{p(nome)});
 	}
 
 	/**
@@ -343,7 +384,7 @@ public class DatabaseHandler
 	 */
 	public void adicionaGenero(String nome) {
 		adicionaObjecto("generos",
-				new String[]{"seq_genero_id.NEXTVAL", p(nome)});
+						new String[]{"seq_genero_id.NEXTVAL", p(nome)});
 	}
 	
 	/**
@@ -353,8 +394,8 @@ public class DatabaseHandler
 	 */
 	public void actualizaGenero(String id, String nome) {
 		actualizaObjecto("generos",  "ID_GEN", id,
-				getToSetCamposGeneros(),
-				new String[]{p(nome)});
+						 getToSetCamposGeneros(),
+						 new String[]{p(nome)});
 	}
 
 	/**
@@ -386,23 +427,24 @@ public class DatabaseHandler
 
 	/**
 	 * Adiciona uma máquina ATM à BD.
-	 * TODO: @param muitas cenas que não me apetece escrever.
+	 * @param preco o preço da máquina a adicionar.
+	 * @param data_instalacao a data de instalação da máquina a adicionar.
 	 */
-	//TODO: ver como se adicionam datas. Não deve ser em string...
 	public void adicionaMaquinaATM(String preco, String data_instalacao) {
 		adicionaObjecto("maquinasatm",
-				new String[]{"seq_maquinaatm_id.NEXTVAL", preco, "1", data_instalacao});
+						new String[]{"seq_maquinaatm_id.NEXTVAL", preco, "1", p(data_instalacao)});
 	}
 	
 	/**
 	 * Actualiza uma máquina ATM na BD.
-	 * TODO: @param muitas cenas que não me apetece escrever.
+	 * @param id o ID da máquina a actualizar.
+	 * @param preco o novo preço da máquina a actualizar.
+	 * @param data_instalacao a nova data de instalação da máquina a actualizar.
 	 */
-	//TODO: ver como se adicionam datas. Não deve ser em string...
 	public void actualizaMaquinaATM(String id, String preco, String data_instalacao) {
 		actualizaObjecto("maquinasatm", "ID_MAQ", id,
-				getToSetCamposMaquinasATM(),
-				new String[]{preco, data_instalacao});
+						 getToSetCamposMaquinasATM(),
+						 new String[]{preco, p(data_instalacao)});
 	}
 
 	/**
@@ -439,18 +481,18 @@ public class DatabaseHandler
 	 */
 	public void adicionaPagamento(String id_req, String montante) {
 		adicionaObjecto("pagamentos",
-				new String[]{id_req, montante});
+						new String[]{id_req, montante});
 	}
 	
 	/**
 	 * Actualiza um pagamento na BD.
 	 * @param id o ID da requisição do pagamento a actualizar.
-	 * @param nome o novo montante para o pagamento a actualizar.
+	 * @param montante o novo montante para o pagamento a actualizar.
 	 */
 	public void actualizaPagamento(String id, String montante) {
 		actualizaObjecto("pagamentos",  "ID_REQ", id,
-				getToSetCamposPagamentos(),
-				new String[]{montante});
+						 getToSetCamposPagamentos(),
+						 new String[]{montante});
 	}
 
 	/**
@@ -477,10 +519,9 @@ public class DatabaseHandler
 	 * @param data a data da requisição.
 	 * @param data_limite a nova data limite de entrega do material da requisição.
 	 */
-	//TODO: ver como se adicionam datas. Não deve ser em string...
 	public void adicionaRequisicao(String data, String data_limite) {
 		adicionaObjecto("requisicoes",
-				new String[]{data, data_limite, "null"});
+						new String[]{p(data), p(data_limite), "null"});
 	}
 	
 	/**
@@ -489,11 +530,10 @@ public class DatabaseHandler
 	 * @param data_limite a nova data limite de entrega do material da requisição.
 	 * @param data_entrega a data de entrega do material da requisição.
 	 */
-	//TODO: ver como se adicionam datas. Não deve ser em string...
 	public void actualizaRequisicao(String id, String data_limite, String data_entrega) {
-		actualizaObjecto("requisicoes",  "ID_REQ", id,
-				getToSetCamposRequisicoes(),
-				new String[]{data_limite, data_entrega});
+		actualizaObjecto("requisicoes", "ID_REQ", id,
+						 getToSetCamposRequisicoes(),
+						 new String[]{data_limite, p(data_entrega)});
 	}
 	
 	/**
@@ -501,11 +541,8 @@ public class DatabaseHandler
 	 * @param id o ID da requisição a actualizar.
 	 * @param data_entrega a data de entrega do material da requisição.
 	 */
-	//TODO: ver como se adicionam datas. Não deve ser em string...
 	public void actualizaRequisicao(String id, String data_entrega) {
-		actualizaObjecto("requisicoes", "ID_REQ", id,
-				"DATA_ENTREGA",
-				data_entrega);
+		actualizaObjecto("requisicoes", "ID_REQ", id, "DATA_ENTREGA", p(data_entrega));
 	}
 
 	/**
@@ -519,8 +556,153 @@ public class DatabaseHandler
 	/* ---------------------------------------------------------------- */
 	/* ---------------------------- STOCKS ---------------------------- */
 	/* ---------------------------------------------------------------- */
-	// TODO: STOCKS, YEAH
+	/**
+	 * Obtém os stocks existentes.
+	 * @return Vector com os campos de cada stock.
+	 */
+	public Vector<String[]> getStocks() {
+		return select("stocks");
+	}
 
+	/**
+	 * Adiciona um stock à BD.
+	 * @param id_fil o ID do filme do stock a adicionar.
+	 * @param id_for o ID do formato do stock a adicionar.
+	 * @param disponiveis o número de filmes disponíveis no formato do stock.
+	 * @param quant a quantidade total de filmes existentes no stock.
+	 * @param custo_compra o custo de compra (à distribuidora) associado a um filme no stock.
+	 * @param custo_aluguer o custo de aluguer associado a um filme no stock.
+	 */
+	public void adicionaStock(String id_fil, String id_for, String disponiveis, String quant, String custo_compra, String custo_aluguer) {
+		adicionaObjecto("stocks",
+						new String[]{id_fil, id_for, disponiveis, quant, custo_compra, custo_aluguer});
+	}
+	
+	/**
+	 * Actualiza um stock na BD.
+	 * @param id_fil o ID do filme do stock a actualizar.
+	 * @param id_for o ID do formato do stock a actualizar.
+	 * @param disponiveis o novo número de filmes disponíveis no formato do stock.
+	 * @param quant a nova quantidade total de filmes existentes no stock.
+	 * @param custo_compra o novo custo de compra (à distribuidora) associado a um filme no stock.
+	 * @param custo_aluguer o novo custo de aluguer associado a um filme no stock.
+	 */
+	public void actualizaStock(String id_fil, String id_for, String disponiveis, String quant, String custo_compra, String custo_aluguer) {
+		actualizaObjecto("stocks",
+						 new String[]{"ID_FIL", "ID_FOR"},
+						 new String[]{id_fil, id_for},
+						 getToSetCamposStocks(),
+						 new String[]{disponiveis, quant, custo_compra, custo_aluguer});
+	}
+	
+	/**
+	 * Actualiza o número de filmes disponíveis num stock da BD.
+	 * @param id_fil o ID do filme do stock a actualizar.
+	 * @param id_for o ID do formato do stock a actualizar.
+	 * @param incr o incremento (ou decremento) a aplicar ao número de filmes disponíveis em stock.
+	 */
+	public void actualizaDisponiveisStock(String id_fil, String id_for, int incr) {
+		String comando = "UPDATE stocks SET disponiveis = disponiveis + " + incr +
+						 " WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for;
+		execute(comando);
+	}
+
+	/**
+	 * Remove um stock da BD.
+	 * @param id_fil o ID do filme do stock a remover.
+	 * @param id_for o ID do formato do stock a remover.
+	 */
+	public void removePagamento(String id_fil, String id_for) {
+		removeObjecto("stocks",
+					  new String[]{"ID_FIL", "IF_FOR"},
+					  new String[]{id_fil, id_for});
+	}
+	
+	/* -------------------------------------------------------------------------------- */
+	/* ---------------------------- MÉTODOS DE VERIFICAÇÃO ---------------------------- */
+	/* -------------------------------------------------------------------------------- */
+	// TODO: Javadoc
+	public boolean biClienteExiste(String id_cli, String bi) {
+		return valorExiste("clientes", "BI", bi, "ID_CLI", id_cli);
+	}
+	
+	// TODO: Javadoc
+	public boolean biEmpregadoExiste(String id_emp, String bi) {
+		return valorExiste("empregados", "BI", bi, "ID_EMP", id_emp);
+	}
+	
+	// TODO: Javadoc
+	public boolean empregadoEUnicoAdmin(String id_emp) {
+		return !valorExiste("empregados", "IS_ADMIN", "1", "ID_EMP", id_emp);
+	}
+	
+	// TODO: Javadoc
+	public boolean nomeGeneroExiste(String id_gen, String nome) {
+		return valorExiste("generos", "NOME_GENERO", nome, "ID_GEN", id_gen);
+	}
+	
+	// TODO: Javadoc
+	public boolean nomeFormatoExiste(String id_for, String nome) {
+		return valorExiste("formatos", "NOME_FORMATO", nome, "ID_FOR", id_for);
+	}
+
+	// TODO: Javadoc
+	public boolean stockExiste(String id_fil, String id_for) {
+		return valorExiste("stocks",
+						   new String[]{"ID_FIL", "ID_FOR"},
+						   new String[]{id_fil, id_for});
+	}
+
+	// TODO
+	public boolean stockParaFormatoExiste(String id_for) {
+		return false;
+	}
+	
+	// TODO
+	public boolean generoEmUso(String id_gen) {
+		return false;
+	}
+	
+	// TODO
+	public boolean filmeSoTemGenero(String id_fil, String id_gen) {
+		return false;
+	}
+
+	// TODO: Javadoc
+	private boolean valorExiste(String tabela, String campo, String valor) {
+		Vector<String> vec = select(tabela, campo);
+		for(String val : vec) {
+			if(val.equalsIgnoreCase(valor))
+				return true;
+		}
+		return false;
+	}
+	
+	// TODO: Javadoc
+	private boolean valorExiste(String tabela, String[] campos, String[] valores) {
+		Vector<String[]> vec = select(tabela, campos);
+		for(String[] vals : vec) {
+			boolean all = true;
+			for(int i=0; all && i<campos.length; i++) {
+				if(!vals[i].equalsIgnoreCase(valores[i]))
+					all = false;
+			}
+			if(all)
+				return true;
+		}
+		return false;
+	}
+
+	// TODO: Javadoc
+	private boolean valorExiste(String tabela, String campo, String valor, String exceptCampo, String exceptValor) {
+		Vector<String[]> vec = select(tabela, new String[]{exceptCampo, campo});
+		for(String[] val : vec) {
+			if(val[1].equalsIgnoreCase(valor) && !val[0].equals(exceptValor))
+				return true;
+		}
+		return false;
+	}
+	
 	/* --------------------------------------------------------------------------- */
 	/* ---------------------------- MÉTODOS GENÉRICOS ---------------------------- */
 	/* --------------------------------------------------------------------------- */
@@ -542,13 +724,13 @@ public class DatabaseHandler
 	 * @param tabela a tabela na qual actualizar o objecto.
 	 * @param campo o campo utilizado para encontrar o objecto a actualizar.
 	 * @param valor o valor que deve ter o campo no objecto a actualizar.
-	 * @param campos os campos a actualizar no objecto.
-	 * @param valores os valores dos campos a actualizar.
+	 * @param campoAct o campo a actualizar no objecto.
+	 * @param valorAct o valor do campo a actualizar.
 	 */
-	private void actualizaObjecto(String tabela, String campo, String valor, String[] campos, String[] valores) {
-		String comando = "UPDATE " + tabela + " SET ";
-		comando += list(campos, "=", valores, ",");
-		comando += " WHERE " + campo + "=" + valor;
+	private void actualizaObjecto(String tabela, String campo, String valor, String campoAct, String valorAct) {
+		String comando = "UPDATE " + tabela +
+						 " SET " + campoAct + "=" + valorAct +
+						 " WHERE " + campo + "=" + valor;
 		execute(comando);
 	}
 	
@@ -557,13 +739,43 @@ public class DatabaseHandler
 	 * @param tabela a tabela na qual actualizar o objecto.
 	 * @param campo o campo utilizado para encontrar o objecto a actualizar.
 	 * @param valor o valor que deve ter o campo no objecto a actualizar.
-	 * @param campos os campos a actualizar no objecto.
-	 * @param valores os valores dos campos a actualizar.
+	 * @param camposAct os campos a actualizar no objecto.
+	 * @param valoresAct os valores dos campos a actualizar.
 	 */
-	private void actualizaObjecto(String tabela, String campo, String valor, String campoAct, String valorAct) {
+	private void actualizaObjecto(String tabela, String campo, String valor, String[] camposAct, String[] valoresAct) {
+		String comando = "UPDATE " + tabela +
+						 " SET " + list(camposAct, "=", valoresAct, ",") +
+						 " WHERE " + campo + "=" + valor;
+		execute(comando);
+	}
+	
+	/**
+	 * Actualiza um objecto na BD. Função genérica.
+	 * @param tabela a tabela na qual actualizar o objecto.
+	 * @param campos os campos utilizados para encontrar o objecto a actualizar.
+	 * @param valores os valores que devem ter os campos no objecto a actualizar.
+	 * @param campoAct o campo a actualizar no objecto.
+	 * @param valorAct o valor do campo a actualizar.
+	 */
+	private void actualizaObjecto(String tabela, String[] campos, String[] valores, String campoAct, String valorAct) {
 		String comando = "UPDATE " + tabela +
 						 " SET " + campoAct + "=" + valorAct +
-						 " WHERE " + campo + "=" + valor;
+						 " WHERE " + list(campos, "=", valores, " AND ");
+		execute(comando);
+	}
+	
+	/**
+	 * Actualiza um objecto na BD. Função genérica.
+	 * @param tabela a tabela na qual actualizar o objecto.
+	 * @param campos os campos utilizados para encontrar o objecto a actualizar.
+	 * @param valores os valores que devem ter os campos no objecto a actualizar.
+	 * @param camposAct os campos a actualizar no objecto.
+	 * @param valoresAct os valores dos campos a actualizar.
+	 */
+	private void actualizaObjecto(String tabela, String[] campos, String[] valores, String[] camposAct, String[] valoresAct) {
+		String comando = "UPDATE " + tabela +
+						 " SET " + list(camposAct, "=", valoresAct, ",") +
+						 " WHERE " + list(campos, "=", valores, " AND ");
 		execute(comando);
 	}
 	
@@ -606,9 +818,33 @@ public class DatabaseHandler
 	private void removeObjecto(String tabela, String[] campos, String[] valores) {
 		execute("DELETE FROM " + tabela + " WHERE " + list(campos, "=", valores, " AND "));
 	}
+	
+	/**
+	 * Obtém o campo seleccionado dos objectos existentes numa dada tabela.
+	 * @param tabela tabela onde fazer SELECT.
+	 * @param campo nome da coluna a obter da tabela.
+	 * @return Vector com os valores do campo seleccionado de cada linha da tabela.
+	 */
+	private Vector<String> select(String tabela, String campo) {
+		Vector<String> linhas = new Vector<String>();
+
+		try {
+			Statement st = this.conn.createStatement();
+			ResultSet rset = st.executeQuery("SELECT " + campo + " FROM " + tabela);
+
+			while (rset.next()) {
+				linhas.add(rset.getString(campo));
+			}
+			st.close();
+		} catch (SQLException e) {
+			Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, e);
+			return null;
+		}
+		return linhas;
+	}
 
 	/**
-	 * Obtém campos dos objectos existentes numa dada tabela.
+	 * Obtém os campos seleccionados dos objectos existentes numa dada tabela.
 	 * @param tabela tabela onde fazer SELECT.
 	 * @param campos nomes das colunas a obter da tabela.
 	 * @return Vector com os valores dos campos seleccionados de cada linha da tabela.
@@ -681,41 +917,20 @@ public class DatabaseHandler
 	/* ---------------------------- OUTROS ---------------------------- */
 	/* ---------------------------------------------------------------- */
 	/**
-	 * Coloca plicas na string passada.
-	 * Substitui antes todas as plicas por duplas plicas para o SQL aceitar a palavra.
+	 * Coloca plicas na string passada. Substitui todos os apóstrofes na palavra
+	 * por apóstrofes duplos para fazer "escape".
+	 * @param s a string à qual aplicar plicas.
+	 * @return a string, com plicas e os apóstrofes diplicados.
 	 */
 	private String p(String s) {
 		return "'" + s.replace("'", "''") + "'";
 	}
 	
 	/**
-	 * Coloca plicas a uma lista de strings.
-	 * Substitui antes todas as plicas por duplas plicas para o SQL aceitar as palavras.
-	 */
-	private String[] pAll(String[] list) {
-		for(int i=0; i<list.length; i++)
-			list[i] = p(list[i]);
-		return list;
-	}
-	
-	/**
-	 * Coloca quotes na string passada.
-	 */
-	private String q(String s) {
-		return "\"" + s + "\"";
-	}
-	
-	/**
-	 * Coloca quotes a uma lista de strings.
-	 */
-	private String[] qAll(String[] list) {
-		for(int i=0; i<list.length; i++)
-			list[i] = q(list[i]);
-		return list;
-	}
-	
-	/**
-	 * Devolve uma string com os elementos "strs" separados pela string "sep". 
+	 * Devolve uma string com os elementos "strs" separados pela string "sep".
+	 * @param strs os elementos a juntar numa string apenas.
+	 * @param sep o separador a usar para separar os elementos.
+	 * @return uma string com os elementos "strs" separados pela string "sep".
 	 */
 	private String list(String[] strs, String sep) {
 		String lista = strs[0];
@@ -725,7 +940,14 @@ public class DatabaseHandler
 	}
 	
 	/**
-	 * Devolve uma string organizada em pares (separados pela string "sep2") de "strs" e "strs2" (separados por "sep"). 
+	 * Devolve uma string organizada em pares (separados pela string "sep2") de
+	 * "strs" e "strs2" (separados por "sep").
+	 * @param strs a primeira parte dos elementos a juntar em pares numa string apenas.
+	 * @param sep o separador a usar para separar cada dois elementos (par. um de cada lista).
+	 * @param strs2 a segunda parte dos elementos a juntar em pares numa string apenas.
+	 * @param sep2 o separador a usar para separar cada par de elementos dos outros pares.
+	 * @return uma string organizada em pares (separados pela string "sep2") de
+	 * "strs" e "strs2" (separados por "sep").
 	 */
 	private String list(String[] strs, String sep, String[] strs2, String sep2) {
 		String lista = strs[0] + sep + strs2[0];

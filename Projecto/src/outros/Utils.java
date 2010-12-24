@@ -1,11 +1,12 @@
 package outros;
 
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Utils
 {
 	public static void printError(Exception e) {
-		System.out.println(e.toString() + " no mï¿½todo " + e.getStackTrace()[0].getMethodName() + "() da classe " + e.getStackTrace()[0].getClassName());
+		System.out.println(e.toString() + " no método " + e.getStackTrace()[0].getMethodName() + "() da classe " + e.getStackTrace()[0].getClassName());
 		//e.printStackTrace();
 	}
 
@@ -14,6 +15,19 @@ public class Utils
 			return Integer.parseInt(strnumber);
 		} catch (NumberFormatException e) {
 			return Consts.ERRO_INT;
+		}
+	}
+	
+	/**
+	 * Imprime um Vector de arrays de Strings, um array por linha, separados por vírgulas.
+	 * @param vec Vector a imprimir.
+	 */
+	public static void printStringArrayVector(Vector<String[]> vec) {
+		for(String[] sa : vec) {
+			System.out.print(sa[0]);
+			for(int i=1; i<sa.length; i++)
+				System.out.print(", " + sa[i]);
+			System.out.println();
 		}
 	}
 
