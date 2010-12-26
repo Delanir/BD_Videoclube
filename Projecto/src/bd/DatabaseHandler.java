@@ -621,54 +621,107 @@ public class DatabaseHandler
 	/* -------------------------------------------------------------------------------- */
 	/* ---------------------------- MÉTODOS DE VERIFICAÇÃO ---------------------------- */
 	/* -------------------------------------------------------------------------------- */
-	// TODO: Javadoc
+	/**
+	 * Verifica se existe um cliente com determinado BI, para além do cliente com o ID passado.
+	 * @param id_cli o ID do cliente a excluir da verificação.
+	 * @param bi o BI a procurar.
+	 * @return true, se existe outro cliente com esse BI. false, caso contrário.
+	 */
 	public boolean biClienteExiste(String id_cli, String bi) {
 		return valorExiste("clientes", "BI", bi, "ID_CLI", id_cli);
 	}
 	
-	// TODO: Javadoc
+	/**
+	 * Verifica se existe um empregado com determinado BI, para além do empregado com o ID passado.
+	 * @param id_emp o ID do empregado a excluir da verificação.
+	 * @param bi o BI a procurar.
+	 * @return true, se existe outro empregado com esse BI. false, caso contrário.
+	 */
 	public boolean biEmpregadoExiste(String id_emp, String bi) {
 		return valorExiste("empregados", "BI", bi, "ID_EMP", id_emp);
 	}
 	
-	// TODO: Javadoc
+	/**
+	 * Vertifica se o empregado é administrador e é o único.
+	 * @param id_emp o ID do empregado a verificar.
+	 * @return true, se o empregado é o único administrador. false, caso contrário.
+	 */
 	public boolean empregadoEUnicoAdmin(String id_emp) {
 		return !valorExiste("empregados", "IS_ADMIN", "1", "ID_EMP", id_emp);
 	}
 	
-	// TODO: Javadoc
-	public boolean nomeGeneroExiste(String id_gen, String nome) {
+	/**
+	 * Verifica se determinado nome de género existe, excluíndo o género com o ID passado
+	 * (comparação não olha a diferenças de maiúsculas/minúsculas).
+	 * @param id_gen o ID do género a excluir da verificação.
+	 * @param nome o nome do género cuja existência tem de ser verificada.
+	 * @return true, se existe outro género com esse nome.  false, caso contrário.
+	 */
+	public boolean generoExiste(String id_gen, String nome) {
 		return valorExiste("generos", "NOME_GENERO", nome, "ID_GEN", id_gen);
 	}
 	
-	// TODO: Javadoc
-	public boolean nomeFormatoExiste(String id_for, String nome) {
+	/**
+	 * Verifica se determinado nome de formato existe, excluíndo o formato com o ID passado
+	 * (comparação não olha a diferenças de maiúsculas/minúsculas).
+	 * @param id_for o ID do formato a excluir da verificação.
+	 * @param nome o nome do formato cuja existência tem de ser verificada.
+	 * @return true, se existe outro formato com esse nome. false, caso contrário.
+	 */
+	public boolean formatoExiste(String id_for, String nome) {
 		return valorExiste("formatos", "NOME_FORMATO", nome, "ID_FOR", id_for);
 	}
 
-	// TODO: Javadoc
+	/**
+	 * Verifica se determinado stock para um certo filme e formato existe.
+	 * @param id_fil o ID do filme a verificar stock.
+	 * @param id_for o ID do formato a verificar stock.
+	 * @return true, se existe stock para o filme e formato referidos. false, caso contrário.
+	 */
 	public boolean stockExiste(String id_fil, String id_for) {
 		return valorExiste("stocks",
 						   new String[]{"ID_FIL", "ID_FOR"},
 						   new String[]{id_fil, id_for});
 	}
 
-	// TODO
+	/**
+	 * Verifica se existe algum stock para um certo formato (para qualquer filme).
+	 * Por outras palavras, verifica se o formato está a ser usado para algo.
+	 * @param id_for o ID do formato a verificar.
+	 * @return true, se existe pelo menos um stock para o formato. false, caso contrário.
+	 */
 	public boolean stockParaFormatoExiste(String id_for) {
-		return false;
+		return valorExiste("stocks", "ID_FOR", id_for);
 	}
 	
-	// TODO
+	/**
+	 * Verifica se existe algum filme com um certo género.
+	 * Por outras palavras, verifica se o género está a ser usado para algo.
+	 * @param id_gen o ID do género a verificar.
+	 * @return true, se existe pelo menos um filme com esse género. false, caso contrário.
+	 */
 	public boolean generoEmUso(String id_gen) {
-		return false;
+		return valorExiste("filme_genero", "ID_GEN", id_gen);
 	}
 	
-	// TODO
+	/**
+	 * Verifica se um filme tem apenas determinado género e mais nenhum.
+	 * @param id_fil o ID do filme a verificar.
+	 * @param id_gen o ID do género a verificar.
+	 * @return true, se o filme tem apenas esse género e mais nenhum. false, caso contrário.
+	 */
 	public boolean filmeSoTemGenero(String id_fil, String id_gen) {
-		return false;
+		Vector<String> vec = select("filme_genero", "ID_FIL");
+		return (vec.size() == 1 && vec.get(0).equals(id_gen));
 	}
 
-	// TODO: Javadoc
+	/**
+	 * Verifica se determinado valor existe em determinado campo numa dada tabela (função genérica).
+	 * @param tabela a tabela a verificar.
+	 * @param campo o campo cujo valor verificar.
+	 * @param valor o valor a encontrar no campo.
+	 * @return true, se o valor foi encontrado no campo referido de algum elemento. false, caso contrário.
+	 */
 	private boolean valorExiste(String tabela, String campo, String valor) {
 		Vector<String> vec = select(tabela, campo);
 		for(String val : vec) {
@@ -678,7 +731,13 @@ public class DatabaseHandler
 		return false;
 	}
 	
-	// TODO: Javadoc
+	/**
+	 * Verifica se determinados valores existem (em simultâneo) em vários campos de uma dada tabela (função genérica).
+	 * @param tabela a tabela a verificar.
+	 * @param campos os campos cujo valor verificar.
+	 * @param valores os valores a encontrar nos campos.
+	 * @return true, se os valores existem em simultâneo nos campos referidos de algum elemento. false, caso contrário.
+	 */
 	private boolean valorExiste(String tabela, String[] campos, String[] valores) {
 		Vector<String[]> vec = select(tabela, campos);
 		for(String[] vals : vec) {
@@ -693,7 +752,16 @@ public class DatabaseHandler
 		return false;
 	}
 
-	// TODO: Javadoc
+	/**
+	 * Verifica se determinado valor existe em determinado campo numa dada tabela,
+	 * exluíndo elementos com determinado valor em determinado campo (função genérica).
+	 * @param tabela a tabela a verificar.
+	 * @param campo o campo cujo valor verificar.
+	 * @param valor o valor a encontrar no campo.
+	 * @param exceptCampo o campo a verificar para excluir elementos da procura.
+	 * @param exceptValor o valor que o campo de exclusão deve ter para excluir elementos da procura.
+	 * @return true, se o valor foi encontrado no campo referido de algum elemento (excluíndo os devidos). false, caso contrário.
+	 */
 	private boolean valorExiste(String tabela, String campo, String valor, String exceptCampo, String exceptValor) {
 		Vector<String[]> vec = select(tabela, new String[]{exceptCampo, campo});
 		for(String[] val : vec) {
