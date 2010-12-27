@@ -597,7 +597,7 @@ public class GUI_Manager extends javax.swing.JFrame {
                 .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jVenderATMButton)
                     .addComponent(jButton3))
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Máquinas", jATMManagerPanel);
@@ -702,7 +702,7 @@ public class GUI_Manager extends javax.swing.JFrame {
                         .addComponent(jLabel9)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Estatísticas", jEstatisticasPanel);
@@ -779,6 +779,11 @@ public class GUI_Manager extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTextArea3);
 
         jButton2.setText("Actualizar Dados");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Actualizar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -1015,7 +1020,7 @@ public class GUI_Manager extends javax.swing.JFrame {
                 .addComponent(jNotificarClientesButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jEliminarClientesButton)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Clientes", jClientesManagerPanel);
@@ -1083,7 +1088,7 @@ public class GUI_Manager extends javax.swing.JFrame {
                 .addComponent(jGeneroButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPesquisarButton)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão de Filmes", jFilmesManagerPanel);
@@ -2796,6 +2801,12 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
 
+    eliminarClienteFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+        public void windowClosing(java.awt.event.WindowEvent evt) {
+            eliminarClienteFrameWindowClosing(evt);
+        }
+    });
+
     jLabel50.setText("Eliminar Cliente:");
 
     jLabel51.setText("ID:");
@@ -2805,6 +2816,11 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     jScrollPane11.setViewportView(jTextArea8);
 
     jButton14.setText("Voltar");
+    jButton14.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton14ActionPerformed(evt);
+        }
+    });
 
     jButton1.setText("Eliminar");
 
@@ -3593,6 +3609,41 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
        //TODO: Output message
        jTextArea3.setText("Success/Insuccess");
     }//GEN-LAST:event_jDespedirEmpregadoButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO URGENTE
+          if(!jTextField6.getText().isEmpty()
+             &&jFormattedTextField3.isEditValid()
+             &&jFormattedTextField2.isEditValid()
+             &&jFormattedTextField1.isEditValid()
+             &&(jPasswordField1.getText().equals(jPasswordField2.getText()))//TODO : Deprecated
+               ){
+
+            gestorEmpregados.updateEmpregado(jTextField6.getText(),
+                    jFormattedTextField1.getText(),
+                    jFormattedTextField3.getText(),
+                    jRadioButton1.isSelected(),
+                    jPasswordField1.getText(),
+                    jFormattedTextField2.getText(),
+                    jTextField8.getText(),
+                    jTextField9.getText());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void eliminarClienteFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_eliminarClienteFrameWindowClosing
+        
+        idEliminaClientes.setText("");
+        jTextArea8.setText("");
+        eliminarClienteFrame.setVisible(false);
+        eliminarClienteFrame.transferFocusBackward();
+    }//GEN-LAST:event_eliminarClienteFrameWindowClosing
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        idEliminaClientes.setText("");
+        jTextArea8.setText("");
+        eliminarClienteFrame.setVisible(false);
+        eliminarClienteFrame.transferFocusBackward();
+    }//GEN-LAST:event_jButton14ActionPerformed
 
    
     //OUR GUI VARS

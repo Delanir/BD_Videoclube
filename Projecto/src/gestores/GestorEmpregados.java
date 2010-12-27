@@ -37,6 +37,23 @@ public class GestorEmpregados
 		return null;
 	}
 
+        /**
+	 * Actualiza um empregado ao sistema
+	 * @param nome
+	 * @param telefone
+	 * @param bi
+	 * @param administrador
+	 * @param password
+	 * @param salario
+	 * @param email
+	 * @param morada
+	 * @return sucesso/insucesso
+	 */
+	public String updateEmpregado(String nome, String telefone, String bi, boolean administrador, String password, String salario, String email, String morada) {
+                //TODO : verificar campos null aqui
+		return null;
+	}
+
 	/**
 	 * Elimina um empregado do sistema
 	 * @param id
