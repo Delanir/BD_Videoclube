@@ -93,7 +93,11 @@ public class GestorClientes
 	 * @param mensagem
 	 * @return
 	 */
-	public String notificarCliente(String id, String mensagem) {
-		return null;
+	public void notificarCliente(String id, String mensagem) {
+		if(id!=null&&id.isEmpty()){
+                    //procura email
+
+                    //envia email
+                }
 	}
 }
