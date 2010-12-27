@@ -11,8 +11,13 @@
 
 package gui_manager;
 
+import com.toedter.calendar.JCalendar;
 import gestores.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.text.NumberFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -29,16 +34,27 @@ import outros.OurListModel;
  *
  * @author Daniela
  */
-public class GUI_Manager extends javax.swing.JFrame {
-    
+public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeListener {
+    //Gestores
     private GestorFilmes gestorFilmes;
     private GestorClientes gestorClientes;
     private GestorEmpregados gestorEmpregados ;
     private GestorMaquinas gestorMaquinas ;
     private GestorEstatisticas gestorEstatisticas;
 
+    //Variaveis adicionais
     private String filePath;
-    public static void main(String args[]) {
+    private GregorianCalendar calendarBegin;
+    private GregorianCalendar calendarEnd;
+    private JCalendar jCalendarBegin;
+    private JCalendar jCalendarEnd;
+                
+                
+
+                
+		
+    
+                public static void main(String args[]) {
 
                 System.out.println("Here");
                 new GUI_Manager().setVisible(true);
@@ -117,6 +133,45 @@ public class GUI_Manager extends javax.swing.JFrame {
 
     }
 
+      //Datas
+
+      private void resetDatas(){
+                                calendarEnd = null;
+				calendarBegin = null;
+				dateBegin.setText("00/00/00");
+				dateEnd.setText("00/00/00");
+       }
+
+
+      /* Every time the user selects a new date, an event is generated */
+		public void propertyChange(PropertyChangeEvent evt) {
+			Object source = evt.getSource();
+			Calendar cal;
+			if (source == jCalendarEnd) {
+				cal = jCalendarEnd.getCalendar();
+				calendarEnd = new GregorianCalendar(cal.get(Calendar.YEAR),
+						cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+				dateEnd.setText(calendarEnd.get(Calendar.DAY_OF_MONTH) + "/"
+						+ calendarEnd.get(Calendar.MONTH) + "/"
+						+ calendarEnd.get(Calendar.YEAR));
+
+			} else {
+				cal = jCalendarBegin.getCalendar();
+				calendarBegin = new GregorianCalendar(cal.get(Calendar.YEAR),
+						cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+				dateBegin.setText(calendarBegin.get(Calendar.DAY_OF_MONTH)
+						+ "/" + calendarBegin.get(Calendar.MONTH) + "/"
+						+ calendarBegin.get(Calendar.YEAR));
+			}
+
+		}
+
+
+      //
+
+
+
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -160,9 +215,12 @@ public class GUI_Manager extends javax.swing.JFrame {
         jCheckBox4 = new javax.swing.JCheckBox();
         jQueryEstatisticasButton = new javax.swing.JToggleButton();
         jLabel10 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        dateBegin = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        dateEnd = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
+        dataInit = new javax.swing.JButton();
+        dataEnd = new javax.swing.JButton();
         jEmpregadosManagerPanel = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -635,11 +693,32 @@ public class GUI_Manager extends javax.swing.JFrame {
 
         jLabel10.setText("Data Início:");
 
-        jTextField2.setText("jTextField2");
+        dateBegin.setText("00/00/00");
 
         jLabel11.setText("Data Fim");
 
-        jTextField3.setText("jTextField3");
+        dateEnd.setText("00/00/00");
+
+        jButton5.setText("Reset");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        dataInit.setText("Escolher Data Início");
+        dataInit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataInitActionPerformed(evt);
+            }
+        });
+
+        dataEnd.setText("Escolher Data Fim");
+        dataEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataEndActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jEstatisticasPanelLayout = new javax.swing.GroupLayout(jEstatisticasPanel);
         jEstatisticasPanel.setLayout(jEstatisticasPanelLayout);
@@ -657,21 +736,28 @@ public class GUI_Manager extends javax.swing.JFrame {
                             .addComponent(jCheckBox3)
                             .addComponent(jCheckBox4)))
                     .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(jQueryEstatisticasButton))
-                    .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dateBegin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(202, Short.MAX_VALUE))
+                        .addGap(107, 107, 107)
+                        .addComponent(dataInit)
+                        .addGap(18, 18, 18)
+                        .addComponent(dataEnd))
+                    .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jQueryEstatisticasButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         jEstatisticasPanelLayout.setVerticalGroup(
             jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -679,30 +765,33 @@ public class GUI_Manager extends javax.swing.JFrame {
                 .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
-                                .addGap(198, 198, 198)
-                                .addComponent(jQueryEstatisticasButton))
-                            .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
-                                .addComponent(jCheckBox1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCheckBox2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCheckBox3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCheckBox4)
-                                .addGap(18, 18, 18)
-                                .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(jCheckBox1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox4)
+                        .addGap(18, 18, 18)
+                        .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(dateBegin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11)
+                            .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jLabel9)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataInit)
+                    .addComponent(dataEnd))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jQueryEstatisticasButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGap(55, 55, 55))
         );
 
         jTabbedPane2.addTab("Estatísticas", jEstatisticasPanel);
@@ -3645,6 +3734,32 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         eliminarClienteFrame.transferFocusBackward();
     }//GEN-LAST:event_jButton14ActionPerformed
 
+    private void dataInitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataInitActionPerformed
+        JFrame date = new JFrame("Calendário");
+	jCalendarBegin = new JCalendar();
+
+	date.getContentPane().add(jCalendarBegin);
+	date.pack();
+	date.setVisible(true);
+	jCalendarBegin.addPropertyChangeListener(this);
+
+    }//GEN-LAST:event_dataInitActionPerformed
+
+    private void dataEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataEndActionPerformed
+        JFrame date = new JFrame("Calendário");
+        jCalendarEnd = new JCalendar();
+
+        date.getContentPane().add(jCalendarEnd);
+        date.pack();
+        date.setVisible(true);
+        jCalendarEnd.addPropertyChangeListener(this);
+
+    }//GEN-LAST:event_dataEndActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        resetDatas();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
    
     //OUR GUI VARS
     private javax.swing.ButtonGroup bgroup;
@@ -3661,6 +3776,10 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextField biPesquisarClientes;
     private javax.swing.JComboBox countriesList;
     private javax.swing.JComboBox countriesList1;
+    private javax.swing.JButton dataEnd;
+    private javax.swing.JButton dataInit;
+    private javax.swing.JTextField dateBegin;
+    private javax.swing.JTextField dateEnd;
     private javax.swing.JToggleButton eliminaFilmes;
     private javax.swing.JToggleButton eliminaFilmes2;
     private javax.swing.JSpinner eliminaSpinner;
@@ -3690,6 +3809,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -3874,9 +3994,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;
