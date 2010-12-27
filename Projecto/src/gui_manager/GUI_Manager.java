@@ -3386,14 +3386,14 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         String []generos=new String[1];
         generos[0]=(String)listaGenerosAdicionaFilmes.getSelectedItem();
         output=gestorFilmes.addMovie(textTituloAdicionaFilme.getText(),
-                (Integer)anoAdicionaFilmeSpinner.getValue(),
+                ""+(Integer)anoAdicionaFilmeSpinner.getValue(),
                 generos,
                 textRealizadorAdicionaFilme.getText(),
                 textProdutorAdicionaFilme.getText(),
                 (String)countriesList.getSelectedItem(),
                 filePath,
                 textDescricaoAdicionaFilme.getText(),
-                (Double)jSpinner2.getValue());
+                ""+(Double)jSpinner2.getValue());
 
         jTextArea11.setText(output);
     }//GEN-LAST:event_adicionarFilmeActionPerformed

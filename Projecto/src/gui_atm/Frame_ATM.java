@@ -16,8 +16,14 @@ import java.awt.Component;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import outros.Filme;
 
 /**
  *
@@ -29,6 +35,7 @@ public class Frame_ATM  extends JFrame{
     * @param args the command line arguments
     */
     GestorUtilizadores gerir_users = new GestorUtilizadores();
+    Filme [] filmesPesquisados;
 
     public static void main(String args[]) {
         
@@ -57,7 +64,6 @@ public class Frame_ATM  extends JFrame{
         mainPanel.setVisible(true);
         init();
         System.out.println("WHY");
-        
 
     }
 
@@ -350,12 +356,6 @@ public class Frame_ATM  extends JFrame{
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
-
         jSearchButton.setText("SEARCH");
         jSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,48 +375,44 @@ public class Frame_ATM  extends JFrame{
                 .addGap(157, 157, 157)
                 .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPesquisarPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(96, 96, 96)
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPesquisarPanelLayout.createSequentialGroup()
-                            .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPesquisarPanelLayout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPesquisarPanelLayout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(121, 121, 121)
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPesquisarPanelLayout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPesquisarPanelLayout.createSequentialGroup()
-                            .addComponent(jSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
-                            .addComponent(jVoltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(36, 36, 36)
-                            .addComponent(jSairButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(73, 73, 73))
-                        .addGroup(jPesquisarPanelLayout.createSequentialGroup()
-                            .addComponent(jLabel10)
-                            .addGap(67, 67, 67)
-                            .addComponent(jLabel11)
-                            .addGap(18, 18, 18)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel12)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPesquisarPanelLayout.createSequentialGroup()
+                        .addComponent(jSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jVoltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jSairButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73))
+                    .addGroup(jPesquisarPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(67, 67, 67)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesquisarPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(338, 338, 338))))
-                .addGap(73, 73, 73))
+                            .addComponent(jTextField3))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesquisarPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextField2))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesquisarPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(152, 152, 152))
             .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPesquisarPanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -449,23 +445,19 @@ public class Frame_ATM  extends JFrame{
                 .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPesquisarPanelLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel10)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(264, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPesquisarPanelLayout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jSairButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jVoltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47))))
+                .addGap(43, 43, 43)
+                .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel10)
+                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jSairButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jVoltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
             .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPesquisarPanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -503,10 +495,10 @@ public class Frame_ATM  extends JFrame{
                             .addComponent(jLabel39)
                             .addComponent(jLabel38))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jFormattedTextField1)
+                            .addComponent(jTextField20)
+                            .addComponent(jTextField21)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(274, 274, 274)
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -880,15 +872,6 @@ public class Frame_ATM  extends JFrame{
 
         jLabel2.setText("Password:");
 
-        jPasswordField.setText("jPasswordField1");
-        jPasswordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordFieldActionPerformed(evt);
-            }
-        });
-
-        jUsernameField.setText("jTextField1");
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 3, 24));
         jLabel5.setText("[NOME DO VIDEOCLUBE]");
 
@@ -992,10 +975,6 @@ public class Frame_ATM  extends JFrame{
 
         jLabel45.setText("3. Introduzir Nº");
 
-        jTextField15.setText("jTextField12");
-
-        jTextField16.setText("jTextField13");
-
         jLabel46.setText("CSS:");
 
         jLabel47.setText("Nº Cartão:");
@@ -1008,14 +987,14 @@ public class Frame_ATM  extends JFrame{
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel45)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel46)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
-                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel47)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                        .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel46)
+                            .addComponent(jLabel47))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextField16)
+                            .addComponent(jTextField15, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -1088,7 +1067,7 @@ public class Frame_ATM  extends JFrame{
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         jEntregaPanelLayout.setVerticalGroup(
             jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1268,6 +1247,13 @@ public class Frame_ATM  extends JFrame{
      */
     private void jPesquisarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPesquisarButtonActionPerformed
         //Set panel's visibility acordingly
+        String [] generos = gerir_users.verListadeGeneros();
+        int i;
+        DefaultComboBoxModel modeloDados = new DefaultComboBoxModel();
+        for(i=0;i<generos.length;i++){
+            modeloDados.addElement(generos[i]);
+        }
+        jComboBox1.setModel(modeloDados);
         jDadosPanel.setVisible(false);
         jPanel3.setVisible(false);
         jEntregaPanel.setVisible(false);
@@ -1280,18 +1266,13 @@ public class Frame_ATM  extends JFrame{
 
     private void jEntregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEntregarButtonActionPerformed
         //Set panel's visibility acordingly
-        jDadosPanel.setVisible(false);
-        jPanel3.setVisible(false);
-        jEntregaPanel.setVisible(false);
-        jLoginPanel.setVisible(false);
-        jHistoricoPanel.setVisible(true);
-        jMenuPanel.setVisible(false);
-        jResultadosPanel.setVisible(false);
-        jPesquisarPanel.setVisible(false);
-    }//GEN-LAST:event_jEntregarButtonActionPerformed
-
-    private void jHistoricoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHistoricoButtonActionPerformed
-        //Set panel's visibility acordingly
+        String [] requisicoes = gerir_users.verListadeRequisicoes();
+        int i;
+        DefaultComboBoxModel modeloDados = new DefaultComboBoxModel();
+        for(i=0;i<requisicoes.length;i++){
+            modeloDados.addElement(requisicoes[i]);
+        }
+        jComboBox4.setModel(modeloDados);
         jDadosPanel.setVisible(false);
         jPanel3.setVisible(false);
         jEntregaPanel.setVisible(true);
@@ -1300,10 +1281,31 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
+    }//GEN-LAST:event_jEntregarButtonActionPerformed
+
+    private void jHistoricoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHistoricoButtonActionPerformed
+        //Set panel's visibility acordingly
+        String[] historico = gerir_users.verHistorico();
+        DefaultListModel modeloDados = new DefaultListModel();
+        int i;
+
+        for(i=0;i<historico.length;i++){
+            modeloDados.addElement(historico[i]);
+        }
+        jList2.setModel(modeloDados);
+        jDadosPanel.setVisible(false);
+        jPanel3.setVisible(false);
+        jEntregaPanel.setVisible(false);
+        jLoginPanel.setVisible(false);
+        jHistoricoPanel.setVisible(true);
+        jMenuPanel.setVisible(false);
+        jResultadosPanel.setVisible(false);
+        jPesquisarPanel.setVisible(false);
     }//GEN-LAST:event_jHistoricoButtonActionPerformed
 
     private void jDadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDadosButtonActionPerformed
         //Set panel's visibility acordingly
+        
         jDadosPanel.setVisible(true);
         jPanel3.setVisible(false);
         jEntregaPanel.setVisible(false);
@@ -1328,6 +1330,29 @@ public class Frame_ATM  extends JFrame{
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        // Botão Alugar na frame esultados de pesquisa, pega no ID e formato do video.
+        Component frame = new Component() {};
+        try{
+            System.out.println("ola "+jList1.getSelectedValue().toString());
+            String verifica_aluguer=gerir_users.alugar(jList1.getSelectedValue().toString(), jComboBox3.getSelectedItem().toString());
+            if(verifica_aluguer==null){
+                JOptionPane.showMessageDialog(frame,
+                    "Aluguer sem sucesso",
+                    "Aviso!",
+                    JOptionPane.WARNING_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(frame,
+                    "Aluguer com sucesso",
+                    "Obrigado!",
+                    JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        catch(NullPointerException e){
+            JOptionPane.showMessageDialog(frame,
+                    "Tem de seleccionar um filme",
+                    "Aviso!",
+                    JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton10ActionPerformed
 
 
@@ -1432,6 +1457,39 @@ public class Frame_ATM  extends JFrame{
     private void jSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSearchButtonActionPerformed
         // TODO: reunir dados para fazer a mega query e fazê-la . reset variáveis de pesquisa?
         //Set panel's visibility
+        filmesPesquisados = gerir_users.searchMovie(jTextField3.getText(),jSpinner3.getValue().toString()
+                ,jSpinner1.getValue().toString(),jSpinner2.getValue().toString(), jTextField2.getText()
+                ,jTextField1.getText(),jComboBox1.getSelectedItem().toString());
+        DefaultListModel modeloDados = new DefaultListModel();
+        int i;
+        for(i=0;i<filmesPesquisados.length;i++){
+            modeloDados.addElement(filmesPesquisados[i].getTitulo());
+        }
+        jList1.setModel(modeloDados);
+        jList1.addListSelectionListener((ListSelectionListener) new ListSelectionListener(){
+        public void valueChanged(ListSelectionEvent evento) {
+            Filme e;
+            if (evento.getValueIsAdjusting())
+            //ainda selecionando
+            return;
+            JList list = (JList)evento.getSource();
+            if (list.isSelectionEmpty()) {
+                    System.out.println("nenhuma seleção");
+            } else {
+                    System.out.println("Selecionou " +
+                    list.getSelectedValue() +
+                    " indice " + list.getSelectedIndex());
+                    e=filmesPesquisados[list.getSelectedIndex()];
+                    jTextField4.setText(e.getTitulo());
+                    //jTextField8.setText(e.getGeneros());
+                    jTextField5.setText(e.getRealizador());
+                    jTextArea1.setText(e.getDescricao());
+                    jTextField7.setText(""+e.getAno());
+                    jTextField6.setText(e.getProdutor());
+                    jTextField9.setText(""+e.getRatingIMDB());
+                    jTextField10.setText(e.getPais());
+            }
+        }});
         jDadosPanel.setVisible(false);
         jPanel3.setVisible(false);
         jEntregaPanel.setVisible(false);
@@ -1440,6 +1498,10 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(true);
         jPesquisarPanel.setVisible(false);
+
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
     }//GEN-LAST:event_jSearchButtonActionPerformed
 
     private void jVoltarPesquisaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarPesquisaButtonActionPerformed
@@ -1482,6 +1544,24 @@ public class Frame_ATM  extends JFrame{
     private void jPagarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPagarButtonActionPerformed
         // TODO: Processar o pedido
         //Set panel's visibility
+        String modo_pagamento;
+        Component frame = new Component(){};
+        try{
+            if(jRadioButton3.isSelected()){
+                modo_pagamento="dinheiro";
+            }else{
+                modo_pagamento="multibanco";
+            }
+            String numero_cartao=jTextField12.getText();
+            String numero_css=jTextField13.getText();
+            gerir_users.entregar(jComboBox4.getSelectedItem().toString());
+
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(frame,
+                "Dados de login incorrectos",
+                "Aviso!",
+                JOptionPane.WARNING_MESSAGE);
+        }
         jDadosPanel.setVisible(false);
         jPanel3.setVisible(true);
         jEntregaPanel.setVisible(false);
@@ -1511,12 +1591,23 @@ public class Frame_ATM  extends JFrame{
         System.out.println("resposta: "+verificar_login);
         Component frame = new Component() {};
         if(verificar_login==null){
-            JOptionPane.showMessageDialog(frame,
+            /*jDadosPanel.setVisible(false);
+            jPanel3.setVisible(false);
+            jEntregaPanel.setVisible(false);
+            jLoginPanel.setVisible(false);
+            jHistoricoPanel.setVisible(false);
+            jMenuPanel.setVisible(true);
+            jResultadosPanel.setVisible(false);
+            jPesquisarPanel.setVisible(false);
+            */JOptionPane.showMessageDialog(frame,
             "Dados de login incorrectos",
-            "O lobo é gay",
+            "Aviso!",
             JOptionPane.WARNING_MESSAGE);
 
         }else{
+            jUsernameField.setText("");
+            jPasswordField.setText("");
+            
             jDadosPanel.setVisible(false);
             jPanel3.setVisible(false);
             jEntregaPanel.setVisible(false);
@@ -1525,12 +1616,13 @@ public class Frame_ATM  extends JFrame{
             jMenuPanel.setVisible(true);
             jResultadosPanel.setVisible(false);
             jPesquisarPanel.setVisible(false);
+
+            String[] dados = gerir_users.verDadosPessoais();
+            jTextField11.setText(dados[0]);
+            jTextField12.setText(dados[1]);
+            jTextField13.setText(dados[2]);
         }
     }//GEN-LAST:event_jLoginButtonActionPerformed
-
-    private void jPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordFieldActionPerformed
 /*
      * Botões _______________Botões___________________Botões__________Botões
      *
