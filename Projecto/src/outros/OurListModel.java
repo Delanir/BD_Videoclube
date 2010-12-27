@@ -13,6 +13,9 @@ import javax.swing.AbstractListModel;
  */
 public class OurListModel extends AbstractListModel{
     private String []lista;
+
+    
+    
     public OurListModel(String []lista){
         this.lista=lista;
     }
@@ -26,4 +29,11 @@ public class OurListModel extends AbstractListModel{
         return lista[index];
     }
 
+    public String[] getLista() {
+        return lista;
+    }
+
+    public void setLista(String[] lista) {
+        this.lista = lista;
+    }
 }

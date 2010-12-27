@@ -33,7 +33,7 @@ public class GestorMaquinas
 	 * devolve uma lista com todas as máquinas pertencentes ao sistema
 	 * @return
 	 */
-	public String listaATMS() {
+	public String [] listaATMS() {
 		return null;
 	}
 }

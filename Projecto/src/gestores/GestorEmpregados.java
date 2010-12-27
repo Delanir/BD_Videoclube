@@ -45,4 +45,9 @@ public class GestorEmpregados
 	public String deleteEmpregado(String id) {
 		return null;
 	}
+        
+        public String [] listaEmpregados(){
+            String []out={"Lobo","Fontes","Almeida"};
+            return out;
+        }
 }
