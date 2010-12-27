@@ -5,6 +5,8 @@
 
 package gestores;
 
+import java.util.GregorianCalendar;
+
 /**
  * monitoriza clientes
  * @author Daniela
@@ -100,4 +102,19 @@ public class GestorClientes
                     //envia email
                 }
 	}
+
+        /**
+         * gera uma string com as estatisticas mais relevantes relativas aos clientes
+         * @param begin
+         * @param end
+         * @return
+         */
+        public String estatisticasClientes(GregorianCalendar begin,GregorianCalendar end){
+            if(begin!=null&&end!=null){
+                //estatisticas num intrevalo de tempo
+            }else{
+
+            }
+            return "Estatisticas Clientes:\n------------------------\n";
+        }
 }

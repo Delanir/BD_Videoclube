@@ -213,7 +213,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
-        jQueryEstatisticasButton = new javax.swing.JToggleButton();
         jLabel10 = new javax.swing.JLabel();
         dateBegin = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -221,6 +220,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jButton5 = new javax.swing.JButton();
         dataInit = new javax.swing.JButton();
         dataEnd = new javax.swing.JButton();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jButton6 = new javax.swing.JButton();
         jEmpregadosManagerPanel = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -684,13 +685,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         jCheckBox4.setText("Máquinas");
 
-        jQueryEstatisticasButton.setText("Consultar");
-        jQueryEstatisticasButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jQueryEstatisticasButtonActionPerformed(evt);
-            }
-        });
-
         jLabel10.setText("Data Início:");
 
         dateBegin.setText("00/00/00");
@@ -720,6 +714,15 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             }
         });
 
+        jCheckBox5.setText("Clientes");
+
+        jButton6.setText("Consultar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jEstatisticasPanelLayout = new javax.swing.GroupLayout(jEstatisticasPanel);
         jEstatisticasPanel.setLayout(jEstatisticasPanelLayout);
         jEstatisticasPanelLayout.setHorizontalGroup(
@@ -731,19 +734,20 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox2)
                             .addComponent(jCheckBox1)
                             .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox4)))
+                            .addComponent(jCheckBox4)
+                            .addComponent(jCheckBox2)
+                            .addComponent(jCheckBox5)))
                     .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dateBegin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(dateBegin, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel11)
                         .addGap(18, 18, 18)
-                        .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(dataInit)
@@ -753,10 +757,11 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                         .addGap(45, 45, 45)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jQueryEstatisticasButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(212, 212, 212)
+                        .addComponent(jButton5))
+                    .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
+                        .addGap(202, 202, 202)
+                        .addComponent(jButton6)))
                 .addContainerGap(217, Short.MAX_VALUE))
         );
         jEstatisticasPanelLayout.setVerticalGroup(
@@ -766,9 +771,11 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jCheckBox1)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jCheckBox2)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox5)
+                        .addGap(7, 7, 7)
                         .addComponent(jCheckBox3)
                         .addGap(18, 18, 18)
                         .addComponent(jCheckBox4)
@@ -787,9 +794,9 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addComponent(dataEnd))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jQueryEstatisticasButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
         );
@@ -3391,10 +3398,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         listaMaquinas.setModel(new OurListModel(gestorMaquinas.listaATMS()));
     }//GEN-LAST:event_jAdicionarATMButtonActionPerformed
 
-    private void jQueryEstatisticasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jQueryEstatisticasButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQueryEstatisticasButtonActionPerformed
-
     private void jDespedirEmpregadoButtonComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonComponentResized
         // TODO add your handling code here:
     }//GEN-LAST:event_jDespedirEmpregadoButtonComponentResized
@@ -3760,6 +3763,31 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         resetDatas();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        jTextArea2.setText("");
+        if(jCheckBox5.isSelected()){
+            //Clientes
+            jTextArea2.append(gestorClientes.estatisticasClientes(calendarBegin, calendarEnd));
+        }
+         if(jCheckBox3.isSelected()){
+            //Clientes
+            jTextArea2.append(gestorFilmes.estatisticasFilmes(calendarBegin, calendarEnd));
+        }
+         if(jCheckBox1.isSelected()){
+            //Clientes
+            jTextArea2.append(gestorEmpregados.estatisticasEmpregados(calendarBegin, calendarEnd));
+        }
+        if(jCheckBox4.isSelected()){
+            //Clientes
+            jTextArea2.append(gestorMaquinas.estatisticasMaquinas(calendarBegin, calendarEnd));
+        }
+        if(jCheckBox5.isSelected()){
+            //Clientes
+            jTextArea2.append(gestorEstatisticas.getSatistics(calendarBegin, calendarEnd));
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
    
     //OUR GUI VARS
     private javax.swing.ButtonGroup bgroup;
@@ -3810,10 +3838,12 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JPanel jClientesManagerPanel;
     private javax.swing.JPanel jClientesManagerPanel1;
     private javax.swing.JToggleButton jDespedirEmpregadoButton;
@@ -3935,7 +3965,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JToggleButton jPesquisarButton;
     private javax.swing.JPanel jPesquisarClientePanel;
     private javax.swing.JToggleButton jPesquisarClientesButton;
-    private javax.swing.JToggleButton jQueryEstatisticasButton;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JPanel jResultadosFilmePanel;

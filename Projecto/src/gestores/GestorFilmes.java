@@ -7,6 +7,7 @@ import outros.Utils;
 import javax.swing.ImageIcon;
 
 import bd.DBHandler;
+import java.util.GregorianCalendar;
 
 /**
  * Trata da gestÃ£o de filmes
@@ -19,14 +20,14 @@ public class GestorFilmes
 	/**
 	 * Adiciona um filme Ã  base de dados
 	 */
-	// TODO: String[] generos conter IDs em vez de nomes de géneros
+	// TODO: String[] generos conter IDs em vez de nomes de gï¿½neros
 	public String addMovie(String titulo, String ano, String[] generos, String realizador, String produtora, String pais, String capa, String descricao, String ratingIMDB) {
 		//"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"}
 		
 		if(Utils.toInt(ano) == Consts.ERRO_INT)
-			return "O ano inserido é inválido.";
+			return "O ano inserido ï¿½ invï¿½lido.";
 		if(Utils.toDouble(ratingIMDB) == Consts.ERRO_DOUBLE)
-			return "O rank IMDB inserido é inválido.";
+			return "O rank IMDB inserido ï¿½ invï¿½lido.";
 		
 		dbh.adicionaFilme(titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
 		
@@ -136,4 +137,19 @@ public class GestorFilmes
 		listaGeneros[2] = "Horror";
 		return listaGeneros;
 	}
+
+        /**
+         * gera uma string com as estatisticas mais relevantes relativas aos clientes
+         * @param begin
+         * @param end
+         * @return
+         */
+        public String estatisticasFilmes(GregorianCalendar begin,GregorianCalendar end){
+            if(begin!=null&&end!=null){
+                //estatisticas num intrevalo de tempo
+            }else{
+
+            }
+            return "Estatisticas Filmes:\n------------------------\n";
+        }
 }

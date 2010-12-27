@@ -14,6 +14,22 @@ import java.util.GregorianCalendar;
  */
 public class GestorEstatisticas
 {
+        /*
+         private GestorClientes gc;
+        private GestorEmpregados ge;
+        private GestorFilmes gf;
+        private GestorMaquinas gm;
+
+        public GestorEstatisticas(GestorClientes gc,GestorEmpregados ge, GestorFilmes gf, GestorMaquinas gm){
+            this.gc=gc;
+            this.ge=ge;
+            this.gf=gf;
+            this.gm=gm;
+        }
+         *
+         */
+
+    
 	/**
 	 * @param parameters contém os elementos a partir dos quais vai ser
 	 *        adquirida informação
@@ -22,7 +38,7 @@ public class GestorEstatisticas
 	 * @param end data de fim da contagem das estatísticas, null-> tempo total
 	 * @return
 	 */
-	public String getSatistics(String[] parameters, GregorianCalendar begin, GregorianCalendar end) {
+	public String getSatistics(GregorianCalendar begin, GregorianCalendar end) {
 
 		return null;
 	}

@@ -5,6 +5,8 @@
 
 package gestores;
 
+import java.util.GregorianCalendar;
+
 /**
  * Gere os empregados na aplicação
  * @author Daniela
@@ -67,4 +69,21 @@ public class GestorEmpregados
             String []out={"Lobo","Fontes","Almeida"};
             return out;
         }
+
+        /**
+         * gera uma string com as estatisticas mais relevantes relativas aos clientes
+         * @param begin
+         * @param end
+         * @return
+         */
+        public String estatisticasEmpregados(GregorianCalendar begin,GregorianCalendar end){
+            if(begin!=null&&end!=null){
+                //estatisticas num intrevalo de tempo
+            }else{
+
+            }
+            return "Estatisticas Empregados:\n------------------------\n";
+        }
 }
+
+
