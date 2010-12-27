@@ -8,4 +8,6 @@ public class Consts
 
 	/** A constante que define o valor inteiro devolvido em caso de erro na função de conversão String -> int. */
 	public final static int ERRO_INT = Integer.MIN_VALUE;
+	/** A constante que define o valor inteiro devolvido em caso de erro na função de conversão String -> double. */
+	public final static double ERRO_DOUBLE = Double.MIN_VALUE;
 }

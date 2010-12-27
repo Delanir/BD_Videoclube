@@ -1,43 +1,43 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package gestores;
 
-import outros.Consts;
 import outros.Filme;
-import outros.Utils;
-
 import javax.swing.ImageIcon;
-
-import bd.DBHandler;
 
 /**
  * Trata da gest√£o de filmes
  * @author Daniela
  */
-public class GestorFilmes
+public class CopyOfGestorFilmes
 {
-	DBHandler dbh = new DBHandler();
-	
 	/**
 	 * Adiciona um filme √† base de dados
+	 * @param titulo
+	 * @param ano
+	 * @param generos
+	 * @param realizador
+	 * @param produtor
+	 * @param pais
+	 * @param pathCapa
+	 * @param descricao
+	 * @return
 	 */
-	// TODO: String[] generos conter IDs em vez de nomes de gÈneros
-	public String addMovie(String titulo, String ano, String[] generos, String realizador, String produtora, String pais, String capa, String descricao, String ratingIMDB) {
-		//"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"}
-		
-		if(Utils.toInt(ano) == Consts.ERRO_INT)
-			return "O ano inserido È inv·lido.";
-		if(Utils.toDouble(ratingIMDB) == Consts.ERRO_DOUBLE)
-			return "O rank IMDB inserido È inv·lido.";
-		
-		dbh.adicionaFilme(titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
-		
-		return "Adicionado: "+titulo+" ("+ano+")"
-						+"\n"+Utils.list(generos, ",")
-						+"\n"+realizador
-						+"\n"+produtora
-						+"\n"+pais
-						+"\n"+capa
-						+"\n"+descricao
-						+"\n"+ratingIMDB;
+	public String addMovie(String titulo, int ano, String[] generos, String realizador, String produtor, String pais, String pathCapa, String descricao,double ratingIMDB) {
+                //TODO: FAZER!
+
+		return "Adicionado: "+titulo+
+                        " "+ano+
+                        "\n"+generos[0]
+                        +"\n"+realizador
+                        +"\n"+produtor
+                        +"\n"+pais
+                        +"\n"+pathCapa
+                        +"\n"+descricao
+                        +"\n"+ratingIMDB;
 	}
 
 	/**
@@ -77,31 +77,31 @@ public class GestorFilmes
 	 * @return lista com resultados
 	 */
 	public String[] searchMovie(String id,String titulo, int anoInicio,int anoFim, double imdbBegin, double imdbEnd, String realizador, String produtor, String pais) {
-			String []listaResultados= new String[6];
-			listaResultados[0]="222 Apocalipse Now";
-			listaResultados[1]="2 Toy Story 3";
-			listaResultados[2]="34 Tangled";
-			listaResultados[3]="666 Inception";
-			listaResultados[2]="4 Titanic";
-			listaResultados[3]="1 The Pianist";
-			
-			return listaResultados;
+            String []listaResultados= new String[6];
+            listaResultados[0]="222 Apocalipse Now";
+            listaResultados[1]="2 Toy Story 3";
+            listaResultados[2]="34 Tangled";
+            listaResultados[3]="666 Inception";
+            listaResultados[2]="4 Titanic";
+            listaResultados[3]="1 The Pianist";
+            
+            return listaResultados;
 	}
 
-	public Filme getFilme(String id){
-		String []generos={"Ac√ß√£o","Historical"};
-		Filme f=new Filme("Inglorious Basterds",2010,generos,
-		"Tarantino",
-		"20th Century Fox",
-		"USA",
-		new ImageIcon("MV5BMTI5Mjc2MTE3OV5BMl5BanBnXkFtZTcwNTc2MzI2Mg@@._V1._CR341,0,1365,1365_SS80_.jpg"),
-		"In Nazi-occupied France during World War II, a group of " +
-				"Jewish-American soldiers known as \"The Basterds\" are " +
-				"chosen specifically to spread fear throughout the Third " +
-				"Reich by scalping and brutally killing Nazis. ",
-		8.4);
-		return f ;
-	}
+        public Filme getFilme(String id){
+            String []generos={"Ac√ß√£o","Historical"};
+            Filme f=new Filme("Inglorious Basterds",2010,generos,
+            "Tarantino",
+            "20th Century Fox",
+            "USA",
+            new ImageIcon("MV5BMTI5Mjc2MTE3OV5BMl5BanBnXkFtZTcwNTc2MzI2Mg@@._V1._CR341,0,1365,1365_SS80_.jpg"),
+            "In Nazi-occupied France during World War II, a group of " +
+                    "Jewish-American soldiers known as \"The Basterds\" are " +
+                    "chosen specifically to spread fear throughout the Third " +
+                    "Reich by scalping and brutally killing Nazis. ",
+            8.4);
+            return f ;
+        }
 
 	/**
 	 * Query √† bd para ver quantas unidades disponiveis do filme h√°

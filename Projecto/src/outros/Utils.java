@@ -35,6 +35,19 @@ public class Utils
 	}
 	
 	/**
+	 * Converte uma String para double.
+	 * @param strnumber o número (em formato String) a converter.
+	 * @return a o número convertido ou ERROR_DOUBLE (definido em Consts) se a conversão é impossível.
+	 */
+	public static double toDouble(String strnumber) {
+		try {
+			return Double.parseDouble(strnumber);
+		} catch(NumberFormatException e) {
+			return Consts.ERRO_DOUBLE;
+		}
+	}
+	
+	/**
 	 * Converte uma data para formato legível, em String, com o formato "ano/mês/dia".
 	 * @param date a data (Calendar) a converter.
 	 * @return a data em formato String se a data recebida é válida, "null" caso contrário.
@@ -159,6 +172,36 @@ public class Utils
 				System.out.print(", " + sa[i]);
 			System.out.println();
 		}
+	}
+	
+	/**
+	 * Devolve uma string com os elementos "strs" separados pela string "sep".
+	 * @param strs os elementos a juntar numa string apenas.
+	 * @param sep o separador a usar para separar os elementos.
+	 * @return uma string com os elementos "strs" separados pela string "sep".
+	 */
+	public static String list(String[] strs, String sep) {
+		String lista = strs[0];
+		for (int i = 1; i < strs.length; i++)
+			lista += sep + strs[i];
+		return lista;
+	}
+	
+	/**
+	 * Devolve uma string organizada em pares (separados pela string "sep2") de
+	 * "strs" e "strs2" (separados por "sep").
+	 * @param strs a primeira parte dos elementos a juntar em pares numa string apenas.
+	 * @param sep o separador a usar para separar cada dois elementos (par. um de cada lista).
+	 * @param strs2 a segunda parte dos elementos a juntar em pares numa string apenas.
+	 * @param sep2 o separador a usar para separar cada par de elementos dos outros pares.
+	 * @return uma string organizada em pares (separados pela string "sep2") de
+	 * "strs" e "strs2" (separados por "sep").
+	 */
+	public static String list(String[] strs, String sep, String[] strs2, String sep2) {
+		String lista = strs[0] + sep + strs2[0];
+		for (int i = 1; i < strs.length; i++)
+			lista += sep2 + strs[i] + sep + strs2[i];
+		return lista;
 	}
 
 	// Faz parsing de uma lista de string e imprime de maneira a pÃ´r tudo num
