@@ -511,9 +511,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         jLabel2.setText("Password:");
 
-        jPasswordField.setText("jPasswordField1");
-
-        jUsernameField.setText("jTextField1");
         jUsernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jUsernameFieldActionPerformed(evt);
