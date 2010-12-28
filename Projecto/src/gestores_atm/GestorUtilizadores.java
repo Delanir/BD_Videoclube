@@ -5,6 +5,8 @@
 
 package gestores_atm;
 
+import outros.Utils;
+
 /**
  *
  * @author Daniela
@@ -52,8 +54,8 @@ public class GestorUtilizadores {
      * @return
      */
     public String alugar(String id, String formato){
-        System.out.println("id: "+id);
-        System.out.println("formato: "+formato);
+        Utils.dbg("id: "+id);
+        Utils.dbg("formato: "+formato);
         return null;
 
     }
@@ -64,7 +66,7 @@ public class GestorUtilizadores {
      * @return
      */
     public String entregar(String idRequisicao ){
-        System.out.println("id_req: "+idRequisicao);
+        Utils.dbg("id_req: "+idRequisicao);
         return null;
     }
     /**
@@ -81,7 +83,7 @@ public class GestorUtilizadores {
      * @return
      */
     public String calcularPrecoRequisicao(String idRequisicao ){
-        System.out.println("id_req: "+idRequisicao);
+        Utils.dbg("id_req: "+idRequisicao);
         return "100";
     }
 

@@ -42,7 +42,7 @@ public class Frame_ATM  extends JFrame{
 
     public static void main(String args[]) {
         
-                System.out.println("Here");
+                Utils.dbg("Here");
                 new Frame_ATM().setVisible(true);
                 //adds the panels to the interface
                 
@@ -66,7 +66,7 @@ public class Frame_ATM  extends JFrame{
         mainPanel.setLayout(null);
         mainPanel.setVisible(true);
         init();
-        System.out.println("WHY");
+        Utils.dbg("WHY");
 
     }
 
@@ -1362,7 +1362,7 @@ public class Frame_ATM  extends JFrame{
         // Botão Alugar na frame esultados de pesquisa, pega no ID e formato do video.
         Component frame = new Component() {};
         try{
-            System.out.println("ola "+jList1.getSelectedValue().toString());
+            Utils.dbg("ola "+jList1.getSelectedValue().toString());
             String verifica_aluguer=gerir_users.alugar(jList1.getSelectedValue().toString(), jComboBox3.getSelectedItem().toString());
             if(verifica_aluguer==null){
                 JOptionPane.showMessageDialog(frame,
@@ -1503,7 +1503,7 @@ public class Frame_ATM  extends JFrame{
             return;
             JList list = (JList)evento.getSource();
             if (list.isSelectionEmpty()) {
-                    System.out.println("nenhuma seleção");
+                    Utils.dbg("nenhuma seleção");
             } else {
                 String idMovie=((String)jList1.getSelectedValue()).split(" ")[0];
                 String[] f = gestorFilmes.getFilme(idMovie);
@@ -1616,9 +1616,9 @@ public class Frame_ATM  extends JFrame{
 
     private void jLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonActionPerformed
         // TODO logar o user!!!
-        System.out.println("user: "+jUsernameField.getText()+" pass:"+jPasswordField.getText());
+        Utils.dbg("user: "+jUsernameField.getText()+" pass:"+jPasswordField.getText());
         String verificar_login = gerir_users.login(jUsernameField.getText(),jPasswordField.getText());
-        System.out.println("resposta: "+verificar_login);
+        Utils.dbg("resposta: "+verificar_login);
         Component frame = new Component() {};
         if(verificar_login==null){
             /*jDadosPanel.setVisible(false);

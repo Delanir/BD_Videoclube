@@ -268,4 +268,9 @@ public class Utils
 			lista += sep2 + strs[i] + sep + strs2[i];
 		return lista;
 	}
+
+	public static void dbg(String string) {
+		if(Consts.DEBUG)
+			System.out.println(string);
+	}
 }

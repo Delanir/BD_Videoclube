@@ -56,7 +56,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
     
     
     public static void main(String args[]) {
-        System.out.println("Here");
+    	Utils.dbg("Here");
         new GUI_Manager().setVisible(true);
         //adds the panels to the interface
 
@@ -3720,7 +3720,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void pesquisarClientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarClientesButtonActionPerformed
         jTextArea7.setText(
-                gestorClientes.procuraCliente(idPesquisarClientes.getText(),
+                gestorClientes.procuraCliente(
+                idPesquisarClientes.getText(),
                 nomePesquisarClientes.getText(),
                 telefonePesquisarClientes.getText(),
                 biPesquisarClientes.getText(),
