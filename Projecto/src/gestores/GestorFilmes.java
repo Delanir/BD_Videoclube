@@ -35,9 +35,11 @@ public class GestorFilmes
 	
 	//TODO: Gui String[] em vez de Filme
 	public String[] getFilme(String id) {
-		String[] filme = DBHandler.getFilme(id);
+		/*String[] filme = DBHandler.getFilme(id);
 		String[] generosFilme = DBHandler.getGenerosFilmeNome(id);
-		return Utils.extend(filme, generosFilme);
+		return Utils.extend(filme, generosFilme);*/
+            String[] ret={"tit", "ano", "real", "imdb", "pais", "prod", "desc","img"};
+            return ret;
 	}
 	
 	/**
@@ -112,22 +114,24 @@ public class GestorFilmes
 	 * @return lista com resultados
 	 */
 	public String[] procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
-		/*String []listaResultados= new String[6];
+		String []listaResultados= new String[6];
 		listaResultados[0]="222 Apocalipse Now";
 		listaResultados[1]="2 Toy Story 3";
 		listaResultados[2]="34 Tangled";
 		listaResultados[3]="666 Inception";
 		listaResultados[2]="4 Titanic";
-		listaResultados[3]="1 The Pianist";*/
-		Vector<String[]> vec = DBHandler.procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos); 
+		listaResultados[3]="1 The Pianist";
+                return listaResultados;
+		/*Vector<String[]> vec = DBHandler.procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
 		String[] ret = new String[vec.size()];
 		int i=0;
 		for(String[] sa : vec) {
 			ret[i] = sa[0] + ": (" + sa[1] + ") " + sa[2]; //id: (ano) titulo
 			i++;
 		}
-		return ret;
+		return ret;*/
 	}
+
 
 	/**
 	 * Query à bd para ver quantas unidades disponiveis do filme há
