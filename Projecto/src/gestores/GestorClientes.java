@@ -28,7 +28,7 @@ public class GestorClientes
 	}
 
 	/**
-	 * actualiza os campos não nulos no cliente
+	 * actualiza os campos nï¿½o nulos no cliente
 	 */
 	// TODO: ordem na gui
 	public String actualizaCliente(String id, String nome, String bi, String password, String morada, String email, String telefone) {
@@ -41,7 +41,7 @@ public class GestorClientes
 	}
 	
 	/**
-	 * Devolve informações relativas oa cliente em questÃ£o
+	 * Devolve informaï¿½ï¿½es relativas oa cliente em questÃ£o
 	 */
 	public String[] procuraCliente(String id) {
 		return DBHandler.getCliente(id);
@@ -79,6 +79,15 @@ public class GestorClientes
 	 * @return
 	 */
 	public String removeCliente(String id) {
+		return null;
+	}
+
+        /**
+	 * apaga um cliente do sistema
+	 * @param id
+	 * @return
+	 */
+	public String removeClienteBI(String bi) {
 		return null;
 	}
 
