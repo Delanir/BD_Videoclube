@@ -7,6 +7,7 @@ import outros.Excepcao;
 import outros.Utils;
 
 import bd.DBHandler;
+import java.util.GregorianCalendar;
 
 /**
  * Trata da gestão de filmes
@@ -238,4 +239,19 @@ public class GestorFilmes
 		} else
 			throw new Excepcao(Consts.GENERO_EM_USO);
 	}
+
+        /**
+         * gera uma string com as estatisticas mais relevantes relativas aos clientes
+         * @param begin
+         * @param end
+         * @return
+         */
+        public String estatisticasFilmes(GregorianCalendar begin,GregorianCalendar end){
+            if(begin!=null&&end!=null){
+                //estatisticas num intrevalo de tempo
+            }else{
+
+            }
+            return "Estatisticas Filmes:\n------------------------\n";
+        }
 }
