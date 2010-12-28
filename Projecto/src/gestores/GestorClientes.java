@@ -7,10 +7,15 @@ package gestores;
 
 import java.util.GregorianCalendar;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 
 import outros.Utils;
 
 import bd.DBHandler;
+import outros.EmailSender;
 
 public class GestorClientes
 {
@@ -95,10 +100,20 @@ public class GestorClientes
 	 */
 	// TODO: do it
 	public void notificarCliente(String id, String mensagem) {
+            String []out;
 		if (id != null && id.isEmpty()) {
 			// procura email
-
+                        out=DBHandler.getClienteBI(id);
 			// envia email
+                        if(out!=null&&out.length!=0){
+                            try {
+                                EmailSender.send("smtp.sapo.pt", 25, "videoclube@thisisafakemail.com", out[5], "Notificação", mensagem);
+                            } catch (AddressException ex) {
+
+                            } catch (MessagingException ex) {
+                                
+                            }
+                        }
 		}
 	}
 

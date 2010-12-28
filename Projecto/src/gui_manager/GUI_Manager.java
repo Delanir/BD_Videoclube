@@ -454,7 +454,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jNotificarClientePanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel35 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel42 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
+        biNotificarClientes = new javax.swing.JTextField();
         jScrollPane9 = new javax.swing.JScrollPane();
         mensagem = new javax.swing.JTextArea();
         javax.swing.JLabel jLabel52 = new javax.swing.JLabel();
@@ -2958,7 +2958,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                         .addGroup(jNotificarClientePanelLayout.createSequentialGroup()
                             .addComponent(jLabel42)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(biNotificarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel52)
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jNotificarClientePanelLayout.createSequentialGroup()
@@ -2976,7 +2976,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
             .addGap(18, 18, 18)
             .addGroup(jNotificarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel42)
-                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(biNotificarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(24, 24, 24)
             .addComponent(jLabel52)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -3647,21 +3647,21 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private void notificarClientesFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_notificarClientesFrameWindowClosing
         // TODO add your handling code here:
         mensagem.setText(null);
-        jTextField17.setText(null);
+        biNotificarClientes.setText(null);
         notificarClientesFrame.setVisible(false);
       notificarClientesFrame.transferFocusBackward();
     }//GEN-LAST:event_notificarClientesFrameWindowClosing
 
     private void jToggleButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton34ActionPerformed
         mensagem.setText(null);
-        jTextField17.setText(null);
+        biNotificarClientes.setText(null);
         notificarClientesFrame.setVisible(false);
       notificarClientesFrame.transferFocusBackward();
     }//GEN-LAST:event_jToggleButton34ActionPerformed
 
     private void enviarEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarEmailActionPerformed
         
-        gestorClientes.notificarCliente(jTextField17.getText(), mensagem.getText());
+        gestorClientes.notificarCliente(biNotificarClientes.getText(), mensagem.getText());
     }//GEN-LAST:event_enviarEmailActionPerformed
 
     private void voltarAdcionaFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarAdcionaFilmesActionPerformed
@@ -3913,6 +3913,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextField anoResultadosFilme;
     private javax.swing.JFormattedTextField biAdicionaClientes;
     private javax.swing.JFormattedTextField biEliminaClientes;
+    private javax.swing.JTextField biNotificarClientes;
     private javax.swing.JTextField biPesquisarClientes;
     private javax.swing.JComboBox countriesList;
     private javax.swing.JComboBox countriesList1;
@@ -4057,7 +4058,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;

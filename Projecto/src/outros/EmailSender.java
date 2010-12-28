@@ -49,7 +49,7 @@ public class EmailSender
 
 	public static void main(String[] args) throws Exception {
 		// Send a test message
-		send("smtp.sapo.pt", 25, "airlinemanager@lalala.com", "icorreia@student.dei.uc.pt", "Hello", "Hello, \n\n How are you ?");
+		send("smtp.sapo.pt", 25, "airlinemanager@lalala.com", "fontes@student.dei.uc.pt", "Hello", "Hello, \n\n How are you ?");
 	}
 
 	/**
