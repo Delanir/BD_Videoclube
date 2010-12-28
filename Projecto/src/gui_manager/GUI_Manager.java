@@ -94,8 +94,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         //Cria um button Group para 2 radio buttons
         bgroup=new ButtonGroup();
         
-        bgroup.add(jRadioButton1);
-        bgroup.add(jRadioButton2);
+        bgroup.add(adminRadio);
+        bgroup.add(opRadio);
 
     }
 
@@ -201,11 +201,11 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jAdicionarATMButton = new javax.swing.JButton();
         javax.swing.JLabel jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        outMaquinas = new javax.swing.JTextArea();
         jSpinner6 = new javax.swing.JSpinner();
         jSpinner6.setModel(new SpinnerNumberModel(2000.00,0.00,10000.00,0.50));
         javax.swing.JLabel jLabel97 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        actualizarListaMaquinas = new javax.swing.JButton();
         jEstatisticasPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
@@ -251,23 +251,23 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         javax.swing.JLabel jLabel18 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel19 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel20 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        adminRadio = new javax.swing.JRadioButton();
+        opRadio = new javax.swing.JRadioButton();
         javax.swing.JLabel jLabel21 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        nomeEmpregados = new javax.swing.JTextField();
+        passwordEmpregados = new javax.swing.JPasswordField();
+        emailEmpregados = new javax.swing.JTextField();
+        moradaEmpregados = new javax.swing.JTextField();
         javax.swing.JLabel jLabel22 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        passwordEmpregados2 = new javax.swing.JPasswordField();
         jAdicionarEmpregadoButton = new javax.swing.JToggleButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
-        jFormattedTextField2 = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
-        jFormattedTextField3 = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
+        outEmpregados = new javax.swing.JTextArea();
+        actualzarListaEmpregados = new javax.swing.JButton();
+        telefoneEmpregados = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
+        salarioEmpregados = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
+        biEmpregados = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
+        obterDadosEmpregadoActualizacao = new javax.swing.JButton();
         jSairButton = new javax.swing.JButton();
         jMenuOperatorPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -552,11 +552,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         jLabel4.setText("Vender Máquina:");
 
-        listaMaquinas.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        listaMaquinas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(listaMaquinas);
 
         jVenderATMButton.setText("Vender");
@@ -575,16 +571,17 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         jLabel8.setText("Custo:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        outMaquinas.setColumns(20);
+        outMaquinas.setEditable(false);
+        outMaquinas.setRows(5);
+        jScrollPane2.setViewportView(outMaquinas);
 
         jLabel97.setText("€");
 
-        jButton3.setText("Actualizar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        actualizarListaMaquinas.setText("Actualizar");
+        actualizarListaMaquinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                actualizarListaMaquinasActionPerformed(evt);
             }
         });
 
@@ -611,7 +608,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jATMManagerPanelLayout.createSequentialGroup()
                         .addGap(109, 109, 109)
-                        .addComponent(jButton3)
+                        .addComponent(actualizarListaMaquinas)
                         .addGap(18, 18, 18)
                         .addComponent(jVenderATMButton))
                     .addGroup(jATMManagerPanelLayout.createSequentialGroup()
@@ -620,7 +617,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addGroup(jATMManagerPanelLayout.createSequentialGroup()
                         .addGap(194, 194, 194)
                         .addComponent(jAdicionarATMButton)))
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(765, Short.MAX_VALUE))
         );
         jATMManagerPanelLayout.setVerticalGroup(
             jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -645,7 +642,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jVenderATMButton)
-                    .addComponent(jButton3))
+                    .addComponent(actualizarListaMaquinas))
                 .addContainerGap(191, Short.MAX_VALUE))
         );
 
@@ -752,7 +749,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
                         .addGap(202, 202, 202)
                         .addComponent(jButton6)))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(781, Short.MAX_VALUE))
         );
         jEstatisticasPanelLayout.setVerticalGroup(
             jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -851,7 +848,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                             .addComponent(jAdicionarClientesButton)
                             .addComponent(jNotificarClientesButton)
                             .addComponent(jEliminarClientesButton))))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(679, Short.MAX_VALUE))
         );
         jClientesManagerPanelLayout.setVerticalGroup(
             jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -916,14 +913,13 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFilmesManagerPanelLayout.createSequentialGroup()
                 .addGap(212, 212, 212)
-                .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jGeneroButton, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                    .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPesquisarButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jActualizarStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                        .addComponent(jAdicionarFilmesToggleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jEliminarFilmeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(220, 220, 220))
+                .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jGeneroButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPesquisarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jActualizarStockButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                    .addComponent(jAdicionarFilmesToggleButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jEliminarFilmeButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(784, Short.MAX_VALUE))
         );
         jFilmesManagerPanelLayout.setVerticalGroup(
             jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -934,9 +930,9 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addComponent(jActualizarStockButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jEliminarFilmeButton)
-                .addGap(54, 54, 54)
+                .addGap(26, 26, 26)
                 .addComponent(jGeneroButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(39, 39, 39)
                 .addComponent(jPesquisarButton)
                 .addContainerGap(258, Short.MAX_VALUE))
         );
@@ -981,54 +977,44 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         jLabel20.setText("Privilégios:");
 
-        jRadioButton1.setText("Administrador");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
+        adminRadio.setText("Administrador");
 
-        jRadioButton2.setText("Operador");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
+        opRadio.setText("Operador");
 
         jLabel21.setText("Salário:");
 
         jLabel22.setText("Confirm Password:");
 
-        jAdicionarEmpregadoButton.setText("Adicionar");
+        jAdicionarEmpregadoButton.setText("Adicionar/Actualizar");
         jAdicionarEmpregadoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAdicionarEmpregadoButtonActionPerformed(evt);
             }
         });
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane5.setViewportView(jTextArea3);
+        outEmpregados.setColumns(20);
+        outEmpregados.setRows(5);
+        jScrollPane5.setViewportView(outEmpregados);
 
-        jButton2.setText("Actualizar Dados");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        actualzarListaEmpregados.setText("Actualizar Lista");
+        actualzarListaEmpregados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                actualzarListaEmpregadosActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Actualizar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        telefoneEmpregados.setText("239000000");
+
+        salarioEmpregados.setText("2000");
+
+        biEmpregados.setText("");
+
+        obterDadosEmpregadoActualizacao.setText("Obter dados para actualzação");
+        obterDadosEmpregadoActualizacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                obterDadosEmpregadoActualizacaoActionPerformed(evt);
             }
         });
-
-        jFormattedTextField1.setText("00351000000000");
-
-        jFormattedTextField2.setText("2000");
-
-        jFormattedTextField3.setText("");
 
         javax.swing.GroupLayout jEmpregadosManagerPanelLayout = new javax.swing.GroupLayout(jEmpregadosManagerPanel);
         jEmpregadosManagerPanel.setLayout(jEmpregadosManagerPanelLayout);
@@ -1047,15 +1033,19 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                                         .addComponent(jLabel14))
                                     .addGap(53, 53, 53)
                                     .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nomeEmpregados, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jEmpregadosManagerPanelLayout.createSequentialGroup()
                                             .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jFormattedTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                                .addComponent(biEmpregados, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(passwordEmpregados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                                             .addGap(27, 27, 27)
-                                            .addComponent(jLabel22)
-                                            .addGap(15, 15, 15)
-                                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
+                                                    .addComponent(jLabel22)
+                                                    .addGap(15, 15, 15)
+                                                    .addComponent(passwordEmpregados2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(obterDadosEmpregadoActualizacao)))
+                                        .addComponent(telefoneEmpregados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
                                     .addContainerGap()
                                     .addComponent(jLabel18))
@@ -1065,31 +1055,22 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                             .addGap(766, 766, 766))
                         .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
                             .addGap(158, 158, 158)
-                            .addComponent(jButton4)
+                            .addComponent(actualzarListaEmpregados)
                             .addGap(18, 18, 18)
                             .addComponent(jDespedirEmpregadoButton))
                         .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                            .addGap(64, 64, 64)
+                            .addContainerGap()
+                            .addComponent(jLabel19)
+                            .addGap(8, 8, 8)
                             .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
                                 .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
                                     .addGap(38, 38, 38)
                                     .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                                            .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                                                    .addGap(163, 163, 163)
-                                                    .addComponent(jLabel19))
-                                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                                        .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                                            .addComponent(jButton2)
-                                            .addGap(39, 39, 39)
-                                            .addComponent(jAdicionarEmpregadoButton, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(salarioEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(moradaEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(emailEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE))
                                 .addComponent(jLabel13)
                                 .addComponent(jScrollPane4)))
                         .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
@@ -1102,9 +1083,12 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                         .addContainerGap()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(adminRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)))
+                        .addComponent(opRadio))
+                    .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
+                        .addGap(211, 211, 211)
+                        .addComponent(jAdicionarEmpregadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jEmpregadosManagerPanelLayout.setVerticalGroup(
@@ -1114,57 +1098,57 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(biEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(obterDadosEmpregadoActualizacao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordEmpregados2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(passwordEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel16)
                         .addComponent(jLabel22)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel19)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel19))
+                    .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(telefoneEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(emailEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(moradaEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel21)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(salarioEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(adminRadio)
+                    .addComponent(opRadio))
                 .addGap(18, 18, 18)
-                .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jAdicionarEmpregadoButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jAdicionarEmpregadoButton)
+                .addGap(11, 11, 11)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
+                    .addComponent(actualzarListaEmpregados)
                     .addComponent(jDespedirEmpregadoButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Empregados", jEmpregadosManagerPanel);
@@ -3215,7 +3199,11 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 }//GEN-LAST:event_jUsernameFieldActionPerformed
 
     private void jVenderATMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVenderATMButtonActionPerformed
-        // TODO add your handling code here:
+
+        String idMaquina=((String)listaMaquinas.getSelectedValue()).split(" ")[0];
+        outMaquinas.setText(gestorMaquinas.invalidaMaquinaATM(idMaquina));
+        listaMaquinas.setModel(new OurListModel(gestorMaquinas.verListaMaquinasATM()));
+
     }//GEN-LAST:event_jVenderATMButtonActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -3225,14 +3213,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox2ActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jPesquisarClientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPesquisarClientesButtonActionPerformed
         jList7.setModel(new OurListModel(gestorClientes.verListaClientes()));
@@ -3357,7 +3337,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private void jAdicionarATMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarATMButtonActionPerformed
         
         gestorMaquinas.adicionaMaquinaATM(""+((Double)jSpinner6.getValue()));
-        jTextArea1.setText("Output");
+        outMaquinas.setText("Output");
         listaMaquinas.setModel(new OurListModel(gestorMaquinas.verListaMaquinasATM()));
     }//GEN-LAST:event_jAdicionarATMButtonActionPerformed
 
@@ -3366,22 +3346,24 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_jDespedirEmpregadoButtonComponentResized
 
     private void jAdicionarEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarEmpregadoButtonActionPerformed
-        // TODO add your handling code here:
-        if(!jTextField6.getText().isEmpty()
-             &&jFormattedTextField3.isEditValid()
-             &&jFormattedTextField2.isEditValid()
-             &&jFormattedTextField1.isEditValid()
-             &&(jPasswordField1.getText().equals(jPasswordField2.getText()))//TODO : Deprecated
+        String isAdmin="0";
+        if(!nomeEmpregados.getText().isEmpty()
+             &&biEmpregados.isEditValid()
+             &&salarioEmpregados.isEditValid()
+             &&telefoneEmpregados.isEditValid()
+             &&(passwordEmpregados.getText().equals(passwordEmpregados2.getText()))//TODO : Deprecated
                ){
                
-            gestorEmpregados.adicionaEmpregado(jTextField6.getText(),
-                    jFormattedTextField1.getText(),
-                    jFormattedTextField3.getText(),
-                    jRadioButton1.isSelected(),
-                    jPasswordField1.getText(),
-                    jFormattedTextField2.getText(),
-                    jTextField8.getText(),
-                    jTextField9.getText());
+            if(adminRadio.isSelected())
+                isAdmin="1";
+            gestorEmpregados.actualizaEmpregado(nomeEmpregados.getText(),
+                    telefoneEmpregados.getText(),
+                    biEmpregados.getText(),
+                    isAdmin,
+                    passwordEmpregados.getText(),
+                    salarioEmpregados.getText(),
+                    emailEmpregados.getText(),
+                    moradaEmpregados.getText());
         }
     }//GEN-LAST:event_jAdicionarEmpregadoButtonActionPerformed
 
@@ -3675,43 +3657,23 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         pagamentosAtraso.setModel(new OurListModel(gestorClientes.verificaClientesComPagamentosEmAtraso()));
     }//GEN-LAST:event_jVerificarPagamentosAtrasoButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void actualizarListaMaquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarListaMaquinasActionPerformed
 
         listaMaquinas.setModel(new OurListModel(gestorMaquinas.verListaMaquinasATM()));
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_actualizarListaMaquinasActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void actualzarListaEmpregadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualzarListaEmpregadosActionPerformed
 
         listaEmpregados.setModel(new OurListModel(gestorEmpregados.verListaEmpregados()));
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_actualzarListaEmpregadosActionPerformed
 
     private void jDespedirEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonActionPerformed
-        
-        String idEmpregado=((String)listaEmpregados.getSelectedValue()).split(" ")[0];
-       gestorEmpregados.invalidaEmpregado(idEmpregado);
+       String output="";
+       String idEmpregado=((String)listaEmpregados.getSelectedValue()).split(" ")[0];
+       output=gestorEmpregados.invalidaEmpregado(idEmpregado);
        //TODO: Output message
-       jTextArea3.setText("Success/Insuccess");
+       outEmpregados.setText(output);
     }//GEN-LAST:event_jDespedirEmpregadoButtonActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO URGENTE
-          if(!jTextField6.getText().isEmpty()
-             &&jFormattedTextField3.isEditValid()
-             &&jFormattedTextField2.isEditValid()
-             &&jFormattedTextField1.isEditValid()
-             &&(jPasswordField1.getText().equals(jPasswordField2.getText()))//TODO : Deprecated
-               ){
-
-            gestorEmpregados.actualizaEmpregado(jTextField6.getText(),
-                    jFormattedTextField1.getText(),
-                    jFormattedTextField3.getText(),
-                    jRadioButton1.isSelected(),
-                    jPasswordField1.getText(),
-                    jFormattedTextField2.getText(),
-                    jTextField8.getText(),
-                    jTextField9.getText());
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void eliminarClienteFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_eliminarClienteFrameWindowClosing
         
@@ -3896,10 +3858,36 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         }
     }//GEN-LAST:event_pesquisarPorBIActionPerformed
 
+    private void obterDadosEmpregadoActualizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obterDadosEmpregadoActualizacaoActionPerformed
+        // TODO add your handling code here:
+        String []out;
+        if(biEmpregados.isEditValid()){
+            out=gestorEmpregados.procuraEmpregadoBI(biEmpregados.getText());
+            if(out!=null&&out.length>0){
+                if(out[1].equals("1")){
+                    adminRadio.doClick();
+                }else{
+                    opRadio.doClick();
+                }
+                salarioEmpregados.setText(out[2]);
+                nomeEmpregados.setText(out[3]);
+                passwordEmpregados.setText(out[5]);
+                passwordEmpregados2.setText(out[5]);
+                moradaEmpregados.setText(out[6]);
+                emailEmpregados.setText(out[7]);
+                telefoneEmpregados.setText(out[8]);
+            }
+
+        }
+        
+    }//GEN-LAST:event_obterDadosEmpregadoActualizacaoActionPerformed
+
    
     //OUR GUI VARS
     private javax.swing.ButtonGroup bgroup;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizarListaMaquinas;
+    private javax.swing.JButton actualzarListaEmpregados;
     private javax.swing.JButton adicionaGenero;
     private javax.swing.JToggleButton adicionaGenero2;
     private javax.swing.JButton adicionarCliente;
@@ -3908,11 +3896,13 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JButton adicionarFilme;
     private javax.swing.JFrame adicionarFilmeFrame;
     private javax.swing.JToggleButton adicionarStock;
+    private javax.swing.JRadioButton adminRadio;
     private javax.swing.JButton alugar;
     private javax.swing.JSpinner anoAdicionaFilmeSpinner;
     private javax.swing.JTextField anoResultadosFilme;
     private javax.swing.JFormattedTextField biAdicionaClientes;
     private javax.swing.JFormattedTextField biEliminaClientes;
+    private javax.swing.JFormattedTextField biEmpregados;
     private javax.swing.JTextField biNotificarClientes;
     private javax.swing.JTextField biPesquisarClientes;
     private javax.swing.JComboBox countriesList;
@@ -3930,6 +3920,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JButton eliminarClientesLista;
     private javax.swing.JFrame eliminarFilmesFrame;
     private javax.swing.JTextField emailAdicionaClientes;
+    private javax.swing.JTextField emailEmpregados;
     private javax.swing.JTextField emailPesquisarClientes;
     private javax.swing.JButton enviarEmail;
     private javax.swing.JFrame ficheirosFrame;
@@ -3948,9 +3939,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
@@ -3972,9 +3960,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JPanel jFilmesManagerPanel;
     private javax.swing.JPanel jFilmesManagerPanel1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JToggleButton jGeneroButton;
     private javax.swing.JPanel jGenerosPanel;
@@ -4009,14 +3994,10 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JPanel jNotificarClientePanel;
     private javax.swing.JButton jNotificarClientesButton;
     private javax.swing.JPasswordField jPasswordField;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JPanel jPesqisaFilmesPanel;
     private javax.swing.JToggleButton jPesquisarButton;
     private javax.swing.JPanel jPesquisarClientePanel;
     private javax.swing.JToggleButton jPesquisarClientesButton;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JPanel jResultadosFilmePanel;
     private javax.swing.JButton jSairButton;
     private javax.swing.JButton jSairButton2;
@@ -4051,19 +4032,14 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JSpinner jSpinner6;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea11;
     private javax.swing.JTextArea jTextArea12;
     private javax.swing.JTextArea jTextArea14;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JToggleButton jToggleButton17;
     private javax.swing.JToggleButton jToggleButton18;
     private javax.swing.JToggleButton jToggleButton34;
@@ -4083,19 +4059,27 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextArea mensagem;
     private javax.swing.JTextField moradaAdicionaClientes;
+    private javax.swing.JTextField moradaEmpregados;
     private javax.swing.JTextField moradaPesquisarClientes;
     private javax.swing.JTextField nomeAdicionaClientes;
+    private javax.swing.JTextField nomeEmpregados;
     private javax.swing.JTextField nomePesquisarClientes;
     private javax.swing.JButton notificarClientes;
     private javax.swing.JFrame notificarClientesFrame;
     private javax.swing.JButton obterDadosAdicionarClientes;
+    private javax.swing.JButton obterDadosEmpregadoActualizacao;
+    private javax.swing.JRadioButton opRadio;
     private javax.swing.JTextArea outEliminaClientes;
+    private javax.swing.JTextArea outEmpregados;
+    private javax.swing.JTextArea outMaquinas;
     private javax.swing.JTextArea outPesquisarClientes;
     private javax.swing.JTextArea outputAdicionaClientes;
     private javax.swing.JList pagamentosAtraso;
     private javax.swing.JTextField paisResultadosFilme;
     private javax.swing.JPasswordField passwordAdicionaClientes;
     private javax.swing.JPasswordField passwordAdicionaClientes2;
+    private javax.swing.JPasswordField passwordEmpregados;
+    private javax.swing.JPasswordField passwordEmpregados2;
     private javax.swing.JFrame pesquisarClienteFrame;
     private javax.swing.JToggleButton pesquisarClientes;
     private javax.swing.JToggleButton pesquisarClientesButton;
@@ -4107,7 +4091,9 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextField produtorResultadosFilme;
     private javax.swing.JTextField realizadorResultadosFilme;
     private javax.swing.JFrame resultadosFrame;
+    private javax.swing.JFormattedTextField salarioEmpregados;
     private javax.swing.JFormattedTextField telefoneAdicionaClientes;
+    private javax.swing.JFormattedTextField telefoneEmpregados;
     private javax.swing.JTextField telefonePesquisarClientes;
     private javax.swing.JTextArea textDescricaoAdicionaFilme;
     private javax.swing.JTextArea textEliminaFilmes;
