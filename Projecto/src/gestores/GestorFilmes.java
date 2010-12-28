@@ -1,10 +1,10 @@
 package gestores;
 
-import outros.Consts;
-import outros.Filme;
-import outros.Utils;
+import java.util.Vector;
 
-import javax.swing.ImageIcon;
+import outros.Consts;
+import outros.Excepcao;
+import outros.Utils;
 
 import bd.DBHandler;
 
@@ -14,32 +14,68 @@ import bd.DBHandler;
  */
 public class GestorFilmes
 {
-	DBHandler dbh = new DBHandler();
+	/* ---------------------------------------------------------------- */
+	/* ---------------------------- FILMES ---------------------------- */
+	/* ---------------------------------------------------------------- */
+	public Vector<String[]> verListaFilmes() {
+		return DBHandler.getFilmes();
+	}
+	
+	public Vector<String[]> getFilmesOrdTitulo() {
+		return DBHandler.getFilmesOrdTitulo();
+	}
+	
+	public Vector<String[]> getFilmesOrdAno() {
+		return DBHandler.getFilmesOrdAno();
+	}
+	
+	public Vector<String[]> getFilmesOrdRankIMDB() {
+		return DBHandler.getFilmesOrdRankIMDB();
+	}
+	
+	//TODO: Gui String[] em vez de Filme
+	public String[] getFilme(String id) {
+		String[] filme = DBHandler.getFilme(id);
+		String[] generosFilme = DBHandler.getGenerosFilmeNome(id);
+		return Utils.extend(filme, generosFilme);
+	}
 	
 	/**
 	 * Adiciona um filme Ã  base de dados
 	 */
-	// TODO: String[] generos conter IDs em vez de nomes de géneros
-	public String addMovie(String titulo, String ano, String[] generos, String realizador, String produtora, String pais, String capa, String descricao, String ratingIMDB) {
-		//"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"}
-		
-		if(Utils.toInt(ano) == Consts.ERRO_INT)
-			return "O ano inserido é inválido.";
-		if(Utils.toDouble(ratingIMDB) == Consts.ERRO_DOUBLE)
-			return "O rank IMDB inserido é inválido.";
-		
-		dbh.adicionaFilme(titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
-		
-		return "Adicionado: "+titulo+" ("+ano+")"
-						+"\n"+Utils.list(generos, ",")
-						+"\n"+realizador
-						+"\n"+produtora
-						+"\n"+pais
-						+"\n"+capa
-						+"\n"+descricao
-						+"\n"+ratingIMDB;
+	// TODO: assumi que "String[] generos" contém IDs e não nomes de géneros.
+	// também assumi que o ano e ratingIMDB vêm correctos, embora ainda tenha a verificação
+	// TODO: gui ver ordem dos métodos
+	// TODO: gui adicionaFilme em vez de addFilme
+	// TODO: adicionar generos (difícil. tenho de saber o ID do filme k acabei de adicionar)
+	public String adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) throws Excepcao {
+		DBHandler.adicionaFilme(titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
+		System.out.println("O seguinte filme foi adicionado: (" + ano + ") " + titulo);
+		return "O seguinte filme foi adicionado: (" + ano + ") " + titulo;
 	}
 
+	// TODO: gui ver ordem dos métodos
+	// TODO: adicionar generos (difícil. tenho de saber o ID do filme k acabei de adicionar)
+	public String actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) throws Excepcao {
+		DBHandler.actualizaFilme(id, titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
+		System.out.println("O filme com o ID " + id + " foi actualizado.");
+		return "O filme foi actualizado.";
+	}
+	
+	public String invalidaFilme(String id) {
+		DBHandler.invalidaFilme(id);
+		System.out.println("O filme com o ID " + id + " foi invalidado.");
+		return "O filme foi invalidado.";
+	}
+	
+	public String validaFilme(String id) {
+		DBHandler.validaFilme(id);
+		System.out.println("O filme com o ID " + id + " foi re-validado.");
+		return "O filme foi re-validado.";
+	}
+	
+	
+	/* --------------------------------------------------------------------------------- */
 	/**
 	 * @param idMovie identificador unÃ­voco do filme na base de dados
 	 * @param formato bluray, dvd,etc..
@@ -47,6 +83,7 @@ public class GestorFilmes
 	 * @param custoAluger preÃ§o praticado no aluguer
 	 * @return
 	 */
+	// TODO: do it
 	public String addStock(String idMovie, String formato, String custo, String custoAluger) {
 
 		return null;
@@ -59,6 +96,7 @@ public class GestorFilmes
 	 * @param quantidade nÃºmero de cÃ³pias a eliminar
 	 * @return
 	 */
+	// TODO: do it
 	public String deleteStock(String idMovie, String formato, int quantidade) {
 		System.out.println("gestorFilmes: Eliminou Supostamente:" + idMovie + " " + formato + " " + quantidade);
 		return null;
@@ -76,31 +114,16 @@ public class GestorFilmes
 	 * @param pais
 	 * @return lista com resultados
 	 */
-	public String[] searchMovie(String id,String titulo, int anoInicio,int anoFim, double imdbBegin, double imdbEnd, String realizador, String produtor, String pais) {
-			String []listaResultados= new String[6];
+	// TODO: gui procuraFilmes em vez de searchMovie
+	public Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
+			/*String []listaResultados= new String[6];
 			listaResultados[0]="222 Apocalipse Now";
 			listaResultados[1]="2 Toy Story 3";
 			listaResultados[2]="34 Tangled";
 			listaResultados[3]="666 Inception";
 			listaResultados[2]="4 Titanic";
-			listaResultados[3]="1 The Pianist";
-			
-			return listaResultados;
-	}
-
-	public Filme getFilme(String id){
-		String []generos={"AcÃ§Ã£o","Historical"};
-		Filme f=new Filme("Inglorious Basterds",2010,generos,
-		"Tarantino",
-		"20th Century Fox",
-		"USA",
-		new ImageIcon("MV5BMTI5Mjc2MTE3OV5BMl5BanBnXkFtZTcwNTc2MzI2Mg@@._V1._CR341,0,1365,1365_SS80_.jpg"),
-		"In Nazi-occupied France during World War II, a group of " +
-				"Jewish-American soldiers known as \"The Basterds\" are " +
-				"chosen specifically to spread fear throughout the Third " +
-				"Reich by scalping and brutally killing Nazis. ",
-		8.4);
-		return f ;
+			listaResultados[3]="1 The Pianist";*/
+			return DBHandler.procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
 	}
 
 	/**
@@ -109,31 +132,110 @@ public class GestorFilmes
 	 * @param formato
 	 * @return
 	 */
+	// TODO: do it
 	public String listarFormato(String idFilme, String formato) {
 		System.out.println(formato);
-		return "ID: " + idFilme + " Formato: " + formato + "\nQuantidade Stock: " + "3" + "\nQuantidade DisponÃ­vel" + "1";
+		return "ID: " + idFilme + " Formato: " + formato +
+			   "\nQuantidade Stock: " + "3" +
+			   "\nQuantidade DisponÃ­vel" + "1";
+	}
+	
+	/* ------------------------------------------------------------------ */
+	/* ---------------------------- FORMATOS ---------------------------- */
+	/* ------------------------------------------------------------------ */
+	// TODO: atencao na GUI. Mudar de String[] para Vector<String[]>
+	public Vector<String[]> verListaFormatos() {
+		return DBHandler.getFormatosOrdNome();
+	}
+	
+	public String getFormatoNome(String id) {
+		return DBHandler.getFormatoNome(id);
+	}
+	
+	/**
+	 * Adiciona um novo formato à base de dados
+	 */
+	// TODO: catch exception na GUI
+	public void adicionaFormato(String nome) throws Excepcao {
+		if (!DBHandler.formatoExiste("", nome)) {
+			DBHandler.adicionaFormato(nome);
+			System.out.println("Novo formato adicionado: " + nome);
+		} else
+			throw new Excepcao(Consts.FORMATO_EXISTE);
 	}
 
-	/**
-	 * Adiciona um novo gÃ©nero Ã  base de dados
-	 * @param novoGenero
-	 */
-	public void adicionaGenero(String novoGenero) {
-		if (novoGenero != null && novoGenero.length() < 3) {
-			// pede Ã  base de DADOS para adicionar
-			System.out.println("gestorFilmes: genero adicionado");
-		}
+	// TODO: catch exception na GUI
+	public void actualizaFormato(String id, String nome) throws Excepcao {
+		if (!DBHandler.formatoExiste(id, nome)) {
+			DBHandler.actualizaFormato(id, nome);
+			System.out.println("Formato actualizado: " + id);
+		} else
+			throw new Excepcao(Consts.FORMATO_EXISTE);
+	}
+	
+	public void removeFormato(String id) throws Excepcao {
+		if (!DBHandler.formatoEmUso(id)) {
+			DBHandler.removeFormato(id);
+			System.out.println("Formato removido: " + id);
+		} else
+			throw new Excepcao(Consts.FORMATO_EM_USO);
+	}
+	
+	public void removeFormatoNome(String nome) throws Excepcao {
+		if (!DBHandler.formatoEmUsoNome(nome)) {
+			DBHandler.removeFormato(nome);
+			System.out.println("Formato removido: " + nome);
+		} else
+			throw new Excepcao(Consts.FORMATO_EM_USO);
 	}
 
+	/* ----------------------------------------------------------------- */
+	/* ---------------------------- GÉNEROS ---------------------------- */
+	/* ----------------------------------------------------------------- */
+	// TODO: atencao na GUI. Mudar de String[] para Vector<String[]>
+	public Vector<String[]> verListaGeneros() {
+		return DBHandler.getGenerosOrdNome();
+	}
+	
+	public String getGeneroNome(String id) {
+		return DBHandler.getGeneroNome(id);
+	}
+	
 	/**
-	 * Actualiza lista de gÃ©neros
-	 * @param novoGenero
+	 * Adiciona um novo género à base de dados
 	 */
-	public String[] verListaGeneros() {
-		String[] listaGeneros = new String[3];
-		listaGeneros[0] = "TragÃ©dia";
-		listaGeneros[1] = "Drama";
-		listaGeneros[2] = "Horror";
-		return listaGeneros;
+	// TODO: catch exception na GUI
+	public void adicionaGenero(String nome) throws Excepcao {
+		if (!DBHandler.generoExiste("", nome)) {
+			DBHandler.adicionaGenero(nome);
+			System.out.println("Novo género adicionado: " + nome);
+		} else
+			throw new Excepcao(Consts.GENERO_EXISTE);
+	}
+
+	// TODO: catch exception na GUI
+	public void actualizaGenero(String id, String nome) throws Excepcao {
+		if (!DBHandler.generoExiste(id, nome)) {
+			DBHandler.actualizaGenero(id, nome);
+			System.out.println("Género actualizado: " + id);
+		} else
+			throw new Excepcao(Consts.GENERO_EXISTE);
+	}
+
+	// TODO: catch exception na GUI
+	public void removeGenero(String id) throws Excepcao {
+		if (!DBHandler.generoEmUso(id)) {
+			DBHandler.removeGenero(id);
+			System.out.println("Género removido: " + id);
+		} else
+			throw new Excepcao(Consts.GENERO_EM_USO);
+	}
+	
+	public void removeGeneroNome(String nome) throws Excepcao {
+		if (!DBHandler.generoEmUsoNome(nome)) {
+			DBHandler.removeGeneroNome(nome);
+			System.out.println("Género removido: " + nome);
+		} else
+			throw new Excepcao(Consts.GENERO_EM_USO);
 	}
 }
