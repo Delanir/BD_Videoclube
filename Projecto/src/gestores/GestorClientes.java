@@ -34,8 +34,9 @@ public class GestorClientes
 	 * @param morada
 	 * @return
 	 */
-	public String actualizaCliente(String id, String nome, String telefone, String bi,
+	public String actualizaCliente(String bi, String nome, String telefone,
 			String password, String email, String morada) {
+            //TODO verificar strings ""!
 		return null;
 	}
 
