@@ -8,40 +8,28 @@ package gestores;
 import java.util.GregorianCalendar;
 import java.util.Vector;
 
-import outros.Consts;
+import outros.Utils;
 
 import bd.DBHandler;
 
 public class GestorClientes
 {
 	/**
-	 * Adiciona um novo cliente ao sistema
+	 * Adiciona um novo cliente se o BI passado como argumento não existir.
+	 * Actualiza os dados se já existir.
 	 */
-	// TODO: ordem na gui
-	// "ID_PES", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"
-	public String adicionaCliente(String nome, String bi, String password, String morada, String email, String telefone) {
-		if (!DBHandler.biClienteExiste("", bi)) {
+	public String actualizaCliente(String nome, String bi, String password, String morada, String email, String telefone) {
+		if (DBHandler.biClienteExiste(bi)) {
 			DBHandler.adicionaCliente(nome, bi, password, morada, email, telefone);
 			return "Novo cliente adicionado.";
-		} else
-			return Consts.BI_CLIENTE_EXISTE;
-	}
-
-	/**
-	 * actualiza os campos não nulos no cliente
-	 */
-	// TODO: ordem na gui
-	public String actualizaCliente(String id, String nome, String bi, String password, String morada, String email, String telefone) {
-		//TODO verificar strings ""!
-		if (!DBHandler.biClienteExiste(id, bi)) {
-			DBHandler.actualizaCliente(id, nome, bi, password, morada, email, telefone);
+		} else {
+			DBHandler.actualizaCliente(nome, bi, password, morada, email, telefone);
 			return "Cliente actualizado.";
-		} else
-			return Consts.BI_CLIENTE_EXISTE;
+		}
 	}
 	
 	/**
-	 * Devolve informações relativas oa cliente em questÃ£o
+	 * Devolve informações relativas ao cliente em questÃ£o
 	 */
 	public String[] procuraCliente(String id) {
 		return DBHandler.getCliente(id);
@@ -52,36 +40,47 @@ public class GestorClientes
 	}
 
 	/**
-	 * Procura clientes que respeitem as informaÃ§Ãµes nÃ£o nulas dadas!
+	 * Procura clientes com as informações nos campos não nulos passados.
+	 * Strings devolvidas no formato "id : [BI] nome"
 	 */
-	public String procuraClientes(String nome, String bi, String password, String morada, String email, String telefone) {
-		return null;
-	}
-
-	/**
-	 * Lista clientes activos no sistema
-	 * @return
-	 */
-	public String[] verListaClientes() {
-		Vector<String[]> vec = DBHandler.getClientes();
+	public String[] procuraClientes(String nome, String bi, String morada, String email, String telefone) {
+		Vector<String[]> vec = DBHandler.procuraClientes(nome, morada, email, telefone);
 		String[] ret = new String[vec.size()];
 		int i=0;
 		for(String[] sa : vec) {
-			ret[i] = sa[0] + ": (" + sa[2] + ") " + sa[1]; //id: (BI) nome
+			ret[i] = sa[0] + " : [" + sa[2] + "] " + sa[1];
 			i++;
 		}
 		return ret;
 	}
 
 	/**
-	 * apaga um cliente do sistema
-	 * @param id
-	 * @return
+	 * Lista clientes activos no sistema.
+	 * Strings devolvidas no formato "id : [BI] nome"
 	 */
-	public String removeCliente(String id) {
-		return null;
+	public String[] verListaClientes() {
+		Vector<String[]> vec = DBHandler.getClientes();
+		String[] ret = new String[vec.size()];
+		int i=0;
+		for(String[] sa : vec) {
+			ret[i] = sa[0] + " : [" + sa[2] + "] " + sa[1];
+			i++;
+		}
+		return ret;
 	}
 
+	public String invalidaCliente(String id) {
+		DBHandler.invalidaCliente(id);
+		Utils.dbg("O cliente com o ID " + id + " foi invalidado.");
+		return "O cliente foi invalidado.";
+	}
+
+	public String invalidaClienteBI(String bi) {
+		DBHandler.invalidaClienteBI(bi);
+		Utils.dbg("O cliente com o BI " + bi + " foi invalidado.");
+		return "O cliente foi invalidado.";
+	}
+	
 	/**
 	 * devolve uma lista com os clientes que tÃªm pagamentos em atraso
 	 * @return
@@ -93,9 +92,6 @@ public class GestorClientes
 
 	/**
 	 * envia um email a um cliente
-	 * @param id
-	 * @param mensagem
-	 * @return
 	 */
 	// TODO: do it
 	public void notificarCliente(String id, String mensagem) {
@@ -107,12 +103,10 @@ public class GestorClientes
 	}
 
 	/**
-	 * gera uma string com as estatisticas mais relevantes relativas aos
-	 * clientes
-	 * @param begin
-	 * @param end
-	 * @return
+	 * gera uma string com as estatisticas mais relevantes relativas aos clientes
 	 */
+	// TODO: do it
+	// TODO: GregorianCalendars? e Strings, nao? :p
 	public String estatisticasClientes(GregorianCalendar begin, GregorianCalendar end) {
 		if (begin != null && end != null) {
 			// estatisticas num intrevalo de tempo

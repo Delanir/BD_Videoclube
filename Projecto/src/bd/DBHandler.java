@@ -100,7 +100,7 @@ public class DBHandler
 	public static String[] getToSetCamposFilmeGenero() {	return new String[]{};}
 	public static String[] getToSetCamposFormatos() {		return new String[]{"NOME_FORMATO"};}
 	public static String[] getToSetCamposGeneros() {		return new String[]{"NOME_GENERO"};}
-	public static String[] getToSetCamposMaquinasATM() {	return new String[]{"PRECO", "DATA_INSTALACAO"};}
+	public static String[] getToSetCamposMaquinasATM() {	return new String[]{"PRECO"};}
 	public static String[] getToSetCamposPagamentos() {		return new String[]{"MONTANTE"};}
 	public static String[] getToSetCamposRequisicoes() {	return new String[]{"DATA_LIMITE", "DATA_ENTREGA"};}
 	public static String[] getToSetCamposStocks() {			return new String[]{"DISPONIVEIS", "QUANT", "CUSTO_COMPRA", "CUSTO_ALUGUER"};}
@@ -126,24 +126,11 @@ public class DBHandler
 	 * @return os campos do cliente.
 	 */
 	public static String[] getCliente(String id) {
-		return selectAll("clientes", "ID_CLI", id).get(0);
+		return selectAll("clientes", "ID_PES", id).get(0);
 	}
 	
 	public static String[] getClienteBI(String bi) {
 		return selectAll("clientes", "BI", bi).get(0);
-	}
-	
-	public static Vector<String[]> procuraClientes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
-		String query = "SELECT ID_FIL, ANO, TITULO" +
-					   " FROM filmes f" +
-					   " WHERE ID_FIL = ID_FIL" +	// redundância para evitar o caso em que o WHERE fica sem nada
-					   (titulo.isEmpty()?"":" AND titulo = "+p(titulo)) +
-					   (realizador.isEmpty()?"":" AND realizador = "+p(realizador)) +
-					   (pais.isEmpty()?"":" AND pais = "+p(pais)) +
-					   (produtora.isEmpty()?"":" AND produtora = "+p(produtora)) +
-					   (anoLow.isEmpty()||anoHigh.isEmpty()?"":" AND ano BETWEEN "+anoLow+" AND "+anoHigh) +
-					   (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND ratingIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh);
-		return select(query);
 	}
 
 	/**
@@ -171,7 +158,13 @@ public class DBHandler
 	 * @param telefone o novo número de telefone do cliente a actualizar.
 	 */
 	public static void actualizaCliente(String id, String nome, String bi, String password, String morada, String email, String telefone) {
-		actualizaObjecto("clientes", "ID_CLI", id,
+		actualizaObjecto("clientes", "ID_PES", id,
+						 getToSetCamposClientes(),
+						 new String[]{p(nome), bi, p(password), p(morada), p(email), telefone});
+	}
+	
+	public static void actualizaCliente(String nome, String bi, String password, String morada, String email, String telefone) {
+		actualizaObjecto("clientes", "BI", bi,
 						 getToSetCamposClientes(),
 						 new String[]{p(nome), bi, p(password), p(morada), p(email), telefone});
 	}
@@ -181,7 +174,11 @@ public class DBHandler
 	 * @param id o ID do cliente a invalidar.
 	 */
 	public static void invalidaCliente(String id) {
-		invalidaObjecto("clientes", "ID_CLI", id);
+		invalidaObjecto("clientes", "ID_PES", id);
+	}
+	
+	public static void invalidaClienteBI(String bi) {
+		invalidaObjecto("clientes", "BI", bi);
 	}
 	
 	/**
@@ -189,7 +186,18 @@ public class DBHandler
 	 * @param id o ID do cliente a re-validar.
 	 */
 	public static void validaCliente(String id) {
-		validaObjecto("clientes", "ID_CLI", id);
+		validaObjecto("clientes", "ID_PES", id);
+	}
+	
+	public static Vector<String[]> procuraClientes(String nome, String morada, String email, String telefone) {
+		String query = "SELECT ID_PES, NOME, BI" +
+					   " FROM clientes" +
+					   " WHERE ID_PES = ID_PES" +	// redundância para evitar o caso em que o WHERE fica sem nada
+					   (nome.isEmpty()?"":" AND nome = "+p("%"+nome+"%")) +
+					   (morada.isEmpty()?"":" AND morada = "+p("%"+morada+"%")) +
+					   (email.isEmpty()?"":" AND email = "+p("%"+email+"%")) +
+					   (telefone.isEmpty()?"":" AND telefone = "+p("%"+telefone+"%"));
+		return select(query);
 	}
 
 	/* -------------------------------------------------------------------- */
@@ -209,7 +217,11 @@ public class DBHandler
 	 * @return os campos do empregado.
 	 */
 	public static String[] getEmpregado(String id) {
-		return selectAll("empregados", "ID_EMP", id).get(0);
+		return selectAll("empregados", "ID_PES", id).get(0);
+	}
+	
+	public static String[] getEmpregadoBI(String bi) {
+		return selectAll("empregados", "BI", bi).get(0);
 	}
 
 	/**
@@ -242,7 +254,7 @@ public class DBHandler
 	 * @param telefone o novo número de telefone do empregado a actualizar.
 	 */
 	public static void actualizaEmpregado(String id, String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone) {
-		actualizaObjecto("empregados", "ID_EMP", id,
+		actualizaObjecto("empregados", "ID_PES", id,
 						 getToSetCamposEmpregados(),
 					 	 new String[]{is_admin, salario, p(nome), bi, p(password), p(morada), p(email), telefone});
 	}
@@ -252,7 +264,11 @@ public class DBHandler
 	 * @param id o ID do empregado a invalidar.
 	 */
 	public static void invalidaEmpregado(String id) {
-		invalidaObjecto("empregados", "ID_EMP", id);
+		invalidaObjecto("empregados", "ID_PES", id);
+	}
+	
+	public static void invalidaEmpregadoBI(String bi) {
+		invalidaObjecto("empregados", "BI", bi);
 	}
 	
 	/**
@@ -260,7 +276,20 @@ public class DBHandler
 	 * @param id o ID do empregado a re-validar.
 	 */
 	public static void validaEmpregado(String id) {
-		invalidaObjecto("empregados", "ID_EMP", id);
+		invalidaObjecto("empregados", "ID_PES", id);
+	}
+	
+	public static Vector<String[]> procuraEmpregados(String is_admin, String salarioLow, String salarioHigh, String nome, String morada, String email, String telefone) {
+		String query = "SELECT ID_PES, NOME, BI" +
+					   " FROM clientes" +
+					   " WHERE ID_PES = ID_PES" +	// redundância para evitar o caso em que o WHERE fica sem nada
+					   (is_admin.isEmpty()?"":" AND is_admin = "+is_admin) +
+					   (salarioLow.isEmpty()||salarioHigh.isEmpty()?"":" AND salario BETWEEN "+salarioLow+" AND "+salarioHigh) +
+					   (nome.isEmpty()?"":" AND nome = "+p("%"+nome+"%")) +
+					   (morada.isEmpty()?"":" AND morada = "+p("%"+morada+"%")) +
+					   (email.isEmpty()?"":" AND email = "+p("%"+email+"%")) +
+					   (telefone.isEmpty()?"":" AND telefone = "+p("%"+telefone+"%"));
+		return select(query);
 	}
 
 	/* ---------------------------------------------------------------- */
@@ -350,10 +379,10 @@ public class DBHandler
 		String query = "SELECT ID_FIL, ANO, TITULO" +
 					   " FROM filmes f" +
 					   " WHERE ID_FIL = ID_FIL" +	// redundância para evitar o caso em que o WHERE fica sem nada
-					   (titulo.isEmpty()?"":" AND titulo = "+p(titulo)) +
-					   (realizador.isEmpty()?"":" AND realizador = "+p(realizador)) +
-					   (pais.isEmpty()?"":" AND pais = "+p(pais)) +
-					   (produtora.isEmpty()?"":" AND produtora = "+p(produtora)) +
+					   (titulo.isEmpty()?"":" AND titulo = "+p("%"+titulo+"%")) +
+					   (realizador.isEmpty()?"":" AND realizador = "+p("%"+realizador+"%")) +
+					   (pais.isEmpty()?"":" AND pais = "+p("%"+pais+"%")) +
+					   (produtora.isEmpty()?"":" AND produtora = "+p("%"+produtora+"%")) +
 					   (anoLow.isEmpty()||anoHigh.isEmpty()?"":" AND ano BETWEEN "+anoLow+" AND "+anoHigh) +
 					   (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND ratingIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh);
 		/*for(String id_gen : generos) {
@@ -576,9 +605,9 @@ public class DBHandler
 	 * @param preco o preço da máquina a adicionar.
 	 * @param data_instalacao a data de instalação da máquina a adicionar.
 	 */
-	public static void adicionaMaquinaATM(String preco, String data_instalacao) {
+	public static void adicionaMaquinaATM(String preco) {
 		adicionaObjecto("maquinasatm",
-						new String[]{"seq_maquinaatm_id.NEXTVAL", preco, "1", p(data_instalacao)});
+						new String[]{"seq_maquinaatm_id.NEXTVAL", preco, "1", "SYSDATE"});
 	}
 	
 	/**
@@ -587,10 +616,10 @@ public class DBHandler
 	 * @param preco o novo preço da máquina a actualizar.
 	 * @param data_instalacao a nova data de instalação da máquina a actualizar.
 	 */
-	public static void actualizaMaquinaATM(String id, String preco, String data_instalacao) {
+	public static void actualizaMaquinaATM(String id, String preco) {
 		actualizaObjecto("maquinasatm", "ID_MAQ", id,
 						 getToSetCamposMaquinasATM(),
-						 new String[]{preco, p(data_instalacao)});
+						 new String[]{preco});
 	}
 
 	/**
@@ -697,7 +726,7 @@ public class DBHandler
 	public static void actualizaRequisicao(String id, String data_limite, String data_entrega) {
 		actualizaObjecto("requisicoes", "ID_REQ", id,
 						 getToSetCamposRequisicoes(),
-						 new String[]{data_limite, p(data_entrega)});
+						 new String[]{p(data_limite), p(data_entrega)});
 	}
 	
 	/**
@@ -805,7 +834,11 @@ public class DBHandler
 	 * @return true, se existe outro cliente com esse BI. false, caso contrário.
 	 */
 	public static boolean biClienteExiste(String id_cli, String bi) {
-		return valorExiste("clientes", "BI", bi, "ID_CLI", id_cli);
+		return valorExiste("clientes", "BI", bi, "ID_PES", id_cli);
+	}
+	
+	public static boolean biClienteExiste(String bi) {
+		return valorExiste("clientes", "BI", bi);
 	}
 	
 	/**
@@ -815,7 +848,11 @@ public class DBHandler
 	 * @return true, se existe outro empregado com esse BI. false, caso contrário.
 	 */
 	public static boolean biEmpregadoExiste(String id_emp, String bi) {
-		return valorExiste("empregados", "BI", bi, "ID_EMP", id_emp);
+		return valorExiste("empregados", "BI", bi, "ID_PES", id_emp);
+	}
+	
+	public static boolean biEmpregadoExiste(String bi) {
+		return valorExiste("empregados", "BI", bi);
 	}
 	
 	/**
@@ -824,7 +861,11 @@ public class DBHandler
 	 * @return true, se o empregado é o único administrador. false, caso contrário.
 	 */
 	public static boolean empregadoEUnicoAdmin(String id_emp) {
-		return !valorExiste("empregados", "IS_ADMIN", "1", "ID_EMP", id_emp);
+		return !valorExiste("empregados", "IS_ADMIN", "1", "ID_PES", id_emp);
+	}
+	
+	public static boolean empregadoEUnicoAdminBI(String bi) {
+		return !valorExiste("empregados", "IS_ADMIN", "1", "BI", bi);
 	}
 	
 	/**
@@ -835,7 +876,7 @@ public class DBHandler
 	 * @return true, se existe outro género com esse nome.  false, caso contrário.
 	 */
 	public static boolean generoExiste(String id_gen, String nome) {
-		return valorExiste("generos", "NOME_GENERO", nome, "ID_GEN", id_gen);
+		return valorExiste("generos", "NOME_GENERO", p(nome), "ID_GEN", id_gen);
 	}
 	
 	/**
@@ -846,7 +887,7 @@ public class DBHandler
 	 * @return true, se existe outro formato com esse nome. false, caso contrário.
 	 */
 	public static boolean formatoExiste(String id_for, String nome) {
-		return valorExiste("formatos", "NOME_FORMATO", nome, "ID_FOR", id_for);
+		return valorExiste("formatos", "NOME_FORMATO", p(nome), "ID_FOR", id_for);
 	}
 
 	/**
@@ -872,7 +913,7 @@ public class DBHandler
 	}
 	
 	public static boolean formatoEmUsoNome(String nome) {
-		Vector<String[]> vec = select("formatos", new String[]{"ID_FOR"}, "NOME_FORMATO", nome);
+		Vector<String[]> vec = select("formatos", new String[]{"ID_FOR"}, "NOME_FORMATO", p(nome));
 		return valorExiste("stocks", "ID_FOR", vec.get(0)[0]);
 	}
 	
