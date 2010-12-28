@@ -25,6 +25,14 @@ public class Utils
 		return ret;
 	}
 	
+	public static String[] extract(String[] sa, int from) {
+		String[] ret = new String[sa.length - from];
+		int i=0, j=from;
+		for(; j<sa.length; i++, j++)
+			ret[i] = sa[j];
+		return ret;
+	}
+	
 	/**
 	 * Imprime o erro que ocorreu, bem como o método e classe onde ocorreu.
 	 * @param e a excepção (erro) lançada.
@@ -70,6 +78,16 @@ public class Utils
 		for(String[] sa : vec)
 			for(j=0; j<sa.length; i++, j++)
 				ret[i] = sa[j];
+		return ret;
+	}
+	
+	public static String[] strArrayVectorToArray(Vector<String[]> vec, int index) {
+		String[] ret = new String[vec.size()];
+		int i=0;
+		for(String[] sa : vec) {
+			ret[i] = sa[index];
+			i++;
+		}
 		return ret;
 	}
 	

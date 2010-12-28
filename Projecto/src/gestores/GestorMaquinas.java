@@ -35,23 +35,22 @@ public class GestorMaquinas
 	 * devolve uma lista com todas as máquinas pertencentes ao sistema
 	 * @return
 	 */
-	public String [] listaATMS() {
+	public String[] listaATMS() {
 		return null;
 	}
 
+	/**
+	 * gera estatisticas relacionadas com máquinas
+	 * @param begin
+	 * @param end
+	 * @return
+	 */
+	public String estatisticasMaquinas(GregorianCalendar begin, GregorianCalendar end) {
+		if (begin != null && end != null) {
+			// estatisticas num intrevalo de tempo
+		} else {
 
-        /**
-         * gera estatisticas relacionadas com máquinas
-         * @param begin
-         * @param end
-         * @return
-         */
-        public String estatisticasMaquinas(GregorianCalendar begin,GregorianCalendar end){
-            if(begin!=null&&end!=null){
-                //estatisticas num intrevalo de tempo
-            }else{
-
-            }
-            return "Estatisticas Maquinas:\n------------------------\n";
-        }
+		}
+		return "Estatisticas Maquinas:\n------------------------\n";
+	}
 }

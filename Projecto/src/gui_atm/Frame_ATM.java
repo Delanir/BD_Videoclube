@@ -1485,7 +1485,7 @@ public class Frame_ATM  extends JFrame{
                     jTextField5.setText(e.getRealizador());
                     jTextArea1.setText(e.getDescricao());
                     jTextField7.setText(""+e.getAno());
-                    jTextField6.setText(e.getProdutor());
+                    jTextField6.setText(e.getProdutora());
                     jTextField9.setText(""+e.getRatingIMDB());
                     jTextField10.setText(e.getPais());
             }

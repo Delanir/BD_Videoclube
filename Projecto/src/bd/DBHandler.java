@@ -19,6 +19,7 @@ import outros.Utils;
  */
 public class DBHandler
 {
+	//TODO: ver cenas onde faltam plicas (provavelmente muito sitio >_>)
 	private static Connection conn;
 	
 	/**
@@ -85,24 +86,24 @@ public class DBHandler
 	public static String[] getCamposClientes() {		return new String[]{"ID_PES", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"};}
 	public static String[] getCamposEmpregados() {		return new String[]{"ID_PES", "IS_ADMIN", "SALARIO", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"};}
 	public static String[] getCamposFilmes() {			return new String[]{"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"};}
-	public static String[] getCamposFilmeGenero() {	return new String[]{"ID_GEN", "ID_FIL"};}
+	public static String[] getCamposFilmeGenero() {		return new String[]{"ID_GEN", "ID_FIL"};}
 	public static String[] getCamposFormatos() {		return new String[]{"ID_FOR", "NOME_FORMATO"};}
-	public static String[] getCamposGeneros() {		return new String[]{"ID_GEN", "NOME_GENERO"};}
-	public static String[] getCamposMaquinasATM() {	return new String[]{"ID_MAQ", "PRECO", "VALIDO", "DATA_INSTALACAO"};}
+	public static String[] getCamposGeneros() {			return new String[]{"ID_GEN", "NOME_GENERO"};}
+	public static String[] getCamposMaquinasATM() {		return new String[]{"ID_MAQ", "PRECO", "VALIDO", "DATA_INSTALACAO"};}
 	public static String[] getCamposPagamentos() {		return new String[]{"ID_REQ", "MONTANTE"};}
-	public static String[] getCamposRequisicoes() {	return new String[]{"ID_REQ", "ID_MAQ", "EMP_ID_PES", "ID_PES", "ID_FIL", "ID_FOR", "DATA", "DATA_LIMITE", "DATA_ENTREGA"};}
+	public static String[] getCamposRequisicoes() {		return new String[]{"ID_REQ", "ID_MAQ", "EMP_ID_PES", "ID_PES", "ID_FIL", "ID_FOR", "DATA", "DATA_LIMITE", "DATA_ENTREGA"};}
 	public static String[] getCamposStocks() {			return new String[]{"ID_FIL", "ID_FOR", "DISPONIVEIS", "QUANT", "CUSTO_COMPRA", "CUSTO_ALUGUER"};}
 
 	public static String[] getToSetCamposClientes() {		return new String[]{"NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE"};}
-	public static String[] getToSetCamposEmpregados() {	return new String[]{"IS_ADMIN", "SALARIO", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE"};}
-	public static String[] getToSetCamposFilmes() {		return new String[]{"TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA"};}
+	public static String[] getToSetCamposEmpregados() {		return new String[]{"IS_ADMIN", "SALARIO", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE"};}
+	public static String[] getToSetCamposFilmes() {			return new String[]{"TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA"};}
 	public static String[] getToSetCamposFilmeGenero() {	return new String[]{};}
 	public static String[] getToSetCamposFormatos() {		return new String[]{"NOME_FORMATO"};}
 	public static String[] getToSetCamposGeneros() {		return new String[]{"NOME_GENERO"};}
 	public static String[] getToSetCamposMaquinasATM() {	return new String[]{"PRECO", "DATA_INSTALACAO"};}
-	public static String[] getToSetCamposPagamentos() {	return new String[]{"MONTANTE"};}
+	public static String[] getToSetCamposPagamentos() {		return new String[]{"MONTANTE"};}
 	public static String[] getToSetCamposRequisicoes() {	return new String[]{"DATA_LIMITE", "DATA_ENTREGA"};}
-	public static String[] getToSetCamposStocks() {		return new String[]{"DISPONIVEIS", "QUANT", "CUSTO_COMPRA", "CUSTO_ALUGUER"};}
+	public static String[] getToSetCamposStocks() {			return new String[]{"DISPONIVEIS", "QUANT", "CUSTO_COMPRA", "CUSTO_ALUGUER"};}
 
 	/* ------------------------------------------------------------------ */
 	/* ---------------------------- CLIENTES ---------------------------- */
@@ -330,13 +331,13 @@ public class DBHandler
 	
 	// TODO: géneros
 	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
-		String query = "SELECT ID_FIL" +
+		String query = "SELECT ID_FIL, ANO, TITULO" +
 					   " FROM filmes f" +
 					   " WHERE ID_FIL = ID_FIL" +	// redundância para evitar o caso em que o WHERE fica sem nada
-					   (titulo.isEmpty()?"":" AND titulo = "+titulo) +
-					   (realizador.isEmpty()?"":" AND realizador = "+realizador) +
-					   (pais.isEmpty()?"":" AND pais = "+pais) +
-					   (produtora.isEmpty()?"":" AND produtora = "+produtora) +
+					   (titulo.isEmpty()?"":" AND titulo = "+p(titulo)) +
+					   (realizador.isEmpty()?"":" AND realizador = "+p(realizador)) +
+					   (pais.isEmpty()?"":" AND pais = "+p(pais)) +
+					   (produtora.isEmpty()?"":" AND produtora = "+p(produtora)) +
 					   (anoLow.isEmpty()||anoHigh.isEmpty()?"":" AND ano BETWEEN "+anoLow+" AND "+anoHigh) +
 					   (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND ratingIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh);
 		/*for(String id_gen : generos) {

@@ -5,8 +5,6 @@
 
 package gestores_atm;
 
-import outros.Filme;
-
 /**
  *
  * @author Daniela
@@ -45,44 +43,6 @@ public class GestorUtilizadores {
         //pesquisar pelo username e devolver uma listagem do historico
         String [] hist = {"pedro","daniel","daniela"};
         return hist;
-    }
-
-    /**
-     * Cada parâmetro pode ser null se não for para ser utilizado na mega query
-     * @param titulo
-     * @param ano
-     * @param imdbBegin
-     * @param imdbEnd
-     * @param realizador
-     * @param produtor
-     * @param pais -> mudei para género porque parecia-me que era o que se kia By PMMA
-     * @return lista com resultados
-     */
-    public Filme [] searchMovie(String titulo,
-                            String ano,
-                            String imdbBegin,
-                            String imdbEnd,
-                            String realizador ,
-                            String produtor ,
-                            String genero){
-        System.out.println("tit:"+titulo);
-        System.out.println("ano:"+ano);
-        System.out.println("imB:"+imdbBegin);
-        System.out.println("imE:"+imdbEnd);
-        System.out.println("rea:"+realizador);
-        System.out.println("pro:"+produtor);
-        System.out.println("gen:"+genero);
-        String [] gens = {"terror","drama","XXX"};
-        Filme [] film = {new Filme("titulo",
-            2000,
-            gens,
-            "realizador",
-            "produtor",
-            "pais",
-            null,
-            "descricao",
-            11.2)};
-        return film;
     }
 
     /**
