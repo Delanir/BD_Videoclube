@@ -6,16 +6,21 @@
 package gestores;
 
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 
 import outros.Utils;
 
 import bd.DBHandler;
+import outros.EmailSender;
 
 public class GestorClientes
 {
 	/**
-	 * Adiciona um novo cliente se o BI passado como argumento não existir.
-	 * Actualiza os dados se já existir.
+	 * Adiciona um novo cliente se o BI passado como argumento nï¿½o existir.
+	 * Actualiza os dados se jï¿½ existir.
 	 */
 	public String actualizaCliente(String nome, String bi, String password, String morada, String email, String telefone) {
 		if (DBHandler.biClienteExiste(bi)) {
@@ -28,7 +33,7 @@ public class GestorClientes
 	}
 	
 	/**
-	 * Devolve informações relativas ao cliente em questÃ£o
+	 * Devolve informaï¿½ï¿½es relativas ao cliente em questÃ£o
 	 */
 	public String[] procuraCliente(String id) {
 		return DBHandler.getCliente(id);
@@ -39,10 +44,10 @@ public class GestorClientes
 	}
 
 	/**
-	 * Procura clientes com as informações nos campos não nulos passados.
+	 * Procura clientes com as informaï¿½ï¿½es nos campos nï¿½o nulos passados.
 	 * Strings devolvidas no formato "id : [BI] nome"
 	 */
-	public String[] procuraClientes(String nome, String bi, String morada, String email, String telefone) {
+	public String[] procuraClientes(String nome, String morada, String email, String telefone) {
 		Vector<String[]> vec = DBHandler.procuraClientes(nome, morada, email, telefone);
 		String[] ret = new String[vec.size()];
 		int i=0;
@@ -94,10 +99,20 @@ public class GestorClientes
 	 */
 	// TODO: do it
 	public void notificarCliente(String id, String mensagem) {
+            String []out;
 		if (id != null && id.isEmpty()) {
 			// procura email
-
+                        out=DBHandler.getClienteBI(id);
 			// envia email
+                        if(out!=null&&out.length!=0){
+                            try {
+                                EmailSender.send("smtp.sapo.pt", 25, "videoclube@thisisafakemail.com", out[5], "NotificaÃ§Ã£o", mensagem);
+                            } catch (AddressException ex) {
+
+                            } catch (MessagingException ex) {
+                                
+                            }
+                        }
 		}
 	}
 }
