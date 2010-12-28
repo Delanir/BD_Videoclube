@@ -3276,7 +3276,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jPesquisarClientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPesquisarClientesButtonActionPerformed
-        jList7.setModel(new OurListModel(gestorClientes.listaClientes()));
+        jList7.setModel(new OurListModel(gestorClientes.verListaClientes()));
         pesquisarClienteFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jPesquisarClientesButtonActionPerformed
@@ -3295,7 +3295,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void pesquisarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarClientesActionPerformed
         // TODO add your handling code here:
-        jList7.setModel(new OurListModel(gestorClientes.listaClientes()));
+        jList7.setModel(new OurListModel(gestorClientes.verListaClientes()));
         pesquisarClienteFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_pesquisarClientesActionPerformed

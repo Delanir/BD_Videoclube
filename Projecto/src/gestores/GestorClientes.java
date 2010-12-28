@@ -7,10 +7,6 @@ package gestores;
 
 import java.util.GregorianCalendar;
 
-/**
- * monitoriza clientes
- * @author Daniela
- */
 public class GestorClientes
 {
 	/**
@@ -23,12 +19,13 @@ public class GestorClientes
 	 * @param morada
 	 * @return
 	 */
-	public String addClient(String nome, String telefone, String bi, String password, String email, String morada) {
+	// "ID_PES", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"
+	public String adicionaCliente(String nome, String telefone, String bi, String password, String email, String morada) {
 		return null;
 	}
 
 	/**
-	 * actualza os campos nÃ£o nulos no cliente
+	 * actualiza os campos não nulos no cliente
 	 * @param nome
 	 * @param telefone
 	 * @param bi
@@ -37,7 +34,8 @@ public class GestorClientes
 	 * @param morada
 	 * @return
 	 */
-	public String actualizaCliente(String id, String nome, String telefone, String bi, String password, String email, String morada) {
+	public String actualizaCliente(String id, String nome, String telefone, String bi,
+			String password, String email, String morada) {
 		return null;
 	}
 
@@ -60,7 +58,9 @@ public class GestorClientes
 	 * @param morada
 	 * @return
 	 */
-	public String procuraCliente(String id, String nome, String telefone, String bi, String email, String morada) {
+	// TODO: do it. WTF o k é isto?
+	public String procuraCliente(String id, String nome, String telefone, String bi, String email,
+			String morada) {
 		return null;
 	}
 
@@ -68,7 +68,7 @@ public class GestorClientes
 	 * Lista clientes activos no sistema
 	 * @return
 	 */
-	public String[] listaClientes() {
+	public String[] verListaClientes() {
 		return null;
 	}
 
@@ -77,7 +77,7 @@ public class GestorClientes
 	 * @param id
 	 * @return
 	 */
-	public String  deleteClient(String id) {
+	public String removeCliente(String id) {
 		return null;
 	}
 
@@ -85,6 +85,7 @@ public class GestorClientes
 	 * devolve uma lista com os clientes que tÃªm pagamentos em atraso
 	 * @return
 	 */
+	// TODO: do it
 	public String verificaClientesComPagamentosEmAtraso() {
 		return null;
 	}
@@ -95,26 +96,28 @@ public class GestorClientes
 	 * @param mensagem
 	 * @return
 	 */
+	// TODO: do it
 	public void notificarCliente(String id, String mensagem) {
-		if(id!=null&&id.isEmpty()){
-                    //procura email
+		if (id != null && id.isEmpty()) {
+			// procura email
 
-                    //envia email
-                }
+			// envia email
+		}
 	}
 
-        /**
-         * gera uma string com as estatisticas mais relevantes relativas aos clientes
-         * @param begin
-         * @param end
-         * @return
-         */
-        public String estatisticasClientes(GregorianCalendar begin,GregorianCalendar end){
-            if(begin!=null&&end!=null){
-                //estatisticas num intrevalo de tempo
-            }else{
+	/**
+	 * gera uma string com as estatisticas mais relevantes relativas aos
+	 * clientes
+	 * @param begin
+	 * @param end
+	 * @return
+	 */
+	public String estatisticasClientes(GregorianCalendar begin, GregorianCalendar end) {
+		if (begin != null && end != null) {
+			// estatisticas num intrevalo de tempo
+		} else {
 
-            }
-            return "Estatisticas Clientes:\n------------------------\n";
-        }
+		}
+		return "Estatisticas Clientes:\n------------------------\n";
+	}
 }

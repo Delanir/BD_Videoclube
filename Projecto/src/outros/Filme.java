@@ -1,120 +1,119 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package outros;
 
-public class Filme
-{
-	private String titulo;
-	private String ano;
-	private String realizador;
-	private String ratingIMDB;
-	private String pais;
-	private String produtora;
-	private String descricao;
-	private String capa;
-	private String valido;
-	private String[] generos;
+import javax.swing.Icon;
 
-	public Filme(
-    		String titulo,
-    		String ano,
+/**
+ *
+ * @author Daniela
+ */
+public class Filme {
+    private String titulo;
+    private int ano;
+    private String[] generos;
+    private String realizador;
+    private String produtora;
+    private String pais;
+    private Icon capa;
+    private String descricao;
+    private double ratingIMDB;
+
+    public Filme(String titulo,
+            int ano,
+            String[] generos,
             String realizador,
-            String ratingIMDB,
-            String pais,
             String produtora,
+            String pais,
+            Icon capa,
             String descricao,
-            String capa,
-            String valido,
-            String[] generos) {
+            double ratingIMDB) {
 
-       this.titulo = titulo;
-       this.ano = ano;
-       this.realizador = realizador;
-       this.ratingIMDB = ratingIMDB;
-       this.pais = pais;
-       this.produtora = produtora;
-       this.descricao = descricao;
-       this.capa = capa;
-       this.setValido(valido);
-       this.generos = generos;
+        this.titulo=titulo;
+        this.ano=ano;
+        this.generos=generos;
+        this.realizador=realizador;
+        this.produtora=produtora;
+        this.pais=pais;
+        this.descricao=descricao;
+        this.capa=capa;
+        this.ratingIMDB=ratingIMDB;
 
     }
 
-	public String getAno() {
-		return ano;
-	}
+    public int getAno() {
+        return ano;
+    }
 
-	public void setAno(String ano) {
-		this.ano = ano;
-	}
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
 
-	public String getCapa() {
-		return capa;
-	}
+    public Icon getCapa() {
+        return capa;
+    }
 
-	public void setCapa(String capa) {
-		this.capa = capa;
-	}
+    public void setCapa(Icon capa) {
+        this.capa = capa;
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-	public String getPais() {
-		return pais;
-	}
+    public String[] getGeneros() {
+        return generos;
+    }
 
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
+    public void setGeneros(String[] generos) {
+        this.generos = generos;
+    }
 
-	public String getProdutora() {
-		return produtora;
-	}
+    public String getPais() {
+        return pais;
+    }
 
-	public void setProdutora(String produtora) {
-		this.produtora = produtora;
-	}
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
 
-	public String getRatingIMDB() {
-		return ratingIMDB;
-	}
+    public String getProdutora() {
+        return produtora;
+    }
 
-	public void setRatingIMDB(String ratingIMDB) {
-		this.ratingIMDB = ratingIMDB;
-	}
+    public void setProdutora(String produtora) {
+        this.produtora = produtora;
+    }
 
-	public String getRealizador() {
-		return realizador;
-	}
+    public double getRatingIMDB() {
+        return ratingIMDB;
+    }
 
-	public void setRealizador(String realizador) {
-		this.realizador = realizador;
-	}
+    public void setRatingIMDB(double ratingIMDB) {
+        this.ratingIMDB = ratingIMDB;
+    }
 
-	public String getTitulo() {
-		return titulo;
-	}
+    public String getRealizador() {
+        return realizador;
+    }
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+    public void setRealizador(String realizador) {
+        this.realizador = realizador;
+    }
 
-	public void setValido(String valido) {
-		this.valido = valido;
-	}
+    public String getTitulo() {
+        return titulo;
+    }
 
-	public String getValido() {
-		return valido;
-	}
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
-	public String[] getGeneros() {
-		return generos;
-	}
-
-	public void setGeneros(String[] generos) {
-		this.generos = generos;
-	}
 }
