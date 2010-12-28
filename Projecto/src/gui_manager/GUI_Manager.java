@@ -449,14 +449,14 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jScrollPane8 = new javax.swing.JScrollPane();
         listaEliminarClientes = new javax.swing.JList();
         eliminarClientesLista = new javax.swing.JButton();
-        biEliminarClientes = new javax.swing.JFormattedTextField(NumberFormat.getIntegerInstance());
+        biEliminaClientes = new javax.swing.JFormattedTextField(NumberFormat.getIntegerInstance());
         notificarClientesFrame = new javax.swing.JFrame();
         jNotificarClientePanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel35 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel42 = new javax.swing.JLabel();
         jTextField17 = new javax.swing.JTextField();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextArea6 = new javax.swing.JTextArea();
+        mensagem = new javax.swing.JTextArea();
         javax.swing.JLabel jLabel52 = new javax.swing.JLabel();
         jToggleButton34 = new javax.swing.JToggleButton();
         enviarEmail = new javax.swing.JButton();
@@ -2843,7 +2843,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         }
     });
 
-    biEliminarClientes.setText(" ");
+    biEliminaClientes.setText(" ");
 
     javax.swing.GroupLayout jEliminarClientePanelLayout = new javax.swing.GroupLayout(jEliminarClientePanel);
     jEliminarClientePanel.setLayout(jEliminarClientePanelLayout);
@@ -2855,7 +2855,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                 .addGroup(jEliminarClientePanelLayout.createSequentialGroup()
                     .addComponent(jLabel51)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(biEliminarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(biEliminaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addGroup(jEliminarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(eliminarClientesLista)
@@ -2883,7 +2883,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
             .addGap(18, 18, 18)
             .addGroup(jEliminarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel51)
-                .addComponent(biEliminarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(biEliminaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(eliminarClienteBI))
             .addGap(18, 18, 18)
             .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2923,11 +2923,11 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     jLabel35.setText("Notificar Cliente:");
 
-    jLabel42.setText("BI ou ID:");
+    jLabel42.setText("BI :");
 
-    jTextArea6.setColumns(20);
-    jTextArea6.setRows(5);
-    jScrollPane9.setViewportView(jTextArea6);
+    mensagem.setColumns(20);
+    mensagem.setRows(5);
+    jScrollPane9.setViewportView(mensagem);
 
     jLabel52.setText("Mensagem:");
 
@@ -3356,9 +3356,9 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void jAdicionarATMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarATMButtonActionPerformed
         
-        gestorMaquinas.addATM(""+((Double)jSpinner6.getValue()));
+        gestorMaquinas.adicionaMaquinaATM(""+((Double)jSpinner6.getValue()));
         jTextArea1.setText("Output");
-        listaMaquinas.setModel(new OurListModel(gestorMaquinas.listaATMS()));
+        listaMaquinas.setModel(new OurListModel(gestorMaquinas.verListaMaquinasATM()));
     }//GEN-LAST:event_jAdicionarATMButtonActionPerformed
 
     private void jDespedirEmpregadoButtonComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonComponentResized
@@ -3374,7 +3374,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
              &&(jPasswordField1.getText().equals(jPasswordField2.getText()))//TODO : Deprecated
                ){
                
-            gestorEmpregados.adicionaEmpregado(jTextField6.getText(), 
+            gestorEmpregados.adicionaEmpregado(jTextField6.getText(),
                     jFormattedTextField1.getText(),
                     jFormattedTextField3.getText(),
                     jRadioButton1.isSelected(),
@@ -3646,23 +3646,22 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void notificarClientesFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_notificarClientesFrameWindowClosing
         // TODO add your handling code here:
-        jTextArea6.setText(null);
+        mensagem.setText(null);
         jTextField17.setText(null);
         notificarClientesFrame.setVisible(false);
       notificarClientesFrame.transferFocusBackward();
     }//GEN-LAST:event_notificarClientesFrameWindowClosing
 
     private void jToggleButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton34ActionPerformed
-        jTextArea6.setText(null);
+        mensagem.setText(null);
         jTextField17.setText(null);
         notificarClientesFrame.setVisible(false);
       notificarClientesFrame.transferFocusBackward();
     }//GEN-LAST:event_jToggleButton34ActionPerformed
 
     private void enviarEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarEmailActionPerformed
-        // TODO add your handling code here:
         
-        gestorClientes.notificarCliente(jTextField17.getText(), jTextArea6.getText());
+        gestorClientes.notificarCliente(jTextField17.getText(), mensagem.getText());
     }//GEN-LAST:event_enviarEmailActionPerformed
 
     private void voltarAdcionaFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarAdcionaFilmesActionPerformed
@@ -3678,7 +3677,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        listaMaquinas.setModel(new OurListModel(gestorMaquinas.listaATMS()));
+        listaMaquinas.setModel(new OurListModel(gestorMaquinas.verListaMaquinasATM()));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -3689,7 +3688,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private void jDespedirEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonActionPerformed
         
         String idEmpregado=((String)listaEmpregados.getSelectedValue()).split(" ")[0];
-       gestorEmpregados.removeEmpregado(idEmpregado);
+       gestorEmpregados.invalidaEmpregado(idEmpregado);
        //TODO: Output message
        jTextArea3.setText("Success/Insuccess");
     }//GEN-LAST:event_jDespedirEmpregadoButtonActionPerformed
@@ -3838,9 +3837,9 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void eliminarClienteBIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarClienteBIActionPerformed
 
-        if(biEliminarClientes.isEditValid()){
+        if(biEliminaClientes.isEditValid()){
             outEliminaClientes.setText(
-                    gestorClientes.removeClienteBI(biEliminarClientes.getText()));
+                    gestorClientes.invalidaClienteBI(biEliminaClientes.getText()));
         }else{
             outEliminaClientes.setText("Nao foi possível eliminar.");
         }
@@ -3851,7 +3850,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         try{
             String idCliente=((String)listaEliminarClientes.getSelectedValue()).split(" ")[0];
             outEliminaClientes.setText(
-                    gestorClientes.removeCliente(idCliente));
+                    gestorClientes.invalidaCliente(idCliente));
         }catch (NullPointerException e){
             outEliminaClientes.setText("Erro: Seleccione o cliente a eliminar.");
         }
@@ -3913,7 +3912,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JSpinner anoAdicionaFilmeSpinner;
     private javax.swing.JTextField anoResultadosFilme;
     private javax.swing.JFormattedTextField biAdicionaClientes;
-    private javax.swing.JFormattedTextField biEliminarClientes;
+    private javax.swing.JFormattedTextField biEliminaClientes;
     private javax.swing.JTextField biPesquisarClientes;
     private javax.swing.JComboBox countriesList;
     private javax.swing.JComboBox countriesList1;
@@ -4057,7 +4056,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextArea jTextArea14;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField32;
@@ -4083,6 +4081,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JList listaMaquinas;
     private javax.swing.JButton listarFormatoEliminar;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JTextArea mensagem;
     private javax.swing.JTextField moradaAdicionaClientes;
     private javax.swing.JTextField moradaPesquisarClientes;
     private javax.swing.JTextField nomeAdicionaClientes;
