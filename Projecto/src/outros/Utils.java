@@ -12,11 +12,21 @@ import java.util.Vector;
 public class Utils
 {
 	public static void main(String[] args) {
-		for(String s : extract(new String[]{"cenas", "coisas", "outras"}, 0)) {
+		/*for(String s : extract(new String[]{"cenas", "coisas", "outras"}, 0)) {
 			System.out.println(s);
-		}
+		}*/
+		Vector<String[]> vec = new Vector<String[]>();
+		vec.add(new String[]{"id1", "nome1", "bi1", "cenas1", "mais cenas1"});
+		vec.add(new String[]{"id2", "nome2", "bi2", "cenas2", "mais cenas2"});
+		vec.add(new String[]{"id3", "nome3", "bi3", "cenas3", "mais cenas3"});
+		printStringArrayln(formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1}));
 	}
 	
+	/* ------------------------------------------------------------------------------------- */
+	/* ---------------------------- MÉTODOS DE VECTORS E ARRAYS ---------------------------- */
+	/* ------------------------------------------------------------------------------------- */
+
+	/* ---------------------------- UTILS ---------------------------- */
 	public static String[] extend(String[] a1, String[] a2) {
 		String[] ret = new String[a1.length + a2.length];
 		int i, j;
@@ -35,41 +45,7 @@ public class Utils
 		return ret;
 	}
 	
-	/**
-	 * Imprime o erro que ocorreu, bem como o método e classe onde ocorreu.
-	 * @param e a excepção (erro) lançada.
-	 */
-	public static void printError(Exception e) {
-		System.out.println(e.toString() + " no método " + e.getStackTrace()[0].getMethodName() + "() da classe " + e.getStackTrace()[0].getClassName());
-		e.printStackTrace();
-	}
-
-	/**
-	 * Converte uma String para inteiro.
-	 * @param strnumber o número (em formato String) a converter.
-	 * @return a String numérica convertida ou ERROR_INT (definido em Consts) se a conversão é impossível.
-	 */
-	public static int toInt(String strnumber) {
-		try {
-			return Integer.parseInt(strnumber);
-		} catch(NumberFormatException e) {
-			return Consts.ERRO_INT;
-		}
-	}
-	
-	/**
-	 * Converte uma String para double.
-	 * @param strnumber o número (em formato String) a converter.
-	 * @return a o número convertido ou ERROR_DOUBLE (definido em Consts) se a conversão é impossível.
-	 */
-	public static double toDouble(String strnumber) {
-		try {
-			return Double.parseDouble(strnumber);
-		} catch(NumberFormatException e) {
-			return Consts.ERRO_DOUBLE;
-		}
-	}
-	
+	/* ---------------------------- CONVERSÃO ---------------------------- */
 	public static String[] strArrayVectorToArray(Vector<String[]> vec) {
 		int i = 0, j, size=0;
 		for(String[] sa : vec)
@@ -103,6 +79,145 @@ public class Utils
 		return ret;
 	}
 	
+	public static String[] formattedFromVector(Vector<String[]> vec, String macro, int[] indexes) {
+		String[] ret = new String[vec.size()];
+		Object[] values;
+		int i=0, j;
+		
+		for(String[] sa : vec) {
+			values = new String[indexes.length];
+			j=0;
+			for(int index : indexes) {
+				values[j] = sa[index];
+				j++;
+			}
+			ret[i] = String.format(macro, values);
+			i++;
+		}
+		return ret;
+	}
+
+	/* ---------------------------- GERAÇÃO DE STRINGS ---------------------------- */
+	/**
+	 * Devolve uma string com os elementos "strs" separados pela string "sep".
+	 * @param strs os elementos a juntar numa string apenas.
+	 * @param sep o separador a usar para separar os elementos.
+	 * @return uma string com os elementos "strs" separados pela string "sep".
+	 */
+	public static String list(String[] strs, String sep) {
+		String lista = strs[0];
+		for (int i = 1; i < strs.length; i++)
+			lista += sep + strs[i];
+		return lista;
+	}
+	
+	public static String list(Vector<String[]> strs, String sep) {
+		String lista = "";
+		for(String[] sa : strs) {
+			lista += sa[0];
+			for (int i = 1; i < sa.length; i++)
+				lista += sep + sa[i];
+			lista += "\n";
+		}
+		return lista;
+	}
+	
+	/**
+	 * Devolve uma string organizada em pares (separados pela string "sep2") de
+	 * "strs" e "strs2" (separados por "sep").
+	 * @param strs a primeira parte dos elementos a juntar em pares numa string apenas.
+	 * @param sep o separador a usar para separar cada dois elementos (par. um de cada lista).
+	 * @param strs2 a segunda parte dos elementos a juntar em pares numa string apenas.
+	 * @param sep2 o separador a usar para separar cada par de elementos dos outros pares.
+	 * @return uma string organizada em pares (separados pela string "sep2") de
+	 * "strs" e "strs2" (separados por "sep").
+	 */
+	public static String list(String[] strs, String sep, String[] strs2, String sep2) {
+		String lista = strs[0] + sep + strs2[0];
+		for (int i = 1; i < strs.length; i++)
+			lista += sep2 + strs[i] + sep + strs2[i];
+		return lista;
+	}
+	
+	/* --------------------------------------------------------------------------- */
+	/* ---------------------------- MÉTODOS DE PRINTS ---------------------------- */
+	/* --------------------------------------------------------------------------- */
+	/**
+	 * Imprime o erro que ocorreu, bem como o método e classe onde ocorreu.
+	 * @param e a excepção (erro) lançada.
+	 */
+	public static void printError(Exception e) {
+		System.out.println(e.toString() + " no método " + e.getStackTrace()[0].getMethodName() + "() da classe " + e.getStackTrace()[0].getClassName());
+		e.printStackTrace();
+	}
+	
+	/**
+	 * Imprime um Vector de arrays de Strings, um array por linha, separados por vírgulas.
+	 * @param vec Vector a imprimir.
+	 */
+	public static void printStringArrayVector(Vector<String[]> vec) {
+		for(String[] sa : vec) {
+			System.out.print(sa[0]);
+			for(int i=1; i<sa.length; i++)
+				System.out.print(", " + sa[i]);
+			System.out.println();
+		}
+	}
+	
+	public static void printStringArray(String[] arr) {
+		System.out.print(arr[0]);
+		for(int i=1; i<arr.length; i++)
+			System.out.print(", " + arr[i]);
+		System.out.println();
+	}
+	
+	public static void printStringArrayln(String[] arr) {
+		for(String s : arr)
+			System.out.println(s);
+	}
+	
+	public static void dbg(String string) {
+		if(Consts.DEBUG)
+			System.out.println(string);
+	}
+	
+	public static void dbgsl(String string) {
+		if(Consts.DEBUG)
+			System.out.print(string);
+	}
+	
+	/* --------------------------------------------------------------------------- */
+	/* ---------------------------- MÉTODOS NUMÉRICOS ---------------------------- */
+	/* --------------------------------------------------------------------------- */
+	/**
+	 * Converte uma String para inteiro.
+	 * @param strnumber o número (em formato String) a converter.
+	 * @return a String numérica convertida ou ERROR_INT (definido em Consts) se a conversão é impossível.
+	 */
+	public static int toInt(String strnumber) {
+		try {
+			return Integer.parseInt(strnumber);
+		} catch(NumberFormatException e) {
+			return Consts.ERRO_INT;
+		}
+	}
+	
+	/**
+	 * Converte uma String para double.
+	 * @param strnumber o número (em formato String) a converter.
+	 * @return a o número convertido ou ERROR_DOUBLE (definido em Consts) se a conversão é impossível.
+	 */
+	public static double toDouble(String strnumber) {
+		try {
+			return Double.parseDouble(strnumber);
+		} catch(NumberFormatException e) {
+			return Consts.ERRO_DOUBLE;
+		}
+	}
+	
+	/* -------------------------------------------------------------------------- */
+	/* ---------------------------- MÉTODOS DE DATAS ---------------------------- */
+	/* -------------------------------------------------------------------------- */
 	/**
 	 * Converte uma data para formato legível, em String, com o formato "ano/mês/dia".
 	 * @param date a data (Calendar) a converter.
@@ -215,69 +330,5 @@ public class Utils
 	 */
 	public static int difToCurrentDate(Calendar cal){
 		return difCalendars(cal, new GregorianCalendar());
-	}
-	
-	/**
-	 * Imprime um Vector de arrays de Strings, um array por linha, separados por vírgulas.
-	 * @param vec Vector a imprimir.
-	 */
-	public static void printStringArrayVector(Vector<String[]> vec) {
-		for(String[] sa : vec) {
-			System.out.print(sa[0]);
-			for(int i=1; i<sa.length; i++)
-				System.out.print(", " + sa[i]);
-			System.out.println();
-		}
-	}
-	
-	/**
-	 * Devolve uma string com os elementos "strs" separados pela string "sep".
-	 * @param strs os elementos a juntar numa string apenas.
-	 * @param sep o separador a usar para separar os elementos.
-	 * @return uma string com os elementos "strs" separados pela string "sep".
-	 */
-	public static String list(String[] strs, String sep) {
-		String lista = strs[0];
-		for (int i = 1; i < strs.length; i++)
-			lista += sep + strs[i];
-		return lista;
-	}
-	
-	public static String list(Vector<String[]> strs, String sep) {
-		String lista = "";
-		for(String[] sa : strs) {
-			lista += sa[0];
-			for (int i = 1; i < sa.length; i++)
-				lista += sep + sa[i];
-			lista += "\n";
-		}
-		return lista;
-	}
-	
-	/**
-	 * Devolve uma string organizada em pares (separados pela string "sep2") de
-	 * "strs" e "strs2" (separados por "sep").
-	 * @param strs a primeira parte dos elementos a juntar em pares numa string apenas.
-	 * @param sep o separador a usar para separar cada dois elementos (par. um de cada lista).
-	 * @param strs2 a segunda parte dos elementos a juntar em pares numa string apenas.
-	 * @param sep2 o separador a usar para separar cada par de elementos dos outros pares.
-	 * @return uma string organizada em pares (separados pela string "sep2") de
-	 * "strs" e "strs2" (separados por "sep").
-	 */
-	public static String list(String[] strs, String sep, String[] strs2, String sep2) {
-		String lista = strs[0] + sep + strs2[0];
-		for (int i = 1; i < strs.length; i++)
-			lista += sep2 + strs[i] + sep + strs2[i];
-		return lista;
-	}
-
-	public static void dbg(String string) {
-		if(Consts.DEBUG)
-			System.out.println(string);
-	}
-	
-	public static void dbgsl(String string) {
-		if(Consts.DEBUG)
-			System.out.print(string);
 	}
 }

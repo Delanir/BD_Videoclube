@@ -189,31 +189,25 @@ public class DBHandler
 		validaObjecto("clientes", "ID_PES", id);
 	}
 	
-	public static Vector<String[]> getClientesComPagamentosEmAtraso() {
-		return null;
-		/*String query = "SELECT ID_PES, NOME, BI" +
-					   " FROM clientes c, requisicoes r, pagamentos p" +
-					   " WHERE ID_PES = ID_PES" +	// redundância para evitar o caso em que o WHERE fica sem nada
-					   (nome.isEmpty()?"":" AND nome = "+p("%"+nome+"%")) +
-					   (morada.isEmpty()?"":" AND morada = "+p("%"+morada+"%")) +
-					   (email.isEmpty()?"":" AND email = "+p("%"+email+"%")) +
-					   (telefone.isEmpty()?"":" AND telefone = "+p("%"+telefone+"%"));
+	public static Vector<String[]> getClientesComEntregasPorFazer() {
+		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI" +
+					   " FROM clientes c, requisicoes r" +
+					   " WHERE c.ID_PES = r.ID_PES" +
+					   " AND r.DATA_ENTREGA = null" +
+					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI" +
+					   " HAVING COUNT(*) > 0";
 		return select(query);
-		SELECT c.ID_PES, c.NOME, c.BI
-		FROM clientes c, requisicoes r
-		WHERE c.ID_PES = r.ID_PES
-		  AND r.DATA_ENTREGA = null
-		  AND r.DATA_LIMITE < SYSDATE
-		GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI
-		HAVING COUNT(*) > 0;
-		
-		SELECT c.ID_PES, c.NOME_PESSOA, c.BI
-		FROM clientes c, requisicoes r
-		WHERE c.ID_PES = r.ID_PES
-		  AND r.DATA_ENTREGA = null
-		GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI
-		HAVING COUNT(*) > 0;
-		 */
+	}
+	
+	public static Vector<String[]> getClientesComEntregasForaDePrazo() {
+		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI" +
+					   " FROM clientes c, requisicoes r" +
+					   " WHERE c.ID_PES = r.ID_PES" +
+					   " AND r.DATA_ENTREGA = null" +
+					   " AND r.DATA_LIMITE < SYSDATE" +
+					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI" +
+					   " HAVING COUNT(*) > 0";
+		return select(query);
 	}
 	
 	public static Vector<String[]> procuraClientes(String nome, String morada, String email, String telefone) {

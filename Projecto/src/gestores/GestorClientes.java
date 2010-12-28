@@ -6,8 +6,6 @@
 package gestores;
 
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
@@ -49,13 +47,7 @@ public class GestorClientes
 	 */
 	public String[] procuraClientes(String nome, String morada, String email, String telefone) {
 		Vector<String[]> vec = DBHandler.procuraClientes(nome, morada, email, telefone);
-		String[] ret = new String[vec.size()];
-		int i=0;
-		for(String[] sa : vec) {
-			ret[i] = sa[0] + " : [" + sa[2] + "] " + sa[1];
-			i++;
-		}
-		return ret;
+		return Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1});
 	}
 
 	/**
@@ -64,13 +56,7 @@ public class GestorClientes
 	 */
 	public String[] verListaClientes() {
 		Vector<String[]> vec = DBHandler.getClientes();
-		String[] ret = new String[vec.size()];
-		int i=0;
-		for(String[] sa : vec) {
-			ret[i] = sa[0] + " : [" + sa[2] + "] " + sa[1];
-			i++;
-		}
-		return ret;
+		return Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1});
 	}
 
 	public String invalidaCliente(String id) {
@@ -87,11 +73,19 @@ public class GestorClientes
 
 	/**
 	 * devolve uma lista com os clientes que têm pagamentos em atraso
-	 * @return
+	 * Strings devolvidas no formato "id : [BI] nome"
 	 */
-	// TODO: do it
-	public String [] getClientesComPagamentosEmAtraso() {
-		return null;
+	public String[] getClientesComEntregasPorFazer() {
+		Vector<String[]> vec = DBHandler.getClientesComEntregasPorFazer();
+		return Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1});
+	}
+
+	/**
+	 * Strings devolvidas no formato "id : [BI] nome"
+	 */
+	public static String[] getClientesComEntregasForaDePrazo() {
+		Vector<String[]> vec = DBHandler.getClientesComEntregasForaDePrazo();
+		return Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1});
 	}
 
 	/**
@@ -99,20 +93,20 @@ public class GestorClientes
 	 */
 	// TODO: do it
 	public void notificarCliente(String id, String mensagem) {
-            String []out;
+        String []out;
 		if (id != null && id.isEmpty()) {
 			// procura email
-                        out=DBHandler.getClienteBI(id);
+            out=DBHandler.getClienteBI(id);
 			// envia email
-                        if(out!=null&&out.length!=0){
-                            try {
-                                EmailSender.send("smtp.sapo.pt", 25, "videoclube@thisisafakemail.com", out[5], "Notificação", mensagem);
-                            } catch (AddressException ex) {
+            if(out!=null&&out.length!=0){
+                try {
+                    EmailSender.send("smtp.sapo.pt", 25, "videoclube@thisisafakemail.com", out[5], "Notificação", mensagem);
+                } catch (AddressException ex) {
 
-                            } catch (MessagingException ex) {
-                                
-                            }
-                        }
+                } catch (MessagingException ex) {
+                    
+                }
+            }
 		}
 	}
 }
