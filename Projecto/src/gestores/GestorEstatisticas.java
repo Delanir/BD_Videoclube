@@ -41,4 +41,63 @@ public class GestorEstatisticas
 
 		return null;
 	}
+
+	/**
+	 * gera uma string com as estatisticas mais relevantes relativas aos clientes
+	 */
+	// TODO: do it
+	// TODO: GregorianCalendars? e Strings, nao? :p
+	public String estatisticasClientes(GregorianCalendar begin, GregorianCalendar end) {
+		if (begin != null && end != null) {
+			// estatisticas num intrevalo de tempo
+		} else {
+
+		}
+		return "Estatisticas Clientes:\n------------------------\n";
+	}
+
+	/**
+	 * gera uma string com as estatisticas mais relevantes relativas aos empregados
+	 */
+	// TODO: do it
+	public String estatisticasEmpregados(GregorianCalendar begin, GregorianCalendar end) {
+		if (begin != null && end != null) {
+			// estatisticas num intrevalo de tempo
+		} else {
+
+		}
+		return "Estatisticas Empregados:\n------------------------\n";
+	}
+
+    /**
+     * gera uma string com as estatisticas mais relevantes relativas aos clientes
+     * @param begin
+     * @param end
+     * @return
+     */
+	// TODO: do it
+    public String estatisticasFilmes(GregorianCalendar begin,GregorianCalendar end){
+        if(begin!=null&&end!=null){
+            //estatisticas num intrevalo de tempo
+        }else{
+
+        }
+        return "Estatisticas Filmes:\n------------------------\n";
+    }
+	
+	/**
+	 * gera estatisticas relacionadas com máquinas
+	 * @param begin
+	 * @param end
+	 * @return
+	 */
+	// TODO
+	public String estatisticasMaquinas(GregorianCalendar begin, GregorianCalendar end) {
+		if (begin != null && end != null) {
+			// estatisticas num intrevalo de tempo
+		} else {
+
+		}
+		return "Estatisticas Maquinas:\n------------------------\n";
+	}
 }

@@ -5,7 +5,6 @@
 
 package gestores;
 
-import java.util.GregorianCalendar;
 import java.util.Vector;
 
 import outros.Utils;
@@ -20,12 +19,12 @@ public class GestorEmpregados
 	 * Adiciona um novo empregado se o BI passado como argumento não existir.
 	 * Actualiza os dados se já existir.
 	 */
-	public String actualizaCliente(String nome, String bi, String password, String morada, String email, String telefone) {
-		if (DBHandler.biClienteExiste(bi)) {
-			DBHandler.adicionaCliente(nome, bi, password, morada, email, telefone);
+	public String actualizaEmpregado(String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone) {
+		if (DBHandler.biEmpregadoExiste(bi)) {
+			DBHandler.adicionaEmpregado(is_admin, salario, nome, bi, password, morada, email, telefone);
 			return "Novo empregado adicionado.";
 		} else {
-			DBHandler.actualizaCliente(nome, bi, password, morada, email, telefone);
+			DBHandler.actualizaEmpregado(is_admin, salario, nome, bi, password, morada, email, telefone);
 			return "Empregado actualizado.";
 		}
 	}
@@ -88,18 +87,5 @@ public class GestorEmpregados
 			return "O empregado foi invalidado.";
 		} else
 			return "O empregado é o único administrador de sistema. Não pode ser invalidado.";
-	}
-
-	/**
-	 * gera uma string com as estatisticas mais relevantes relativas aos empregados
-	 */
-	// TODO: do it
-	public String estatisticasEmpregados(GregorianCalendar begin, GregorianCalendar end) {
-		if (begin != null && end != null) {
-			// estatisticas num intrevalo de tempo
-		} else {
-
-		}
-		return "Estatisticas Empregados:\n------------------------\n";
 	}
 }

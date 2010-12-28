@@ -5,7 +5,6 @@
 
 package gestores;
 
-import java.util.GregorianCalendar;
 import java.util.Vector;
 
 import outros.Utils;
@@ -86,7 +85,7 @@ public class GestorClientes
 	 * @return
 	 */
 	// TODO: do it
-	public String [] verificaClientesComPagamentosEmAtraso() {
+	public String [] getClientesComPagamentosEmAtraso() {
 		return null;
 	}
 
@@ -100,19 +99,5 @@ public class GestorClientes
 
 			// envia email
 		}
-	}
-
-	/**
-	 * gera uma string com as estatisticas mais relevantes relativas aos clientes
-	 */
-	// TODO: do it
-	// TODO: GregorianCalendars? e Strings, nao? :p
-	public String estatisticasClientes(GregorianCalendar begin, GregorianCalendar end) {
-		if (begin != null && end != null) {
-			// estatisticas num intrevalo de tempo
-		} else {
-
-		}
-		return "Estatisticas Clientes:\n------------------------\n";
 	}
 }

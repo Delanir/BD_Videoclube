@@ -5,7 +5,6 @@
 
 package gestores;
 
-import java.util.GregorianCalendar;
 import java.util.Vector;
 
 import outros.Utils;
@@ -53,21 +52,5 @@ public class GestorMaquinas
 		DBHandler.invalidaMaquinaATM(id);
 		Utils.dbg("A m·quina ATM com o ID " + id + " foi invalidada.");
 		return "A m·quina ATM foi invalidada.";
-	}
-	
-	/**
-	 * gera estatisticas relacionadas com m√°quinas
-	 * @param begin
-	 * @param end
-	 * @return
-	 */
-	// TODO
-	public String estatisticasMaquinas(GregorianCalendar begin, GregorianCalendar end) {
-		if (begin != null && end != null) {
-			// estatisticas num intrevalo de tempo
-		} else {
-
-		}
-		return "Estatisticas Maquinas:\n------------------------\n";
 	}
 }

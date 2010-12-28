@@ -189,6 +189,33 @@ public class DBHandler
 		validaObjecto("clientes", "ID_PES", id);
 	}
 	
+	public static Vector<String[]> getClientesComPagamentosEmAtraso() {
+		return null;
+		/*String query = "SELECT ID_PES, NOME, BI" +
+					   " FROM clientes c, requisicoes r, pagamentos p" +
+					   " WHERE ID_PES = ID_PES" +	// redundância para evitar o caso em que o WHERE fica sem nada
+					   (nome.isEmpty()?"":" AND nome = "+p("%"+nome+"%")) +
+					   (morada.isEmpty()?"":" AND morada = "+p("%"+morada+"%")) +
+					   (email.isEmpty()?"":" AND email = "+p("%"+email+"%")) +
+					   (telefone.isEmpty()?"":" AND telefone = "+p("%"+telefone+"%"));
+		return select(query);
+		SELECT c.ID_PES, c.NOME, c.BI
+		FROM clientes c, requisicoes r
+		WHERE c.ID_PES = r.ID_PES
+		  AND r.DATA_ENTREGA = null
+		  AND r.DATA_LIMITE < SYSDATE
+		GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI
+		HAVING COUNT(*) > 0;
+		
+		SELECT c.ID_PES, c.NOME_PESSOA, c.BI
+		FROM clientes c, requisicoes r
+		WHERE c.ID_PES = r.ID_PES
+		  AND r.DATA_ENTREGA = null
+		GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI
+		HAVING COUNT(*) > 0;
+		 */
+	}
+	
 	public static Vector<String[]> procuraClientes(String nome, String morada, String email, String telefone) {
 		String query = "SELECT ID_PES, NOME, BI" +
 					   " FROM clientes" +
@@ -236,9 +263,9 @@ public class DBHandler
 	 * @param telefone o número de telefone do empregado a adicionar.
 	 * @param data_registo a data de registo do empregado a adicionar.
 	 */
-	public static void adicionaEmpregado(String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone, String data_registo) {
+	public static void adicionaEmpregado(String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone) {
 		adicionaObjecto("empregados",
-						new String[]{"seq_pessoa_id.NEXTVAL", is_admin, salario, p(nome), bi, p(password), p(morada), p(email), telefone, "1", p(data_registo)});
+						new String[]{"seq_pessoa_id.NEXTVAL", is_admin, salario, p(nome), bi, p(password), p(morada), p(email), telefone, "1", "SYSDATE"});
 	}
 	
 	/**
@@ -255,6 +282,12 @@ public class DBHandler
 	 */
 	public static void actualizaEmpregado(String id, String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone) {
 		actualizaObjecto("empregados", "ID_PES", id,
+						 getToSetCamposEmpregados(),
+					 	 new String[]{is_admin, salario, p(nome), bi, p(password), p(morada), p(email), telefone});
+	}
+	
+	public static void actualizaEmpregado(String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone) {
+		actualizaObjecto("empregados", "BI", bi,
 						 getToSetCamposEmpregados(),
 					 	 new String[]{is_admin, salario, p(nome), bi, p(password), p(morada), p(email), telefone});
 	}
@@ -686,7 +719,7 @@ public class DBHandler
 	public static void removePagamento(String id) {
 		removeObjecto("pagamentos", "ID_REQ", id);
 	}
-
+	
 	/* --------------------------------------------------------------------- */
 	/* ---------------------------- REQUISIÇÕES ---------------------------- */
 	/* --------------------------------------------------------------------- */
