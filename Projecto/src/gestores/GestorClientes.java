@@ -25,7 +25,7 @@ public class GestorClientes
 	}
 
 	/**
-	 * actualiza os campos não nulos no cliente
+	 * actualiza os campos nï¿½o nulos no cliente
 	 * @param nome
 	 * @param telefone
 	 * @param bi
@@ -58,7 +58,7 @@ public class GestorClientes
 	 * @param morada
 	 * @return
 	 */
-	// TODO: do it. WTF o k é isto?
+	// TODO: do it. WTF o k ï¿½ isto?
 	public String procuraCliente(String id, String nome, String telefone, String bi, String email,
 			String morada) {
 		return null;
@@ -86,7 +86,7 @@ public class GestorClientes
 	 * @return
 	 */
 	// TODO: do it
-	public String verificaClientesComPagamentosEmAtraso() {
+	public String [] verificaClientesComPagamentosEmAtraso() {
 		return null;
 	}
 
