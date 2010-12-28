@@ -80,7 +80,7 @@ public class GestorClientes
 		Utils.dbg("O cliente com o BI " + bi + " foi invalidado.");
 		return "O cliente foi invalidado.";
 	}
-	
+
 	/**
 	 * devolve uma lista com os clientes que têm pagamentos em atraso
 	 * @return
