@@ -102,17 +102,9 @@ public class GestorFilmes
 	}
 
 	/**
-	 * Cada parâmetro pode ser null se não for para ser utilizado na mega
-	 * query
-	 * @param titulo
-	 * @param ano
-	 * @param imdbBegin
-	 * @param imdbEnd
-	 * @param realizador
-	 * @param produtor
-	 * @param pais
-	 * @return lista com resultados
+	 * Cada parâmetro pode ser null se não for para ser utilizado na mega query
 	 */
+	 //Strings devolvidas em formato "id: (ano) titulo"
 	public String[] procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
 		String []listaResultados= new String[6];
 		listaResultados[0]="222 Apocalipse Now";
@@ -126,7 +118,7 @@ public class GestorFilmes
 		String[] ret = new String[vec.size()];
 		int i=0;
 		for(String[] sa : vec) {
-			ret[i] = sa[0] + ": (" + sa[1] + ") " + sa[2]; //id: (ano) titulo
+			ret[i] = sa[0] + ": (" + sa[1] + ") " + sa[2];
 			i++;
 		}
 		return ret;*/
@@ -270,4 +262,14 @@ public class GestorFilmes
     public String alugaFilme(String idFilme, String formato, String idCliente, String idEmpregado){
         return "Alugado/Não Alugado";
     }
+    
+    /**
+     * vai buscar os formatos e o pre�o do aluguer de um filme
+     */
+    // TODO
+    public String [] getFormatoPreco(String idMovie){
+        //pode devolver no formato pre�o + formatos para ser mais simples digo eu
+        return null;
+    }
+
 }

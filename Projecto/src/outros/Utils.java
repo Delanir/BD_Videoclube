@@ -12,7 +12,9 @@ import java.util.Vector;
 public class Utils
 {
 	public static void main(String[] args) {
-		
+		for(String s : extract(new String[]{"cenas", "coisas", "outras"}, 0)) {
+			System.out.println(s);
+		}
 	}
 	
 	public static String[] extend(String[] a1, String[] a2) {
@@ -272,5 +274,10 @@ public class Utils
 	public static void dbg(String string) {
 		if(Consts.DEBUG)
 			System.out.println(string);
+	}
+	
+	public static void dbgsl(String string) {
+		if(Consts.DEBUG)
+			System.out.print(string);
 	}
 }
