@@ -41,18 +41,18 @@ public class GestorFilmes
 	}
 	
 	/**
-	 * Adiciona um filme à base de dados
+	 * Adiciona um filme ï¿½ base de dados
 	 */
-	// TODO: assumi que "String[] generos" contém IDs e não nomes de géneros.
-	// também assumi que o ano e ratingIMDB vêm correctos, embora ainda tenha a verificação
-	// TODO: adicionar generos (difícil. tenho de saber o ID do filme k acabei de adicionar)
+	// TODO: assumi que "String[] generos" contï¿½m IDs e nï¿½o nomes de gï¿½neros.
+	// tambï¿½m assumi que o ano e ratingIMDB vï¿½m correctos, embora ainda tenha a verificaï¿½ï¿½o
+	// TODO: adicionar generos (difï¿½cil. tenho de saber o ID do filme k acabei de adicionar)
 	public String adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
 		DBHandler.adicionaFilme(titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
 		System.out.println("O seguinte filme foi adicionado: (" + ano + ") " + titulo);
 		return "O seguinte filme foi adicionado: (" + ano + ") " + titulo;
 	}
 
-	// TODO: adicionar generos (difícil. tenho de saber o ID do filme k acabei de adicionar)
+	// TODO: adicionar generos (difï¿½cil. tenho de saber o ID do filme k acabei de adicionar)
 	public String actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
 		DBHandler.actualizaFilme(id, titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
 		System.out.println("O filme com o ID " + id + " foi actualizado.");
@@ -155,7 +155,7 @@ public class GestorFilmes
 	}
 	
 	/**
-	 * Adiciona um novo formato à base de dados
+	 * Adiciona um novo formato ï¿½ base de dados
 	 */
 	public String adicionaFormato(String nome) {
 		if (!DBHandler.formatoExiste("", nome)) {
@@ -190,7 +190,7 @@ public class GestorFilmes
 	}
 
 	/* ----------------------------------------------------------------- */
-	/* ---------------------------- GÉNEROS ---------------------------- */
+	/* ---------------------------- Gï¿½NEROS ---------------------------- */
 	/* ----------------------------------------------------------------- */
 	public Vector<String[]> verListaGeneros() {
 		return DBHandler.getGenerosOrdNome();
@@ -201,12 +201,12 @@ public class GestorFilmes
 	}
 	
 	/**
-	 * Adiciona um novo género à base de dados
+	 * Adiciona um novo gï¿½nero ï¿½ base de dados
 	 */
 	public String adicionaGenero(String nome) {
 		if (!DBHandler.generoExiste("", nome)) {
 			DBHandler.adicionaGenero(nome);
-			return "Novo género adicionado: " + nome;
+			return "Novo gï¿½nero adicionado: " + nome;
 		} else
 			return Consts.GENERO_EXISTE;
 	}
@@ -214,7 +214,7 @@ public class GestorFilmes
 	public String actualizaGenero(String id, String nome) {
 		if (!DBHandler.generoExiste(id, nome)) {
 			DBHandler.actualizaGenero(id, nome);
-			return "Género actualizado.";
+			return "Gï¿½nero actualizado.";
 		} else
 			return Consts.GENERO_EXISTE;
 	}
@@ -222,7 +222,7 @@ public class GestorFilmes
 	public String removeGenero(String id) {
 		if (!DBHandler.generoEmUso(id)) {
 			DBHandler.removeGenero(id);
-			return "Género removido.";
+			return "Gï¿½nero removido.";
 		} else
 			return Consts.GENERO_EM_USO;
 	}
@@ -230,7 +230,7 @@ public class GestorFilmes
 	public String removeGeneroNome(String nome) {
 		if (!DBHandler.generoEmUsoNome(nome)) {
 			DBHandler.removeGeneroNome(nome);
-			return "Género removido.";
+			return "Gï¿½nero removido.";
 		} else
 			return Consts.GENERO_EM_USO;
 	}
@@ -249,5 +249,21 @@ public class GestorFilmes
 
         }
         return "Estatisticas Filmes:\n------------------------\n";
+    }
+
+    /**
+     * -----------------------------ALUGUER------------------------------------
+     */
+
+    /**
+     *
+     * @param idFilme
+     * @param formato
+     * @param idCliente
+     * @param idEmpregado
+     * @return
+     */
+    public String alugaFilme(String idFilme, String formato, String idCliente, String idEmpregado){
+        return "Alugado/NÃ£o Alugado";
     }
 }

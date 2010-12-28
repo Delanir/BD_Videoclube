@@ -13,6 +13,9 @@ import java.util.GregorianCalendar;
  */
 public class GestorEmpregados
 {
+        private String idEmpregado;
+
+
 	/**
 	 * procura autenticar um empregado/administrador no sistema
 	 * @param username
@@ -20,7 +23,8 @@ public class GestorEmpregados
 	 * @return
 	 */
 	public String login(String username, String password) {
-		return null;
+                idEmpregado=username;
+		return username;
 	}
 
 	/**
@@ -87,4 +91,11 @@ public class GestorEmpregados
 		}
 		return "Estatisticas Empregados:\n------------------------\n";
 	}
+
+        /**
+         * -----------------GETTERS & SETTERS-------------------------
+         */
+         public String getIdEmpregado() {
+            return idEmpregado;
+        }
 }
