@@ -23,12 +23,15 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.ListModel;
 import javax.swing.SpinnerNumberModel;
 import outros.Filme;
 import outros.OurListModel;
+import outros.Utils;
 
 /**
  *
@@ -48,24 +51,22 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
     private GregorianCalendar calendarEnd;
     private JCalendar jCalendarBegin;
     private JCalendar jCalendarEnd;
-                
-                
-
-                
-		
     
-                public static void main(String args[]) {
+    
+    
+    
+    public static void main(String args[]) {
+        System.out.println("Here");
+        new GUI_Manager().setVisible(true);
+        //adds the panels to the interface
 
-                System.out.println("Here");
-                new GUI_Manager().setVisible(true);
-                //adds the panels to the interface
-
-                Scanner sc = new Scanner(System.in);
-                sc.next();
-
+        Scanner sc = new Scanner(System.in);
+        sc.next();
     }
-
-
+    
+    
+    
+    
     /** Creates new form GUI_Manager */
     public GUI_Manager() {
 
@@ -3287,7 +3288,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jPesquisarClientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPesquisarClientesButtonActionPerformed
-        jList7.setModel(new OurListModel(gestorClientes.listaClientes()));
+        jList7.setModel(new OurListModel(gestorClientes.verListaClientes()));
         pesquisarClienteFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jPesquisarClientesButtonActionPerformed
@@ -3306,7 +3307,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void pesquisarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarClientesActionPerformed
         // TODO add your handling code here:
-        jList7.setModel(new OurListModel(gestorClientes.listaClientes()));
+        jList7.setModel(new OurListModel(gestorClientes.verListaClientes()));
         pesquisarClienteFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_pesquisarClientesActionPerformed
@@ -3328,15 +3329,18 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         //Fazer a pesquisa
         //TODO fazer parsing do output do mÃ©todo
         String []lista;
-        lista=gestorFilmes.searchMovie(textIdPesquisaFilmes.getText(),
+        //procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos)
+        lista=gestorFilmes.procuraFilmes(
+        		//textIdPesquisaFilmes.getText(),
                 textTituloPesquisaFilmes.getText(),
-                (Integer)jSpinner1.getValue(),
-                (Integer)jSpinner3.getValue(),
-                (Double)jSpinner4.getValue(),
-                (Double)jSpinner5.getValue(),
+                ""+(Integer)jSpinner1.getValue(),
+                ""+(Integer)jSpinner3.getValue(),
                 textRealizadorPesquisaFilmes.getText(),
+                ""+(Double)jSpinner4.getValue(),
+                ""+(Double)jSpinner5.getValue(),
+                (String) countriesList1.getSelectedItem(),
                 textProdutorPesquisaFilmes.getText(),
-                (String) countriesList1.getSelectedItem());
+                new String[0]);
 
         String[] strings= new String[lista.length/2];
         String[] id= new String[lista.length/2];
@@ -3423,7 +3427,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
              &&(jPasswordField1.getText().equals(jPasswordField2.getText()))//TODO : Deprecated
                ){
                
-            gestorEmpregados.addEmpregado(jTextField6.getText(), 
+            gestorEmpregados.adicionaEmpregado(jTextField6.getText(), 
                     jFormattedTextField1.getText(),
                     jFormattedTextField3.getText(),
                     jRadioButton1.isSelected(),
@@ -3459,7 +3463,14 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         
        
         listaGeneros.setModel(new javax.swing.AbstractListModel() {
-        String[] strings = gestorFilmes.verListaGeneros();
+        	/* TODO: by Lobo: verListaGeneros() devolve um Vector com pares [id_genero, nome_genero].
+        	 * eu percebi que aki tavam a usar os nomes só, por isso pus a funcao strArrayVectorToArray()
+        	 * para pegar so nos indices 1 de cada par (ou seja, o nome).
+        	 * Se permitirem a gestão de géneros vao precisar do ID do genero
+        	 * para lhe alterar o nome (o porquê eu explico depois).
+        	 * Ou seja, vao ter de guardar os pares e nao o nome, e isto tem de mudar.
+        	 */
+        	String[] strings = Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1);
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -3504,7 +3515,9 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         textGenero.setText(null);
 
         listaGeneros.setModel(new javax.swing.AbstractListModel() {
-        String[] strings = gestorFilmes.verListaGeneros();
+        	/* TODO: by Lobo: ver o TODO gigante que escrevi em cima. Mesma coisa.
+        	 */
+        	String[] strings = Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1);
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -3519,7 +3532,9 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         textGenero.setText(null);
 
         listaGeneros.setModel(new javax.swing.AbstractListModel() {
-        String[] strings = gestorFilmes.verListaGeneros();
+        	/* TODO: by Lobo: ver o TODO gigante que escrevi em cima. Mesma coisa.
+        	 */
+        	String[] strings = Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1);
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -3577,15 +3592,17 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         String output="";
         String []generos=new String[1];
         generos[0]=(String)listaGenerosAdicionaFilmes.getSelectedItem();
-        output=gestorFilmes.addMovie(textTituloAdicionaFilme.getText(),
+        //adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos
+        output=gestorFilmes.adicionaFilme(
+        		textTituloAdicionaFilme.getText(),
                 ""+(Integer)anoAdicionaFilmeSpinner.getValue(),
-                generos,
                 textRealizadorAdicionaFilme.getText(),
-                textProdutorAdicionaFilme.getText(),
+                ""+(Double)jSpinner2.getValue(),
                 (String)countriesList.getSelectedItem(),
-                filePath,
+                textProdutorAdicionaFilme.getText(),
                 textDescricaoAdicionaFilme.getText(),
-                ""+(Double)jSpinner2.getValue());
+                filePath,
+                generos);
 
         jTextArea11.setText(output);
     }//GEN-LAST:event_adicionarFilmeActionPerformed
@@ -3628,18 +3645,20 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private void jList4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList4MouseClicked
         // TODO add your handling code here:
         String idMovie=((String)jList4.getSelectedValue()).split(" ")[0];
-        Filme f=gestorFilmes.getFilme(idMovie);
-
-        tituloResultadosFilme.setText(f.getTitulo());
-        jList5.setModel(new OurListModel(f.getGeneros()));
-        realizadorResultadosFilme.setText(f.getRealizador());
-        anoResultadosFilme.setText(f.getAno()+"");
-        paisResultadosFilme.setText(f.getPais());
-        imdbResultadosFilme.setText(f.getRatingIMDB()+"");
-        produtorResultadosFilme.setText(f.getProdutor());
-        jTextArea14.setText(f.getDescricao());
-
-        jLabel76.setIcon(f.getCapa());
+        //"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"
+        String[] f = gestorFilmes.getFilme(idMovie);
+        
+        int i=1; // i=1 em vez de i=0 -> saltar campo ID_FIL
+        tituloResultadosFilme.setText(f[i++]);
+        anoResultadosFilme.setText(f[i++]);
+        realizadorResultadosFilme.setText(f[i++]);
+        imdbResultadosFilme.setText(f[i++]);
+        paisResultadosFilme.setText(f[i++]);
+        produtorResultadosFilme.setText(f[i++]);
+        jTextArea14.setText(f[i++]);
+        jLabel76.setIcon(new ImageIcon(f[i++]));
+        // extrair os generos do fim do array
+        jList5.setModel(new OurListModel(Utils.extract(f, i+1))); // i+1 em vez de i -> saltar campo VALIDO
     }//GEN-LAST:event_jList4MouseClicked
 
     private void pesquisarClienteFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_pesquisarClienteFrameWindowClosing
@@ -3703,13 +3722,13 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-        listaEmpregados.setModel(new OurListModel(gestorEmpregados.listaEmpregados()));
+        listaEmpregados.setModel(new OurListModel(gestorEmpregados.verListaEmpregados()));
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jDespedirEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonActionPerformed
         
         String idEmpregado=((String)listaEmpregados.getSelectedValue()).split(" ")[0];
-       gestorEmpregados.deleteEmpregado(idEmpregado);
+       gestorEmpregados.removeEmpregado(idEmpregado);
        //TODO: Output message
        jTextArea3.setText("Success/Insuccess");
     }//GEN-LAST:event_jDespedirEmpregadoButtonActionPerformed
@@ -3723,7 +3742,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
              &&(jPasswordField1.getText().equals(jPasswordField2.getText()))//TODO : Deprecated
                ){
 
-            gestorEmpregados.updateEmpregado(jTextField6.getText(),
+            gestorEmpregados.actualizaEmpregado(jTextField6.getText(),
                     jFormattedTextField1.getText(),
                     jFormattedTextField3.getText(),
                     jRadioButton1.isSelected(),
@@ -3796,7 +3815,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         }
         if(jCheckBox5.isSelected()){
             //Clientes
-            jTextArea2.append(gestorEstatisticas.getSatistics(calendarBegin, calendarEnd));
+            jTextArea2.append(gestorEstatisticas.getEstatisticas(calendarBegin, calendarEnd));
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 

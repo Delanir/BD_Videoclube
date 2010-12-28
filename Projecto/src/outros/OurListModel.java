@@ -8,32 +8,33 @@ package outros;
 import javax.swing.AbstractListModel;
 
 /**
- *
  * @author Daniela
  */
-public class OurListModel extends AbstractListModel{
-    private String []lista;
+public class OurListModel extends AbstractListModel
+{
+	private static final long serialVersionUID = 1L;
+	
+	private String[] lista;
 
-    
-    
-    public OurListModel(String []lista){
-        this.lista=lista;
-    }
-    public int getSize() {
-        if(lista==null)
-            return 0;
-       return lista.length;
-    }
+	public OurListModel(String[] lista) {
+		this.lista = lista;
+	}
 
-    public Object getElementAt(int index) {
-        return lista[index];
-    }
+	public int getSize() {
+		if (lista == null)
+			return 0;
+		return lista.length;
+	}
 
-    public String[] getLista() {
-        return lista;
-    }
+	public Object getElementAt(int index) {
+		return lista[index];
+	}
 
-    public void setLista(String[] lista) {
-        this.lista = lista;
-    }
+	public String[] getLista() {
+		return lista;
+	}
+
+	public void setLista(String[] lista) {
+		this.lista = lista;
+	}
 }

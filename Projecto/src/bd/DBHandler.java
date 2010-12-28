@@ -19,20 +19,21 @@ import outros.Utils;
  */
 public class DBHandler
 {
-	private Connection conn;
+	//TODO: ver cenas onde faltam plicas (provavelmente muito sitio >_>)
+	private static Connection conn;
 	
 	/**
 	 * O método main. Apenas para propósitos de teste.
 	 * @param args os argumentos da linha de comandos.
 	 */
 	public static void main(String args[]) {
-		DBHandler dbh = new DBHandler();
-		if (dbh.conn != null) {
+		open();
+		if (conn != null) {
 			//Icon icon = new ImageIcon("MV5BMTI5Mjc2MTE3OV5BMl5BanBnXkFtZTcwNTc2MzI2Mg@@._V1._CR341,0,1365,1365_SS80_.jpg");
-			
+			System.out.println(Utils.list(getClientesOrdNome(), ","));
 			//Utils.printStringArrayVector(dbh.getFilmes());
-			System.out.println();
-			dbh.close();
+			//System.out.println(Utils.list(getFilme("2"), ","));
+			close();
 		} else
 			System.out.println("deu bode");
 	}
@@ -51,11 +52,11 @@ public class DBHandler
 	/**
 	 * Cria uma ligação à BD.
 	 */
-	public void open() {
+	public static void open() {
 		try {
 			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
 			Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
-			this.conn = DriverManager.getConnection(Consts.ORACLE_URL, Consts.ORACLE_USER, Consts.ORACLE_PASS);
+			conn = DriverManager.getConnection(Consts.ORACLE_URL, Consts.ORACLE_USER, Consts.ORACLE_PASS);
 		} catch (SQLException e) {
 			Utils.printError(e);
 		} catch (InstantiationException e) {
@@ -70,9 +71,9 @@ public class DBHandler
 	/**
 	 * Fecha a ligação à BD.
 	 */
-	public void close() {
+	public static void close() {
 		try {
-			this.conn.close();
+			conn.close();
 		} catch (SQLException e) {
 			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -82,27 +83,27 @@ public class DBHandler
 	/* ---------------------------- GETS DE NOMES DE CAMPOS ---------------------------- */
 	/* --------------------------------------------------------------------------------- */
 	
-	public String[] getCamposClientes() {		return new String[]{"ID_PES", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"};}
-	public String[] getCamposEmpregados() {		return new String[]{"ID_PES", "IS_ADMIN", "SALARIO", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"};}
-	public String[] getCamposFilmes() {			return new String[]{"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"};}
-	public String[] getCamposFilmeGenero() {	return new String[]{"ID_GEN", "ID_FIL"};}
-	public String[] getCamposFormatos() {		return new String[]{"ID_FOR", "NOME_FORMATO"};}
-	public String[] getCamposGeneros() {		return new String[]{"ID_GEN", "NOME_GENERO"};}
-	public String[] getCamposMaquinasATM() {	return new String[]{"ID_MAQ", "PRECO", "VALIDO", "DATA_INSTALACAO"};}
-	public String[] getCamposPagamentos() {		return new String[]{"ID_REQ", "MONTANTE"};}
-	public String[] getCamposRequisicoes() {	return new String[]{"ID_REQ", "ID_MAQ", "EMP_ID_PES", "ID_PES", "ID_FIL", "ID_FOR", "DATA", "DATA_LIMITE", "DATA_ENTREGA"};}
-	public String[] getCamposStocks() {			return new String[]{"ID_FIL", "ID_FOR", "DISPONIVEIS", "QUANT", "CUSTO_COMPRA", "CUSTO_ALUGUER"};}
+	public static String[] getCamposClientes() {		return new String[]{"ID_PES", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"};}
+	public static String[] getCamposEmpregados() {		return new String[]{"ID_PES", "IS_ADMIN", "SALARIO", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"};}
+	public static String[] getCamposFilmes() {			return new String[]{"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"};}
+	public static String[] getCamposFilmeGenero() {		return new String[]{"ID_GEN", "ID_FIL"};}
+	public static String[] getCamposFormatos() {		return new String[]{"ID_FOR", "NOME_FORMATO"};}
+	public static String[] getCamposGeneros() {			return new String[]{"ID_GEN", "NOME_GENERO"};}
+	public static String[] getCamposMaquinasATM() {		return new String[]{"ID_MAQ", "PRECO", "VALIDO", "DATA_INSTALACAO"};}
+	public static String[] getCamposPagamentos() {		return new String[]{"ID_REQ", "MONTANTE"};}
+	public static String[] getCamposRequisicoes() {		return new String[]{"ID_REQ", "ID_MAQ", "EMP_ID_PES", "ID_PES", "ID_FIL", "ID_FOR", "DATA", "DATA_LIMITE", "DATA_ENTREGA"};}
+	public static String[] getCamposStocks() {			return new String[]{"ID_FIL", "ID_FOR", "DISPONIVEIS", "QUANT", "CUSTO_COMPRA", "CUSTO_ALUGUER"};}
 
-	public String[] getToSetCamposClientes() {		return new String[]{"NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE"};}
-	public String[] getToSetCamposEmpregados() {	return new String[]{"IS_ADMIN", "SALARIO", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE"};}
-	public String[] getToSetCamposFilmes() {		return new String[]{"TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA"};}
-	public String[] getToSetCamposFilmeGenero() {	return new String[]{};}
-	public String[] getToSetCamposFormatos() {		return new String[]{"NOME_FORMATO"};}
-	public String[] getToSetCamposGeneros() {		return new String[]{"NOME_GENERO"};}
-	public String[] getToSetCamposMaquinasATM() {	return new String[]{"PRECO", "DATA_INSTALACAO"};}
-	public String[] getToSetCamposPagamentos() {	return new String[]{"MONTANTE"};}
-	public String[] getToSetCamposRequisicoes() {	return new String[]{"DATA_LIMITE", "DATA_ENTREGA"};}
-	public String[] getToSetCamposStocks() {		return new String[]{"DISPONIVEIS", "QUANT", "CUSTO_COMPRA", "CUSTO_ALUGUER"};}
+	public static String[] getToSetCamposClientes() {		return new String[]{"NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE"};}
+	public static String[] getToSetCamposEmpregados() {		return new String[]{"IS_ADMIN", "SALARIO", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE"};}
+	public static String[] getToSetCamposFilmes() {			return new String[]{"TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA"};}
+	public static String[] getToSetCamposFilmeGenero() {	return new String[]{};}
+	public static String[] getToSetCamposFormatos() {		return new String[]{"NOME_FORMATO"};}
+	public static String[] getToSetCamposGeneros() {		return new String[]{"NOME_GENERO"};}
+	public static String[] getToSetCamposMaquinasATM() {	return new String[]{"PRECO", "DATA_INSTALACAO"};}
+	public static String[] getToSetCamposPagamentos() {		return new String[]{"MONTANTE"};}
+	public static String[] getToSetCamposRequisicoes() {	return new String[]{"DATA_LIMITE", "DATA_ENTREGA"};}
+	public static String[] getToSetCamposStocks() {			return new String[]{"DISPONIVEIS", "QUANT", "CUSTO_COMPRA", "CUSTO_ALUGUER"};}
 
 	/* ------------------------------------------------------------------ */
 	/* ---------------------------- CLIENTES ---------------------------- */
@@ -111,8 +112,12 @@ public class DBHandler
 	 * Obtém os clientes existentes.
 	 * @return Vector com os campos de cada cliente.
 	 */
-	public Vector<String[]> getClientes() {
-		return select("clientes");
+	public static Vector<String[]> getClientes() {
+		return selectAll("clientes");
+	}
+	
+	public static Vector<String[]> getClientesOrdNome() {
+		return selectAll("clientes", "NOME_PESSOA");
 	}
 	
 	/**
@@ -120,8 +125,8 @@ public class DBHandler
 	 * @param id o ID do cliente.
 	 * @return os campos do cliente.
 	 */
-	public String[] getCliente(String id) {
-		return select("clientes", "ID_CLI", id).get(0);
+	public static String[] getCliente(String id) {
+		return selectAll("clientes", "ID_CLI", id).get(0);
 	}
 
 	/**
@@ -134,7 +139,7 @@ public class DBHandler
 	 * @param telefone o número de telefone do cliente a adicionar.
 	 * @param data_registo a data de registo do cliente a adicionar.
 	 */
-	public void adicionaCliente(String nome, String bi, String password, String morada, String email, String telefone, String data_registo) {
+	public static void adicionaCliente(String nome, String bi, String password, String morada, String email, String telefone, String data_registo) {
 		adicionaObjecto("clientes",
 						new String[]{"seq_pessoa_id.NEXTVAL", p(nome), bi, p(password), p(morada), p(email), telefone, "1", p(data_registo)});
 	}
@@ -149,7 +154,7 @@ public class DBHandler
 	 * @param email o novo e-mail do cliente a actualizar.
 	 * @param telefone o novo número de telefone do cliente a actualizar.
 	 */
-	public void actualizaCliente(String id, String nome, String bi, String password, String morada, String email, String telefone) {
+	public static void actualizaCliente(String id, String nome, String bi, String password, String morada, String email, String telefone) {
 		actualizaObjecto("clientes", "ID_CLI", id,
 						 getToSetCamposClientes(),
 						 new String[]{p(nome), bi, p(password), p(morada), p(email), telefone});
@@ -159,7 +164,7 @@ public class DBHandler
 	 * Invalida um cliente na BD.
 	 * @param id o ID do cliente a invalidar.
 	 */
-	public void invalidaCliente(String id) {
+	public static void invalidaCliente(String id) {
 		invalidaObjecto("clientes", "ID_CLI", id);
 	}
 	
@@ -167,7 +172,7 @@ public class DBHandler
 	 * Re-valida um cliente na BD.
 	 * @param id o ID do cliente a re-validar.
 	 */
-	public void validaCliente(String id) {
+	public static void validaCliente(String id) {
 		validaObjecto("clientes", "ID_CLI", id);
 	}
 
@@ -178,8 +183,8 @@ public class DBHandler
 	 * Obtém os empregados existentes.
 	 * @return Vector com os campos de cada empregado.
 	 */
-	public Vector<String[]> getEmpregados() {
-		return select("empregados");
+	public static Vector<String[]> getEmpregados() {
+		return selectAll("empregados");
 	}
 	
 	/**
@@ -187,8 +192,8 @@ public class DBHandler
 	 * @param id o ID do empregado.
 	 * @return os campos do empregado.
 	 */
-	public String[] getEmpregado(String id) {
-		return select("empregados", "ID_EMP", id).get(0);
+	public static String[] getEmpregado(String id) {
+		return selectAll("empregados", "ID_EMP", id).get(0);
 	}
 
 	/**
@@ -203,7 +208,7 @@ public class DBHandler
 	 * @param telefone o número de telefone do empregado a adicionar.
 	 * @param data_registo a data de registo do empregado a adicionar.
 	 */
-	public void adicionaEmpregado(String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone, String data_registo) {
+	public static void adicionaEmpregado(String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone, String data_registo) {
 		adicionaObjecto("empregados",
 						new String[]{"seq_pessoa_id.NEXTVAL", is_admin, salario, p(nome), bi, p(password), p(morada), p(email), telefone, "1", p(data_registo)});
 	}
@@ -220,7 +225,7 @@ public class DBHandler
 	 * @param email o novo e-mail do empregado a actualizar.
 	 * @param telefone o novo número de telefone do empregado a actualizar.
 	 */
-	public void actualizaEmpregado(String id, String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone) {
+	public static void actualizaEmpregado(String id, String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone) {
 		actualizaObjecto("empregados", "ID_EMP", id,
 						 getToSetCamposEmpregados(),
 					 	 new String[]{is_admin, salario, p(nome), bi, p(password), p(morada), p(email), telefone});
@@ -230,7 +235,7 @@ public class DBHandler
 	 * Invalida um empregado na BD.
 	 * @param id o ID do empregado a invalidar.
 	 */
-	public void invalidaEmpregado(String id) {
+	public static void invalidaEmpregado(String id) {
 		invalidaObjecto("empregados", "ID_EMP", id);
 	}
 	
@@ -238,7 +243,7 @@ public class DBHandler
 	 * Re-valida um empregado na BD.
 	 * @param id o ID do empregado a re-validar.
 	 */
-	public void validaEmpregado(String id) {
+	public static void validaEmpregado(String id) {
 		invalidaObjecto("empregados", "ID_EMP", id);
 	}
 
@@ -249,8 +254,20 @@ public class DBHandler
 	 * Obtém os filmes existentes.
 	 * @return Vector com os campos de cada filme.
 	 */
-	public Vector<String[]> getFilmes() {
-		return select("filmes");
+	public static Vector<String[]> getFilmes() {
+		return selectAll("filmes");
+	}
+	
+	public static Vector<String[]> getFilmesOrdTitulo() {
+		return selectAll("filmes", "TITULO");
+	}
+	
+	public static Vector<String[]> getFilmesOrdAno() {
+		return selectAll("filmes", "ANO");
+	}
+	
+	public static Vector<String[]> getFilmesOrdRankIMDB() {
+		return selectAll("filmes", "RANKIMDB");
 	}
 	
 	/**
@@ -258,8 +275,8 @@ public class DBHandler
 	 * @param id o ID do filme.
 	 * @return os campos do filme.
 	 */
-	public String[] getFilme(String id) {
-		return select("filmes", "ID_FIL", id).get(0);
+	public static String[] getFilme(String id) {
+		return selectAll("filmes", "ID_FIL", id).get(0);
 	}
 
 	/**
@@ -273,7 +290,7 @@ public class DBHandler
 	 * @param descricao a descrição do filme a adicionar.
 	 * @param capa a capa do filme a adicionar.
 	 */
-	public void adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa) {
+	public static void adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa) {
 		adicionaObjecto("filmes",
 						new String[]{"seq_filme_id.NEXTVAL", p(titulo), p(ano), p(realizador), p(ratingIMDB), p(pais), p(produtora), p(descricao), p(capa)});
 	}
@@ -290,7 +307,7 @@ public class DBHandler
 	 * @param descricao a nova descrição do filme a actualizar.
 	 * @param capa a nova capa do filme a actualizar.
 	 */
-	public void actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa) {
+	public static void actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa) {
 		actualizaObjecto("filmes", "ID_FIL", id,
 						 getToSetCamposFilmes(),
 					 	 new String[]{p(titulo), ano, p(realizador), ratingIMDB, p(pais), p(produtora), p(descricao), p(capa)});
@@ -300,7 +317,7 @@ public class DBHandler
 	 * Invalida um filme na BD.
 	 * @param id o ID do filme a invalidar.
 	 */
-	public void invalidaFilme(String id) {
+	public static void invalidaFilme(String id) {
 		invalidaObjecto("filmes", "ID_FIL", id);
 	}
 	
@@ -308,8 +325,25 @@ public class DBHandler
 	 * Re-valida um filme na BD.
 	 * @param id o ID do filme a re-validar.
 	 */
-	public void validaFilme(String id) {
+	public static void validaFilme(String id) {
 		invalidaObjecto("filmes", "ID_FIL", id);
+	}
+	
+	// TODO: géneros
+	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
+		String query = "SELECT ID_FIL, ANO, TITULO" +
+					   " FROM filmes f" +
+					   " WHERE ID_FIL = ID_FIL" +	// redundância para evitar o caso em que o WHERE fica sem nada
+					   (titulo.isEmpty()?"":" AND titulo = "+p(titulo)) +
+					   (realizador.isEmpty()?"":" AND realizador = "+p(realizador)) +
+					   (pais.isEmpty()?"":" AND pais = "+p(pais)) +
+					   (produtora.isEmpty()?"":" AND produtora = "+p(produtora)) +
+					   (anoLow.isEmpty()||anoHigh.isEmpty()?"":" AND ano BETWEEN "+anoLow+" AND "+anoHigh) +
+					   (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND ratingIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh);
+		/*for(String id_gen : generos) {
+			query += " AND " + ) +
+		}*/
+		return select(query);
 	}
 
 	/* ---------------------------------------------------------------------- */
@@ -319,8 +353,8 @@ public class DBHandler
 	 * Obtém as relações filme/género.
 	 * @return Vector com os IDs do filme e género que formam a relação.
 	 */
-	public Vector<String[]> getFilmeGenero() {
-		return select("filme_genero");
+	public static Vector<String[]> getFilmeGenero() {
+		return selectAll("filme_genero");
 	}
 	
 	/**
@@ -328,7 +362,7 @@ public class DBHandler
 	 * @param id_fil o ID do filme.
 	 * @return os géneros do filme.
 	 */
-	public String[] getGenerosFilme(String id_fil) {
+	public static String[] getGenerosFilmeID(String id_fil) {
 		Vector<String[]> selected = select("filme_genero", new String[]{"ID_GEN"}, "ID_FIL", id_fil);
 		int size = selected.size();
 		String[] generos = new String[size];
@@ -336,13 +370,28 @@ public class DBHandler
 			generos[i] = selected.get(i)[0];
 		return generos;
 	}
+	
+	public static String[] getGenerosFilmeNome(String id_fil) {
+		Vector<String[]> selected = select("SELECT g.NOME_GENERO" +
+										   " FROM generos g, filme_genero fg" +
+										   " WHERE fg.ID_FIL =" + id_fil +
+											 " AND fg.ID_GEN = g.ID_GEN");
+		return Utils.strArrayVectorToArray(selected);
+	}
+	
+	public static Vector<String[]> getGenerosFilme(String id_fil) {
+		return select("SELECT g.ID_GEN, g.NOME_GENERO" +
+				  " FROM generos g, filme_genero fg" +
+				  " WHERE fg.ID_FIL =" + id_fil +
+					" AND fg.ID_GEN = g.ID_GEN");
+	}
 
 	/**
 	 * Adiciona uma relação filme/género à BD.
 	 * @param id_fil ID do filme na relação.
 	 * @param id_gen ID do género na relação.
 	 */
-	public void adicionaFilmeGenero(String id_fil, String id_gen) {
+	public static void adicionaFilmeGenero(String id_fil, String id_gen) {
 		adicionaObjecto("filme_genero",
 						new String[]{id_fil, id_gen});
 	}
@@ -352,7 +401,7 @@ public class DBHandler
 	 * @param id_fil ID do filme na relação.
 	 * @param id_gen ID do género na relação.
 	 */
-	public void removeFilmeGenero(String id_fil, String id_gen) {
+	public static void removeFilmeGenero(String id_fil, String id_gen) {
 		removeObjecto("filme_genero",
 					  getCamposFilmeGenero(),
 					  new String[]{id_fil, id_gen});
@@ -365,8 +414,12 @@ public class DBHandler
 	 * Obtém os formatos de filme existentes.
 	 * @return Vector com os campos de cada formato.
 	 */
-	public Vector<String[]> getFormatos() {
-		return select("formatos");
+	public static Vector<String[]> getFormatos() {
+		return selectAll("formatos");
+	}
+	
+	public static Vector<String[]> getFormatosOrdNome() {
+		return selectAll("formatos", "NOME_FORMATO");
 	}
 	
 	/**
@@ -374,15 +427,19 @@ public class DBHandler
 	 * @param id o ID do formato.
 	 * @return os campos do formato.
 	 */
-	public String[] getFormato(String id) {
-		return select("formatos", "ID_FOR", id).get(0);
+	public static String[] getFormato(String id) {
+		return selectAll("formatos", "ID_FOR", id).get(0);
+	}
+	
+	public static String getFormatoNome(String id) {
+		return selectAll("formatos", "ID_FOR", id).get(0)[1];
 	}
 	
 	/**
 	 * Adiciona um formato à BD.
 	 * @param nome o nome do formato a adicionar.
 	 */
-	public void adicionaFormato(String nome) {
+	public static void adicionaFormato(String nome) {
 		adicionaObjecto("formatos",
 						new String[]{"seq_formato_id.NEXTVAL", p(nome)});
 	}
@@ -392,7 +449,7 @@ public class DBHandler
 	 * @param id o ID do formato a actualizar.
 	 * @param nome o novo nome para o formato a actualizar.
 	 */
-	public void actualizaFormato(String id, String nome) {
+	public static void actualizaFormato(String id, String nome) {
 		actualizaObjecto("formatos", "ID_FOR", id,
 						 getToSetCamposFormatos(),
 						 new String[]{p(nome)});
@@ -402,7 +459,7 @@ public class DBHandler
 	 * Remove um formato da BD.
 	 * @param id o ID do formato a remover.
 	 */
-	public void removeFormato(String id) {
+	public static void removeFormato(String id) {
 		removeObjecto("formatos", "ID_FOR", id);
 	}
 
@@ -410,7 +467,7 @@ public class DBHandler
 	 * Remove da BD os formatos com um dado nome.
 	 * @param nome o nome do formato a remover.
 	 */
-	public void removeFormatoNome(String nome) {
+	public static void removeFormatoNome(String nome) {
 		removeObjecto("formatos", "NOME_FORMATO", p(nome));
 	}
 
@@ -421,8 +478,12 @@ public class DBHandler
 	 * Obtém os géneros de filme existentes.
 	 * @return Vector com os campos de cada género.
 	 */
-	public Vector<String[]> getGeneros() {
-		return select("generos");
+	public static Vector<String[]> getGeneros() {
+		return selectAll("generos");
+	}
+	
+	public static Vector<String[]> getGenerosOrdNome() {
+		return selectAll("generos", "NOME_GENERO");
 	}
 	
 	/**
@@ -430,15 +491,19 @@ public class DBHandler
 	 * @param id o ID do género.
 	 * @return os campos do género.
 	 */
-	public String[] getGenero(String id) {
-		return select("generos", "ID_GEN", id).get(0);
+	public static String[] getGenero(String id) {
+		return selectAll("generos", "ID_GEN", id).get(0);
+	}
+	
+	public static String getGeneroNome(String id) {
+		return selectAll("generos", "ID_GEN", id).get(0)[1];
 	}
 	
 	/**
 	 * Adiciona um género à BD.
 	 * @param nome o nome do género a adicionar.
 	 */
-	public void adicionaGenero(String nome) {
+	public static void adicionaGenero(String nome) {
 		adicionaObjecto("generos",
 						new String[]{"seq_genero_id.NEXTVAL", p(nome)});
 	}
@@ -448,7 +513,7 @@ public class DBHandler
 	 * @param id o ID do género a actualizar.
 	 * @param nome o novo nome para o género a actualizar.
 	 */
-	public void actualizaGenero(String id, String nome) {
+	public static void actualizaGenero(String id, String nome) {
 		actualizaObjecto("generos", "ID_GEN", id,
 						 getToSetCamposGeneros(),
 						 new String[]{p(nome)});
@@ -458,7 +523,7 @@ public class DBHandler
 	 * Remove um género da BD.
 	 * @param id o ID do género a remover.
 	 */
-	public void removeGenero(String id) {
+	public static void removeGenero(String id) {
 		removeObjecto("generos", "ID_GEN", id);
 	}
 
@@ -466,7 +531,7 @@ public class DBHandler
 	 * Remove da BD os géneros com um dado nome.
 	 * @param nome o nome do género a remover.
 	 */
-	public void removeGeneroNome(String nome) {
+	public static void removeGeneroNome(String nome) {
 		removeObjecto("generos", "NOME_GENERO", p(nome));
 	}
 
@@ -477,8 +542,8 @@ public class DBHandler
 	 * Obtém as máquinas ATM existentes.
 	 * @return Vector com os campos de cada máquina ATM.
 	 */
-	public Vector<String[]> getMaquinasATM() {
-		return select("maquinasatm");
+	public static Vector<String[]> getMaquinasATM() {
+		return selectAll("maquinasatm");
 	}
 	
 	/**
@@ -486,8 +551,8 @@ public class DBHandler
 	 * @param id o ID da máquina ATM.
 	 * @return os campos da máquina ATM.
 	 */
-	public String[] getMaquinaATM(String id) {
-		return select("maquinasatm", "ID_MAQ", id).get(0);
+	public static String[] getMaquinaATM(String id) {
+		return selectAll("maquinasatm", "ID_MAQ", id).get(0);
 	}
 
 	/**
@@ -495,7 +560,7 @@ public class DBHandler
 	 * @param preco o preço da máquina a adicionar.
 	 * @param data_instalacao a data de instalação da máquina a adicionar.
 	 */
-	public void adicionaMaquinaATM(String preco, String data_instalacao) {
+	public static void adicionaMaquinaATM(String preco, String data_instalacao) {
 		adicionaObjecto("maquinasatm",
 						new String[]{"seq_maquinaatm_id.NEXTVAL", preco, "1", p(data_instalacao)});
 	}
@@ -506,7 +571,7 @@ public class DBHandler
 	 * @param preco o novo preço da máquina a actualizar.
 	 * @param data_instalacao a nova data de instalação da máquina a actualizar.
 	 */
-	public void actualizaMaquinaATM(String id, String preco, String data_instalacao) {
+	public static void actualizaMaquinaATM(String id, String preco, String data_instalacao) {
 		actualizaObjecto("maquinasatm", "ID_MAQ", id,
 						 getToSetCamposMaquinasATM(),
 						 new String[]{preco, p(data_instalacao)});
@@ -516,7 +581,7 @@ public class DBHandler
 	 * Invalida uma máquina ATM na BD.
 	 * @param id o ID da máquina ATM a invalidar.
 	 */
-	public void invalidaMaquinaATM(String id) {
+	public static void invalidaMaquinaATM(String id) {
 		invalidaObjecto("maquinasatm", "ID_MAQ", id);
 	}
 	
@@ -524,7 +589,7 @@ public class DBHandler
 	 * Re-valida uma máquina ATM na BD.
 	 * @param id o ID da máquina ATM a re-validar.
 	 */
-	public void validaMaquinaATM(String id) {
+	public static void validaMaquinaATM(String id) {
 		invalidaObjecto("maquinasatm", "ID_MAQ", id);
 	}
 
@@ -535,8 +600,8 @@ public class DBHandler
 	 * Obtém os pagamentos existentes.
 	 * @return Vector com os campos de cada pagamento.
 	 */
-	public Vector<String[]> getPagamentos() {
-		return select("pagamentos");
+	public static Vector<String[]> getPagamentos() {
+		return selectAll("pagamentos");
 	}
 	
 	/**
@@ -544,8 +609,8 @@ public class DBHandler
 	 * @param id_req o ID da requisição do pagamento.
 	 * @return os campos do pagamento.
 	 */
-	public String[] getPagamento(String id_req) {
-		return select("pagamentos", "ID_REQ", id_req).get(0);
+	public static String[] getPagamento(String id_req) {
+		return selectAll("pagamentos", "ID_REQ", id_req).get(0);
 	}
 	
 	/**
@@ -553,7 +618,7 @@ public class DBHandler
 	 * @param id_req o ID da requisição do pagamento a adicionar.
 	 * @param montante o montante do pagamento a adicionar.
 	 */
-	public void adicionaPagamento(String id_req, String montante) {
+	public static void adicionaPagamento(String id_req, String montante) {
 		adicionaObjecto("pagamentos",
 						new String[]{id_req, montante});
 	}
@@ -563,7 +628,7 @@ public class DBHandler
 	 * @param id o ID da requisição do pagamento a actualizar.
 	 * @param montante o novo montante para o pagamento a actualizar.
 	 */
-	public void actualizaPagamento(String id, String montante) {
+	public static void actualizaPagamento(String id, String montante) {
 		actualizaObjecto("pagamentos", "ID_REQ", id,
 						 getToSetCamposPagamentos(),
 						 new String[]{montante});
@@ -573,7 +638,7 @@ public class DBHandler
 	 * Remove um pagamento da BD.
 	 * @param id o ID da requisição do pagamento a remover.
 	 */
-	public void removePagamento(String id) {
+	public static void removePagamento(String id) {
 		removeObjecto("pagamentos", "ID_REQ", id);
 	}
 
@@ -584,8 +649,8 @@ public class DBHandler
 	 * Obtém as requisições existentes.
 	 * @return Vector com os campos de cada requisição.
 	 */
-	public Vector<String[]> getRequisicao() {
-		return select("requisicoes");
+	public static Vector<String[]> getRequisicao() {
+		return selectAll("requisicoes");
 	}
 	
 	/**
@@ -593,8 +658,8 @@ public class DBHandler
 	 * @param id o ID da requisição.
 	 * @return os campos da requisição.
 	 */
-	public String[] getRequisicao(String id) {
-		return select("requisicoes", "ID_REQ", id).get(0);
+	public static String[] getRequisicao(String id) {
+		return selectAll("requisicoes", "ID_REQ", id).get(0);
 	}
 
 	/**
@@ -602,7 +667,7 @@ public class DBHandler
 	 * @param data a data da requisição.
 	 * @param data_limite a nova data limite de entrega do material da requisição.
 	 */
-	public void adicionaRequisicao(String data, String data_limite) {
+	public static void adicionaRequisicao(String data, String data_limite) {
 		adicionaObjecto("requisicoes",
 						new String[]{p(data), p(data_limite), "null"});
 	}
@@ -613,7 +678,7 @@ public class DBHandler
 	 * @param data_limite a nova data limite de entrega do material da requisição.
 	 * @param data_entrega a data de entrega do material da requisição.
 	 */
-	public void actualizaRequisicao(String id, String data_limite, String data_entrega) {
+	public static void actualizaRequisicao(String id, String data_limite, String data_entrega) {
 		actualizaObjecto("requisicoes", "ID_REQ", id,
 						 getToSetCamposRequisicoes(),
 						 new String[]{data_limite, p(data_entrega)});
@@ -624,7 +689,7 @@ public class DBHandler
 	 * @param id o ID da requisição a actualizar.
 	 * @param data_entrega a data de entrega do material da requisição.
 	 */
-	public void actualizaRequisicao(String id, String data_entrega) {
+	public static void actualizaRequisicao(String id, String data_entrega) {
 		actualizaObjecto("requisicoes", "ID_REQ", id, "DATA_ENTREGA", p(data_entrega));
 	}
 
@@ -632,7 +697,7 @@ public class DBHandler
 	 * Remove uma requisição da BD.
 	 * @param id o ID da requisição a remover.
 	 */
-	public void removeRequisicao(String id) {
+	public static void removeRequisicao(String id) {
 		removeObjecto("requisicoes", "ID_REQ", id);
 	}
 
@@ -643,8 +708,8 @@ public class DBHandler
 	 * Obtém os stocks existentes.
 	 * @return Vector com os campos de cada stock.
 	 */
-	public Vector<String[]> getStocks() {
-		return select("stocks");
+	public static Vector<String[]> getStocks() {
+		return selectAll("stocks");
 	}
 	
 	/**
@@ -653,7 +718,7 @@ public class DBHandler
 	 * @param id_for o ID do formato do stock.
 	 * @return os campos do stock.
 	 */
-	public String[] getStock(String id_fil, String id_for) {
+	public static String[] getStock(String id_fil, String id_for) {
 		return select("stocks",
 					  getCamposStocks(),
 					  new String[]{"ID_FIL", "ID_FOR"},
@@ -669,7 +734,7 @@ public class DBHandler
 	 * @param custo_compra o custo de compra (à distribuidora) associado a um filme no stock.
 	 * @param custo_aluguer o custo de aluguer associado a um filme no stock.
 	 */
-	public void adicionaStock(String id_fil, String id_for, String disponiveis, String quant, String custo_compra, String custo_aluguer) {
+	public static void adicionaStock(String id_fil, String id_for, String disponiveis, String quant, String custo_compra, String custo_aluguer) {
 		adicionaObjecto("stocks",
 						new String[]{id_fil, id_for, disponiveis, quant, custo_compra, custo_aluguer});
 	}
@@ -683,7 +748,7 @@ public class DBHandler
 	 * @param custo_compra o novo custo de compra (à distribuidora) associado a um filme no stock.
 	 * @param custo_aluguer o novo custo de aluguer associado a um filme no stock.
 	 */
-	public void actualizaStock(String id_fil, String id_for, String disponiveis, String quant, String custo_compra, String custo_aluguer) {
+	public static void actualizaStock(String id_fil, String id_for, String disponiveis, String quant, String custo_compra, String custo_aluguer) {
 		actualizaObjecto("stocks",
 						 new String[]{"ID_FIL", "ID_FOR"},
 						 new String[]{id_fil, id_for},
@@ -697,7 +762,7 @@ public class DBHandler
 	 * @param id_for o ID do formato do stock a actualizar.
 	 * @param incr o incremento (ou decremento) a aplicar ao número de filmes disponíveis em stock.
 	 */
-	public void actualizaDisponiveisStock(String id_fil, String id_for, int incr) {
+	public static void actualizaDisponiveisStock(String id_fil, String id_for, int incr) {
 		String comando = "UPDATE stocks SET disponiveis = disponiveis + " + incr +
 						 " WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for;
 		execute(comando);
@@ -708,7 +773,7 @@ public class DBHandler
 	 * @param id_fil o ID do filme do stock a remover.
 	 * @param id_for o ID do formato do stock a remover.
 	 */
-	public void removePagamento(String id_fil, String id_for) {
+	public static void removePagamento(String id_fil, String id_for) {
 		removeObjecto("stocks",
 					  new String[]{"ID_FIL", "IF_FOR"},
 					  new String[]{id_fil, id_for});
@@ -723,7 +788,7 @@ public class DBHandler
 	 * @param bi o BI a procurar.
 	 * @return true, se existe outro cliente com esse BI. false, caso contrário.
 	 */
-	public boolean biClienteExiste(String id_cli, String bi) {
+	public static boolean biClienteExiste(String id_cli, String bi) {
 		return valorExiste("clientes", "BI", bi, "ID_CLI", id_cli);
 	}
 	
@@ -733,7 +798,7 @@ public class DBHandler
 	 * @param bi o BI a procurar.
 	 * @return true, se existe outro empregado com esse BI. false, caso contrário.
 	 */
-	public boolean biEmpregadoExiste(String id_emp, String bi) {
+	public static boolean biEmpregadoExiste(String id_emp, String bi) {
 		return valorExiste("empregados", "BI", bi, "ID_EMP", id_emp);
 	}
 	
@@ -742,7 +807,7 @@ public class DBHandler
 	 * @param id_emp o ID do empregado a verificar.
 	 * @return true, se o empregado é o único administrador. false, caso contrário.
 	 */
-	public boolean empregadoEUnicoAdmin(String id_emp) {
+	public static boolean empregadoEUnicoAdmin(String id_emp) {
 		return !valorExiste("empregados", "IS_ADMIN", "1", "ID_EMP", id_emp);
 	}
 	
@@ -753,7 +818,7 @@ public class DBHandler
 	 * @param nome o nome do género cuja existência tem de ser verificada.
 	 * @return true, se existe outro género com esse nome.  false, caso contrário.
 	 */
-	public boolean generoExiste(String id_gen, String nome) {
+	public static boolean generoExiste(String id_gen, String nome) {
 		return valorExiste("generos", "NOME_GENERO", nome, "ID_GEN", id_gen);
 	}
 	
@@ -764,7 +829,7 @@ public class DBHandler
 	 * @param nome o nome do formato cuja existência tem de ser verificada.
 	 * @return true, se existe outro formato com esse nome. false, caso contrário.
 	 */
-	public boolean formatoExiste(String id_for, String nome) {
+	public static boolean formatoExiste(String id_for, String nome) {
 		return valorExiste("formatos", "NOME_FORMATO", nome, "ID_FOR", id_for);
 	}
 
@@ -774,7 +839,7 @@ public class DBHandler
 	 * @param id_for o ID do formato a verificar stock.
 	 * @return true, se existe stock para o filme e formato referidos. false, caso contrário.
 	 */
-	public boolean stockExiste(String id_fil, String id_for) {
+	public static boolean stockExiste(String id_fil, String id_for) {
 		return valorExiste("stocks",
 						   new String[]{"ID_FIL", "ID_FOR"},
 						   new String[]{id_fil, id_for});
@@ -786,8 +851,13 @@ public class DBHandler
 	 * @param id_for o ID do formato a verificar.
 	 * @return true, se existe pelo menos um stock para o formato. false, caso contrário.
 	 */
-	public boolean stockParaFormatoExiste(String id_for) {
+	public static boolean formatoEmUso(String id_for) {
 		return valorExiste("stocks", "ID_FOR", id_for);
+	}
+	
+	public static boolean formatoEmUsoNome(String nome) {
+		Vector<String[]> vec = select("formatos", new String[]{"ID_FOR"}, "NOME_FORMATO", nome);
+		return valorExiste("stocks", "ID_FOR", vec.get(0)[0]);
 	}
 	
 	/**
@@ -796,8 +866,13 @@ public class DBHandler
 	 * @param id_gen o ID do género a verificar.
 	 * @return true, se existe pelo menos um filme com esse género. false, caso contrário.
 	 */
-	public boolean generoEmUso(String id_gen) {
+	public static boolean generoEmUso(String id_gen) {
 		return valorExiste("filme_genero", "ID_GEN", id_gen);
+	}
+	
+	public static boolean generoEmUsoNome(String nome) {
+		Vector<String[]> vec = select("generos", new String[]{"ID_GEN"}, "NOME_GENERO", nome);
+		return valorExiste("filme_genero", "ID_GEN", vec.get(0)[0]);
 	}
 	
 	/**
@@ -806,9 +881,9 @@ public class DBHandler
 	 * @param id_gen o ID do género a verificar.
 	 * @return true, se o filme tem apenas esse género e mais nenhum. false, caso contrário.
 	 */
-	public boolean filmeSoTemGenero(String id_fil, String id_gen) {
-		String[] gens = getGenerosFilme(id_fil);
-		return (gens.length == 1 && gens[0].equals(id_gen));
+	public static boolean filmeSoTemGenero(String id_fil, String id_gen) {
+		Vector<String[]> vec = getGenerosFilme(id_fil);
+		return (vec.size() == 1 && vec.get(0).equals(id_gen));
 	}
 
 	/**
@@ -818,13 +893,9 @@ public class DBHandler
 	 * @param valor o valor a encontrar no campo.
 	 * @return true, se o valor foi encontrado no campo referido de algum elemento. false, caso contrário.
 	 */
-	private boolean valorExiste(String tabela, String campo, String valor) {
-		Vector<String> vec = select(tabela, campo);
-		for(String val : vec) {
-			if(val.equalsIgnoreCase(valor))
-				return true;
-		}
-		return false;
+	private static boolean valorExiste(String tabela, String campo, String valor) {
+		Vector<String[]> vec = selectAll(tabela, campo, valor);
+		return (vec.size() > 0);
 	}
 	
 	/**
@@ -834,18 +905,9 @@ public class DBHandler
 	 * @param valores os valores a encontrar nos campos.
 	 * @return true, se os valores existem em simultâneo nos campos referidos de algum elemento. false, caso contrário.
 	 */
-	private boolean valorExiste(String tabela, String[] campos, String[] valores) {
-		Vector<String[]> vec = select(tabela, campos);
-		for(String[] vals : vec) {
-			boolean all = true;
-			for(int i=0; all && i<campos.length; i++) {
-				if(!vals[i].equalsIgnoreCase(valores[i]))
-					all = false;
-			}
-			if(all)
-				return true;
-		}
-		return false;
+	private static boolean valorExiste(String tabela, String[] campos, String[] valores) {
+		Vector<String[]> vec = selectAll(tabela, campos, valores);
+		return (vec.size() > 0);
 	}
 
 	/**
@@ -858,13 +920,12 @@ public class DBHandler
 	 * @param exceptValor o valor que o campo de exclusão deve ter para excluir elementos da procura.
 	 * @return true, se o valor foi encontrado no campo referido de algum elemento (excluíndo os devidos). false, caso contrário.
 	 */
-	private boolean valorExiste(String tabela, String campo, String valor, String exceptCampo, String exceptValor) {
-		Vector<String[]> vec = select(tabela, new String[]{exceptCampo, campo});
-		for(String[] val : vec) {
-			if(val[1].equalsIgnoreCase(valor) && !val[0].equals(exceptValor))
-				return true;
-		}
-		return false;
+	private static boolean valorExiste(String tabela, String campo, String valor, String exceptCampo, String exceptValor) {
+		Vector<String[]> vec = select("SELECT *" +
+									  " FROM " + tabela +
+									  " WHERE " + campo + "=" + valor +
+									  " AND " + exceptCampo + "!=" + exceptValor);
+		return (vec.size() > 0);
 	}
 	
 	/* --------------------------------------------------------------------------- */
@@ -875,8 +936,9 @@ public class DBHandler
 	 * @param tabela a tabela à qual adicionar o objecto.
 	 * @param valores os valores do objecto a adicionar.
 	 */
-	private void adicionaObjecto(String tabela, String[] valores) {
-		execute("INSERT INTO " + tabela + " VALUES(" + Utils.list(valores, ",") + ")");
+	private static void adicionaObjecto(String tabela, String[] valores) {
+		execute("INSERT INTO " + tabela +
+				" VALUES(" + Utils.list(valores, ",") + ")");
 	}
 	
 	/**
@@ -887,11 +949,10 @@ public class DBHandler
 	 * @param campoAct o campo a actualizar no objecto.
 	 * @param valorAct o valor do campo a actualizar.
 	 */
-	private void actualizaObjecto(String tabela, String campo, String valor, String campoAct, String valorAct) {
-		String comando = "UPDATE " + tabela +
-						 " SET " + campoAct + "=" + valorAct +
-						 " WHERE " + campo + "=" + valor;
-		execute(comando);
+	private static void actualizaObjecto(String tabela, String campo, String valor, String campoAct, String valorAct) {
+		execute("UPDATE " + tabela +
+				" SET " + campoAct + "=" + valorAct +
+				" WHERE " + campo + "=" + valor);
 	}
 	
 	/**
@@ -902,11 +963,10 @@ public class DBHandler
 	 * @param camposAct os campos a actualizar no objecto.
 	 * @param valoresAct os valores dos campos a actualizar.
 	 */
-	private void actualizaObjecto(String tabela, String campo, String valor, String[] camposAct, String[] valoresAct) {
-		String comando = "UPDATE " + tabela +
-						 " SET " + Utils.list(camposAct, "=", valoresAct, ",") +
-						 " WHERE " + campo + "=" + valor;
-		execute(comando);
+	private static void actualizaObjecto(String tabela, String campo, String valor, String[] camposAct, String[] valoresAct) {
+		execute("UPDATE " + tabela +
+				" SET " + Utils.list(camposAct, "=", valoresAct, ",") +
+				" WHERE " + campo + "=" + valor);
 	}
 	
 	/**
@@ -917,11 +977,10 @@ public class DBHandler
 	 * @param campoAct o campo a actualizar no objecto.
 	 * @param valorAct o valor do campo a actualizar.
 	 */
-	private void actualizaObjecto(String tabela, String[] campos, String[] valores, String campoAct, String valorAct) {
-		String comando = "UPDATE " + tabela +
-						 " SET " + campoAct + "=" + valorAct +
-						 " WHERE " + Utils.list(campos, "=", valores, " AND ");
-		execute(comando);
+	private static void actualizaObjecto(String tabela, String[] campos, String[] valores, String campoAct, String valorAct) {
+		execute("UPDATE " + tabela +
+				" SET " + campoAct + "=" + valorAct +
+				" WHERE " + Utils.list(campos, "=", valores, " AND "));
 	}
 	
 	/**
@@ -932,11 +991,10 @@ public class DBHandler
 	 * @param camposAct os campos a actualizar no objecto.
 	 * @param valoresAct os valores dos campos a actualizar.
 	 */
-	private void actualizaObjecto(String tabela, String[] campos, String[] valores, String[] camposAct, String[] valoresAct) {
-		String comando = "UPDATE " + tabela +
-						 " SET " + Utils.list(camposAct, "=", valoresAct, ",") +
-						 " WHERE " + Utils.list(campos, "=", valores, " AND ");
-		execute(comando);
+	private static void actualizaObjecto(String tabela, String[] campos, String[] valores, String[] camposAct, String[] valoresAct) {
+		execute("UPDATE " + tabela +
+			   " SET " + Utils.list(camposAct, "=", valoresAct, ",") +
+			   " WHERE " + Utils.list(campos, "=", valores, " AND "));
 	}
 	
 	/**
@@ -945,7 +1003,7 @@ public class DBHandler
 	 * @param campo o campo utilizado para encontrar o objecto a invalidar.
 	 * @param valor o valor que deve ter o campo no objecto a invalidar.
 	 */
-	private void invalidaObjecto(String tabela, String campo, String valor) {
+	private static void invalidaObjecto(String tabela, String campo, String valor) {
 		actualizaObjecto(tabela, campo, valor, "valido", "0");
 	}
 	
@@ -955,7 +1013,7 @@ public class DBHandler
 	 * @param campo o campo utilizado para encontrar o objecto a validar.
 	 * @param valor o valor que deve ter o campo no objecto a validar.
 	 */
-	private void validaObjecto(String tabela, String campo, String valor) {
+	private static void validaObjecto(String tabela, String campo, String valor) {
 		actualizaObjecto(tabela, campo, valor, "valido", "1");
 	}
 	
@@ -965,8 +1023,9 @@ public class DBHandler
 	 * @param campo o campo a verificar para encontrar o(s) objecto(s) a remover.
 	 * @param valor o valor do campo no(s) objecto(s) a ser removido(s).
 	 */
-	private void removeObjecto(String tabela, String campo, String valor) {
-		execute("DELETE FROM " + tabela + " WHERE " + campo + " = " + valor);
+	private static void removeObjecto(String tabela, String campo, String valor) {
+		execute("DELETE FROM " + tabela +
+				" WHERE " + campo + " = " + valor);
 	}
 	
 	/**
@@ -975,8 +1034,9 @@ public class DBHandler
 	 * @param campos os campos a verificar para encontrar o(s) objecto(s) a remover.
 	 * @param valores os valores do campos no(s) objecto(s) a ser removido(s).
 	 */
-	private void removeObjecto(String tabela, String[] campos, String[] valores) {
-		execute("DELETE FROM " + tabela + " WHERE " + Utils.list(campos, "=", valores, " AND "));
+	private static void removeObjecto(String tabela, String[] campos, String[] valores) {
+		execute("DELETE FROM " + tabela +
+				" WHERE " + Utils.list(campos, "=", valores, " AND "));
 	}
 	
 	/**
@@ -984,79 +1044,15 @@ public class DBHandler
 	 * @param tabela tabela de onde obter os dados.
 	 * @return Vector com os campos de cada linha da tabela.
 	 */
-	private Vector<String[]> select(String tabela) {
-		Vector<String[]> objectos = new Vector<String[]>();
-
-		try {
-			Statement st = this.conn.createStatement();
-			ResultSet rset = st.executeQuery("SELECT * FROM " + tabela);
-			ResultSetMetaData rsmd = rset.getMetaData();
-			int n = rsmd.getColumnCount();
-
-			while (rset.next()) {
-				String[] objecto = new String[n];
-				for (int i = 0; i < n; i++)
-					objecto[i] = rset.getString(i+1);
-				objectos.add(objecto);
-			}
-			st.close();
-		} catch (SQLException e) {
-			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, e);
-			return null;
-		}
-		return objectos;
-	}
-
-	/**
-	 * Obtém os campos seleccionados dos objectos existentes numa dada tabela.
-	 * @param tabela tabela onde fazer SELECT.
-	 * @param campos nomes das colunas a obter da tabela.
-	 * @return Vector com os valores dos campos seleccionados de cada linha da tabela.
-	 */
-	private Vector<String[]> select(String tabela, String[] campos) {
-		Vector<String[]> objectos = new Vector<String[]>();
-		int nColunas = campos.length;
-
-		try {
-			Statement st = this.conn.createStatement();
-			ResultSet rset = st.executeQuery("SELECT " + Utils.list(campos, ",") + " FROM " + tabela);
-
-			while (rset.next()) {
-				String[] objecto = new String[nColunas];
-				for (int i = 0; i < nColunas; i++)
-					objecto[i] = rset.getString(campos[i]);
-				objectos.add(objecto);
-			}
-			st.close();
-		} catch (SQLException e) {
-			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, e);
-			return null;
-		}
-		return objectos;
+	private static Vector<String[]> selectAll(String tabela) {
+		return select("SELECT *" +
+					  " FROM " + tabela);
 	}
 	
-	/**
-	 * Obtém o campo seleccionado dos objectos existentes numa dada tabela.
-	 * @param tabela tabela onde fazer SELECT.
-	 * @param campo nome da coluna a obter da tabela.
-	 * @return Vector com os valores do campo seleccionado de cada linha da tabela.
-	 */
-	private Vector<String> select(String tabela, String campo) {
-		Vector<String> objectos = new Vector<String>();
-
-		try {
-			Statement st = this.conn.createStatement();
-			ResultSet rset = st.executeQuery("SELECT " + campo + " FROM " + tabela);
-
-			while (rset.next()) {
-				objectos.add(rset.getString(campo));
-			}
-			st.close();
-		} catch (SQLException e) {
-			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, e);
-			return null;
-		}
-		return objectos;
+	private static Vector<String[]> selectAll(String tabela, String campoOrder) {
+		return select("SELECT *" +
+					  " FROM " + tabela +
+					  " ORDER BY " + campoOrder);
 	}
 	
 	/**
@@ -1067,27 +1063,27 @@ public class DBHandler
 	 * @param valor o valor a procurar no campo.
 	 * @return Vector com todos os campos dos objectos.
 	 */
-	private Vector<String[]> select(String tabela, String campo, String valor) {
-		Vector<String[]> objectos = new Vector<String[]>();
-
-		try {
-			Statement st = this.conn.createStatement();
-			ResultSet rset = st.executeQuery("SELECT * FROM " + tabela + " WHERE " + campo + "=" + valor);
-			ResultSetMetaData rsmd = rset.getMetaData();
-			int n = rsmd.getColumnCount();
-
-			while (rset.next()) {
-				String[] objecto = new String[n];
-				for (int i = 0; i < n; i++)
-					objecto[i] = rset.getString(i+1);
-				objectos.add(objecto);
-			}
-			st.close();
-		} catch (SQLException e) {
-			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, e);
-			return null;
-		}
-		return objectos;
+	private static Vector<String[]> selectAll(String tabela, String campo, String valor) {
+		return select("SELECT *" +
+					  " FROM " + tabela +
+					  " WHERE " + campo + "=" + valor);
+	}
+	
+	private static Vector<String[]> selectAll(String tabela, String[] campos, String[] valores) {
+		return select("SELECT *" +
+					  " FROM " + tabela +
+					  " WHERE " + Utils.list(campos, "=", valores, "AND"));
+	}
+	
+	/**
+	 * Obtém os campos seleccionados dos objectos existentes numa dada tabela.
+	 * @param tabela tabela onde fazer SELECT.
+	 * @param campos nomes das colunas a obter da tabela.
+	 * @return Vector com os valores dos campos seleccionados de cada linha da tabela.
+	 */
+	private static Vector<String[]> select(String tabela, String[] camposSel) {
+		return select("SELECT " + Utils.list(camposSel, ",") +
+					  " FROM " + tabela);
 	}
 	
 	/**
@@ -1099,26 +1095,10 @@ public class DBHandler
 	 * @param valor o valor a procurar no campo.
 	 * @return Vector com os campos seleccionados dos objectos.
 	 */
-	private Vector<String[]> select(String tabela, String[] campos, String campo, String valor) {
-		Vector<String[]> objectos = new Vector<String[]>();
-		int nColunas = campos.length;
-
-		try {
-			Statement st = this.conn.createStatement();
-			ResultSet rset = st.executeQuery("SELECT " + Utils.list(campos, ",") + " FROM " + tabela + " WHERE " + campo + "=" + valor);
-			
-			while (rset.next()) {
-				String[] objecto = new String[nColunas];
-				for (int i = 0; i < nColunas; i++)
-					objecto[i] = rset.getString(campos[i]);
-				objectos.add(objecto);
-			}
-			st.close();
-		} catch (SQLException e) {
-			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, e);
-			return null;
-		}
-		return objectos;
+	private static Vector<String[]> select(String tabela, String[] camposSel, String campo, String valor) {
+		return select("SELECT " + Utils.list(camposSel, ",") +
+					  " FROM " + tabela +
+					  " WHERE " + campo + "=" + valor);
 	}
 	
 	/**
@@ -1130,24 +1110,37 @@ public class DBHandler
 	 * @param valores os valores a procurar nos campos.
 	 * @return Vector com os campos seleccionados dos objectos.
 	 */
-	private Vector<String[]> select(String tabela, String[] camposSel, String[] campos, String[] valores) {
+	private static Vector<String[]> select(String tabela, String[] camposSel, String[] campos, String[] valores) {
+		return select("SELECT " + Utils.list(camposSel, ",") +
+					  " FROM " + tabela +
+					  " WHERE " + Utils.list(campos, "=", valores, "AND"));
+	}
+	
+	private static String queryBuilder(String SELECT, String FROM, String WHERE, String ORDER) {
+		return "SELECT " + SELECT +
+			   " FROM " + FROM +
+			   ((WHERE==null || WHERE.isEmpty()) ? "" : " WHERE " + WHERE) +
+			   ((ORDER==null || ORDER.isEmpty()) ? "" : " ORDER BY " + ORDER);
+	}
+	
+	private static Vector<String[]> select(String query) {
 		Vector<String[]> objectos = new Vector<String[]>();
-		int nColunas = camposSel.length;
-
+		String[] objecto;
 		try {
-			Statement st = this.conn.createStatement();
-			ResultSet rset = st.executeQuery("SELECT " + Utils.list(camposSel, ",") + " FROM " + tabela + " WHERE " + Utils.list(campos, "=", valores, "AND"));
+			Statement st = conn.createStatement();
+			ResultSet rset = st.executeQuery(query);
+			ResultSetMetaData rsmd = rset.getMetaData();
+			int n = rsmd.getColumnCount();
 			
 			while (rset.next()) {
-				String[] objecto = new String[nColunas];
-				for (int i = 0; i < nColunas; i++)
-					objecto[i] = rset.getString(camposSel[i]);
+				objecto = new String[n];
+				for (int i = 0; i < n; i++)
+					objecto[i] = rset.getString(i+1);
 				objectos.add(objecto);
 			}
 			st.close();
 		} catch (SQLException e) {
 			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, e);
-			return null;
 		}
 		return objectos;
 	}
@@ -1156,11 +1149,11 @@ public class DBHandler
 	 * Actualiza a BD com o comando passado por argumento.
 	 * @param comando o comando a executar sobre a BD.
 	 */
-	private void execute(String comando) {
+	private static void execute(String comando) {
 		try {
-			Statement st = this.conn.createStatement();
+			Statement st = conn.createStatement();
 			st.executeUpdate(comando);
-			this.conn.commit();
+			conn.commit();
 		} catch (SQLException ex) {
 			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -1175,7 +1168,7 @@ public class DBHandler
 	 * @param s a string à qual aplicar plicas.
 	 * @return a string, com plicas e os apóstrofes diplicados.
 	 */
-	private String p(String s) {
+	private static String p(String s) {
 		return "'" + s.replace("'", "''") + "'";
 	}
 }

@@ -5,7 +5,6 @@
 
 package outros;
 
-import java.awt.Image;
 import javax.swing.Icon;
 
 /**
@@ -17,7 +16,7 @@ public class Filme {
     private int ano;
     private String[] generos;
     private String realizador;
-    private String produtor;
+    private String produtora;
     private String pais;
     private Icon capa;
     private String descricao;
@@ -27,7 +26,7 @@ public class Filme {
             int ano,
             String[] generos,
             String realizador,
-            String produtor,
+            String produtora,
             String pais,
             Icon capa,
             String descricao,
@@ -37,7 +36,7 @@ public class Filme {
         this.ano=ano;
         this.generos=generos;
         this.realizador=realizador;
-        this.produtor=produtor;
+        this.produtora=produtora;
         this.pais=pais;
         this.descricao=descricao;
         this.capa=capa;
@@ -85,12 +84,12 @@ public class Filme {
         this.pais = pais;
     }
 
-    public String getProdutor() {
-        return produtor;
+    public String getProdutora() {
+        return produtora;
     }
 
-    public void setProdutor(String produtor) {
-        this.produtor = produtor;
+    public void setProdutora(String produtora) {
+        this.produtora = produtora;
     }
 
     public double getRatingIMDB() {

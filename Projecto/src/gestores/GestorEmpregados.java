@@ -35,11 +35,12 @@ public class GestorEmpregados
 	 * @param morada
 	 * @return sucesso/insucesso
 	 */
-	public String addEmpregado(String nome, String telefone, String bi, boolean administrador, String password, String salario, String email, String morada) {
+	public String adicionaEmpregado(String nome, String telefone, String bi, boolean administrador,
+			String password, String salario, String email, String morada) {
 		return null;
 	}
 
-        /**
+	/**
 	 * Actualiza um empregado ao sistema
 	 * @param nome
 	 * @param telefone
@@ -51,8 +52,9 @@ public class GestorEmpregados
 	 * @param morada
 	 * @return sucesso/insucesso
 	 */
-	public String updateEmpregado(String nome, String telefone, String bi, boolean administrador, String password, String salario, String email, String morada) {
-                //TODO : verificar campos null aqui
+	public String actualizaEmpregado(String nome, String telefone, String bi,
+			boolean administrador, String password, String salario, String email, String morada) {
+		// TODO : verificar campos null aqui
 		return null;
 	}
 
@@ -61,29 +63,28 @@ public class GestorEmpregados
 	 * @param id
 	 * @return
 	 */
-	public String deleteEmpregado(String id) {
+	public String removeEmpregado(String id) {
 		return null;
 	}
-        
-        public String [] listaEmpregados(){
-            String []out={"Lobo","Fontes","Almeida"};
-            return out;
-        }
 
-        /**
-         * gera uma string com as estatisticas mais relevantes relativas aos clientes
-         * @param begin
-         * @param end
-         * @return
-         */
-        public String estatisticasEmpregados(GregorianCalendar begin,GregorianCalendar end){
-            if(begin!=null&&end!=null){
-                //estatisticas num intrevalo de tempo
-            }else{
+	public String[] verListaEmpregados() {
+		String[] out = { "Lobo", "Fontes", "Almeida" };
+		return out;
+	}
 
-            }
-            return "Estatisticas Empregados:\n------------------------\n";
-        }
+	/**
+	 * gera uma string com as estatisticas mais relevantes relativas aos
+	 * clientes
+	 * @param begin
+	 * @param end
+	 * @return
+	 */
+	public String estatisticasEmpregados(GregorianCalendar begin, GregorianCalendar end) {
+		if (begin != null && end != null) {
+			// estatisticas num intrevalo de tempo
+		} else {
+
+		}
+		return "Estatisticas Empregados:\n------------------------\n";
+	}
 }
-
-

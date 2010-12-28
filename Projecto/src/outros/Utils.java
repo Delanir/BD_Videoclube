@@ -2,7 +2,6 @@ package outros;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Scanner;
 import java.util.Vector;
 
 /**
@@ -12,13 +11,35 @@ import java.util.Vector;
  */
 public class Utils
 {
+	public static void main(String[] args) {
+		
+	}
+	
+	public static String[] extend(String[] a1, String[] a2) {
+		String[] ret = new String[a1.length + a2.length];
+		int i, j;
+		for(i=0; i<a1.length; i++)
+			ret[i] = a1[i];
+		for(j=0; j<a2.length; i++, j++)
+			ret[i] = a2[j];
+		return ret;
+	}
+	
+	public static String[] extract(String[] sa, int from) {
+		String[] ret = new String[sa.length - from];
+		int i=0, j=from;
+		for(; j<sa.length; i++, j++)
+			ret[i] = sa[j];
+		return ret;
+	}
+	
 	/**
 	 * Imprime o erro que ocorreu, bem como o método e classe onde ocorreu.
 	 * @param e a excepção (erro) lançada.
 	 */
 	public static void printError(Exception e) {
 		System.out.println(e.toString() + " no método " + e.getStackTrace()[0].getMethodName() + "() da classe " + e.getStackTrace()[0].getClassName());
-		//e.printStackTrace();
+		e.printStackTrace();
 	}
 
 	/**
@@ -45,6 +66,39 @@ public class Utils
 		} catch(NumberFormatException e) {
 			return Consts.ERRO_DOUBLE;
 		}
+	}
+	
+	public static String[] strArrayVectorToArray(Vector<String[]> vec) {
+		int i = 0, j, size=0;
+		for(String[] sa : vec)
+			size += sa.length;
+		
+		String[] ret = new String[size];
+		
+		for(String[] sa : vec)
+			for(j=0; j<sa.length; i++, j++)
+				ret[i] = sa[j];
+		return ret;
+	}
+	
+	public static String[] strArrayVectorToArray(Vector<String[]> vec, int index) {
+		String[] ret = new String[vec.size()];
+		int i=0;
+		for(String[] sa : vec) {
+			ret[i] = sa[index];
+			i++;
+		}
+		return ret;
+	}
+	
+	public static String[] strVectorToArray(Vector<String> vec) {
+		String[] ret = new String[vec.size()];
+		int i=0;
+		for(String s : vec) {
+			ret[i] = s;
+			i++;
+		}
+		return ret;
 	}
 	
 	/**
@@ -187,6 +241,17 @@ public class Utils
 		return lista;
 	}
 	
+	public static String list(Vector<String[]> strs, String sep) {
+		String lista = "";
+		for(String[] sa : strs) {
+			lista += sa[0];
+			for (int i = 1; i < sa.length; i++)
+				lista += sep + sa[i];
+			lista += "\n";
+		}
+		return lista;
+	}
+	
 	/**
 	 * Devolve uma string organizada em pares (separados pela string "sep2") de
 	 * "strs" e "strs2" (separados por "sep").
@@ -202,15 +267,5 @@ public class Utils
 		for (int i = 1; i < strs.length; i++)
 			lista += sep2 + strs[i] + sep + strs2[i];
 		return lista;
-	}
-
-	// Faz parsing de uma lista de string e imprime de maneira a pÃ´r tudo num
-	// array estÃ¡tico
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-
-		while (true) {
-			System.out.println("\"" + sc.nextLine() + "\",");
-		}
 	}
 }
