@@ -6,6 +6,7 @@
 package gestores;
 
 import java.util.GregorianCalendar;
+import java.util.Vector;
 
 import outros.Consts;
 
@@ -31,13 +32,14 @@ public class GestorClientes
 	 */
 	// TODO: ordem na gui
 	public String actualizaCliente(String id, String nome, String bi, String password, String morada, String email, String telefone) {
+		//TODO verificar strings ""!
 		if (!DBHandler.biClienteExiste(id, bi)) {
 			DBHandler.actualizaCliente(id, nome, bi, password, morada, email, telefone);
 			return "Cliente actualizado.";
 		} else
 			return Consts.BI_CLIENTE_EXISTE;
 	}
-
+	
 	/**
 	 * Devolve informações relativas oa cliente em questÃ£o
 	 */
@@ -62,8 +64,13 @@ public class GestorClientes
 	 */
 	public String[] verListaClientes() {
 		Vector<String[]> vec = DBHandler.getClientes();
-		
-		return null;
+		String[] ret = new String[vec.size()];
+		int i=0;
+		for(String[] sa : vec) {
+			ret[i] = sa[0] + ": (" + sa[2] + ") " + sa[1]; //id: (BI) nome
+			i++;
+		}
+		return ret;
 	}
 
 	/**
