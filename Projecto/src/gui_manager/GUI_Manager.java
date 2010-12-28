@@ -1420,6 +1420,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             .addComponent(jFileChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
         );
 
+        adicionarFilmeFrame.setMinimumSize(new java.awt.Dimension(800, 600));
+
         jLabel53.setText("Género:");
 
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -1855,6 +1857,8 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
                 .addGap(0, 13, Short.MAX_VALUE)))
     );
 
+    eliminarFilmesFrame.setMinimumSize(new java.awt.Dimension(800, 600));
+
     textEliminaFilmes.setColumns(20);
     textEliminaFilmes.setRows(5);
     jScrollPane17.setViewportView(textEliminaFilmes);
@@ -1970,6 +1974,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
 
+    pesquisarFilmesFrame.setMinimumSize(new java.awt.Dimension(800, 600));
     pesquisarFilmesFrame.addWindowListener(new java.awt.event.WindowAdapter() {
         public void windowClosing(java.awt.event.WindowEvent evt) {
             pesquisarFilmesFrameWindowClosing(evt);
@@ -2320,6 +2325,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
             .addGap(0, 0, Short.MAX_VALUE))
     );
 
+    generosFrame.setMinimumSize(new java.awt.Dimension(800, 600));
     generosFrame.addWindowListener(new java.awt.event.WindowAdapter() {
         public void windowClosing(java.awt.event.WindowEvent evt) {
             generosFrameWindowClosing(evt);
@@ -2415,6 +2421,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                 .addComponent(jGenerosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
+
+    resultadosFrame.setMinimumSize(new java.awt.Dimension(800, 600));
 
     paisResultadosFilme.setEditable(false);
 
@@ -2897,6 +2905,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
 
+    eliminarClienteFrame.setMinimumSize(new java.awt.Dimension(800, 600));
     eliminarClienteFrame.addWindowListener(new java.awt.event.WindowAdapter() {
         public void windowClosing(java.awt.event.WindowEvent evt) {
             eliminarClienteFrameWindowClosing(evt);
@@ -2979,6 +2988,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
 
+    notificarClientesFrame.setMinimumSize(new java.awt.Dimension(800, 600));
     notificarClientesFrame.addWindowListener(new java.awt.event.WindowAdapter() {
         public void windowClosing(java.awt.event.WindowEvent evt) {
             notificarClientesFrameWindowClosing(evt);
@@ -3069,6 +3079,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
             .addGap(25, 25, 25))
     );
 
+    pesquisarClienteFrame.setAlwaysOnTop(true);
+    pesquisarClienteFrame.setMinimumSize(new java.awt.Dimension(800, 600));
     pesquisarClienteFrame.addWindowListener(new java.awt.event.WindowAdapter() {
         public void windowClosing(java.awt.event.WindowEvent evt) {
             pesquisarClienteFrameWindowClosing(evt);

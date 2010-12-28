@@ -1436,6 +1436,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="adicionarFilmeFrame">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 600]"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -1860,6 +1865,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="eliminarFilmesFrame">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 600]"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -2043,6 +2053,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="pesquisarFilmesFrame">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 600]"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="pesquisarFilmesFrameWindowClosing"/>
       </Events>
@@ -2341,6 +2356,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="generosFrame">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 600]"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="generosFrameWindowClosing"/>
       </Events>
@@ -2486,6 +2506,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="resultadosFrame">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 600]"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -3310,6 +3335,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="eliminarClienteFrame">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 600]"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="eliminarClienteFrameWindowClosing"/>
       </Events>
@@ -3434,6 +3464,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="notificarClientesFrame">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 600]"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="notificarClientesFrameWindowClosing"/>
       </Events>
@@ -3580,6 +3615,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="pesquisarClienteFrame">
+      <Properties>
+        <Property name="alwaysOnTop" type="boolean" value="true"/>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 600]"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="pesquisarClienteFrameWindowClosing"/>
       </Events>
