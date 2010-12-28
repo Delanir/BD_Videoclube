@@ -50,26 +50,26 @@ public class GestorFilmes
 	// TODO: adicionar generos (dif�cil. tenho de saber o ID do filme k acabei de adicionar)
 	public String adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
 		DBHandler.adicionaFilme(titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
-		System.out.println("O seguinte filme foi adicionado: (" + ano + ") " + titulo);
+		Utils.dbg("O seguinte filme foi adicionado: (" + ano + ") " + titulo);
 		return "O seguinte filme foi adicionado: (" + ano + ") " + titulo;
 	}
 
 	// TODO: adicionar generos (dif�cil. tenho de saber o ID do filme k acabei de adicionar)
 	public String actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
 		DBHandler.actualizaFilme(id, titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
-		System.out.println("O filme com o ID " + id + " foi actualizado.");
+		Utils.dbg("O filme com o ID " + id + " foi actualizado.");
 		return "O filme foi actualizado.";
 	}
 	
 	public String invalidaFilme(String id) {
 		DBHandler.invalidaFilme(id);
-		System.out.println("O filme com o ID " + id + " foi invalidado.");
+		Utils.dbg("O filme com o ID " + id + " foi invalidado.");
 		return "O filme foi invalidado.";
 	}
 	
 	public String validaFilme(String id) {
 		DBHandler.validaFilme(id);
-		System.out.println("O filme com o ID " + id + " foi re-validado.");
+		Utils.dbg("O filme com o ID " + id + " foi re-validado.");
 		return "O filme foi re-validado.";
 	}
 	
@@ -97,7 +97,7 @@ public class GestorFilmes
 	 */
 	// TODO: do it
 	public String deleteStock(String idMovie, String formato, int quantidade) {
-		System.out.println("gestorFilmes: Eliminou Supostamente:" + idMovie + " " + formato + " " + quantidade);
+		Utils.dbg("gestorFilmes: Eliminou Supostamente:" + idMovie + " " + formato + " " + quantidade);
 		return null;
 	}
 
@@ -141,7 +141,7 @@ public class GestorFilmes
 	 */
 	// TODO: do it
 	public String listarFormato(String idFilme, String formato) {
-		System.out.println(formato);
+		Utils.dbg(formato);
 		return "ID: " + idFilme + " Formato: " + formato +
 			   "\nQuantidade Stock: " + "3" +
 			   "\nQuantidade Disponível" + "1";

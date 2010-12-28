@@ -6,62 +6,55 @@
 package gestores;
 
 import java.util.GregorianCalendar;
+import java.util.Vector;
+
+import outros.Consts;
+
+import bd.DBHandler;
 
 public class GestorClientes
 {
 	/**
 	 * Adiciona um novo cliente ao sistema
-	 * @param nome
-	 * @param telefone
-	 * @param bi
-	 * @param password
-	 * @param email
-	 * @param morada
-	 * @return
 	 */
+	// TODO: ordem na gui
 	// "ID_PES", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"
-	public String adicionaCliente(String nome, String telefone, String bi, String password, String email, String morada) {
-		return null;
+	public String adicionaCliente(String nome, String bi, String password, String morada, String email, String telefone) {
+		if (!DBHandler.biClienteExiste("", bi)) {
+			DBHandler.adicionaCliente(nome, bi, password, morada, email, telefone);
+			return "Novo cliente adicionado.";
+		} else
+			return Consts.BI_CLIENTE_EXISTE;
 	}
 
 	/**
 	 * actualiza os campos n�o nulos no cliente
-	 * @param nome
-	 * @param telefone
-	 * @param bi
-	 * @param password
-	 * @param email
-	 * @param morada
-	 * @return
 	 */
-	public String actualizaCliente(String bi, String nome, String telefone,
-			String password, String email, String morada) {
-            //TODO verificar strings ""!
-		return null;
+	// TODO: ordem na gui
+	public String actualizaCliente(String id, String nome, String bi, String password, String morada, String email, String telefone) {
+		//TODO verificar strings ""!
+		if (!DBHandler.biClienteExiste(id, bi)) {
+			DBHandler.actualizaCliente(id, nome, bi, password, morada, email, telefone);
+			return "Cliente actualizado.";
+		} else
+			return Consts.BI_CLIENTE_EXISTE;
 	}
-
+	
 	/**
-	 * Devolve informações relativas oa cliente em questão
-	 * @param id
-	 * @return
+	 * Devolve informa��es relativas oa cliente em questão
 	 */
-	public String procuraCliente(String id) {
-		return null;
+	public String[] procuraCliente(String id) {
+		return DBHandler.getCliente(id);
+	}
+	
+	public String[] procuraClienteBI(String bi) {
+		return DBHandler.getClienteBI(bi);
 	}
 
 	/**
 	 * Procura clientes que respeitem as informações não nulas dadas!
-	 * @param id
-	 * @param nome
-	 * @param telefone
-	 * @param bi
-	 * @param email
-	 * @param morada
-	 * @return
 	 */
-	// TODO: do it. WTF o k � isto?
-	public String procuraCliente(String id, String nome, String telefone, String bi, String email,
-			String morada) {
+	public String procuraClientes(String nome, String bi, String password, String morada, String email, String telefone) {
 		return null;
 	}
 
@@ -70,7 +63,14 @@ public class GestorClientes
 	 * @return
 	 */
 	public String[] verListaClientes() {
-		return null;
+		Vector<String[]> vec = DBHandler.getClientes();
+		String[] ret = new String[vec.size()];
+		int i=0;
+		for(String[] sa : vec) {
+			ret[i] = sa[0] + ": (" + sa[2] + ") " + sa[1]; //id: (BI) nome
+			i++;
+		}
+		return ret;
 	}
 
 	/**
@@ -79,6 +79,15 @@ public class GestorClientes
 	 * @return
 	 */
 	public String removeCliente(String id) {
+		return null;
+	}
+
+        /**
+	 * apaga um cliente do sistema
+	 * @param id
+	 * @return
+	 */
+	public String removeClienteBI(String bi) {
 		return null;
 	}
 

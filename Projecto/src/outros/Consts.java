@@ -15,4 +15,8 @@ public class Consts
 	public final static String FORMATO_EXISTE = "Já existe um formato com esse nome!";
 	public final static String FORMATO_EM_USO = "Existe pelo menos um stock de um filme neste formato. Por favor elimine primeiro todas as referências a este formato.";
 	public final static String GENERO_EM_USO = "Existe pelo menos um filme pertencente a esse género. Por favor elimine primeiro todas as referências a este género.";
+	public final static String BI_CLIENTE_EXISTE = "Já existe um cliente com esse BI!";
+	public final static String BI_EMPREGADO_EXISTE = "Já existe um empregado com esse BI!";
+	
+	public static final boolean DEBUG = true;
 }

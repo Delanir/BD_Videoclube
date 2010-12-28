@@ -128,6 +128,23 @@ public class DBHandler
 	public static String[] getCliente(String id) {
 		return selectAll("clientes", "ID_CLI", id).get(0);
 	}
+	
+	public static String[] getClienteBI(String bi) {
+		return selectAll("clientes", "BI", bi).get(0);
+	}
+	
+	public static Vector<String[]> procuraClientes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
+		String query = "SELECT ID_FIL, ANO, TITULO" +
+					   " FROM filmes f" +
+					   " WHERE ID_FIL = ID_FIL" +	// redundância para evitar o caso em que o WHERE fica sem nada
+					   (titulo.isEmpty()?"":" AND titulo = "+p(titulo)) +
+					   (realizador.isEmpty()?"":" AND realizador = "+p(realizador)) +
+					   (pais.isEmpty()?"":" AND pais = "+p(pais)) +
+					   (produtora.isEmpty()?"":" AND produtora = "+p(produtora)) +
+					   (anoLow.isEmpty()||anoHigh.isEmpty()?"":" AND ano BETWEEN "+anoLow+" AND "+anoHigh) +
+					   (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND ratingIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh);
+		return select(query);
+	}
 
 	/**
 	 * Adiciona um cliente à BD.
@@ -137,11 +154,10 @@ public class DBHandler
 	 * @param morada a morada do cliente a adicionar.
 	 * @param email o e-mail do cliente a adicionar.
 	 * @param telefone o número de telefone do cliente a adicionar.
-	 * @param data_registo a data de registo do cliente a adicionar.
 	 */
-	public static void adicionaCliente(String nome, String bi, String password, String morada, String email, String telefone, String data_registo) {
+	public static void adicionaCliente(String nome, String bi, String password, String morada, String email, String telefone) {
 		adicionaObjecto("clientes",
-						new String[]{"seq_pessoa_id.NEXTVAL", p(nome), bi, p(password), p(morada), p(email), telefone, "1", p(data_registo)});
+						new String[]{"seq_pessoa_id.NEXTVAL", p(nome), bi, p(password), p(morada), p(email), telefone, "1", "SYSDATE"});
 	}
 	
 	/**
