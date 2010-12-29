@@ -422,7 +422,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jScrollPane20 = new javax.swing.JScrollPane();
         jList5 = new javax.swing.JList();
         jLabel76 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        listaFormatosResultadosFilmes = new javax.swing.JComboBox();
         jLabel98 = new javax.swing.JLabel();
         jLabel99 = new javax.swing.JLabel();
         jFormattedTextField4 = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
@@ -2560,7 +2560,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     });
     jScrollPane20.setViewportView(jList5);
 
-    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Blu-Ray", "DVD", "UMD"}));
+    listaFormatosResultadosFilmes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Blu-Ray", "DVD", "UMD"}));
 
     jLabel98.setText("Formato:");
 
@@ -2640,7 +2640,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                                             .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                                                 .addComponent(jLabel98)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(listaFormatosResultadosFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                                                 .addComponent(jLabel99)
                                                 .addGap(18, 18, 18)
@@ -2696,7 +2696,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel98)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(listaFormatosResultadosFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel99)
@@ -3435,7 +3435,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_jAdicionarClientesButtonActionPerformed
 
     private void jEliminarFilmeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarFilmeButtonActionPerformed
-
+        listaFormatos.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+       
         eliminarFilmesFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jEliminarFilmeButtonActionPerformed
@@ -3492,6 +3493,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
         pesquisarFilmesFrame.setVisible(false);
       pesquisarFilmesFrame.transferFocusBackward();
+      listaFormatosResultadosFilmes.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+
       resultadosFrame.setVisible(true);
       transferFocus();
     }//GEN-LAST:event_pesquisarFilmeActionPerformed
@@ -3621,6 +3624,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private void jAdicionarFilmesToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarFilmesToggleButtonActionPerformed
         // TODO add your handling code here:
         //Set aos generos existentes
+        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
         transferFocus();
@@ -3687,6 +3691,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void eliminaFilmes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaFilmes2ActionPerformed
         // TODO add your handling code here:
+        listaFormatos.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+       
         eliminarFilmesFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_eliminaFilmes2ActionPerformed
@@ -3702,10 +3708,13 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private void eliminaFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaFilmesActionPerformed
         // TODO add your handling code here:
         gestorFilmes.deleteStock(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem(),(Integer)eliminaSpinner.getValue());
+
     }//GEN-LAST:event_eliminaFilmesActionPerformed
 
     private void jToggleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton17ActionPerformed
         // TODO add your handling code here:
+        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
         transferFocus();
@@ -3713,6 +3722,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void jToggleButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton18ActionPerformed
         // TODO add your handling code here:
+        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
         transferFocus();
@@ -3720,6 +3731,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void jActualizarStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActualizarStockButtonActionPerformed
         // TODO add your handling code here:
+        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
         transferFocus();
@@ -3961,7 +3974,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         String idMovie=((String)jList4.getSelectedValue()).split(" ")[0];
         if(jFormattedTextField4.isEditValid()){
             output=gestorFilmes.alugaFilme(idMovie,
-                    (String) jComboBox1.getSelectedItem(),
+                    (String) listaFormatosResultadosFilmes.getSelectedItem(),
                     jFormattedTextField4.getText(),
                     gestorUtilizadores.getIdEmpregado());
         }
@@ -4215,7 +4228,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JPanel jClientesManagerPanel;
     private javax.swing.JPanel jClientesManagerPanel1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JToggleButton jDespedirEmpregadoButton;
     private javax.swing.JPanel jEliminarClientePanel;
     private javax.swing.JButton jEliminarClientesButton;
@@ -4330,6 +4342,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JList listaFormato;
     private javax.swing.JComboBox listaFormatos;
     private javax.swing.JComboBox listaFormatosAdicionaFilme;
+    private javax.swing.JComboBox listaFormatosResultadosFilmes;
     private javax.swing.JList listaGeneros;
     private javax.swing.JComboBox listaGenerosAdicionaFilmes;
     private javax.swing.JList listaMaquinas;

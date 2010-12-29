@@ -2833,7 +2833,7 @@
                                                       <Group type="102" attributes="0">
                                                           <Component id="jLabel98" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="jComboBox1" min="-2" pref="92" max="-2" attributes="0"/>
+                                                          <Component id="listaFormatosResultadosFilmes" min="-2" pref="92" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="jLabel99" min="-2" max="-2" attributes="0"/>
@@ -2910,7 +2910,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel98" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="listaFormatosResultadosFilmes" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -3123,7 +3123,7 @@
             </Container>
             <Component class="javax.swing.JLabel" name="jLabel76">
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="listaFormatosResultadosFilmes">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Blu-Ray&quot;, &quot;DVD&quot;, &quot;UMD&quot;})" type="code"/>
