@@ -232,11 +232,15 @@ public class Frame_ATM  extends JFrame{
         jVoltarButton6 = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        menuDados_nome = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
+        menuDados_morada = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        menuDados_mail = new javax.swing.JTextField();
+        menuDados_BI = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        menuDados_tel = new javax.swing.JTextField();
         mainPanel = new javax.swing.JPanel();
 
         jPesquisarButton.setText("Pesquisar Filmes");
@@ -1152,18 +1156,28 @@ public class Frame_ATM  extends JFrame{
 
         jLabel26.setText("Nome:");
 
-        jTextField11.setEditable(false);
-        jTextField11.setText("jTextField11");
+        menuDados_nome.setEditable(false);
+        menuDados_nome.setText("jTextField11");
 
         jLabel27.setText("Morada:");
 
-        jTextField12.setEditable(false);
-        jTextField12.setText("jTextField12");
+        menuDados_morada.setEditable(false);
+        menuDados_morada.setText("jTextField12");
 
         jLabel28.setText("E-mail:");
 
-        jTextField13.setEditable(false);
-        jTextField13.setText("jTextField13");
+        menuDados_mail.setEditable(false);
+        menuDados_mail.setText("jTextField13");
+
+        menuDados_BI.setEditable(false);
+        menuDados_BI.setText("jTextField1");
+
+        jLabel20.setText("BI:");
+
+        jLabel30.setText("Telefone:");
+
+        menuDados_tel.setEditable(false);
+        menuDados_tel.setText("jTextField2");
 
         javax.swing.GroupLayout jDadosPanelLayout = new javax.swing.GroupLayout(jDadosPanel);
         jDadosPanel.setLayout(jDadosPanelLayout);
@@ -1180,42 +1194,54 @@ public class Frame_ATM  extends JFrame{
                 .addComponent(jLabel25)
                 .addContainerGap(325, Short.MAX_VALUE))
             .addGroup(jDadosPanelLayout.createSequentialGroup()
-                .addGap(114, 114, 114)
+                .addGap(106, 106, 106)
+                .addGroup(jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel30)
+                    .addGroup(jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jDadosPanelLayout.createSequentialGroup()
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel26))
+                        .addGroup(jDadosPanelLayout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addGroup(jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel28)
+                                .addComponent(jLabel27))))
+                    .addComponent(jLabel20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jDadosPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDadosPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField12))
-                    .addGroup(jDadosPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel26)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField11)))
-                .addContainerGap(283, Short.MAX_VALUE))
+                    .addComponent(menuDados_tel)
+                    .addComponent(menuDados_BI)
+                    .addComponent(menuDados_morada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(menuDados_mail)
+                    .addComponent(menuDados_nome))
+                .addGap(276, 276, 276))
         );
         jDadosPanelLayout.setVerticalGroup(
             jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDadosPanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel25)
-                .addGap(50, 50, 50)
+                .addGap(55, 55, 55)
                 .addGroup(jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(menuDados_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26))
                 .addGap(18, 18, 18)
                 .addGroup(jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel27)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(menuDados_morada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27))
+                .addGap(18, 18, 18)
                 .addGroup(jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(242, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDadosPanelLayout.createSequentialGroup()
-                .addContainerGap(373, Short.MAX_VALUE)
+                    .addComponent(menuDados_mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(menuDados_BI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20))
+                .addGap(18, 18, 18)
+                .addGroup(jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(menuDados_tel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jVoltarButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSairButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1668,22 +1694,12 @@ public class Frame_ATM  extends JFrame{
         Utils.dbg("resposta: "+verificar_login);
         Component frame = new Component() {};
         if(verificar_login==null){
-            /*jDadosPanel.setVisible(false);
-            jPanel3.setVisible(false);
-            jEntregaPanel.setVisible(false);
-            jLoginPanel.setVisible(false);
-            jHistoricoPanel.setVisible(false);
-            jMenuPanel.setVisible(true);
-            jResultadosPanel.setVisible(false);
-            jPesquisarPanel.setVisible(false);
-            */JOptionPane.showMessageDialog(frame,
+            JOptionPane.showMessageDialog(frame,
             "Dados de login incorrectos",
             "Aviso!",
             JOptionPane.WARNING_MESSAGE);
 
         }else{
-            jUsernameField.setText("");
-            jPasswordField.setText("");
             
             jDadosPanel.setVisible(false);
             jPaga.setVisible(false);
@@ -1694,10 +1710,15 @@ public class Frame_ATM  extends JFrame{
             jResultadosPanel.setVisible(false);
             jPesquisarPanel.setVisible(false);
 
-            String[] dados = gerir_users.verDadosPessoais();
-            jTextField11.setText(dados[0]);
-            jTextField12.setText(dados[1]);
-            jTextField13.setText(dados[2]);
+            String[] dados = gerir_users.verDadosPessoais(jUsernameField.getText());
+            menuDados_nome.setText(dados[0]);
+            menuDados_BI.setText(dados[1]);
+            menuDados_morada.setText(dados[3]);
+            menuDados_mail.setText(dados[4]);
+            menuDados_tel.setText(dados[5]);
+
+            jUsernameField.setText("");
+            jPasswordField.setText("");
         }
     }//GEN-LAST:event_jLoginButtonActionPerformed
 /*
@@ -1733,6 +1754,7 @@ public class Frame_ATM  extends JFrame{
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -1743,6 +1765,7 @@ public class Frame_ATM  extends JFrame{
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -1795,15 +1818,17 @@ public class Frame_ATM  extends JFrame{
     private javax.swing.JToggleButton jSearchButton;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jUsernameField;
     private javax.swing.JButton jVoltarButton;
     private javax.swing.JButton jVoltarButton4;
     private javax.swing.JButton jVoltarButton6;
     private javax.swing.JButton jVoltarPesquisaButton;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JTextField menuDados_BI;
+    private javax.swing.JTextField menuDados_mail;
+    private javax.swing.JTextField menuDados_morada;
+    private javax.swing.JTextField menuDados_nome;
+    private javax.swing.JTextField menuDados_tel;
     private javax.swing.JList menuEntregar_filme;
     private javax.swing.JFormattedTextField menuPaga_dataEntrega;
     private javax.swing.JTextField menuPaga_preco;

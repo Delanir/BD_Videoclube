@@ -1,10 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package gestores_atm;
 
+import bd.DBHandler;
 import outros.Utils;
 
 /**
@@ -12,6 +9,7 @@ import outros.Utils;
  * @author Daniela
  */
 public class GestorUtilizadores {
+
     private String username;
     private String password;
 
@@ -24,17 +22,19 @@ public class GestorUtilizadores {
     public String login(String username,String password){
         //se login se confirmar, guardar campos de username e password
         return username;
-        //return null;
+        //return DBHandler.;
     }
 
     /**
      * faz display dos dados pessoais do utiizador
      * @return
      */
-    public String [] verDadosPessoais(){
+    public String [] verDadosPessoais(String username){
         //pesquisar na base de dados e devolver uma string com os dados
-        String [] dados = {"pedro","daniel","daniela"};
-        return dados;
+        //nao sei se sao estas as funçoes
+        DBHandler.getCliente(username);
+        //String [] dados = {"pedro","daniel","daniela"};
+        return DBHandler.getCliente(username);
     }
 
     /**
