@@ -232,6 +232,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jEliminarClientesButton = new javax.swing.JButton();
         jNotificarClientesButton = new javax.swing.JButton();
         jVerificarPagamentosAtrasoButton = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        verificarRequesicoes = new javax.swing.JButton();
         jFilmesManagerPanel = new javax.swing.JPanel();
         jAdicionarFilmesToggleButton = new javax.swing.JToggleButton();
         jActualizarStockButton = new javax.swing.JToggleButton();
@@ -281,6 +283,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         eliminarClientes = new javax.swing.JButton();
         notificarClientes = new javax.swing.JButton();
         jVerificarPagamentosAtrasoButton1 = new javax.swing.JButton();
+        verificarRequesicoes1 = new javax.swing.JButton();
+        jLabel32 = new javax.swing.JLabel();
         jFilmesManagerPanel1 = new javax.swing.JPanel();
         jToggleButton17 = new javax.swing.JToggleButton();
         jToggleButton18 = new javax.swing.JToggleButton();
@@ -617,7 +621,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addGroup(jATMManagerPanelLayout.createSequentialGroup()
                         .addGap(194, 194, 194)
                         .addComponent(jAdicionarATMButton)))
-                .addContainerGap(765, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
         jATMManagerPanelLayout.setVerticalGroup(
             jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -643,7 +647,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jVenderATMButton)
                     .addComponent(actualizarListaMaquinas))
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Máquinas", jATMManagerPanel);
@@ -749,7 +753,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
                         .addGap(202, 202, 202)
                         .addComponent(jButton6)))
-                .addContainerGap(781, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         jEstatisticasPanelLayout.setVerticalGroup(
             jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -783,7 +787,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
         );
@@ -829,6 +833,15 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             }
         });
 
+        jLabel31.setText("Clientes com requesições:");
+
+        verificarRequesicoes.setText("Verificar");
+        verificarRequesicoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verificarRequesicoesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jClientesManagerPanelLayout = new javax.swing.GroupLayout(jClientesManagerPanel);
         jClientesManagerPanel.setLayout(jClientesManagerPanelLayout);
         jClientesManagerPanelLayout.setHorizontalGroup(
@@ -836,10 +849,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel23)
-                        .addGap(38, 38, 38)
-                        .addComponent(jVerificarPagamentosAtrasoButton))
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
                         .addGap(166, 166, 166)
@@ -847,19 +856,31 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                             .addComponent(jPesquisarClientesButton)
                             .addComponent(jAdicionarClientesButton)
                             .addComponent(jNotificarClientesButton)
-                            .addComponent(jEliminarClientesButton))))
-                .addContainerGap(679, Short.MAX_VALUE))
+                            .addComponent(jEliminarClientesButton)))
+                    .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
+                        .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel31))
+                        .addGap(38, 38, 38)
+                        .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(verificarRequesicoes)
+                            .addComponent(jVerificarPagamentosAtrasoButton))))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         jClientesManagerPanelLayout.setVerticalGroup(
             jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(19, 19, 19)
+                .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(verificarRequesicoes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
                     .addComponent(jVerificarPagamentosAtrasoButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(32, 32, 32)
                 .addComponent(jPesquisarClientesButton)
                 .addGap(18, 18, 18)
                 .addComponent(jAdicionarClientesButton)
@@ -867,7 +888,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addComponent(jNotificarClientesButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jEliminarClientesButton)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Clientes", jClientesManagerPanel);
@@ -919,7 +940,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addComponent(jActualizarStockButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                     .addComponent(jAdicionarFilmesToggleButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jEliminarFilmeButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(784, Short.MAX_VALUE))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
         jFilmesManagerPanelLayout.setVerticalGroup(
             jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -934,7 +955,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addComponent(jGeneroButton)
                 .addGap(39, 39, 39)
                 .addComponent(jPesquisarButton)
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão de Filmes", jFilmesManagerPanel);
@@ -1148,7 +1169,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addComponent(jDespedirEmpregadoButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Empregados", jEmpregadosManagerPanel);
@@ -1228,6 +1249,15 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             }
         });
 
+        verificarRequesicoes1.setText("Verificar");
+        verificarRequesicoes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verificarRequesicoes1ActionPerformed(evt);
+            }
+        });
+
+        jLabel32.setText("Clientes com requesições:");
+
         javax.swing.GroupLayout jClientesManagerPanel1Layout = new javax.swing.GroupLayout(jClientesManagerPanel1);
         jClientesManagerPanel1.setLayout(jClientesManagerPanel1Layout);
         jClientesManagerPanel1Layout.setHorizontalGroup(
@@ -1235,10 +1265,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel41)
-                        .addGap(45, 45, 45)
-                        .addComponent(jVerificarPagamentosAtrasoButton1))
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
                         .addGap(166, 166, 166)
@@ -1246,13 +1272,25 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                             .addComponent(pesquisarClientes)
                             .addComponent(adicionarClientes)
                             .addComponent(eliminarClientes)
-                            .addComponent(notificarClientes))))
+                            .addComponent(notificarClientes)))
+                    .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
+                        .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel41)
+                            .addComponent(jLabel32))
+                        .addGap(45, 45, 45)
+                        .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(verificarRequesicoes1)
+                            .addComponent(jVerificarPagamentosAtrasoButton1))))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
         jClientesManagerPanel1Layout.setVerticalGroup(
             jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
+                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(verificarRequesicoes1)
+                    .addComponent(jLabel32))
+                .addGap(5, 5, 5)
                 .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel41)
                     .addComponent(jVerificarPagamentosAtrasoButton1))
@@ -3369,7 +3407,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void jVerificarPagamentosAtrasoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVerificarPagamentosAtrasoButtonActionPerformed
 
-        pagamentosAtraso.setModel(new OurListModel(gestorClientes.verificaClientesComPagamentosEmAtraso()));
+        pagamentosAtraso.setModel(new OurListModel(gestorClientes.getClientesComEntregasForaDePrazo()));
     }//GEN-LAST:event_jVerificarPagamentosAtrasoButtonActionPerformed
 
     private void jEliminarClientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarClientesButtonActionPerformed
@@ -3654,7 +3692,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_voltarAdcionaFilmesActionPerformed
 
     private void jVerificarPagamentosAtrasoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVerificarPagamentosAtrasoButton1ActionPerformed
-        pagamentosAtraso.setModel(new OurListModel(gestorClientes.verificaClientesComPagamentosEmAtraso()));
+        pagamentosAtraso.setModel(new OurListModel(gestorClientes.getClientesComEntregasForaDePrazo()));
     }//GEN-LAST:event_jVerificarPagamentosAtrasoButton1ActionPerformed
 
     private void actualizarListaMaquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarListaMaquinasActionPerformed
@@ -3721,19 +3759,19 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         jTextArea2.setText("");
         if(jCheckBox5.isSelected()){
             //Clientes
-            jTextArea2.append(gestorClientes.estatisticasClientes(calendarBegin, calendarEnd));
+            jTextArea2.append(gestorEstatisticas.estatisticasClientes(calendarBegin, calendarEnd));
         }
          if(jCheckBox3.isSelected()){
             //Clientes
-            jTextArea2.append(gestorFilmes.estatisticasFilmes(calendarBegin, calendarEnd));
+            jTextArea2.append(gestorEstatisticas.estatisticasFilmes(calendarBegin, calendarEnd));
         }
          if(jCheckBox1.isSelected()){
             //Clientes
-            jTextArea2.append(gestorEmpregados.estatisticasEmpregados(calendarBegin, calendarEnd));
+            jTextArea2.append(gestorEstatisticas.estatisticasEmpregados(calendarBegin, calendarEnd));
         }
         if(jCheckBox4.isSelected()){
             //Clientes
-            jTextArea2.append(gestorMaquinas.estatisticasMaquinas(calendarBegin, calendarEnd));
+            jTextArea2.append(gestorEstatisticas.estatisticasMaquinas(calendarBegin, calendarEnd));
         }
         if(jCheckBox5.isSelected()){
             //Clientes
@@ -3882,6 +3920,14 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         
     }//GEN-LAST:event_obterDadosEmpregadoActualizacaoActionPerformed
 
+    private void verificarRequesicoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarRequesicoesActionPerformed
+        pagamentosAtraso.setModel(new OurListModel(gestorClientes.getClientesComEntregasPorFazer()));
+    }//GEN-LAST:event_verificarRequesicoesActionPerformed
+
+    private void verificarRequesicoes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarRequesicoes1ActionPerformed
+        pagamentosAtraso.setModel(new OurListModel(gestorClientes.getClientesComEntregasPorFazer()));
+    }//GEN-LAST:event_verificarRequesicoes1ActionPerformed
+
    
     //OUR GUI VARS
     private javax.swing.ButtonGroup bgroup;
@@ -3973,6 +4019,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -4106,6 +4154,8 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextField textTituloAdicionaFilme;
     private javax.swing.JTextField textTituloPesquisaFilmes;
     private javax.swing.JTextField tituloResultadosFilme;
+    private javax.swing.JButton verificarRequesicoes;
+    private javax.swing.JButton verificarRequesicoes1;
     private javax.swing.JToggleButton voltarAdcionaFilmes;
     private javax.swing.JToggleButton voltarEliminaFilmes;
     private javax.swing.JToggleButton voltarPesquisarCliente;
