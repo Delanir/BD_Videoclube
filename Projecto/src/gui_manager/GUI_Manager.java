@@ -13,6 +13,7 @@ package gui_manager;
 
 import com.toedter.calendar.JCalendar;
 import gestores.*;
+import gestores_manager.GestorUtilizadores;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.NumberFormat;
@@ -29,6 +30,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.ListModel;
 import javax.swing.SpinnerNumberModel;
+import outros.Consts;
 import outros.Filme;
 import outros.OurListModel;
 import outros.Utils;
@@ -39,6 +41,7 @@ import outros.Utils;
  */
 public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeListener {
     //Gestores
+    private GestorUtilizadores gestorUtilizadores;
     private GestorFilmes gestorFilmes;
     private GestorClientes gestorClientes;
     private GestorEmpregados gestorEmpregados ;
@@ -71,7 +74,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
     public GUI_Manager() {
 
         filePath="";
-
+        gestorUtilizadores=new GestorUtilizadores();
         gestorMaquinas =new GestorMaquinas();
         gestorEmpregados =new GestorEmpregados();
         gestorClientes=new GestorClientes();
@@ -386,7 +389,10 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         javax.swing.JLabel jLabel93 = new javax.swing.JLabel();
         textGenero = new javax.swing.JTextField();
         adicionaGenero = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        voltarGeneros = new javax.swing.JButton();
+        eliminaGenero = new javax.swing.JButton();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        outGenero = new javax.swing.JTextArea();
         resultadosFrame = new javax.swing.JFrame();
         jResultadosFilmePanel = new javax.swing.JPanel();
         jSeparator4 = new javax.swing.JSeparator();
@@ -2343,6 +2349,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         }
     });
 
+    listaGeneros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
     jScrollPane21.setViewportView(listaGeneros);
 
     jLabel71.setText("Géneros Existentes:");
@@ -2358,12 +2365,24 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         }
     });
 
-    jButton13.setText("Voltar");
-    jButton13.addActionListener(new java.awt.event.ActionListener() {
+    voltarGeneros.setText("Voltar");
+    voltarGeneros.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton13ActionPerformed(evt);
+            voltarGenerosActionPerformed(evt);
         }
     });
+
+    eliminaGenero.setText("Eliminar");
+    eliminaGenero.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            eliminaGeneroActionPerformed(evt);
+        }
+    });
+
+    outGenero.setColumns(20);
+    outGenero.setEditable(false);
+    outGenero.setRows(5);
+    jScrollPane13.setViewportView(outGenero);
 
     javax.swing.GroupLayout jGenerosPanelLayout = new javax.swing.GroupLayout(jGenerosPanel);
     jGenerosPanel.setLayout(jGenerosPanelLayout);
@@ -2378,14 +2397,22 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                         .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel71)))
                 .addGroup(jGenerosPanelLayout.createSequentialGroup()
-                    .addGap(75, 75, 75)
-                    .addComponent(jLabel93)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(textGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jGenerosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jGenerosPanelLayout.createSequentialGroup()
+                            .addGap(75, 75, 75)
+                            .addComponent(jLabel93)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(textGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jGenerosPanelLayout.createSequentialGroup()
+                            .addGap(29, 29, 29)
+                            .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(18, 18, 18)
                     .addGroup(jGenerosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton13)
-                        .addComponent(adicionaGenero))))
+                        .addComponent(voltarGeneros)
+                        .addComponent(adicionaGenero)))
+                .addGroup(jGenerosPanelLayout.createSequentialGroup()
+                    .addGap(152, 152, 152)
+                    .addComponent(eliminaGenero)))
             .addContainerGap(193, Short.MAX_VALUE))
     );
     jGenerosPanelLayout.setVerticalGroup(
@@ -2395,16 +2422,23 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
             .addComponent(jLabel71)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(38, 38, 38)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(eliminaGenero)
+            .addGap(9, 9, 9)
             .addComponent(jLabel73)
             .addGap(18, 18, 18)
             .addGroup(jGenerosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel93)
                 .addComponent(textGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(adicionaGenero))
-            .addGap(26, 26, 26)
-            .addComponent(jButton13)
-            .addContainerGap(88, Short.MAX_VALUE))
+            .addGroup(jGenerosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jGenerosPanelLayout.createSequentialGroup()
+                    .addGap(26, 26, 26)
+                    .addComponent(voltarGeneros))
+                .addGroup(jGenerosPanelLayout.createSequentialGroup()
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(63, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout generosFrameLayout = new javax.swing.GroupLayout(generosFrame.getContentPane());
@@ -3356,20 +3390,22 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_jEscolherFicheiroButtonActionPerformed
 
     private void jLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonActionPerformed
-        // TODO : autenticar
-        boolean admin =true;
-        if(admin){
-            //administrador
-            jMenuAdministradorPanel.setVisible(true);
-        }else{
-            //empregado
-            jMenuOperatorPanel.setVisible(true);
+        //TODO: descomentar
+        /**
+        String out=gestorUtilizadores.login(jUsernameField.getText(), jPasswordField.getText());
+        if(!out.equals("FAIL")){
+            if(out.equals("1")){
+                //administrador
+                jMenuAdministradorPanel.setVisible(true);
+            }else{
+                //empregado
+                jMenuOperatorPanel.setVisible(true);
+            }
+            jLoginPanel.setVisible(false);
         }
-        
-        jLoginPanel.setVisible(false);
-       
-        
-        
+        */
+       jUsernameField.setText("");
+       jPasswordField.setText("");
     }//GEN-LAST:event_jLoginButtonActionPerformed
 
     private void jAdicionarATMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarATMButtonActionPerformed
@@ -3431,21 +3467,14 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         // TODO add your handling code here:
         //refresh à lista de géneros
         
-       
-        listaGeneros.setModel(new javax.swing.AbstractListModel() {
-        	/* TODO: by Lobo: verListaGeneros() devolve um Vector com pares [id_genero, nome_genero].
+       /* TODO: by Lobo: verListaGeneros() devolve um Vector com pares [id_genero, nome_genero].
         	 * eu percebi que aki tavam a usar os nomes s�, por isso pus a funcao strArrayVectorToArray()
         	 * para pegar so nos indices 1 de cada par (ou seja, o nome).
         	 * Se permitirem a gest�o de g�neros vao precisar do ID do genero
         	 * para lhe alterar o nome (o porqu� eu explico depois).
         	 * Ou seja, vao ter de guardar os pares e nao o nome, e isto tem de mudar.
         	 */
-        	String[] strings = Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1);
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-
-
+        listaGeneros.setModel(new OurListModel(Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1)));
 
         jScrollPane21.setViewportView(listaGeneros);
         //mostrar a frame
@@ -3471,28 +3500,29 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
        adicionarClienteFrame.transferFocusBackward();
     }//GEN-LAST:event_jVoltarACFButtonActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        generosFrame.setVisible(false);
+    private void voltarGenerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarGenerosActionPerformed
+       outGenero.setText("");
+       textGenero.setText("");
+       generosFrame.setVisible(false);
        generosFrame.transferFocusBackward();
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_voltarGenerosActionPerformed
 
     private void generosFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_generosFrameWindowClosing
-        generosFrame.setVisible(false);
+       outGenero.setText("");
+       textGenero.setText("");
+       generosFrame.setVisible(false);
        generosFrame.transferFocusBackward();
     }//GEN-LAST:event_generosFrameWindowClosing
 
     private void adicionaGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionaGeneroActionPerformed
 
-        gestorFilmes.adicionaGenero(textGenero.getText());
+        String output=gestorFilmes.adicionaGenero(textGenero.getText());
         textGenero.setText(null);
-
-        listaGeneros.setModel(new javax.swing.AbstractListModel() {
-        	/* TODO: by Lobo: ver o TODO gigante que escrevi em cima. Mesma coisa.
+        outGenero.setText(output);
+        /* TODO: by Lobo: ver o TODO gigante que escrevi em cima. Mesma coisa.
         	 */
-        	String[] strings = Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1);
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        listaGeneros.setModel(new OurListModel(Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1)));
+
 
         jScrollPane21.setViewportView(listaGeneros);
     }//GEN-LAST:event_adicionaGeneroActionPerformed
@@ -3797,7 +3827,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
             output=gestorFilmes.alugaFilme(idMovie,
                     (String) jComboBox1.getSelectedItem(),
                     jFormattedTextField4.getText(),
-                    gestorEmpregados.getIdEmpregado());
+                    gestorUtilizadores.getIdEmpregado());
         }
        
         jTextField1.setText(output);
@@ -3928,6 +3958,15 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         pagamentosAtraso.setModel(new OurListModel(gestorClientes.getClientesComEntregasPorFazer()));
     }//GEN-LAST:event_verificarRequesicoes1ActionPerformed
 
+    private void eliminaGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaGeneroActionPerformed
+        String idGenero=((String)listaGeneros.getSelectedValue()).split(" ")[0];
+        String output=gestorFilmes.removeGenero(idGenero);
+        outGenero.setText(output);
+        if(!output.equals(Consts.GENERO_EM_USO))
+            listaGeneros.setModel(new OurListModel(Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1)));
+
+    }//GEN-LAST:event_eliminaGeneroActionPerformed
+
    
     //OUR GUI VARS
     private javax.swing.ButtonGroup bgroup;
@@ -3959,6 +3998,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JTextField dateEnd;
     private javax.swing.JToggleButton eliminaFilmes;
     private javax.swing.JToggleButton eliminaFilmes2;
+    private javax.swing.JButton eliminaGenero;
     private javax.swing.JSpinner eliminaSpinner;
     private javax.swing.JButton eliminarClienteBI;
     private javax.swing.JFrame eliminarClienteFrame;
@@ -3982,7 +4022,6 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JToggleButton jAdicionarEmpregadoButton;
     private javax.swing.JPanel jAdicionarFilmePanel;
     private javax.swing.JToggleButton jAdicionarFilmesToggleButton;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton5;
@@ -4053,6 +4092,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
@@ -4119,6 +4159,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JRadioButton opRadio;
     private javax.swing.JTextArea outEliminaClientes;
     private javax.swing.JTextArea outEmpregados;
+    private javax.swing.JTextArea outGenero;
     private javax.swing.JTextArea outMaquinas;
     private javax.swing.JTextArea outPesquisarClientes;
     private javax.swing.JTextArea outputAdicionaClientes;
@@ -4158,6 +4199,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private javax.swing.JButton verificarRequesicoes1;
     private javax.swing.JToggleButton voltarAdcionaFilmes;
     private javax.swing.JToggleButton voltarEliminaFilmes;
+    private javax.swing.JButton voltarGeneros;
     private javax.swing.JToggleButton voltarPesquisarCliente;
     private javax.swing.JToggleButton voltarPesquisarFilmes;
     // End of variables declaration//GEN-END:variables
