@@ -12,7 +12,8 @@
 package gui_atm;
 
 import gestores.GestorFilmes;
-import gestores_atm.GestorUtilizadores;
+import gestores.GestorUtilizadores;
+
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
@@ -25,9 +26,9 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import outros.Filme;
 import outros.OurListModel;
 import outros.Utils;
+import zzzobsolete.Filme;
 
 /**
  *

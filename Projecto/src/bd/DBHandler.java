@@ -30,10 +30,18 @@ public class DBHandler
 		open();
 		if (conn != null) {
 			//Icon icon = new ImageIcon("MV5BMTI5Mjc2MTE3OV5BMl5BanBnXkFtZTcwNTc2MzI2Mg@@._V1._CR341,0,1365,1365_SS80_.jpg");
-			System.out.println(Utils.list(getClientesOrdNome(), ","));
+			//System.out.println(Utils.list(getClientesOrdNome(), ","));
 			//Utils.printStringArrayVector(dbh.getFilmes());
 			//System.out.println(Utils.list(getFilme("2"), ","));
-			executeNoCommit("");
+			//executeNoCommit("");
+			Vector<String[]> vec = select("SELECT * from requisicoes WHERE data_limite is null");
+			if(vec.get(0)[8] == null)
+				Utils.dbg("true null");
+			else if(vec.get(0)[8].equals("null"))
+				Utils.dbg("false null");
+			else
+				Utils.dbg("other. wtf?");
+			//Utils.printStringArrayln(Utils.strArrayVectorToArray());
 			close();
 		} else
 			System.out.println("deu bode");
@@ -958,6 +966,23 @@ public class DBHandler
 		return valorExiste("empregados", "BI", bi);
 	}
 	
+	
+	public static boolean empregadoEAdmin(String id_emp) {
+		String query = "SELECT IS_ADMIN" +
+					   " FROM empregados" +
+					   " WHERE ID_PES = " + id_emp;
+		Vector<String[]> vec = select(query);
+		return vec.get(0)[0].equals("1");
+	}
+	
+	public static boolean empregadoEAdminBI(String bi) {
+		String query = "SELECT IS_ADMIN" +
+					   " FROM empregados" +
+					   " WHERE BI = " + bi;
+		Vector<String[]> vec = select(query);
+		return vec.get(0)[0].equals("1");
+	}
+	
 	/**
 	 * Vertifica se o empregado é administrador e é o único.
 	 * @param id_emp o ID do empregado a verificar.
@@ -1057,7 +1082,31 @@ public class DBHandler
 		Vector<String[]> vec = getGenerosFilme(id_fil);
 		return (vec.size() == 1 && vec.get(0).equals(id_gen));
 	}
-
+	
+	public static boolean loginClienteCorrecto(String id_pes, String password) {
+		return valorExiste("clientes",
+						   new String[]{"ID_PES", "PASSWORD"},
+						   new String[]{id_pes, password});
+	}
+	
+	public static boolean loginClienteCorrectoBI(String bi, String password) {
+		return valorExiste("clientes",
+						   new String[]{"BI", "PASSWORD"},
+						   new String[]{bi, password});
+	}
+	
+	public static boolean loginEmpregadoCorrecto(String id_pes, String password) {
+		return valorExiste("empregados",
+						   new String[]{"ID_PES", "PASSWORD"},
+						   new String[]{id_pes, password});
+	}
+	
+	public static boolean loginEmpregadoCorrectoBI(String bi, String password) {
+		return valorExiste("empregados",
+						   new String[]{"BI", "PASSWORD"},
+						   new String[]{bi, password});
+	}
+	
 	/**
 	 * Verifica se determinado valor existe em determinado campo numa dada tabela (função genérica).
 	 * @param tabela a tabela a verificar.

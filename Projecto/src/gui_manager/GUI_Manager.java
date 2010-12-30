@@ -13,7 +13,6 @@ package gui_manager;
 
 import com.toedter.calendar.JCalendar;
 import gestores.*;
-import gestores_manager.GestorUtilizadores;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.NumberFormat;
@@ -31,7 +30,6 @@ import javax.swing.JList;
 import javax.swing.ListModel;
 import javax.swing.SpinnerNumberModel;
 import outros.Consts;
-import outros.Filme;
 import outros.OurListModel;
 import outros.Utils;
 
@@ -3975,7 +3973,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                     jFormattedTextField4.getText(),
                     gestorUtilizadores.getIdEmpregado());*/
         	output=gestorFilmes.adicionaRequisicao("null",
-        										   gestorUtilizadores.getIdEmpregado(),
+        										   gestorUtilizadores.getUsername(),
         										   jFormattedTextField4.getText(),
         										   idMovie,
         										   (String) listaFormatosResultadosFilmes.getSelectedItem(),

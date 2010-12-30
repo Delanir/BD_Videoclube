@@ -258,23 +258,64 @@ public class GestorFilmes
 	/* --------------------------------------------------------------------- */
 	
 	/**
-	 * "(data -- data_limite) : (ano) titulo [formato]"
+	 * "(data -- data_limite) : (ano) titulo [formato] (entregue a "data_entrega" {só se existir})"
 	 */
 	public String[] verListaRequisicoesCliente(String id) {
 		Vector<String[]> vec = DBHandler.getRequisicoesClientePlus(id);
-		return Utils.formattedFromVector(vec, "(%s -- %s) : (%s) %s [%s]", new int[]{6, 7, 9, 10, 11});
+		String[] out = Utils.formattedFromVector(vec, "(%s -- %s) : (%s) %s [%s]", new int[]{6, 7, 9, 10, 11});
+		int i=0;
+		for(String[] sa : vec) {
+			if(sa[8] != null)
+				out[i] = out[i] + " (entregue a " + sa[8] + ")";
+			i++;
+		}
+		return out;
 	}
 	
+	/**
+	 * "(data -- data_limite) : (ano) titulo [formato] (entregue a "data_entrega" {só se existir})"
+	 */
 	public String[] verListaRequisicoesClienteBI(String bi) {
 		Vector<String[]> vec = DBHandler.getRequisicoesClienteBIPlus(bi);
-		return Utils.formattedFromVector(vec, "(%s -- %s) : (%s) %s [%s]", new int[]{6, 7, 9, 10, 11});
+		String[] out = Utils.formattedFromVector(vec, "(%s -- %s) : (%s) %s [%s]", new int[]{6, 7, 9, 10, 11});
+		int i=0;
+		for(String[] sa : vec) {
+			if(sa[8] != null)
+				out[i] = out[i] + " (entregue a " + sa[8] + ")";
+			i++;
+		}
+		return out;
 	}
 	
 	// TODO: data_limite provavelmente não será calculada antes deste método...
 	// o mais certo é ficar no DBHandler, onde se pode juntar um numero de dias ao SYSDATE
-	public String adicionaRequisicao(String id_maq, String emp_id_pes, String id_pes, String id_fil, String formato, String data_limite) {
-		DBHandler.adicionaRequisicaoNomeFormato(id_maq, emp_id_pes, id_pes, id_fil, formato, data_limite); 
+	public String adicionaRequisicao(String id_maq, String emp_bi, String bi, String id_fil, String formato, String data_limite) {
+		DBHandler.adicionaRequisicaoNomeFormato(id_maq, emp_bi, bi, id_fil, formato, data_limite); 
 		return "Requisição adicionada.";
 	}
+	
+
+
+
+    /**
+     * entrega um filme requisitado
+     * @param idRequisicao
+     * @return
+     */
+    // TODO
+    public String entregar(String idRequisicao ){
+        Utils.dbg("id_req: "+idRequisicao);
+        return null;
+    }
+    
+    /**
+     * calcula o preÃ§o da requisiÃ§Ã£o
+     * @return
+     */
+    // TODO
+    public String calcularPrecoRequisicao(String idRequisicao ){
+        Utils.dbg("id_req: "+idRequisicao);
+        return "100";
+    }
 }
 
