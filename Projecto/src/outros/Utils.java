@@ -27,6 +27,9 @@ public class Utils
 	/* ------------------------------------------------------------------------------------- */
 
 	/* ---------------------------- UTILS ---------------------------- */
+	/**
+	 * Une o conteúdo de dois arrays de Strings num só.
+	 */
 	public static String[] extend(String[] a1, String[] a2) {
 		String[] ret = new String[a1.length + a2.length];
 		int i, j;
@@ -37,6 +40,9 @@ public class Utils
 		return ret;
 	}
 	
+	/**
+	 * Obtém um array de Strings com os elementos do array original a partir do índice "from". 
+	 */
 	public static String[] extract(String[] sa, int from) {
 		String[] ret = new String[sa.length - from];
 		int i=0, j=from;
@@ -46,6 +52,10 @@ public class Utils
 	}
 	
 	/* ---------------------------- CONVERSÃO ---------------------------- */
+	/**
+	 * Converte um Vector de arrays de Strings para um array apenas,
+	 * com os antigos arrays em sequência.
+	 */
 	public static String[] strArrayVectorToArray(Vector<String[]> vec) {
 		int i = 0, j, size=0;
 		for(String[] sa : vec)
@@ -59,6 +69,10 @@ public class Utils
 		return ret;
 	}
 	
+	/**
+	 * Converte um Vector de arrays de Strings para um array apenas,
+	 * usando somente o elemento de índice "index" de cada array.
+	 */
 	public static String[] strArrayVectorToArray(Vector<String[]> vec, int index) {
 		String[] ret = new String[vec.size()];
 		int i=0;
@@ -69,6 +83,9 @@ public class Utils
 		return ret;
 	}
 	
+	/**
+	 * Converte um Vector de Strings para um array de Strings.
+	 */
 	public static String[] strVectorToArray(Vector<String> vec) {
 		String[] ret = new String[vec.size()];
 		int i=0;
@@ -79,6 +96,10 @@ public class Utils
 		return ret;
 	}
 	
+	/**
+	 * Gera um array de Strings, em que cada String são os elementos de índice "indexes"
+	 * em cada String[] do Vector<String[]> passado, formatadas segundo "macro".
+	 */
 	public static String[] formattedFromVector(Vector<String[]> vec, String macro, int[] indexes) {
 		String[] ret = new String[vec.size()];
 		Object[] values;
@@ -110,7 +131,14 @@ public class Utils
 			lista += sep + strs[i];
 		return lista;
 	}
-	
+
+	/**
+	 * Devolve uma string com os elementos separados em linhas e com
+	 * as Strings em cada array separadas por "sep".
+	 * @param strs os elementos a juntar numa string apenas.
+	 * @param sep o separador a usar para separar os elementos.
+	 * @return com os elementos separados em linhas e com as Strings em cada array separadas por "sep".
+	 */
 	public static String list(Vector<String[]> strs, String sep) {
 		String lista = "";
 		for(String[] sa : strs) {
@@ -164,6 +192,9 @@ public class Utils
 		}
 	}
 	
+	/**
+	 * Imprime um array de Strings numa linha, com os elementos separados por vírgulas.
+	 */
 	public static void printStringArray(String[] arr) {
 		System.out.print(arr[0]);
 		for(int i=1; i<arr.length; i++)
@@ -171,16 +202,25 @@ public class Utils
 		System.out.println();
 	}
 	
+	/**
+	 * Imprime um array de Strings, uma String por linha.
+	 */
 	public static void printStringArrayln(String[] arr) {
 		for(String s : arr)
 			System.out.println(s);
 	}
 	
+	/**
+	 * Imprime a String passada com um newline a seguir, caso o programa esteja em modo de DEBUG.
+	 */
 	public static void dbg(String string) {
 		if(Consts.DEBUG)
 			System.out.println(string);
 	}
 	
+	/**
+	 * Imprime a String passada, caso o programa esteja em modo de DEBUG.
+	 */
 	public static void dbgsl(String string) {
 		if(Consts.DEBUG)
 			System.out.print(string);

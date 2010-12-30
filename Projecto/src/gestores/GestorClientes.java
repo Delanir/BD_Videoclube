@@ -91,7 +91,8 @@ public class GestorClientes
 	/**
 	 * envia um email a um cliente
 	 */
-	// TODO: do it
+	// TODO: complete it
+	// TODO: pôr constantes do send() no Consts
 	public void notificarCliente(String id, String mensagem) {
         String []out;
 		if (id != null && id.isEmpty()) {

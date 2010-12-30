@@ -19,7 +19,7 @@ import outros.Utils;
  */
 public class DBHandler
 {
-	//TODO: ver cenas onde faltam plicas (provavelmente muito sitio >_>)
+	//TODO: tratar do atributo VALIDO nas consultas, bem como restrições associadas (muita coisa...)
 	private static Connection conn;
 	
 	/**
@@ -33,6 +33,7 @@ public class DBHandler
 			System.out.println(Utils.list(getClientesOrdNome(), ","));
 			//Utils.printStringArrayVector(dbh.getFilmes());
 			//System.out.println(Utils.list(getFilme("2"), ","));
+			executeNoCommit("");
 			close();
 		} else
 			System.out.println("deu bode");
@@ -103,7 +104,7 @@ public class DBHandler
 	public static String[] getToSetCamposMaquinasATM() {	return new String[]{"PRECO"};}
 	public static String[] getToSetCamposPagamentos() {		return new String[]{"MONTANTE"};}
 	public static String[] getToSetCamposRequisicoes() {	return new String[]{"DATA_LIMITE", "DATA_ENTREGA"};}
-	public static String[] getToSetCamposStocks() {			return new String[]{"DISPONIVEIS", "QUANT", "CUSTO_COMPRA", "CUSTO_ALUGUER"};}
+	public static String[] getToSetCamposStocks() {			return new String[]{"QUANT", "CUSTO_COMPRA", "CUSTO_ALUGUER"};}
 
 	/* ------------------------------------------------------------------ */
 	/* ---------------------------- CLIENTES ---------------------------- */
@@ -211,7 +212,7 @@ public class DBHandler
 	}
 	
 	public static Vector<String[]> procuraClientes(String nome, String morada, String email, String telefone) {
-		String query = "SELECT ID_PES, NOME, BI" +
+		String query = "SELECT ID_PES, NOME_PESSOA, BI" +
 					   " FROM clientes" +
 					   " WHERE ID_PES = ID_PES" +	// redundância para evitar o caso em que o WHERE fica sem nada
 					   (nome.isEmpty()?"":" AND nome = "+p("%"+nome+"%")) +
@@ -307,7 +308,7 @@ public class DBHandler
 	}
 	
 	public static Vector<String[]> procuraEmpregados(String is_admin, String salarioLow, String salarioHigh, String nome, String morada, String email, String telefone) {
-		String query = "SELECT ID_PES, NOME, BI" +
+		String query = "SELECT ID_PES, NOME_PESSOA, BI" +
 					   " FROM clientes" +
 					   " WHERE ID_PES = ID_PES" +	// redundância para evitar o caso em que o WHERE fica sem nada
 					   (is_admin.isEmpty()?"":" AND is_admin = "+is_admin) +
@@ -436,11 +437,7 @@ public class DBHandler
 	 */
 	public static String[] getGenerosFilmeID(String id_fil) {
 		Vector<String[]> selected = select("filme_genero", new String[]{"ID_GEN"}, "ID_FIL", id_fil);
-		int size = selected.size();
-		String[] generos = new String[size];
-		for(int i=0; i<size; i++)
-			generos[i] = selected.get(i)[0];
-		return generos;
+		return Utils.strArrayVectorToArray(selected, 0);
 	}
 	
 	public static String[] getGenerosFilmeNome(String id_fil) {
@@ -453,9 +450,9 @@ public class DBHandler
 	
 	public static Vector<String[]> getGenerosFilme(String id_fil) {
 		return select("SELECT g.ID_GEN, g.NOME_GENERO" +
-				  " FROM generos g, filme_genero fg" +
-				  " WHERE fg.ID_FIL =" + id_fil +
-					" AND fg.ID_GEN = g.ID_GEN");
+					  " FROM generos g, filme_genero fg" +
+					  " WHERE fg.ID_FIL =" + id_fil +
+						" AND fg.ID_GEN = g.ID_GEN");
 	}
 
 	/**
@@ -475,7 +472,7 @@ public class DBHandler
 	 */
 	public static void removeFilmeGenero(String id_fil, String id_gen) {
 		removeObjecto("filme_genero",
-					  getCamposFilmeGenero(),
+					  getToSetCamposFilmeGenero(),
 					  new String[]{id_fil, id_gen});
 	}
 
@@ -505,6 +502,10 @@ public class DBHandler
 	
 	public static String getFormatoNome(String id) {
 		return selectAll("formatos", "ID_FOR", id).get(0)[1];
+	}
+	
+	public static String getFormatoID(String nome_formato) {
+		return selectAll("formatos", "NOME_FORMATO", nome_formato).get(0)[0];
 	}
 	
 	/**
@@ -721,8 +722,33 @@ public class DBHandler
 	 * Obtém as requisições existentes.
 	 * @return Vector com os campos de cada requisição.
 	 */
-	public static Vector<String[]> getRequisicao() {
+	public static Vector<String[]> getRequisicoes() {
 		return selectAll("requisicoes");
+	}
+	
+	public static Vector<String[]> getRequisicoesCliente(String id) {
+		return selectAll("requisicoes", "ID_PES", id);
+	}
+	
+	public static Vector<String[]> getRequisicoesClientePlus(String id) {
+		return select("SELECT r.*, f.ano, f.titulo, fo.nome_formato" +
+					  " FROM requisicoes r, filmes f, formatos fo" +
+					  " WHERE r.ID_FIL = f.ID_FIL" +
+					    " AND r.ID_FOR = ID_FOR" +
+						" AND r.ID_PES =" + id);
+	}
+	
+	public static Vector<String[]> getRequisicoesClienteBI(String bi) {
+		return selectAll("requisicoes", "BI", bi);
+	}
+	
+	public static Vector<String[]> getRequisicoesClienteBIPlus(String bi) {
+		return select("SELECT r.*, f.ano, f.titulo, fo.nome_formato" +
+					  " FROM requisicoes r, filmes f, formatos fo, clientes c" +
+					  " WHERE r.ID_FIL = f.ID_FIL" +
+					    " AND r.ID_FOR = ID_FOR" +
+					    " AND r.ID_PES = c.ID_PES" +
+						" AND c.BI =" + bi);
 	}
 	
 	/**
@@ -736,12 +762,18 @@ public class DBHandler
 
 	/**
 	 * Adiciona uma requisição à BD.
-	 * @param data a data da requisição.
-	 * @param data_limite a nova data limite de entrega do material da requisição.
 	 */
-	public static void adicionaRequisicao(String data, String data_limite) {
+	// TODO: data_limite é calculada aqui?
+	public static void adicionaRequisicao(String id_maq, String emp_id_pes, String id_pes, String id_fil, String id_for, String data_limite) {
 		adicionaObjecto("requisicoes",
-						new String[]{p(data), p(data_limite), "null"});
+						new String[]{id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", p(data_limite), "null"});
+	}
+
+	// TODO: data_limite é calculada aqui?
+	public static void adicionaRequisicaoNomeFormato(String id_maq, String emp_id_pes, String id_pes, String id_fil, String nome_formato, String data_limite) {
+		String id_for = getFormatoID(nome_formato);
+		adicionaObjecto("requisicoes",
+						new String[]{id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", p(data_limite), "null"});
 	}
 	
 	/**
@@ -784,6 +816,14 @@ public class DBHandler
 		return selectAll("stocks");
 	}
 	
+	public static Vector<String[]> getStocksDeFilme(String id_fil) {
+		String query = "SELECT s.*, f.NOME_FORMATO" +
+					   " FROM stocks s, formatos f" +
+					   " WHERE s.ID_FOR = f.ID_FOR" +
+					     " AND ID_FIL = " + id_fil;
+		return select(query);
+	}
+	
 	/**
 	 * Obtém os dados de um stock.
 	 * @param id_fil o ID do filme do stock.
@@ -791,41 +831,72 @@ public class DBHandler
 	 * @return os campos do stock.
 	 */
 	public static String[] getStock(String id_fil, String id_for) {
-		return select("stocks",
-					  getCamposStocks(),
-					  new String[]{"ID_FIL", "ID_FOR"},
-					  new String[]{id_fil, id_for}).get(0);
+		return selectAll("stocks",
+					 	 new String[]{"ID_FIL", "ID_FOR"},
+					 	 new String[]{id_fil, id_for}).get(0);
+	}
+	
+	public static String[] getStockNomeFormato(String id_fil, String nome_formato) {
+		String id_for = getFormatoID(nome_formato);
+		return selectAll("stocks",
+						 new String[]{"ID_FIL", "ID_FOR"},
+						 new String[]{id_fil, id_for}).get(0);
 	}
 
 	/**
 	 * Adiciona um stock à BD.
 	 * @param id_fil o ID do filme do stock a adicionar.
 	 * @param id_for o ID do formato do stock a adicionar.
-	 * @param disponiveis o número de filmes disponíveis no formato do stock.
 	 * @param quant a quantidade total de filmes existentes no stock.
 	 * @param custo_compra o custo de compra (à distribuidora) associado a um filme no stock.
 	 * @param custo_aluguer o custo de aluguer associado a um filme no stock.
 	 */
-	public static void adicionaStock(String id_fil, String id_for, String disponiveis, String quant, String custo_compra, String custo_aluguer) {
+	public static void adicionaStock(String id_fil, String id_for, String quant, String custo_compra, String custo_aluguer) {
 		adicionaObjecto("stocks",
-						new String[]{id_fil, id_for, disponiveis, quant, custo_compra, custo_aluguer});
+						new String[]{id_fil, id_for, quant, quant, custo_compra, custo_aluguer});
+	}
+	
+	public static void adicionaStockNomeFormato(String id_fil, String nome_formato, String quant, String custo_compra, String custo_aluguer) {
+		String id_for = getFormatoID(nome_formato);
+		adicionaObjecto("stocks",
+						new String[]{id_fil, id_for, quant, quant, custo_compra, custo_aluguer});
 	}
 	
 	/**
 	 * Actualiza um stock na BD.
 	 * @param id_fil o ID do filme do stock a actualizar.
 	 * @param id_for o ID do formato do stock a actualizar.
-	 * @param disponiveis o novo número de filmes disponíveis no formato do stock.
 	 * @param quant a nova quantidade total de filmes existentes no stock.
 	 * @param custo_compra o novo custo de compra (à distribuidora) associado a um filme no stock.
 	 * @param custo_aluguer o novo custo de aluguer associado a um filme no stock.
 	 */
-	public static void actualizaStock(String id_fil, String id_for, String disponiveis, String quant, String custo_compra, String custo_aluguer) {
+	public static void actualizaStock(String id_fil, String id_for, String quant, String custo_compra, String custo_aluguer) {
 		actualizaObjecto("stocks",
 						 new String[]{"ID_FIL", "ID_FOR"},
 						 new String[]{id_fil, id_for},
 						 getToSetCamposStocks(),
-						 new String[]{disponiveis, quant, custo_compra, custo_aluguer});
+						 new String[]{quant, custo_compra, custo_aluguer});
+	}
+	
+	public static void actualizaStockNomeFormato(String id_fil, String nome_formato, String quant, String custo_compra, String custo_aluguer) {
+		String id_for = getFormatoID(nome_formato);
+		actualizaObjecto("stocks",
+						 new String[]{"ID_FIL", "ID_FOR"},
+						 new String[]{id_fil, id_for},
+						 getToSetCamposStocks(),
+						 new String[]{quant, custo_compra, custo_aluguer});
+	}
+	
+	public static void actualizaQuantStock(String id_fil, String id_for, String quant) {
+		String comando = "UPDATE stocks SET quant = " + quant +
+						 " WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for;
+		execute(comando);
+	}
+	
+	public static void actualizaQuantStockIncr(String id_fil, String id_for, String incr) {
+		String comando = "UPDATE stocks SET quant = quant + " + incr +
+						 " WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for;
+		execute(comando);
 	}
 	
 	/**
@@ -834,7 +905,7 @@ public class DBHandler
 	 * @param id_for o ID do formato do stock a actualizar.
 	 * @param incr o incremento (ou decremento) a aplicar ao número de filmes disponíveis em stock.
 	 */
-	public static void actualizaDisponiveisStock(String id_fil, String id_for, int incr) {
+	public static void actualizaDisponiveisStock(String id_fil, String id_for, String incr) {
 		String comando = "UPDATE stocks SET disponiveis = disponiveis + " + incr +
 						 " WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for;
 		execute(comando);
@@ -845,10 +916,15 @@ public class DBHandler
 	 * @param id_fil o ID do filme do stock a remover.
 	 * @param id_for o ID do formato do stock a remover.
 	 */
-	public static void removePagamento(String id_fil, String id_for) {
+	public static void removeStock(String id_fil, String id_for) {
 		removeObjecto("stocks",
 					  new String[]{"ID_FIL", "IF_FOR"},
 					  new String[]{id_fil, id_for});
+	}
+	
+	public static void removeStockNomeFormato(String id_fil, String nome_formato) {
+		String id_for = getFormatoID(nome_formato);
+		removeStock(id_fil, id_for);
 	}
 	
 	/* -------------------------------------------------------------------------------- */
@@ -927,6 +1003,18 @@ public class DBHandler
 		return valorExiste("stocks",
 						   new String[]{"ID_FIL", "ID_FOR"},
 						   new String[]{id_fil, id_for});
+	}
+	
+	public static boolean stockExisteNomeFormato(String id_fil, String nome_formato) {
+		/*String query = "SELECT s.ID_FIL, s.ID_FOR" +
+					   " FROM stocks s, formatos f" +
+					   " WHERE s.ID_FOR = f.ID_FOR" +
+					   " AND s.ID_FIL = " + id_fil +
+					   " AND f.NOME_FORMATO = " + nome_formato;
+		Vector<String[]> vec = select(query);
+		return (vec.size() > 0);*/
+		String id_for = getFormatoID(nome_formato);
+		return stockExiste(id_fil, id_for);
 	}
 
 	/**
@@ -1238,6 +1326,15 @@ public class DBHandler
 			Statement st = conn.createStatement();
 			st.executeUpdate(comando);
 			conn.commit();
+		} catch (SQLException ex) {
+			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+	
+	private static void executeNoCommit(String comando) {
+		try {
+			Statement st = conn.createStatement();
+			st.executeUpdate(comando);
 		} catch (SQLException ex) {
 			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
 		}
