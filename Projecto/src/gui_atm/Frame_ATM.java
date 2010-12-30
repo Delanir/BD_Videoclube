@@ -1462,7 +1462,8 @@ public class Frame_ATM  extends JFrame{
         Component frame = new Component() {};
         try{
             Utils.dbg("ola "+menuResultados_listaFilmes.getSelectedValue().toString());
-            String verifica_aluguer=gestorFilmes.adicionarRequisicao(menuResultados_listaFilmes.getSelectedValue().toString(), menuResultados_formatos.getSelectedItem().toString());
+            String verifica_aluguer=gestorFilmes.adicionaRequisicao(null,null,gerir_users.getUsername()
+                    ,menuResultados_listaFilmes.getSelectedValue().toString(), menuResultados_formatos.getSelectedItem().toString(),null);
             
             if(verifica_aluguer==null){
                 JOptionPane.showMessageDialog(frame,
