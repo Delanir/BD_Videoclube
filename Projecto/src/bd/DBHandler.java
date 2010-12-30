@@ -14,7 +14,7 @@ import outros.Consts;
 import outros.Utils;
 
 /**
- * A classe-invólucro da Base de Dados (BD).
+ * A classe-invï¿½lucro da Base de Dados (BD).
  * Comunica directamente com ela e executa queries e updates.
  */
 public class DBHandler
@@ -22,7 +22,7 @@ public class DBHandler
 	private static Connection conn;
 	
 	/**
-	 * O método main. Apenas para propósitos de teste.
+	 * O mï¿½todo main. Apenas para propï¿½sitos de teste.
 	 * @param args os argumentos da linha de comandos.
 	 */
 	public static void main(String args[]) {
@@ -33,7 +33,7 @@ public class DBHandler
 			//Utils.printStringArrayVector(dbh.getFilmes());
 			//System.out.println(Utils.list(getFilme("2"), ","));
 			//executeNoCommit("");
-			Vector<String[]> vec = select("SELECT * from requisicoes WHERE data_limite is null");
+                        Vector<String[]> vec = select("SELECT * from requisicoes WHERE data_limite is null");
 			if(vec.get(0)[8] == null)
 				Utils.dbg("true null");
 			else if(vec.get(0)[8].equals("null"))
@@ -48,17 +48,17 @@ public class DBHandler
 
 	/**
 	 * Instancia um novo objecto de manuseamento da base de dados, criando uma
-	 * ligação a esta.
+	 * ligaï¿½ï¿½o a esta.
 	 */
 	public DBHandler() {
 		open();
 	}
 	
 	/* ----------------------------------------------------------------- */
-	/* ---------------------------- LIGAÇÃO ---------------------------- */
+	/* ---------------------------- LIGAï¿½ï¿½O ---------------------------- */
 	/* ----------------------------------------------------------------- */
 	/**
-	 * Cria uma ligação à BD.
+	 * Cria uma ligaï¿½ï¿½o ï¿½ BD.
 	 */
 	public static void open() {
 		try {
@@ -77,7 +77,7 @@ public class DBHandler
 	}
 
 	/**
-	 * Fecha a ligação à BD.
+	 * Fecha a ligaï¿½ï¿½o ï¿½ BD.
 	 */
 	public static void close() {
 		try {
@@ -117,7 +117,7 @@ public class DBHandler
 	/* ---------------------------- CLIENTES ---------------------------- */
 	/* ------------------------------------------------------------------ */
 	/**
-	 * Obtém os clientes existentes.
+	 * Obtï¿½m os clientes existentes.
 	 * @return Vector com os campos de cada cliente.
 	 */
 	public static Vector<String[]> getClientes() {
@@ -129,7 +129,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Obtém os dados de um cliente.
+	 * Obtï¿½m os dados de um cliente.
 	 * @param id o ID do cliente.
 	 * @return os campos do cliente.
 	 */
@@ -142,13 +142,13 @@ public class DBHandler
 	}
 
 	/**
-	 * Adiciona um cliente à BD.
+	 * Adiciona um cliente ï¿½ BD.
 	 * @param nome o nome do cliente a adicionar.
 	 * @param bi o BI do cliente a adicionar.
 	 * @param password a password do cliente a adicionar.
 	 * @param morada a morada do cliente a adicionar.
 	 * @param email o e-mail do cliente a adicionar.
-	 * @param telefone o número de telefone do cliente a adicionar.
+	 * @param telefone o nï¿½mero de telefone do cliente a adicionar.
 	 */
 	public static void adicionaCliente(String nome, String bi, String password, String morada, String email, String telefone) {
 		adicionaObjecto("clientes",
@@ -163,7 +163,7 @@ public class DBHandler
 	 * @param password a nova password do cliente a actualizar.
 	 * @param morada a nova morada do cliente a actualizar.
 	 * @param email o novo e-mail do cliente a actualizar.
-	 * @param telefone o novo número de telefone do cliente a actualizar.
+	 * @param telefone o novo nï¿½mero de telefone do cliente a actualizar.
 	 */
 	public static void actualizaCliente(String id, String nome, String bi, String password, String morada, String email, String telefone) {
 		actualizaObjecto("clientes", "ID_PES", id,
@@ -221,7 +221,7 @@ public class DBHandler
 	public static Vector<String[]> procuraClientes(String nome, String morada, String email, String telefone) {
 		String query = "SELECT ID_PES, NOME_PESSOA, BI" +
 					   " FROM clientes" +
-					   " WHERE ID_PES = ID_PES" +	// redundância para evitar o caso em que o WHERE fica sem nada
+					   " WHERE ID_PES = ID_PES" +	// redundï¿½ncia para evitar o caso em que o WHERE fica sem nada
 					   (nome.isEmpty()?"":" AND nome = "+p("%"+nome+"%")) +
 					   (morada.isEmpty()?"":" AND morada = "+p("%"+morada+"%")) +
 					   (email.isEmpty()?"":" AND email = "+p("%"+email+"%")) +
@@ -233,7 +233,7 @@ public class DBHandler
 	/* ---------------------------- EMPREGADOS ---------------------------- */
 	/* -------------------------------------------------------------------- */
 	/**
-	 * Obtém os empregados existentes.
+	 * Obtï¿½m os empregados existentes.
 	 * @return Vector com os campos de cada empregado.
 	 */
 	public static Vector<String[]> getEmpregados() {
@@ -241,7 +241,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Obtém os dados de um empregado.
+	 * Obtï¿½m os dados de um empregado.
 	 * @param id o ID do empregado.
 	 * @return os campos do empregado.
 	 */
@@ -254,15 +254,15 @@ public class DBHandler
 	}
 
 	/**
-	 * Adiciona um empregado à BD.
-	 * @param is_admin "1" se o empregado a adicionar é administrador. "0" caso contrário.
-	 * @param salario o salário do empregado a adicionar.
+	 * Adiciona um empregado ï¿½ BD.
+	 * @param is_admin "1" se o empregado a adicionar ï¿½ administrador. "0" caso contrï¿½rio.
+	 * @param salario o salï¿½rio do empregado a adicionar.
 	 * @param nome o nome do empregado a adicionar.
 	 * @param bi o BI do empregado a adicionar.
 	 * @param password a password do empregado a adicionar.
 	 * @param morada a morada do empregado a adicionar.
 	 * @param email o e-mail do empregado a adicionar.
-	 * @param telefone o número de telefone do empregado a adicionar.
+	 * @param telefone o nï¿½mero de telefone do empregado a adicionar.
 	 * @param data_registo a data de registo do empregado a adicionar.
 	 */
 	public static void adicionaEmpregado(String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone) {
@@ -273,14 +273,14 @@ public class DBHandler
 	/**
 	 * Actualiza um empregado na BD.
 	 * @param id o ID do empregado a actualizar.
-	 * @param is_admin "1" se o empregado a actualizar fica definido como administrador. "0" caso contrário.
-	 * @param salario o novo salário do empregado a actualizar.
+	 * @param is_admin "1" se o empregado a actualizar fica definido como administrador. "0" caso contrï¿½rio.
+	 * @param salario o novo salï¿½rio do empregado a actualizar.
 	 * @param nome o novo nome do empregado a actualizar.
 	 * @param bi o novo BI do empregado a actualizar.
 	 * @param password a nova password do empregado a actualizar.
 	 * @param morada a nova morada do empregado a actualizar.
 	 * @param email o novo e-mail do empregado a actualizar.
-	 * @param telefone o novo número de telefone do empregado a actualizar.
+	 * @param telefone o novo nï¿½mero de telefone do empregado a actualizar.
 	 */
 	public static void actualizaEmpregado(String id, String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone) {
 		actualizaObjecto("empregados", "ID_PES", id,
@@ -317,7 +317,7 @@ public class DBHandler
 	public static Vector<String[]> procuraEmpregados(String is_admin, String salarioLow, String salarioHigh, String nome, String morada, String email, String telefone) {
 		String query = "SELECT ID_PES, NOME_PESSOA, BI" +
 					   " FROM clientes" +
-					   " WHERE ID_PES = ID_PES" +	// redundância para evitar o caso em que o WHERE fica sem nada
+					   " WHERE ID_PES = ID_PES" +	// redundï¿½ncia para evitar o caso em que o WHERE fica sem nada
 					   (is_admin.isEmpty()?"":" AND is_admin = "+is_admin) +
 					   (salarioLow.isEmpty()||salarioHigh.isEmpty()?"":" AND salario BETWEEN "+salarioLow+" AND "+salarioHigh) +
 					   (nome.isEmpty()?"":" AND nome = "+p("%"+nome+"%")) +
@@ -331,7 +331,7 @@ public class DBHandler
 	/* ---------------------------- FILMES ---------------------------- */
 	/* ---------------------------------------------------------------- */
 	/**
-	 * Obtém os filmes existentes.
+	 * Obtï¿½m os filmes existentes.
 	 * @return Vector com os campos de cada filme.
 	 */
 	public static Vector<String[]> getFilmes() {
@@ -367,7 +367,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Obtém os dados de um filme.
+	 * Obtï¿½m os dados de um filme.
 	 * @param id o ID do filme.
 	 * @return os campos do filme.
 	 */
@@ -376,14 +376,14 @@ public class DBHandler
 	}
 
 	/**
-	 * Adiciona um filme à BD.
-	 * @param titulo o título do filme a adicionar.
+	 * Adiciona um filme ï¿½ BD.
+	 * @param titulo o tï¿½tulo do filme a adicionar.
 	 * @param ano o ano do filme a adicionar.
 	 * @param realizador o realizador do filme a adicionar.
 	 * @param ratingIMDB o rating da IMDB do filme a adicionar.
-	 * @param pais o país de origem do filme a adicionar.
+	 * @param pais o paï¿½s de origem do filme a adicionar.
 	 * @param produtora a produtora do filme a adicionar.
-	 * @param descricao a descrição do filme a adicionar.
+	 * @param descricao a descriï¿½ï¿½o do filme a adicionar.
 	 * @param capa a capa do filme a adicionar.
 	 */
 	public static void adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa) {
@@ -394,13 +394,13 @@ public class DBHandler
 	/**
 	 * Actualiza um filme na BD.
 	 * @param id o ID do filme a actualizar.
-	 * @param titulo o novo título do filme a actualizar.
+	 * @param titulo o novo tï¿½tulo do filme a actualizar.
 	 * @param ano o novo ano do filme a actualizar.
 	 * @param realizador o novo realizador do filme a actualizar.
 	 * @param ratingIMDB o novo rating da IMDB do filme a actualizar.
-	 * @param pais o novo país de origem do filme a actualizar.
+	 * @param pais o novo paï¿½s de origem do filme a actualizar.
 	 * @param produtora a nova produtora do filme a actualizar.
-	 * @param descricao a nova descrição do filme a actualizar.
+	 * @param descricao a nova descriï¿½ï¿½o do filme a actualizar.
 	 * @param capa a nova capa do filme a actualizar.
 	 */
 	public static void actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa) {
@@ -433,11 +433,11 @@ public class DBHandler
 		return procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos, false);
 	}
 
-	// TODO: géneros
+	// TODO: gï¿½neros
 	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos, boolean soValidos) {
 		String query = "SELECT ID_FIL, ANO, TITULO" +
 					   " FROM filmes f" +
-					   " WHERE ID_FIL = ID_FIL" +	// redundância para evitar o caso em que o WHERE fica sem nada
+					   " WHERE ID_FIL = ID_FIL" +	// redundï¿½ncia para evitar o caso em que o WHERE fica sem nada
 					   (titulo.isEmpty()?"":" AND titulo = "+p("%"+titulo+"%")) +
 					   (realizador.isEmpty()?"":" AND realizador = "+p("%"+realizador+"%")) +
 					   (pais.isEmpty()?"":" AND pais = "+p("%"+pais+"%")) +
@@ -452,20 +452,20 @@ public class DBHandler
 	}
 
 	/* ---------------------------------------------------------------------- */
-	/* ---------------------------- FILME/GÉNERO ---------------------------- */
+	/* ---------------------------- FILME/Gï¿½NERO ---------------------------- */
 	/* ---------------------------------------------------------------------- */
 	/**
-	 * Obtém as relações filme/género.
-	 * @return Vector com os IDs do filme e género que formam a relação.
+	 * Obtï¿½m as relaï¿½ï¿½es filme/gï¿½nero.
+	 * @return Vector com os IDs do filme e gï¿½nero que formam a relaï¿½ï¿½o.
 	 */
 	public static Vector<String[]> getFilmeGenero() {
 		return selectAll("filme_genero", false);
 	}
 	
 	/**
-	 * Obtém os géneros de um filme.
+	 * Obtï¿½m os gï¿½neros de um filme.
 	 * @param id_fil o ID do filme.
-	 * @return os géneros do filme.
+	 * @return os gï¿½neros do filme.
 	 */
 	public static String[] getGenerosFilmeID(String id_fil) {
 		Vector<String[]> selected = select("filme_genero", new String[]{"ID_GEN"}, "ID_FIL", id_fil, false);
@@ -488,9 +488,9 @@ public class DBHandler
 	}
 
 	/**
-	 * Adiciona uma relação filme/género à BD.
-	 * @param id_fil ID do filme na relação.
-	 * @param id_gen ID do género na relação.
+	 * Adiciona uma relaï¿½ï¿½o filme/gï¿½nero ï¿½ BD.
+	 * @param id_fil ID do filme na relaï¿½ï¿½o.
+	 * @param id_gen ID do gï¿½nero na relaï¿½ï¿½o.
 	 */
 	public static void adicionaFilmeGenero(String id_fil, String id_gen) {
 		adicionaObjecto("filme_genero",
@@ -498,9 +498,9 @@ public class DBHandler
 	}
 
 	/**
-	 * Remove uma relação filme/género da BD.
-	 * @param id_fil ID do filme na relação.
-	 * @param id_gen ID do género na relação.
+	 * Remove uma relaï¿½ï¿½o filme/gï¿½nero da BD.
+	 * @param id_fil ID do filme na relaï¿½ï¿½o.
+	 * @param id_gen ID do gï¿½nero na relaï¿½ï¿½o.
 	 */
 	public static void removeFilmeGenero(String id_fil, String id_gen) {
 		removeObjecto("filme_genero",
@@ -512,7 +512,7 @@ public class DBHandler
 	/* ---------------------------- FORMATOS ---------------------------- */
 	/* ------------------------------------------------------------------ */
 	/**
-	 * Obtém os formatos de filme existentes.
+	 * Obtï¿½m os formatos de filme existentes.
 	 * @return Vector com os campos de cada formato.
 	 */
 	public static Vector<String[]> getFormatos() {
@@ -524,7 +524,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Obtém os dados de um formato.
+	 * Obtï¿½m os dados de um formato.
 	 * @param id o ID do formato.
 	 * @return os campos do formato.
 	 */
@@ -541,7 +541,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Adiciona um formato à BD.
+	 * Adiciona um formato ï¿½ BD.
 	 * @param nome o nome do formato a adicionar.
 	 */
 	public static void adicionaFormato(String nome) {
@@ -577,11 +577,11 @@ public class DBHandler
 	}
 
 	/* ----------------------------------------------------------------- */
-	/* ---------------------------- GÉNEROS ---------------------------- */
+	/* ---------------------------- Gï¿½NEROS ---------------------------- */
 	/* ----------------------------------------------------------------- */
 	/**
-	 * Obtém os géneros de filme existentes.
-	 * @return Vector com os campos de cada género.
+	 * Obtï¿½m os gï¿½neros de filme existentes.
+	 * @return Vector com os campos de cada gï¿½nero.
 	 */
 	public static Vector<String[]> getGeneros() {
 		return selectAll("generos", false);
@@ -592,9 +592,9 @@ public class DBHandler
 	}
 	
 	/**
-	 * Obtém os dados de um género.
-	 * @param id o ID do género.
-	 * @return os campos do género.
+	 * Obtï¿½m os dados de um gï¿½nero.
+	 * @param id o ID do gï¿½nero.
+	 * @return os campos do gï¿½nero.
 	 */
 	public static String[] getGenero(String id) {
 		return selectAll("generos", "ID_GEN", id, false).get(0);
@@ -605,8 +605,8 @@ public class DBHandler
 	}
 	
 	/**
-	 * Adiciona um género à BD.
-	 * @param nome o nome do género a adicionar.
+	 * Adiciona um gï¿½nero ï¿½ BD.
+	 * @param nome o nome do gï¿½nero a adicionar.
 	 */
 	public static void adicionaGenero(String nome) {
 		adicionaObjecto("generos",
@@ -614,9 +614,9 @@ public class DBHandler
 	}
 	
 	/**
-	 * Actualiza um género na BD.
-	 * @param id o ID do género a actualizar.
-	 * @param nome o novo nome para o género a actualizar.
+	 * Actualiza um gï¿½nero na BD.
+	 * @param id o ID do gï¿½nero a actualizar.
+	 * @param nome o novo nome para o gï¿½nero a actualizar.
 	 */
 	public static void actualizaGenero(String id, String nome) {
 		actualizaObjecto("generos", "ID_GEN", id,
@@ -625,45 +625,45 @@ public class DBHandler
 	}
 
 	/**
-	 * Remove um género da BD.
-	 * @param id o ID do género a remover.
+	 * Remove um gï¿½nero da BD.
+	 * @param id o ID do gï¿½nero a remover.
 	 */
 	public static void removeGenero(String id) {
 		removeObjecto("generos", "ID_GEN", id);
 	}
 
 	/**
-	 * Remove da BD os géneros com um dado nome.
-	 * @param nome o nome do género a remover.
+	 * Remove da BD os gï¿½neros com um dado nome.
+	 * @param nome o nome do gï¿½nero a remover.
 	 */
 	public static void removeGeneroNome(String nome) {
 		removeObjecto("generos", "NOME_GENERO", p(nome));
 	}
 
 	/* ---------------------------------------------------------------------- */
-	/* ---------------------------- MÁQUINAS ATM ---------------------------- */
+	/* ---------------------------- Mï¿½QUINAS ATM ---------------------------- */
 	/* ---------------------------------------------------------------------- */
 	/**
-	 * Obtém as máquinas ATM existentes.
-	 * @return Vector com os campos de cada máquina ATM.
+	 * Obtï¿½m as mï¿½quinas ATM existentes.
+	 * @return Vector com os campos de cada mï¿½quina ATM.
 	 */
 	public static Vector<String[]> getMaquinasATM() {
 		return selectAll("maquinasatm", true);
 	}
 	
 	/**
-	 * Obtém os dados de uma máquina ATM.
-	 * @param id o ID da máquina ATM.
-	 * @return os campos da máquina ATM.
+	 * Obtï¿½m os dados de uma mï¿½quina ATM.
+	 * @param id o ID da mï¿½quina ATM.
+	 * @return os campos da mï¿½quina ATM.
 	 */
 	public static String[] getMaquinaATM(String id) {
 		return selectAll("maquinasatm", "ID_MAQ", id, false).get(0);
 	}
 
 	/**
-	 * Adiciona uma máquina ATM à BD.
-	 * @param preco o preço da máquina a adicionar.
-	 * @param data_instalacao a data de instalação da máquina a adicionar.
+	 * Adiciona uma mï¿½quina ATM ï¿½ BD.
+	 * @param preco o preï¿½o da mï¿½quina a adicionar.
+	 * @param data_instalacao a data de instalaï¿½ï¿½o da mï¿½quina a adicionar.
 	 */
 	public static void adicionaMaquinaATM(String preco) {
 		adicionaObjecto("maquinasatm",
@@ -671,10 +671,10 @@ public class DBHandler
 	}
 	
 	/**
-	 * Actualiza uma máquina ATM na BD.
-	 * @param id o ID da máquina a actualizar.
-	 * @param preco o novo preço da máquina a actualizar.
-	 * @param data_instalacao a nova data de instalação da máquina a actualizar.
+	 * Actualiza uma mï¿½quina ATM na BD.
+	 * @param id o ID da mï¿½quina a actualizar.
+	 * @param preco o novo preï¿½o da mï¿½quina a actualizar.
+	 * @param data_instalacao a nova data de instalaï¿½ï¿½o da mï¿½quina a actualizar.
 	 */
 	public static void actualizaMaquinaATM(String id, String preco) {
 		actualizaObjecto("maquinasatm", "ID_MAQ", id,
@@ -683,16 +683,16 @@ public class DBHandler
 	}
 
 	/**
-	 * Invalida uma máquina ATM na BD.
-	 * @param id o ID da máquina ATM a invalidar.
+	 * Invalida uma mï¿½quina ATM na BD.
+	 * @param id o ID da mï¿½quina ATM a invalidar.
 	 */
 	public static void invalidaMaquinaATM(String id) {
 		invalidaObjecto("maquinasatm", "ID_MAQ", id);
 	}
 	
 	/**
-	 * Re-valida uma máquina ATM na BD.
-	 * @param id o ID da máquina ATM a re-validar.
+	 * Re-valida uma mï¿½quina ATM na BD.
+	 * @param id o ID da mï¿½quina ATM a re-validar.
 	 */
 	public static void validaMaquinaATM(String id) {
 		invalidaObjecto("maquinasatm", "ID_MAQ", id);
@@ -702,7 +702,7 @@ public class DBHandler
 	/* ---------------------------- PAGAMENTOS ---------------------------- */
 	/* -------------------------------------------------------------------- */
 	/**
-	 * Obtém os pagamentos existentes.
+	 * Obtï¿½m os pagamentos existentes.
 	 * @return Vector com os campos de cada pagamento.
 	 */
 	public static Vector<String[]> getPagamentos() {
@@ -710,8 +710,8 @@ public class DBHandler
 	}
 	
 	/**
-	 * Obtém os dados de um pagamento.
-	 * @param id_req o ID da requisição do pagamento.
+	 * Obtï¿½m os dados de um pagamento.
+	 * @param id_req o ID da requisiï¿½ï¿½o do pagamento.
 	 * @return os campos do pagamento.
 	 */
 	public static String[] getPagamento(String id_req) {
@@ -719,8 +719,8 @@ public class DBHandler
 	}
 	
 	/**
-	 * Adiciona um pagamento à BD.
-	 * @param id_req o ID da requisição do pagamento a adicionar.
+	 * Adiciona um pagamento ï¿½ BD.
+	 * @param id_req o ID da requisiï¿½ï¿½o do pagamento a adicionar.
 	 * @param montante o montante do pagamento a adicionar.
 	 */
 	public static void adicionaPagamento(String id_req, String montante) {
@@ -730,7 +730,7 @@ public class DBHandler
 	
 	/**
 	 * Actualiza um pagamento na BD.
-	 * @param id o ID da requisição do pagamento a actualizar.
+	 * @param id o ID da requisiï¿½ï¿½o do pagamento a actualizar.
 	 * @param montante o novo montante para o pagamento a actualizar.
 	 */
 	public static void actualizaPagamento(String id, String montante) {
@@ -741,18 +741,18 @@ public class DBHandler
 
 	/**
 	 * Remove um pagamento da BD.
-	 * @param id o ID da requisição do pagamento a remover.
+	 * @param id o ID da requisiï¿½ï¿½o do pagamento a remover.
 	 */
 	public static void removePagamento(String id) {
 		removeObjecto("pagamentos", "ID_REQ", id);
 	}
 	
 	/* --------------------------------------------------------------------- */
-	/* ---------------------------- REQUISIÇÕES ---------------------------- */
+	/* ---------------------------- REQUISIï¿½ï¿½ES ---------------------------- */
 	/* --------------------------------------------------------------------- */
 	/**
-	 * Obtém as requisições existentes.
-	 * @return Vector com os campos de cada requisição.
+	 * Obtï¿½m as requisiï¿½ï¿½es existentes.
+	 * @return Vector com os campos de cada requisiï¿½ï¿½o.
 	 */
 	public static Vector<String[]> getRequisicoes() {
 		return selectAll("requisicoes", false);
@@ -784,16 +784,16 @@ public class DBHandler
 	}
 	
 	/**
-	 * Obtém os dados de uma requisição.
-	 * @param id o ID da requisição.
-	 * @return os campos da requisição.
+	 * Obtï¿½m os dados de uma requisiï¿½ï¿½o.
+	 * @param id o ID da requisiï¿½ï¿½o.
+	 * @return os campos da requisiï¿½ï¿½o.
 	 */
 	public static String[] getRequisicao(String id) {
 		return selectAll("requisicoes", "ID_REQ", id, false).get(0);
 	}
 
 	/**
-	 * Adiciona uma requisição à BD.
+	 * Adiciona uma requisiï¿½ï¿½o ï¿½ BD.
 	 */
 	public static void adicionaRequisicao(String id_maq, String emp_id_pes, String id_pes, String id_fil, String id_for) {
 		adicionaObjecto("requisicoes",
@@ -807,10 +807,10 @@ public class DBHandler
 	}
 	
 	/**
-	 * Actualiza uma requisição na BD.
-	 * @param id o ID da requisição a actualizar.
-	 * @param data_limite a nova data limite de entrega do material da requisição.
-	 * @param data_entrega a data de entrega do material da requisição.
+	 * Actualiza uma requisiï¿½ï¿½o na BD.
+	 * @param id o ID da requisiï¿½ï¿½o a actualizar.
+	 * @param data_limite a nova data limite de entrega do material da requisiï¿½ï¿½o.
+	 * @param data_entrega a data de entrega do material da requisiï¿½ï¿½o.
 	 */
 	public static void actualizaRequisicao(String id, String data_limite, String data_entrega) {
 		actualizaObjecto("requisicoes", "ID_REQ", id,
@@ -819,17 +819,17 @@ public class DBHandler
 	}
 	
 	/**
-	 * Actualiza uma requisição na BD com a data de entrega.
-	 * @param id o ID da requisição a actualizar.
-	 * @param data_entrega a data de entrega do material da requisição.
+	 * Actualiza uma requisiï¿½ï¿½o na BD com a data de entrega.
+	 * @param id o ID da requisiï¿½ï¿½o a actualizar.
+	 * @param data_entrega a data de entrega do material da requisiï¿½ï¿½o.
 	 */
 	public static void actualizaRequisicao(String id) {
 		actualizaObjecto("requisicoes", "ID_REQ", id, "DATA_ENTREGA", "SYSDATE");
 	}
 
 	/**
-	 * Remove uma requisição da BD.
-	 * @param id o ID da requisição a remover.
+	 * Remove uma requisiï¿½ï¿½o da BD.
+	 * @param id o ID da requisiï¿½ï¿½o a remover.
 	 */
 	public static void removeRequisicao(String id) {
 		removeObjecto("requisicoes", "ID_REQ", id);
@@ -839,7 +839,7 @@ public class DBHandler
 	/* ---------------------------- STOCKS ---------------------------- */
 	/* ---------------------------------------------------------------- */
 	/**
-	 * Obtém os stocks existentes.
+	 * Obtï¿½m os stocks existentes.
 	 * @return Vector com os campos de cada stock.
 	 */
 	public static Vector<String[]> getStocks() {
@@ -855,7 +855,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Obtém os dados de um stock.
+	 * Obtï¿½m os dados de um stock.
 	 * @param id_fil o ID do filme do stock.
 	 * @param id_for o ID do formato do stock.
 	 * @return os campos do stock.
@@ -874,11 +874,11 @@ public class DBHandler
 	}
 
 	/**
-	 * Adiciona um stock à BD.
+	 * Adiciona um stock ï¿½ BD.
 	 * @param id_fil o ID do filme do stock a adicionar.
 	 * @param id_for o ID do formato do stock a adicionar.
 	 * @param quant a quantidade total de filmes existentes no stock.
-	 * @param custo_compra o custo de compra (à distribuidora) associado a um filme no stock.
+	 * @param custo_compra o custo de compra (ï¿½ distribuidora) associado a um filme no stock.
 	 * @param custo_aluguer o custo de aluguer associado a um filme no stock.
 	 */
 	public static void adicionaStock(String id_fil, String id_for, String quant, String custo_compra, String custo_aluguer) {
@@ -897,7 +897,7 @@ public class DBHandler
 	 * @param id_fil o ID do filme do stock a actualizar.
 	 * @param id_for o ID do formato do stock a actualizar.
 	 * @param quant a nova quantidade total de filmes existentes no stock.
-	 * @param custo_compra o novo custo de compra (à distribuidora) associado a um filme no stock.
+	 * @param custo_compra o novo custo de compra (ï¿½ distribuidora) associado a um filme no stock.
 	 * @param custo_aluguer o novo custo de aluguer associado a um filme no stock.
 	 */
 	public static void actualizaStock(String id_fil, String id_for, String quant, String custo_compra, String custo_aluguer) {
@@ -930,10 +930,10 @@ public class DBHandler
 	}
 	
 	/**
-	 * Actualiza o número de filmes disponíveis num stock da BD.
+	 * Actualiza o nï¿½mero de filmes disponï¿½veis num stock da BD.
 	 * @param id_fil o ID do filme do stock a actualizar.
 	 * @param id_for o ID do formato do stock a actualizar.
-	 * @param incr o incremento (ou decremento) a aplicar ao número de filmes disponíveis em stock.
+	 * @param incr o incremento (ou decremento) a aplicar ao nï¿½mero de filmes disponï¿½veis em stock.
 	 */
 	public static void actualizaDisponiveisStock(String id_fil, String id_for, String incr) {
 		String comando = "UPDATE stocks SET disponiveis = disponiveis + " + incr +
@@ -958,13 +958,13 @@ public class DBHandler
 	}
 	
 	/* -------------------------------------------------------------------------------- */
-	/* ---------------------------- MÉTODOS DE VERIFICAÇÃO ---------------------------- */
+	/* ---------------------------- Mï¿½TODOS DE VERIFICAï¿½ï¿½O ---------------------------- */
 	/* -------------------------------------------------------------------------------- */
 	/**
-	 * Verifica se existe um cliente com determinado BI, para além do cliente com o ID passado.
-	 * @param id_cli o ID do cliente a excluir da verificação.
+	 * Verifica se existe um cliente com determinado BI, para alï¿½m do cliente com o ID passado.
+	 * @param id_cli o ID do cliente a excluir da verificaï¿½ï¿½o.
 	 * @param bi o BI a procurar.
-	 * @return true, se existe outro cliente com esse BI. false, caso contrário.
+	 * @return true, se existe outro cliente com esse BI. false, caso contrï¿½rio.
 	 */
 	public static boolean biClienteExiste(String id_cli, String bi) {
 		return valorExiste("clientes", "BI", bi, "ID_PES", id_cli, true);
@@ -975,10 +975,10 @@ public class DBHandler
 	}
 	
 	/**
-	 * Verifica se existe um empregado com determinado BI, para além do empregado com o ID passado.
-	 * @param id_emp o ID do empregado a excluir da verificação.
+	 * Verifica se existe um empregado com determinado BI, para alï¿½m do empregado com o ID passado.
+	 * @param id_emp o ID do empregado a excluir da verificaï¿½ï¿½o.
 	 * @param bi o BI a procurar.
-	 * @return true, se existe outro empregado com esse BI. false, caso contrário.
+	 * @return true, se existe outro empregado com esse BI. false, caso contrï¿½rio.
 	 */
 	public static boolean biEmpregadoExiste(String id_emp, String bi) {
 		return valorExiste("empregados", "BI", bi, "ID_PES", id_emp, true);
@@ -1006,9 +1006,9 @@ public class DBHandler
 	}
 	
 	/**
-	 * Vertifica se o empregado é administrador e é o único.
+	 * Vertifica se o empregado ï¿½ administrador e ï¿½ o ï¿½nico.
 	 * @param id_emp o ID do empregado a verificar.
-	 * @return true, se o empregado é o único administrador. false, caso contrário.
+	 * @return true, se o empregado ï¿½ o ï¿½nico administrador. false, caso contrï¿½rio.
 	 */
 	public static boolean empregadoEUnicoAdmin(String id_emp) {
 		return !valorExiste("empregados", "IS_ADMIN", "1", "ID_PES", id_emp, true);
@@ -1019,22 +1019,22 @@ public class DBHandler
 	}
 	
 	/**
-	 * Verifica se determinado nome de género existe, excluíndo o género com o ID passado
-	 * (comparação não olha a diferenças de maiúsculas/minúsculas).
-	 * @param id_gen o ID do género a excluir da verificação.
-	 * @param nome o nome do género cuja existência tem de ser verificada.
-	 * @return true, se existe outro género com esse nome.  false, caso contrário.
+	 * Verifica se determinado nome de gï¿½nero existe, excluï¿½ndo o gï¿½nero com o ID passado
+	 * (comparaï¿½ï¿½o nï¿½o olha a diferenï¿½as de maiï¿½sculas/minï¿½sculas).
+	 * @param id_gen o ID do gï¿½nero a excluir da verificaï¿½ï¿½o.
+	 * @param nome o nome do gï¿½nero cuja existï¿½ncia tem de ser verificada.
+	 * @return true, se existe outro gï¿½nero com esse nome.  false, caso contrï¿½rio.
 	 */
 	public static boolean generoExiste(String id_gen, String nome) {
 		return valorExiste("generos", "NOME_GENERO", p(nome), "ID_GEN", id_gen, false);
 	}
 	
 	/**
-	 * Verifica se determinado nome de formato existe, excluíndo o formato com o ID passado
-	 * (comparação não olha a diferenças de maiúsculas/minúsculas).
-	 * @param id_for o ID do formato a excluir da verificação.
-	 * @param nome o nome do formato cuja existência tem de ser verificada.
-	 * @return true, se existe outro formato com esse nome. false, caso contrário.
+	 * Verifica se determinado nome de formato existe, excluï¿½ndo o formato com o ID passado
+	 * (comparaï¿½ï¿½o nï¿½o olha a diferenï¿½as de maiï¿½sculas/minï¿½sculas).
+	 * @param id_for o ID do formato a excluir da verificaï¿½ï¿½o.
+	 * @param nome o nome do formato cuja existï¿½ncia tem de ser verificada.
+	 * @return true, se existe outro formato com esse nome. false, caso contrï¿½rio.
 	 */
 	public static boolean formatoExiste(String id_for, String nome) {
 		return valorExiste("formatos", "NOME_FORMATO", p(nome), "ID_FOR", id_for, false);
@@ -1044,7 +1044,7 @@ public class DBHandler
 	 * Verifica se determinado stock para um certo filme e formato existe.
 	 * @param id_fil o ID do filme a verificar stock.
 	 * @param id_for o ID do formato a verificar stock.
-	 * @return true, se existe stock para o filme e formato referidos. false, caso contrário.
+	 * @return true, se existe stock para o filme e formato referidos. false, caso contrï¿½rio.
 	 */
 	public static boolean stockExiste(String id_fil, String id_for) {
 		return valorExiste("stocks",
@@ -1067,9 +1067,9 @@ public class DBHandler
 
 	/**
 	 * Verifica se existe algum stock para um certo formato (para qualquer filme).
-	 * Por outras palavras, verifica se o formato está a ser usado para algo.
+	 * Por outras palavras, verifica se o formato estï¿½ a ser usado para algo.
 	 * @param id_for o ID do formato a verificar.
-	 * @return true, se existe pelo menos um stock para o formato. false, caso contrário.
+	 * @return true, se existe pelo menos um stock para o formato. false, caso contrï¿½rio.
 	 */
 	public static boolean formatoEmUso(String id_for) {
 		return valorExiste("stocks", "ID_FOR", id_for, false);
@@ -1081,10 +1081,10 @@ public class DBHandler
 	}
 	
 	/**
-	 * Verifica se existe algum filme com um certo género.
-	 * Por outras palavras, verifica se o género está a ser usado para algo.
-	 * @param id_gen o ID do género a verificar.
-	 * @return true, se existe pelo menos um filme com esse género. false, caso contrário.
+	 * Verifica se existe algum filme com um certo gï¿½nero.
+	 * Por outras palavras, verifica se o gï¿½nero estï¿½ a ser usado para algo.
+	 * @param id_gen o ID do gï¿½nero a verificar.
+	 * @return true, se existe pelo menos um filme com esse gï¿½nero. false, caso contrï¿½rio.
 	 */
 	public static boolean generoEmUso(String id_gen) {
 		return valorExiste("filme_genero", "ID_GEN", id_gen, false);
@@ -1096,10 +1096,10 @@ public class DBHandler
 	}
 	
 	/**
-	 * Verifica se um filme tem apenas determinado género e mais nenhum.
+	 * Verifica se um filme tem apenas determinado gï¿½nero e mais nenhum.
 	 * @param id_fil o ID do filme a verificar.
-	 * @param id_gen o ID do género a verificar.
-	 * @return true, se o filme tem apenas esse género e mais nenhum. false, caso contrário.
+	 * @param id_gen o ID do gï¿½nero a verificar.
+	 * @return true, se o filme tem apenas esse gï¿½nero e mais nenhum. false, caso contrï¿½rio.
 	 */
 	public static boolean filmeSoTemGenero(String id_fil, String id_gen) {
 		Vector<String[]> vec = getGenerosFilme(id_fil);
@@ -1135,11 +1135,11 @@ public class DBHandler
 	}
 	
 	/**
-	 * Verifica se determinado valor existe em determinado campo numa dada tabela (função genérica).
+	 * Verifica se determinado valor existe em determinado campo numa dada tabela (funï¿½ï¿½o genï¿½rica).
 	 * @param tabela a tabela a verificar.
 	 * @param campo o campo cujo valor verificar.
 	 * @param valor o valor a encontrar no campo.
-	 * @return true, se o valor foi encontrado no campo referido de algum elemento. false, caso contrário.
+	 * @return true, se o valor foi encontrado no campo referido de algum elemento. false, caso contrï¿½rio.
 	 */
 	private static boolean valorExiste(String tabela, String campo, String valor, boolean soValidos) {
 		Vector<String[]> vec = selectAll(tabela, campo, valor, soValidos);
@@ -1147,11 +1147,11 @@ public class DBHandler
 	}
 	
 	/**
-	 * Verifica se determinados valores existem (em simultâneo) em vários campos de uma dada tabela (função genérica).
+	 * Verifica se determinados valores existem (em simultï¿½neo) em vï¿½rios campos de uma dada tabela (funï¿½ï¿½o genï¿½rica).
 	 * @param tabela a tabela a verificar.
 	 * @param campos os campos cujo valor verificar.
 	 * @param valores os valores a encontrar nos campos.
-	 * @return true, se os valores existem em simultâneo nos campos referidos de algum elemento. false, caso contrário.
+	 * @return true, se os valores existem em simultï¿½neo nos campos referidos de algum elemento. false, caso contrï¿½rio.
 	 */
 	private static boolean valorExiste(String tabela, String[] campos, String[] valores, boolean soValidos) {
 		Vector<String[]> vec = selectAll(tabela, campos, valores, soValidos);
@@ -1160,13 +1160,13 @@ public class DBHandler
 
 	/**
 	 * Verifica se determinado valor existe em determinado campo numa dada tabela,
-	 * exluíndo elementos com determinado valor em determinado campo (função genérica).
+	 * exluï¿½ndo elementos com determinado valor em determinado campo (funï¿½ï¿½o genï¿½rica).
 	 * @param tabela a tabela a verificar.
 	 * @param campo o campo cujo valor verificar.
 	 * @param valor o valor a encontrar no campo.
 	 * @param exceptCampo o campo a verificar para excluir elementos da procura.
-	 * @param exceptValor o valor que o campo de exclusão deve ter para excluir elementos da procura.
-	 * @return true, se o valor foi encontrado no campo referido de algum elemento (excluíndo os devidos). false, caso contrário.
+	 * @param exceptValor o valor que o campo de exclusï¿½o deve ter para excluir elementos da procura.
+	 * @return true, se o valor foi encontrado no campo referido de algum elemento (excluï¿½ndo os devidos). false, caso contrï¿½rio.
 	 */
 	private static boolean valorExiste(String tabela, String campo, String valor, String exceptCampo, String exceptValor, boolean soValidos) {
 		Vector<String[]> vec = select("SELECT *" +
@@ -1178,11 +1178,11 @@ public class DBHandler
 	}
 	
 	/* --------------------------------------------------------------------------- */
-	/* ---------------------------- MÉTODOS GENÉRICOS ---------------------------- */
+	/* ---------------------------- Mï¿½TODOS GENï¿½RICOS ---------------------------- */
 	/* --------------------------------------------------------------------------- */
 	/**
-	 * Adiciona um objecto à BD. Função genérica.
-	 * @param tabela a tabela à qual adicionar o objecto.
+	 * Adiciona um objecto ï¿½ BD. Funï¿½ï¿½o genï¿½rica.
+	 * @param tabela a tabela ï¿½ qual adicionar o objecto.
 	 * @param valores os valores do objecto a adicionar.
 	 */
 	private static void adicionaObjecto(String tabela, String[] valores) {
@@ -1191,7 +1191,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Actualiza um objecto na BD. Função genérica.
+	 * Actualiza um objecto na BD. Funï¿½ï¿½o genï¿½rica.
 	 * @param tabela a tabela na qual actualizar o objecto.
 	 * @param campo o campo utilizado para encontrar o objecto a actualizar.
 	 * @param valor o valor que deve ter o campo no objecto a actualizar.
@@ -1205,7 +1205,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Actualiza um objecto na BD. Função genérica.
+	 * Actualiza um objecto na BD. Funï¿½ï¿½o genï¿½rica.
 	 * @param tabela a tabela na qual actualizar o objecto.
 	 * @param campo o campo utilizado para encontrar o objecto a actualizar.
 	 * @param valor o valor que deve ter o campo no objecto a actualizar.
@@ -1219,7 +1219,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Actualiza um objecto na BD. Função genérica.
+	 * Actualiza um objecto na BD. Funï¿½ï¿½o genï¿½rica.
 	 * @param tabela a tabela na qual actualizar o objecto.
 	 * @param campos os campos utilizados para encontrar o objecto a actualizar.
 	 * @param valores os valores que devem ter os campos no objecto a actualizar.
@@ -1233,7 +1233,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Invalida um objecto na BD. Função genérica.
+	 * Invalida um objecto na BD. Funï¿½ï¿½o genï¿½rica.
 	 * @param tabela a tabela na qual invalidar o objecto.
 	 * @param campo o campo utilizado para encontrar o objecto a invalidar.
 	 * @param valor o valor que deve ter o campo no objecto a invalidar.
@@ -1243,7 +1243,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Valida um objecto na BD. Função genérica.
+	 * Valida um objecto na BD. Funï¿½ï¿½o genï¿½rica.
 	 * @param tabela a tabela na qual validar o objecto.
 	 * @param campo o campo utilizado para encontrar o objecto a validar.
 	 * @param valor o valor que deve ter o campo no objecto a validar.
@@ -1253,7 +1253,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Remove os objectos da BD que tenham determinado valor num determinado campo. Função genérica.
+	 * Remove os objectos da BD que tenham determinado valor num determinado campo. Funï¿½ï¿½o genï¿½rica.
 	 * @param tabela a tabela da qual remover o(s) objecto(s).
 	 * @param campo o campo a verificar para encontrar o(s) objecto(s) a remover.
 	 * @param valor o valor do campo no(s) objecto(s) a ser removido(s).
@@ -1264,7 +1264,7 @@ public class DBHandler
 	}
 	
 	/**
-	 * Remove os objectos da BD que tenham determinados valores em determinados campos. Função genérica.
+	 * Remove os objectos da BD que tenham determinados valores em determinados campos. Funï¿½ï¿½o genï¿½rica.
 	 * @param tabela a tabela da qual remover o(s) objecto(s).
 	 * @param campos os campos a verificar para encontrar o(s) objecto(s) a remover.
 	 * @param valores os valores do campos no(s) objecto(s) a ser removido(s).
@@ -1275,7 +1275,7 @@ public class DBHandler
 	}
 
 	/**
-	 * Obtém todos campos de todos os objectos existentes numa dada tabela.
+	 * Obtï¿½m todos campos de todos os objectos existentes numa dada tabela.
 	 * @param tabela tabela de onde obter os dados.
 	 * @return Vector com os campos de cada linha da tabela.
 	 */
@@ -1293,10 +1293,10 @@ public class DBHandler
 	}
 	
 	/**
-	 * Obtém todos os campos do objecto existente numa dada tabela que contiver
+	 * Obtï¿½m todos os campos do objecto existente numa dada tabela que contiver
 	 * certo valor num determinado campo.
 	 * @param tabela tabela de onde obter os dados.
-	 * @param campo o campo que seleccionará o objecto.
+	 * @param campo o campo que seleccionarï¿½ o objecto.
 	 * @param valor o valor a procurar no campo.
 	 * @return Vector com todos os campos dos objectos.
 	 */
@@ -1315,11 +1315,11 @@ public class DBHandler
 	}
 	
 	/**
-	 * Obtém os campos seleccionados dos objectos existentes numa dada tabela que contiverem
+	 * Obtï¿½m os campos seleccionados dos objectos existentes numa dada tabela que contiverem
 	 * certo valor num determinado campo.
 	 * @param tabela tabela onde fazer SELECT.
 	 * @param campos nomes das colunas a obter da tabela.
-	 * @param campo o campo que seleccionará o objecto.
+	 * @param campo o campo que seleccionarï¿½ o objecto.
 	 * @param valor o valor a procurar no campo.
 	 * @return Vector com os campos seleccionados dos objectos.
 	 */
@@ -1379,10 +1379,10 @@ public class DBHandler
 	/* ---------------------------- OUTROS ---------------------------- */
 	/* ---------------------------------------------------------------- */
 	/**
-	 * Coloca plicas na string passada. Substitui todos os apóstrofes na palavra
-	 * por apóstrofes duplos para fazer "escape".
-	 * @param s a string à qual aplicar plicas.
-	 * @return a string, com plicas e os apóstrofes diplicados.
+	 * Coloca plicas na string passada. Substitui todos os apï¿½strofes na palavra
+	 * por apï¿½strofes duplos para fazer "escape".
+	 * @param s a string ï¿½ qual aplicar plicas.
+	 * @return a string, com plicas e os apï¿½strofes diplicados.
 	 */
 	private static String p(String s) {
 		return "'" + s.replace("'", "''") + "'";
