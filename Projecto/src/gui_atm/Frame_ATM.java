@@ -342,31 +342,31 @@ public class Frame_ATM  extends JFrame{
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel3.setText("Pesquisar Filme");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel4.setText("Título:");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel6.setText("Género:");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel7.setText("Ano:");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel8.setText("Realizador:");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel9.setText("Produtor:");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel11.setText("Entre");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel12.setText("E");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel10.setText("IMDB RATING: ");
 
         menuPesquisar_generos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -378,13 +378,13 @@ public class Frame_ATM  extends JFrame{
             }
         });
 
-        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel29.setText("País:");
 
-        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel31.setText("Entre");
 
-        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel32.setText("E");
 
         javax.swing.GroupLayout jPesquisarPanelLayout = new javax.swing.GroupLayout(jPesquisarPanel);
@@ -513,16 +513,16 @@ public class Frame_ATM  extends JFrame{
                     .addContainerGap(530, Short.MAX_VALUE)))
         );
 
-        jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel38.setText("Título:");
 
-        jLabel39.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel39.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel39.setText("Preço:");
 
-        jLabel40.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel40.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel40.setText("Data Limite de Entrega:");
 
-        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel41.setText("Aguarde enquanto o seu filme é entregue.");
 
         menuPaga_dataEntrega.setEditable(false);
@@ -534,7 +534,7 @@ public class Frame_ATM  extends JFrame{
         menuPaga_titulo.setEditable(false);
         menuPaga_titulo.setText("jTextField21");
 
-        jLabel49.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel49.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel49.setText("A processar entrega...");
 
         javax.swing.GroupLayout jPagaLayout = new javax.swing.GroupLayout(jPaga);
@@ -607,31 +607,31 @@ public class Frame_ATM  extends JFrame{
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel13.setText("Resultados Filme");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel14.setText("Título:");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel15.setText("Género:");
 
         menuResultados_titulo.setEditable(false);
         menuResultados_titulo.setText("jTextField1");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel16.setText("Ano:");
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel17.setText("Realizador:");
 
         menuResultados_realizador.setEditable(false);
         menuResultados_realizador.setText("jTextField2");
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel18.setText("Produtor:");
 
         menuResultados_produtor.setEditable(false);
         menuResultados_produtor.setText("jTextField3");
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel19.setText("IMDB RATING: ");
 
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -643,7 +643,7 @@ public class Frame_ATM  extends JFrame{
         });
         jScrollPane1.setViewportView(menuResultados_listaFilmes);
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel22.setText("Resultados:");
 
         menuResultados_ano.setEditable(false);
@@ -674,14 +674,14 @@ public class Frame_ATM  extends JFrame{
                 .addContainerGap(96, Short.MAX_VALUE))
         );
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel21.setText("Descrição:");
 
         menuResultados_descricao.setColumns(20);
         menuResultados_descricao.setRows(5);
         jScrollPane2.setViewportView(menuResultados_descricao);
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel23.setText("País:");
 
         menuResultados_pais.setEditable(false);
@@ -696,10 +696,10 @@ public class Frame_ATM  extends JFrame{
 
         menuResultados_formatos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel36.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel36.setText("Escolher Formato");
 
-        jLabel37.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel37.setText("Preço:");
 
         menuResultados_preco.setEditable(false);
@@ -887,7 +887,7 @@ public class Frame_ATM  extends JFrame{
         });
         jScrollPane3.setViewportView(jList2);
 
-        jLabel48.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel48.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel48.setText("Filmes anteriormente Requisitados:");
 
         javax.swing.GroupLayout jHistoricoPanelLayout = new javax.swing.GroupLayout(jHistoricoPanel);
@@ -936,40 +936,42 @@ public class Frame_ATM  extends JFrame{
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel1.setText("Username:");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel2.setText("Password:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 24));
-        jLabel5.setText("Videoclube Quero Férias");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        jLabel5.setText("Videoclube \"a definir\"");
 
         javax.swing.GroupLayout jLoginPanelLayout = new javax.swing.GroupLayout(jLoginPanel);
         jLoginPanel.setLayout(jLoginPanelLayout);
         jLoginPanelLayout.setHorizontalGroup(
             jLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLoginPanelLayout.createSequentialGroup()
-                .addGap(138, 138, 138)
+                .addGap(145, 145, 145)
                 .addGroup(jLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addGroup(jLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPasswordField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jUsernameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)))
-                .addContainerGap(180, Short.MAX_VALUE))
-            .addGroup(jLoginPanelLayout.createSequentialGroup()
-                .addGap(338, 338, 338)
-                .addComponent(jLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(346, Short.MAX_VALUE))
+                    .addGroup(jLoginPanelLayout.createSequentialGroup()
+                        .addGroup(jLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addGroup(jLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jPasswordField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jUsernameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jLoginPanelLayout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(jLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(173, 173, 173))
         );
         jLoginPanelLayout.setVerticalGroup(
             jLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLoginPanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(110, 110, 110)
                 .addComponent(jLabel5)
                 .addGap(95, 95, 95)
                 .addGroup(jLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -981,7 +983,7 @@ public class Frame_ATM  extends JFrame{
                     .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         jSairButton5.setText("SAIR");
@@ -1008,22 +1010,22 @@ public class Frame_ATM  extends JFrame{
         jLabel33.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel33.setText("Entregar Filme");
 
-        jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel34.setText("Filme a Entregar:");
 
-        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel35.setText("1. Escolha o filme a entregar.");
 
-        jLabel42.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel42.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel42.setText("2. Método de Pagamento:");
 
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 12));
         jRadioButton3.setText("Dinheiro");
 
-        jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 12));
         jRadioButton4.setText("Multibanco");
 
-        jLabel43.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel43.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel43.setText("3. Introduza o dinheiro na máquina (dá troco)");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -1046,16 +1048,16 @@ public class Frame_ATM  extends JFrame{
         valorapagar.setEditable(false);
         valorapagar.setText("jTextField11");
 
-        jLabel44.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel44.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel44.setText("Valor a Pagar:");
 
-        jLabel45.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel45.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel45.setText("3. Introduzir Nº");
 
-        jLabel46.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel46.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel46.setText("CSS:");
 
-        jLabel47.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel47.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel47.setText("Nº Cartão:");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -1208,19 +1210,19 @@ public class Frame_ATM  extends JFrame{
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel25.setText("Dados Pessoais");
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel26.setText("Nome:");
 
         menuDados_nome.setEditable(false);
         menuDados_nome.setText("jTextField11");
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel27.setText("Morada:");
 
         menuDados_morada.setEditable(false);
         menuDados_morada.setText("jTextField12");
 
-        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel28.setText("E-mail:");
 
         menuDados_mail.setEditable(false);
@@ -1229,10 +1231,10 @@ public class Frame_ATM  extends JFrame{
         menuDados_BI.setEditable(false);
         menuDados_BI.setText("jTextField1");
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel20.setText("BI:");
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel30.setText("Telefone:");
 
         menuDados_tel.setEditable(false);
