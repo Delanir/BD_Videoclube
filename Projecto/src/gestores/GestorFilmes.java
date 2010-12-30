@@ -294,19 +294,10 @@ public class GestorFilmes
 		return "RequisiÁ„o adicionada.";
 	}
 	
-
-
-
-    /**
-     * entrega um filme requisitado
-     * @param idRequisicao
-     * @return
-     */
-    // TODO
-    public String entregar(String idRequisicao ){
-        Utils.dbg("id_req: "+idRequisicao);
-        return null;
-    }
+	public String entregaRequisicao(String id_req, String data_entrega) {
+		DBHandler.actualizaRequisicao(id_req, data_entrega); 
+		return "Material requisitado registado como entregue.";
+	}
     
     /**
      * calcula o pre√ßo da requisi√ß√£o
