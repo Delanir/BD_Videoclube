@@ -1891,7 +1891,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
         .addGroup(adicionarFilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adicionarFilmeFrameLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jAdicionarFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jAdicionarFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
 
@@ -3435,7 +3435,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         //TODO fazer parsing do output do método
         String []lista;
         //procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos)
-        lista=gestorFilmes.procuraFilmes(
+        lista=gestorFilmes.procuraFilmesPlusInvalidos(
         		//textIdPesquisaFilmes.getText(),
                 textTituloPesquisaFilmes.getText(),
                 ""+(Integer)jSpinner1.getValue(),
@@ -3946,11 +3946,10 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
                     jFormattedTextField4.getText(),
                     gestorUtilizadores.getIdEmpregado());*/
         	output=gestorFilmes.adicionaRequisicao("null",
-        										   gestorUtilizadores.getUsername(),
-        										   jFormattedTextField4.getText(),
-        										   idMovie,
-        										   (String) listaFormatosResultadosFilmes.getSelectedItem(),
-        										   "null");
+                           gestorUtilizadores.getUsername(),
+                           jFormattedTextField4.getText(),
+                           idMovie,
+                           (String) listaFormatosResultadosFilmes.getSelectedItem());
         }
        
         jTextField1.setText(output);
