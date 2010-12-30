@@ -2,6 +2,7 @@ package bd;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -33,15 +34,18 @@ public class DBHandler
 			//Utils.printStringArrayVector(dbh.getFilmes());
 			//System.out.println(Utils.list(getFilme("2"), ","));
 			//executeNoCommit("");
+
                         Vector<String[]> vec = select("SELECT * from requisicoes WHERE data_limite is null");
+
 			if(vec.get(0)[8] == null)
 				Utils.dbg("true null");
 			else if(vec.get(0)[8].equals("null"))
 				Utils.dbg("false null");
 			else
 				Utils.dbg("other. wtf?");
-			//Utils.printStringArrayln(Utils.strArrayVectorToArray());
+			Utils.printStringArrayln(Utils.strArrayVectorToArray(select("SELECT montanteAPagar(2) FROM DUAL")));
 			close();
+			System.out.println("tudo bem");
 		} else
 			System.out.println("deu bode");
 	}
@@ -1374,6 +1378,18 @@ public class DBHandler
 			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+	
+	/*private static void executeFunction(String funcao, String[] parametros) {
+		String query = funcao + "(" + Utils.list(parametros, ",") + ")";
+		Statement st = conn.createStatement();
+		st.execute(query);
+		ResultSet rs = st.getResultSet();
+		
+		//PreparedStatement ps = conn.prepareStatement(query);
+		//ResultSet rs = ps.executeQuery(); 
+		rs.next();
+		return rs.getString(1);
+	}*/
 
 	/* ---------------------------------------------------------------- */
 	/* ---------------------------- OUTROS ---------------------------- */

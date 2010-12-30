@@ -313,5 +313,10 @@ public class GestorFilmes
 		DBHandler.actualizaRequisicao(id_req); 
 		return "Material requisitado registado como entregue.";
 	}
+
+	public String calcularPrecoRequisicao(String idMovie) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 
