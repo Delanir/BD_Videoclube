@@ -778,10 +778,10 @@ public class DBHandler
 	}
 
 	// TODO: data_limite é calculada aqui?
-	public static void adicionaRequisicaoNomeFormato(String id_maq, String emp_id_pes, String id_pes, String id_fil, String nome_formato, String data_limite) {
+	public static void adicionaRequisicaoNomeFormato(String id_maq, String emp_id_pes, String id_pes, String id_fil, String nome_formato) {
 		String id_for = getFormatoID(nome_formato);
 		adicionaObjecto("requisicoes",
-						new String[]{id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", p(data_limite), "null"});
+						new String[]{id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", "SYSDATE + " + Consts.LIMITE_DIAS, "null"});
 	}
 	
 	/**
@@ -801,8 +801,8 @@ public class DBHandler
 	 * @param id o ID da requisição a actualizar.
 	 * @param data_entrega a data de entrega do material da requisição.
 	 */
-	public static void actualizaRequisicao(String id, String data_entrega) {
-		actualizaObjecto("requisicoes", "ID_REQ", id, "DATA_ENTREGA", p(data_entrega));
+	public static void actualizaRequisicao(String id) {
+		actualizaObjecto("requisicoes", "ID_REQ", id, "DATA_ENTREGA", "SYSDATE");
 	}
 
 	/**
