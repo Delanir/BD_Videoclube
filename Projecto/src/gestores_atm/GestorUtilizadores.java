@@ -11,7 +11,6 @@ import outros.Utils;
 public class GestorUtilizadores {
 
     private String username;
-    private String password;
 
     /**
      * procura autenticar um cliente no sistema
@@ -21,7 +20,26 @@ public class GestorUtilizadores {
      */
     public String login(String username,String password){
         //se login se confirmar, guardar campos de username e password
-        return username;
+        String [] cliente = DBHandler.getCliente(username);
+        if(cliente!=null&&cliente.length>0){
+            //verifica credenciais
+            if(password.equals(cliente[3])){
+                this.username=username;
+                return username;
+            }
+        }else{
+            //tenta verificar se o utilizador utilizou o ID para se identificar
+            cliente=DBHandler.getClienteBI(username);
+            if(cliente!=null&&cliente.length>0){
+                //verifica credenciais
+                if(password.equals(cliente[3])){
+                    //autenticacao bem sucedida
+                    this.username=username;
+                    return username;
+                }
+            }
+        }
+        return null;
         //return DBHandler.;
     }
 
@@ -29,7 +47,7 @@ public class GestorUtilizadores {
      * faz display dos dados pessoais do utiizador
      * @return
      */
-    public String [] verDadosPessoais(String username){
+    public String [] verDadosPessoais(){
         //pesquisar na base de dados e devolver uma string com os dados
         //nao sei se sao estas as funçoes
         DBHandler.getCliente(username);
@@ -75,6 +93,7 @@ public class GestorUtilizadores {
      */
     public String [] verListadeRequisicoes(){
         String [] reqs = {"pedro","daniel","daniela"};
+        String [] req = DBHandler.getRequisicao();
         return reqs;
     }
 
@@ -87,8 +106,4 @@ public class GestorUtilizadores {
         return "100";
     }
 
-    public String [] verListadeGeneros(){
-        String [] gens = {"terror","drama","XXX"};
-        return gens;
-    }
 }
