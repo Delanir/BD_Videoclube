@@ -19,7 +19,6 @@ import outros.Utils;
  */
 public class DBHandler
 {
-	//TODO: tratar do atributo VALIDO nas consultas, bem como restrições associadas (muita coisa...)
 	private static Connection conn;
 	
 	/**
@@ -122,11 +121,11 @@ public class DBHandler
 	 * @return Vector com os campos de cada cliente.
 	 */
 	public static Vector<String[]> getClientes() {
-		return selectAll("clientes");
+		return selectAll("clientes", true);
 	}
 	
 	public static Vector<String[]> getClientesOrdNome() {
-		return selectAll("clientes", "NOME_PESSOA");
+		return selectAll("clientes", "NOME_PESSOA", true);
 	}
 	
 	/**
@@ -135,11 +134,11 @@ public class DBHandler
 	 * @return os campos do cliente.
 	 */
 	public static String[] getCliente(String id) {
-		return selectAll("clientes", "ID_PES", id).get(0);
+		return selectAll("clientes", "ID_PES", id, false).get(0);
 	}
 	
 	public static String[] getClienteBI(String bi) {
-		return selectAll("clientes", "BI", bi).get(0);
+		return selectAll("clientes", "BI", bi, false).get(0);
 	}
 
 	/**
@@ -238,7 +237,7 @@ public class DBHandler
 	 * @return Vector com os campos de cada empregado.
 	 */
 	public static Vector<String[]> getEmpregados() {
-		return selectAll("empregados");
+		return selectAll("empregados", true);
 	}
 	
 	/**
@@ -247,11 +246,11 @@ public class DBHandler
 	 * @return os campos do empregado.
 	 */
 	public static String[] getEmpregado(String id) {
-		return selectAll("empregados", "ID_PES", id).get(0);
+		return selectAll("empregados", "ID_PES", id, false).get(0);
 	}
 	
 	public static String[] getEmpregadoBI(String bi) {
-		return selectAll("empregados", "BI", bi).get(0);
+		return selectAll("empregados", "BI", bi, false).get(0);
 	}
 
 	/**
@@ -336,19 +335,35 @@ public class DBHandler
 	 * @return Vector com os campos de cada filme.
 	 */
 	public static Vector<String[]> getFilmes() {
-		return selectAll("filmes");
+		return selectAll("filmes", true);
 	}
 	
 	public static Vector<String[]> getFilmesOrdTitulo() {
-		return selectAll("filmes", "TITULO");
+		return selectAll("filmes", "TITULO", true);
 	}
 	
 	public static Vector<String[]> getFilmesOrdAno() {
-		return selectAll("filmes", "ANO");
+		return selectAll("filmes", "ANO", true);
 	}
 	
 	public static Vector<String[]> getFilmesOrdRankIMDB() {
-		return selectAll("filmes", "RANKIMDB");
+		return selectAll("filmes", "RANKIMDB", true);
+	}
+	
+	public static Vector<String[]> getFilmesPlusInvalidos() {
+		return selectAll("filmes", false);
+	}
+	
+	public static Vector<String[]> getFilmesOrdTituloPlusInvalidos() {
+		return selectAll("filmes", "TITULO", false);
+	}
+	
+	public static Vector<String[]> getFilmesOrdAnoPlusInvalidos() {
+		return selectAll("filmes", "ANO", false);
+	}
+	
+	public static Vector<String[]> getFilmesOrdRankIMDBPlusInvalidos() {
+		return selectAll("filmes", "RANKIMDB", false);
 	}
 	
 	/**
@@ -357,7 +372,7 @@ public class DBHandler
 	 * @return os campos do filme.
 	 */
 	public static String[] getFilme(String id) {
-		return selectAll("filmes", "ID_FIL", id).get(0);
+		return selectAll("filmes", "ID_FIL", id, false).get(0);
 	}
 
 	/**
@@ -373,7 +388,7 @@ public class DBHandler
 	 */
 	public static void adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa) {
 		adicionaObjecto("filmes",
-						new String[]{"seq_filme_id.NEXTVAL", p(titulo), p(ano), p(realizador), p(ratingIMDB), p(pais), p(produtora), p(descricao), p(capa)});
+						new String[]{"seq_filme_id.NEXTVAL", p(titulo), p(ano), p(realizador), p(ratingIMDB), p(pais), p(produtora), p(descricao), p(capa), "0"});
 	}
 	
 	/**
@@ -410,8 +425,16 @@ public class DBHandler
 		invalidaObjecto("filmes", "ID_FIL", id);
 	}
 	
-	// TODO: géneros
 	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
+		return procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos, true);
+	}
+	
+	public static Vector<String[]> procuraFilmesPlusInvalidos(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
+		return procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos, false);
+	}
+
+	// TODO: géneros
+	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos, boolean soValidos) {
 		String query = "SELECT ID_FIL, ANO, TITULO" +
 					   " FROM filmes f" +
 					   " WHERE ID_FIL = ID_FIL" +	// redundância para evitar o caso em que o WHERE fica sem nada
@@ -420,7 +443,8 @@ public class DBHandler
 					   (pais.isEmpty()?"":" AND pais = "+p("%"+pais+"%")) +
 					   (produtora.isEmpty()?"":" AND produtora = "+p("%"+produtora+"%")) +
 					   (anoLow.isEmpty()||anoHigh.isEmpty()?"":" AND ano BETWEEN "+anoLow+" AND "+anoHigh) +
-					   (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND ratingIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh);
+					   (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND ratingIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh) +
+					   (soValidos ? "":" AND VALIDO = 1");
 		/*for(String id_gen : generos) {
 			query += " AND " + ) +
 		}*/
@@ -435,7 +459,7 @@ public class DBHandler
 	 * @return Vector com os IDs do filme e género que formam a relação.
 	 */
 	public static Vector<String[]> getFilmeGenero() {
-		return selectAll("filme_genero");
+		return selectAll("filme_genero", false);
 	}
 	
 	/**
@@ -444,7 +468,7 @@ public class DBHandler
 	 * @return os géneros do filme.
 	 */
 	public static String[] getGenerosFilmeID(String id_fil) {
-		Vector<String[]> selected = select("filme_genero", new String[]{"ID_GEN"}, "ID_FIL", id_fil);
+		Vector<String[]> selected = select("filme_genero", new String[]{"ID_GEN"}, "ID_FIL", id_fil, false);
 		return Utils.strArrayVectorToArray(selected, 0);
 	}
 	
@@ -492,11 +516,11 @@ public class DBHandler
 	 * @return Vector com os campos de cada formato.
 	 */
 	public static Vector<String[]> getFormatos() {
-		return selectAll("formatos");
+		return selectAll("formatos", false);
 	}
 	
 	public static Vector<String[]> getFormatosOrdNome() {
-		return selectAll("formatos", "NOME_FORMATO");
+		return selectAll("formatos", "NOME_FORMATO", false);
 	}
 	
 	/**
@@ -505,15 +529,15 @@ public class DBHandler
 	 * @return os campos do formato.
 	 */
 	public static String[] getFormato(String id) {
-		return selectAll("formatos", "ID_FOR", id).get(0);
+		return selectAll("formatos", "ID_FOR", id, false).get(0);
 	}
 	
 	public static String getFormatoNome(String id) {
-		return selectAll("formatos", "ID_FOR", id).get(0)[1];
+		return selectAll("formatos", "ID_FOR", id, false).get(0)[1];
 	}
 	
 	public static String getFormatoID(String nome_formato) {
-		return selectAll("formatos", "NOME_FORMATO", nome_formato).get(0)[0];
+		return selectAll("formatos", "NOME_FORMATO", nome_formato, false).get(0)[0];
 	}
 	
 	/**
@@ -560,11 +584,11 @@ public class DBHandler
 	 * @return Vector com os campos de cada género.
 	 */
 	public static Vector<String[]> getGeneros() {
-		return selectAll("generos");
+		return selectAll("generos", false);
 	}
 	
 	public static Vector<String[]> getGenerosOrdNome() {
-		return selectAll("generos", "NOME_GENERO");
+		return selectAll("generos", "NOME_GENERO", false);
 	}
 	
 	/**
@@ -573,11 +597,11 @@ public class DBHandler
 	 * @return os campos do género.
 	 */
 	public static String[] getGenero(String id) {
-		return selectAll("generos", "ID_GEN", id).get(0);
+		return selectAll("generos", "ID_GEN", id, false).get(0);
 	}
 	
 	public static String getGeneroNome(String id) {
-		return selectAll("generos", "ID_GEN", id).get(0)[1];
+		return selectAll("generos", "ID_GEN", id, false).get(0)[1];
 	}
 	
 	/**
@@ -624,7 +648,7 @@ public class DBHandler
 	 * @return Vector com os campos de cada máquina ATM.
 	 */
 	public static Vector<String[]> getMaquinasATM() {
-		return selectAll("maquinasatm");
+		return selectAll("maquinasatm", true);
 	}
 	
 	/**
@@ -633,7 +657,7 @@ public class DBHandler
 	 * @return os campos da máquina ATM.
 	 */
 	public static String[] getMaquinaATM(String id) {
-		return selectAll("maquinasatm", "ID_MAQ", id).get(0);
+		return selectAll("maquinasatm", "ID_MAQ", id, false).get(0);
 	}
 
 	/**
@@ -682,7 +706,7 @@ public class DBHandler
 	 * @return Vector com os campos de cada pagamento.
 	 */
 	public static Vector<String[]> getPagamentos() {
-		return selectAll("pagamentos");
+		return selectAll("pagamentos", false);
 	}
 	
 	/**
@@ -691,7 +715,7 @@ public class DBHandler
 	 * @return os campos do pagamento.
 	 */
 	public static String[] getPagamento(String id_req) {
-		return selectAll("pagamentos", "ID_REQ", id_req).get(0);
+		return selectAll("pagamentos", "ID_REQ", id_req, false).get(0);
 	}
 	
 	/**
@@ -731,11 +755,11 @@ public class DBHandler
 	 * @return Vector com os campos de cada requisição.
 	 */
 	public static Vector<String[]> getRequisicoes() {
-		return selectAll("requisicoes");
+		return selectAll("requisicoes", false);
 	}
 	
 	public static Vector<String[]> getRequisicoesCliente(String id) {
-		return selectAll("requisicoes", "ID_PES", id);
+		return selectAll("requisicoes", "ID_PES", id, false);
 	}
 	
 	public static Vector<String[]> getRequisicoesClientePlus(String id) {
@@ -747,7 +771,7 @@ public class DBHandler
 	}
 	
 	public static Vector<String[]> getRequisicoesClienteBI(String bi) {
-		return selectAll("requisicoes", "BI", bi);
+		return selectAll("requisicoes", "BI", bi, false);
 	}
 	
 	public static Vector<String[]> getRequisicoesClienteBIPlus(String bi) {
@@ -765,19 +789,17 @@ public class DBHandler
 	 * @return os campos da requisição.
 	 */
 	public static String[] getRequisicao(String id) {
-		return selectAll("requisicoes", "ID_REQ", id).get(0);
+		return selectAll("requisicoes", "ID_REQ", id, false).get(0);
 	}
 
 	/**
 	 * Adiciona uma requisição à BD.
 	 */
-	// TODO: data_limite é calculada aqui?
-	public static void adicionaRequisicao(String id_maq, String emp_id_pes, String id_pes, String id_fil, String id_for, String data_limite) {
+	public static void adicionaRequisicao(String id_maq, String emp_id_pes, String id_pes, String id_fil, String id_for) {
 		adicionaObjecto("requisicoes",
-						new String[]{id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", p(data_limite), "null"});
+						new String[]{id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", "SYSDATE + " + Consts.LIMITE_DIAS, "null"});
 	}
 
-	// TODO: data_limite é calculada aqui?
 	public static void adicionaRequisicaoNomeFormato(String id_maq, String emp_id_pes, String id_pes, String id_fil, String nome_formato) {
 		String id_for = getFormatoID(nome_formato);
 		adicionaObjecto("requisicoes",
@@ -821,7 +843,7 @@ public class DBHandler
 	 * @return Vector com os campos de cada stock.
 	 */
 	public static Vector<String[]> getStocks() {
-		return selectAll("stocks");
+		return selectAll("stocks", false);
 	}
 	
 	public static Vector<String[]> getStocksDeFilme(String id_fil) {
@@ -841,14 +863,14 @@ public class DBHandler
 	public static String[] getStock(String id_fil, String id_for) {
 		return selectAll("stocks",
 					 	 new String[]{"ID_FIL", "ID_FOR"},
-					 	 new String[]{id_fil, id_for}).get(0);
+					 	 new String[]{id_fil, id_for}, false).get(0);
 	}
 	
 	public static String[] getStockNomeFormato(String id_fil, String nome_formato) {
 		String id_for = getFormatoID(nome_formato);
 		return selectAll("stocks",
 						 new String[]{"ID_FIL", "ID_FOR"},
-						 new String[]{id_fil, id_for}).get(0);
+						 new String[]{id_fil, id_for}, false).get(0);
 	}
 
 	/**
@@ -945,11 +967,11 @@ public class DBHandler
 	 * @return true, se existe outro cliente com esse BI. false, caso contrário.
 	 */
 	public static boolean biClienteExiste(String id_cli, String bi) {
-		return valorExiste("clientes", "BI", bi, "ID_PES", id_cli);
+		return valorExiste("clientes", "BI", bi, "ID_PES", id_cli, true);
 	}
 	
 	public static boolean biClienteExiste(String bi) {
-		return valorExiste("clientes", "BI", bi);
+		return valorExiste("clientes", "BI", bi, true);
 	}
 	
 	/**
@@ -959,11 +981,11 @@ public class DBHandler
 	 * @return true, se existe outro empregado com esse BI. false, caso contrário.
 	 */
 	public static boolean biEmpregadoExiste(String id_emp, String bi) {
-		return valorExiste("empregados", "BI", bi, "ID_PES", id_emp);
+		return valorExiste("empregados", "BI", bi, "ID_PES", id_emp, true);
 	}
 	
 	public static boolean biEmpregadoExiste(String bi) {
-		return valorExiste("empregados", "BI", bi);
+		return valorExiste("empregados", "BI", bi, true);
 	}
 	
 	
@@ -989,11 +1011,11 @@ public class DBHandler
 	 * @return true, se o empregado é o único administrador. false, caso contrário.
 	 */
 	public static boolean empregadoEUnicoAdmin(String id_emp) {
-		return !valorExiste("empregados", "IS_ADMIN", "1", "ID_PES", id_emp);
+		return !valorExiste("empregados", "IS_ADMIN", "1", "ID_PES", id_emp, true);
 	}
 	
 	public static boolean empregadoEUnicoAdminBI(String bi) {
-		return !valorExiste("empregados", "IS_ADMIN", "1", "BI", bi);
+		return !valorExiste("empregados", "IS_ADMIN", "1", "BI", bi, true);
 	}
 	
 	/**
@@ -1004,7 +1026,7 @@ public class DBHandler
 	 * @return true, se existe outro género com esse nome.  false, caso contrário.
 	 */
 	public static boolean generoExiste(String id_gen, String nome) {
-		return valorExiste("generos", "NOME_GENERO", p(nome), "ID_GEN", id_gen);
+		return valorExiste("generos", "NOME_GENERO", p(nome), "ID_GEN", id_gen, false);
 	}
 	
 	/**
@@ -1015,7 +1037,7 @@ public class DBHandler
 	 * @return true, se existe outro formato com esse nome. false, caso contrário.
 	 */
 	public static boolean formatoExiste(String id_for, String nome) {
-		return valorExiste("formatos", "NOME_FORMATO", p(nome), "ID_FOR", id_for);
+		return valorExiste("formatos", "NOME_FORMATO", p(nome), "ID_FOR", id_for, false);
 	}
 
 	/**
@@ -1027,7 +1049,8 @@ public class DBHandler
 	public static boolean stockExiste(String id_fil, String id_for) {
 		return valorExiste("stocks",
 						   new String[]{"ID_FIL", "ID_FOR"},
-						   new String[]{id_fil, id_for});
+						   new String[]{id_fil, id_for},
+						   false);
 	}
 	
 	public static boolean stockExisteNomeFormato(String id_fil, String nome_formato) {
@@ -1049,12 +1072,12 @@ public class DBHandler
 	 * @return true, se existe pelo menos um stock para o formato. false, caso contrário.
 	 */
 	public static boolean formatoEmUso(String id_for) {
-		return valorExiste("stocks", "ID_FOR", id_for);
+		return valorExiste("stocks", "ID_FOR", id_for, false);
 	}
 	
 	public static boolean formatoEmUsoNome(String nome) {
-		Vector<String[]> vec = select("formatos", new String[]{"ID_FOR"}, "NOME_FORMATO", p(nome));
-		return valorExiste("stocks", "ID_FOR", vec.get(0)[0]);
+		Vector<String[]> vec = select("formatos", new String[]{"ID_FOR"}, "NOME_FORMATO", p(nome), false);
+		return valorExiste("stocks", "ID_FOR", vec.get(0)[0], false);
 	}
 	
 	/**
@@ -1064,12 +1087,12 @@ public class DBHandler
 	 * @return true, se existe pelo menos um filme com esse género. false, caso contrário.
 	 */
 	public static boolean generoEmUso(String id_gen) {
-		return valorExiste("filme_genero", "ID_GEN", id_gen);
+		return valorExiste("filme_genero", "ID_GEN", id_gen, false);
 	}
 	
 	public static boolean generoEmUsoNome(String nome) {
-		Vector<String[]> vec = select("generos", new String[]{"ID_GEN"}, "NOME_GENERO", nome);
-		return valorExiste("filme_genero", "ID_GEN", vec.get(0)[0]);
+		Vector<String[]> vec = select("generos", new String[]{"ID_GEN"}, "NOME_GENERO", nome, false);
+		return valorExiste("filme_genero", "ID_GEN", vec.get(0)[0], false);
 	}
 	
 	/**
@@ -1086,25 +1109,29 @@ public class DBHandler
 	public static boolean loginClienteCorrecto(String id_pes, String password) {
 		return valorExiste("clientes",
 						   new String[]{"ID_PES", "PASSWORD"},
-						   new String[]{id_pes, password});
+						   new String[]{id_pes, password},
+						   true);
 	}
 	
 	public static boolean loginClienteCorrectoBI(String bi, String password) {
 		return valorExiste("clientes",
 						   new String[]{"BI", "PASSWORD"},
-						   new String[]{bi, password});
+						   new String[]{bi, password},
+						   true);
 	}
 	
 	public static boolean loginEmpregadoCorrecto(String id_pes, String password) {
 		return valorExiste("empregados",
 						   new String[]{"ID_PES", "PASSWORD"},
-						   new String[]{id_pes, password});
+						   new String[]{id_pes, password},
+						   true);
 	}
 	
 	public static boolean loginEmpregadoCorrectoBI(String bi, String password) {
 		return valorExiste("empregados",
 						   new String[]{"BI", "PASSWORD"},
-						   new String[]{bi, password});
+						   new String[]{bi, password},
+						   true);
 	}
 	
 	/**
@@ -1114,8 +1141,8 @@ public class DBHandler
 	 * @param valor o valor a encontrar no campo.
 	 * @return true, se o valor foi encontrado no campo referido de algum elemento. false, caso contrário.
 	 */
-	private static boolean valorExiste(String tabela, String campo, String valor) {
-		Vector<String[]> vec = selectAll(tabela, campo, valor);
+	private static boolean valorExiste(String tabela, String campo, String valor, boolean soValidos) {
+		Vector<String[]> vec = selectAll(tabela, campo, valor, soValidos);
 		return (vec.size() > 0);
 	}
 	
@@ -1126,8 +1153,8 @@ public class DBHandler
 	 * @param valores os valores a encontrar nos campos.
 	 * @return true, se os valores existem em simultâneo nos campos referidos de algum elemento. false, caso contrário.
 	 */
-	private static boolean valorExiste(String tabela, String[] campos, String[] valores) {
-		Vector<String[]> vec = selectAll(tabela, campos, valores);
+	private static boolean valorExiste(String tabela, String[] campos, String[] valores, boolean soValidos) {
+		Vector<String[]> vec = selectAll(tabela, campos, valores, soValidos);
 		return (vec.size() > 0);
 	}
 
@@ -1141,11 +1168,12 @@ public class DBHandler
 	 * @param exceptValor o valor que o campo de exclusão deve ter para excluir elementos da procura.
 	 * @return true, se o valor foi encontrado no campo referido de algum elemento (excluíndo os devidos). false, caso contrário.
 	 */
-	private static boolean valorExiste(String tabela, String campo, String valor, String exceptCampo, String exceptValor) {
+	private static boolean valorExiste(String tabela, String campo, String valor, String exceptCampo, String exceptValor, boolean soValidos) {
 		Vector<String[]> vec = select("SELECT *" +
 									  " FROM " + tabela +
 									  " WHERE " + campo + "=" + valor +
-									  " AND " + exceptCampo + "!=" + exceptValor);
+									  " AND " + exceptCampo + "!=" + exceptValor +
+									  (soValidos ? "":" AND VALIDO = 1"));
 		return (vec.size() > 0);
 	}
 	
@@ -1188,20 +1216,6 @@ public class DBHandler
 		execute("UPDATE " + tabela +
 				" SET " + Utils.list(camposAct, "=", valoresAct, ",") +
 				" WHERE " + campo + "=" + valor);
-	}
-	
-	/**
-	 * Actualiza um objecto na BD. Função genérica.
-	 * @param tabela a tabela na qual actualizar o objecto.
-	 * @param campos os campos utilizados para encontrar o objecto a actualizar.
-	 * @param valores os valores que devem ter os campos no objecto a actualizar.
-	 * @param campoAct o campo a actualizar no objecto.
-	 * @param valorAct o valor do campo a actualizar.
-	 */
-	private static void actualizaObjecto(String tabela, String[] campos, String[] valores, String campoAct, String valorAct) {
-		execute("UPDATE " + tabela +
-				" SET " + campoAct + "=" + valorAct +
-				" WHERE " + Utils.list(campos, "=", valores, " AND "));
 	}
 	
 	/**
@@ -1259,21 +1273,23 @@ public class DBHandler
 		execute("DELETE FROM " + tabela +
 				" WHERE " + Utils.list(campos, "=", valores, " AND "));
 	}
-	
+
 	/**
 	 * Obtém todos campos de todos os objectos existentes numa dada tabela.
 	 * @param tabela tabela de onde obter os dados.
 	 * @return Vector com os campos de cada linha da tabela.
 	 */
-	private static Vector<String[]> selectAll(String tabela) {
-		return select("SELECT *" +
-					  " FROM " + tabela);
-	}
-	
-	private static Vector<String[]> selectAll(String tabela, String campoOrder) {
+	private static Vector<String[]> selectAll(String tabela, boolean validos) {
 		return select("SELECT *" +
 					  " FROM " + tabela +
-					  " ORDER BY " + campoOrder);
+					  (validos ? "":" AND VALIDO = 1"));
+	}
+	
+	private static Vector<String[]> selectAll(String tabela, String campoOrder, boolean validos) {
+		return select("SELECT *" +
+					  " FROM " + tabela +
+					  " ORDER BY " + campoOrder +
+					  (validos ? "":" AND VALIDO = 1"));
 	}
 	
 	/**
@@ -1284,27 +1300,18 @@ public class DBHandler
 	 * @param valor o valor a procurar no campo.
 	 * @return Vector com todos os campos dos objectos.
 	 */
-	private static Vector<String[]> selectAll(String tabela, String campo, String valor) {
+	private static Vector<String[]> selectAll(String tabela, String campo, String valor, boolean validos) {
 		return select("SELECT *" +
 					  " FROM " + tabela +
-					  " WHERE " + campo + "=" + valor);
+					  " WHERE " + campo + "=" + valor +
+					  (validos ? "":" AND VALIDO = 1"));
 	}
 	
-	private static Vector<String[]> selectAll(String tabela, String[] campos, String[] valores) {
+	private static Vector<String[]> selectAll(String tabela, String[] campos, String[] valores, boolean validos) {
 		return select("SELECT *" +
 					  " FROM " + tabela +
-					  " WHERE " + Utils.list(campos, "=", valores, "AND"));
-	}
-	
-	/**
-	 * Obtém os campos seleccionados dos objectos existentes numa dada tabela.
-	 * @param tabela tabela onde fazer SELECT.
-	 * @param campos nomes das colunas a obter da tabela.
-	 * @return Vector com os valores dos campos seleccionados de cada linha da tabela.
-	 */
-	private static Vector<String[]> select(String tabela, String[] camposSel) {
-		return select("SELECT " + Utils.list(camposSel, ",") +
-					  " FROM " + tabela);
+					  " WHERE " + Utils.list(campos, "=", valores, "AND") +
+					  (validos ? "":" AND VALIDO = 1"));
 	}
 	
 	/**
@@ -1316,32 +1323,11 @@ public class DBHandler
 	 * @param valor o valor a procurar no campo.
 	 * @return Vector com os campos seleccionados dos objectos.
 	 */
-	private static Vector<String[]> select(String tabela, String[] camposSel, String campo, String valor) {
+	private static Vector<String[]> select(String tabela, String[] camposSel, String campo, String valor, boolean validos) {
 		return select("SELECT " + Utils.list(camposSel, ",") +
 					  " FROM " + tabela +
-					  " WHERE " + campo + "=" + valor);
-	}
-	
-	/**
-	 * Obtém os campos seleccionados dos objectos existentes numa dada tabela que contiverem
-	 * certos valores em determinados campos.
-	 * @param tabela tabela onde fazer SELECT.
-	 * @param camposSel nomes das colunas a obter da tabela.
-	 * @param campos os campos que seleccionarão o objecto.
-	 * @param valores os valores a procurar nos campos.
-	 * @return Vector com os campos seleccionados dos objectos.
-	 */
-	private static Vector<String[]> select(String tabela, String[] camposSel, String[] campos, String[] valores) {
-		return select("SELECT " + Utils.list(camposSel, ",") +
-					  " FROM " + tabela +
-					  " WHERE " + Utils.list(campos, "=", valores, "AND"));
-	}
-	
-	private static String queryBuilder(String SELECT, String FROM, String WHERE, String ORDER) {
-		return "SELECT " + SELECT +
-			   " FROM " + FROM +
-			   ((WHERE==null || WHERE.isEmpty()) ? "" : " WHERE " + WHERE) +
-			   ((ORDER==null || ORDER.isEmpty()) ? "" : " ORDER BY " + ORDER);
+					  " WHERE " + campo + "=" + valor +
+					  (validos ? "":" AND VALIDO = 1"));
 	}
 	
 	private static Vector<String[]> select(String query) {

@@ -7,7 +7,6 @@ import javax.mail.internet.MimeMessage;
 
 /**
  * Class responsible for sending Emails to Clients.
- * @author Daniela Fontes, Ivo Correia, Jo�o Penetra, Jo�o Barbosa, Ricardo Bernardino
  */
 public class EmailSender
 {

@@ -35,6 +35,26 @@ public class GestorFilmes
 		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
 	}
 	
+	public String[] verListaFilmesPlusInvalidos() {
+		Vector<String[]> vec = DBHandler.getFilmesPlusInvalidos();
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+	}
+	
+	public String[] verListaFilmesOrdTituloPlusInvalidos() {
+		Vector<String[]> vec = DBHandler.getFilmesOrdTituloPlusInvalidos();
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+	}
+	
+	public String[] verListaFilmesOrdAnoPlusInvalidos() {
+		Vector<String[]> vec = DBHandler.getFilmesOrdAnoPlusInvalidos();
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+	}
+	
+	public String[] verListaFilmesOrdRankIMDBPlusInvalidos() {
+		Vector<String[]> vec = DBHandler.getFilmesOrdRankIMDBPlusInvalidos();
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+	}
+	
 	/**
 	 * Obtém os campos do filme, na ordem definida pela BD.
 	 * Contém os nomes dos géneros do filme no fim do array.
@@ -83,15 +103,12 @@ public class GestorFilmes
 	 * Strings devolvidas em formato "id : (ano) titulo"
 	 */
 	public String[] procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
-		/*String []listaResultados= new String[6];
-		listaResultados[0]="222 Apocalipse Now";
-		listaResultados[1]="2 Toy Story 3";
-		listaResultados[2]="34 Tangled";
-		listaResultados[3]="666 Inception";
-		listaResultados[2]="4 Titanic";
-		listaResultados[3]="1 The Pianist";
-		return listaResultados;*/
 		Vector<String[]> vec = DBHandler.procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+	}
+	
+	public String[] procuraFilmesPlusInvalidos(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
+		Vector<String[]> vec = DBHandler.procuraFilmesPlusInvalidos(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
 		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
 	}
 	
@@ -258,11 +275,11 @@ public class GestorFilmes
 	/* --------------------------------------------------------------------- */
 	
 	/**
-	 * "(data -- data_limite) : (ano) titulo [formato] (entregue a "data_entrega" {só se existir})"
+	 * "id : (data -- data_limite) : (ano) titulo [formato] (entregue a "data_entrega" {só se existir})"
 	 */
 	public String[] verListaRequisicoesCliente(String id) {
 		Vector<String[]> vec = DBHandler.getRequisicoesClientePlus(id);
-		String[] out = Utils.formattedFromVector(vec, "(%s -- %s) : (%s) %s [%s]", new int[]{6, 7, 9, 10, 11});
+		String[] out = Utils.formattedFromVector(vec, "%s : (%s -- %s) : (%s) %s [%s]", new int[]{0, 6, 7, 9, 10, 11});
 		int i=0;
 		for(String[] sa : vec) {
 			if(sa[8] != null)
@@ -277,7 +294,7 @@ public class GestorFilmes
 	 */
 	public String[] verListaRequisicoesClienteBI(String bi) {
 		Vector<String[]> vec = DBHandler.getRequisicoesClienteBIPlus(bi);
-		String[] out = Utils.formattedFromVector(vec, "(%s -- %s) : (%s) %s [%s]", new int[]{6, 7, 9, 10, 11});
+		String[] out = Utils.formattedFromVector(vec, "%s : (%s -- %s) : (%s) %s [%s]", new int[]{0, 6, 7, 9, 10, 11});
 		int i=0;
 		for(String[] sa : vec) {
 			if(sa[8] != null)
@@ -296,15 +313,5 @@ public class GestorFilmes
 		DBHandler.actualizaRequisicao(id_req); 
 		return "Material requisitado registado como entregue.";
 	}
-    
-    /**
-     * calcula o preÃ§o da requisiÃ§Ã£o
-     * @return
-     */
-    // TODO
-    public String calcularPrecoRequisicao(String idRequisicao ){
-        Utils.dbg("id_req: "+idRequisicao);
-        return "100";
-    }
 }
 

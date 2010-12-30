@@ -9,6 +9,7 @@ import java.util.Vector;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
+import outros.Consts;
 import outros.Utils;
 
 import bd.DBHandler;
@@ -16,6 +17,9 @@ import outros.EmailSender;
 
 public class GestorClientes
 {
+	public static void main(String[] args) {
+		
+	}
 	/**
 	 * Adiciona um novo cliente se o BI passado como argumento nï¿½o existir.
 	 * Actualiza os dados se jï¿½ existir.
@@ -91,17 +95,15 @@ public class GestorClientes
 	/**
 	 * envia um email a um cliente
 	 */
-	// TODO: complete it
-	// TODO: pôr constantes do send() no Consts
 	public void notificarCliente(String id, String mensagem) {
-        String []out;
+        String[] out;
 		if (id != null && id.isEmpty()) {
-			// procura email
+			// procura dados do cliente (contêm e-mail)
             out=DBHandler.getClienteBI(id);
 			// envia email
-            if(out!=null&&out.length!=0){
+            if(out != null && out.length != 0 && out[5] != null){
                 try {
-                    EmailSender.send("smtp.sapo.pt", 25, "videoclube@thisisafakemail.com", out[5], "NotificaÃ§Ã£o", mensagem);
+                    EmailSender.send(Consts.EMAIL_SMTP_HOST, Consts.EMAIL_SMTP_PORT, Consts.EMAIL_VIDEOCLUBE, out[5], "Notificação", mensagem);
                 } catch (AddressException ex) {
 
                 } catch (MessagingException ex) {
