@@ -287,15 +287,13 @@ public class GestorFilmes
 		return out;
 	}
 	
-	// TODO: data_limite provavelmente não será calculada antes deste método...
-	// o mais certo é ficar no DBHandler, onde se pode juntar um numero de dias ao SYSDATE
-	public String adicionaRequisicao(String id_maq, String emp_bi, String bi, String id_fil, String formato, String data_limite) {
-		DBHandler.adicionaRequisicaoNomeFormato(id_maq, emp_bi, bi, id_fil, formato, data_limite); 
+	public String adicionaRequisicao(String id_maq, String emp_bi, String bi, String id_fil, String formato) {
+		DBHandler.adicionaRequisicaoNomeFormato(id_maq, emp_bi, bi, id_fil, formato); 
 		return "Requisição adicionada.";
 	}
 	
-	public String entregaRequisicao(String id_req, String data_entrega) {
-		DBHandler.actualizaRequisicao(id_req, data_entrega); 
+	public String entregaRequisicao(String id_req) {
+		DBHandler.actualizaRequisicao(id_req); 
 		return "Material requisitado registado como entregue.";
 	}
     

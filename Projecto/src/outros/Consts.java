@@ -6,6 +6,9 @@ public class Consts
 	public final static String ORACLE_PASS = "bd01";
 	public final static String ORACLE_URL  = "jdbc:oracle:thin:@127.0.0.1:1521:orcl";
 
+	public final static int LIMITE_DIAS = 8;
+	public final static double PERCENT_CADA_DIA = 0.08;
+	
 	/** A constante que define o valor inteiro devolvido em caso de erro na função de conversão String -> int. */
 	public final static int ERRO_INT = Integer.MIN_VALUE;
 	/** A constante que define o valor inteiro devolvido em caso de erro na função de conversão String -> double. */
