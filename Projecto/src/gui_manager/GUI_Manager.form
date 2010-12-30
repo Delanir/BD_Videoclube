@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JPanel" name="jLoginPanel">
 
@@ -1584,30 +1584,40 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextField32" min="-2" pref="51" max="-2" attributes="1"/>
+                                          <Component id="idAdicionaStock" min="-2" pref="51" max="-2" attributes="1"/>
                                           <Component id="listaFormatosAdicionaFilme" alignment="0" min="-2" pref="93" max="-2" attributes="1"/>
                                       </Group>
                                   </Group>
                                   <Component id="jScrollPane16" min="-2" pref="218" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="adicionarStock" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="custoAdicionaStock" alignment="0" max="32767" attributes="1"/>
+                                                  <Component id="custoAluguerAdicionaStock" alignment="0" pref="64" max="32767" attributes="1"/>
+                                              </Group>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="adicionarStock" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField33" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField34" alignment="0" pref="64" max="32767" attributes="1"/>
-                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="qtdAdicionaStock" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1723,21 +1733,28 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField32" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="idAdicionaStock" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField33" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="custoAdicionaStock" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="listaFormatosAdicionaFilme" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel65" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel67" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField34" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="custoAluguerAdicionaStock" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jScrollPane16" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <Component id="adicionarStock" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="qtdAdicionaStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="adicionarStock" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
@@ -1918,7 +1935,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea11">
+                <Component class="javax.swing.JTextArea" name="outAdicionaFilme">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -1935,7 +1952,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField32">
+            <Component class="javax.swing.JTextField" name="idAdicionaStock">
             </Component>
             <Component class="javax.swing.JComboBox" name="listaFormatosAdicionaFilme">
               <Properties>
@@ -1971,9 +1988,9 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField33">
+            <Component class="javax.swing.JTextField" name="custoAdicionaStock">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField34">
+            <Component class="javax.swing.JTextField" name="custoAluguerAdicionaStock">
             </Component>
             <Component class="javax.swing.JToggleButton" name="adicionarStock">
               <Properties>
@@ -1990,7 +2007,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea12">
+                <Component class="javax.swing.JTextArea" name="outAdicionaStock">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -2012,6 +2029,16 @@
                   <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Afghanistan&quot;,&#xa;&quot;Albania&quot;,&#xa;&quot;Algeria&quot;,&#xa;&quot;Andorra&quot;,&#xa;&quot;Angola&quot;,&#xa;&quot;Antigua&quot;,&#xa;&quot;Argentina&quot;,&#xa;&quot;Armenia&quot;,&#xa;&quot;Australia&quot;,&#xa;&quot;Austria&quot;,&#xa;&quot;Azerbaijan&quot;,&#xa;&quot;Bahamas&quot;,&#xa;&quot;Bahrain&quot;,&#xa;&quot;Bangladesh&quot;,&#xa;&quot;Barbados&quot;,&#xa;&quot;Belarus&quot;,&#xa;&quot;Belgium&quot;,&#xa;&quot;Belize&quot;,&#xa;&quot;Benin&quot;,&#xa;&quot;Bhutan&quot;,&#xa;&quot;Bolivia&quot;,&#xa;&quot;Bosnia Herzegovina&quot;,&#xa;&quot;Botswana&quot;,&#xa;&quot;Brazil&quot;,&#xa;&quot;Brunei&quot;,&#xa;&quot;Bulgaria&quot;,&#xa;&quot;Burkina&quot;,&#xa;&quot;Burundi&quot;,&#xa;&quot;Cambodia&quot;,&#xa;&quot;Cameroon&quot;,&#xa;&quot;Canada&quot;,&#xa;&quot;Cape Verde&quot;,&#xa;&quot;Central African Rep&quot;,&#xa;&quot;Chad&quot;,&#xa;&quot;Chile&quot;,&#xa;&quot;China&quot;,&#xa;&quot;Colombia&quot;,&#xa;&quot;Comoros&quot;,&#xa;&quot;Congo&quot;,&#xa;&quot;Costa Rica&quot;,&#xa;&quot;Croatia&quot;,&#xa;&quot;Cuba&quot;,&#xa;&quot;Cyprus&quot;,&#xa;&quot;Czech Republic&quot;,&#xa;&quot;Denmark&quot;,&#xa;&quot;Djibouti&quot;,&#xa;&quot;Dominica&quot;,&#xa;&quot;Dominican Republic&quot;,&#xa;&quot;East Timor&quot;,&#xa;&quot;Ecuador&quot;,&#xa;&quot;Egypt&quot;,&#xa;&quot;El Salvador&quot;,&#xa;&quot;Equatorial Guinea&quot;,&#xa;&quot;Eritrea&quot;,&#xa;&quot;Estonia&quot;,&#xa;&quot;Ethiopia&quot;,&#xa;&quot;Fiji&quot;,&#xa;&quot;Finland&quot;,&#xa;&quot;France&quot;,&#xa;&quot;Gabon&quot;,&#xa;&quot;Gambia&quot;,&#xa;&quot;Georgia&quot;,&#xa;&quot;Germany&quot;,&#xa;&quot;Ghana&quot;,&#xa;&quot;Greece&quot;,&#xa;&quot;Grenada&quot;,&#xa;&quot;Guatemala&quot;,&#xa;&quot;Guinea&quot;,&#xa;&quot;Guinea-Bissau&quot;,&#xa;&quot;Guyana&quot;,&#xa;&quot;Haiti&quot;,&#xa;&quot;Honduras&quot;,&#xa;&quot;Hungary&quot;,&#xa;&quot;Iceland&quot;,&#xa;&quot;India&quot;,&#xa;&quot;Indonesia&quot;,&#xa;&quot;Iran&quot;,&#xa;&quot;Iraq&quot;,&#xa;&quot;Ireland&quot;,&#xa;&quot;Israel&quot;,&#xa;&quot;Italy&quot;,&#xa;&quot;Ivory Coast&quot;,&#xa;&quot;Jamaica&quot;,&#xa;&quot;Japan&quot;,&#xa;&quot;Jordan&quot;,&#xa;&quot;Kazakhstan&quot;,&#xa;&quot;Kenya&quot;,&#xa;&quot;Kiribati&quot;,&#xa;&quot;Korea North&quot;,&#xa;&quot;Korea South&quot;,&#xa;&quot;Kosovo&quot;,&#xa;&quot;Kuwait&quot;,&#xa;&quot;Kyrgyzstan&quot;,&#xa;&quot;Laos&quot;,&#xa;&quot;Latvia&quot;,&#xa;&quot;Lebanon&quot;,&#xa;&quot;Lesotho&quot;,&#xa;&quot;Liberia&quot;,&#xa;&quot;Libya&quot;,&#xa;&quot;Liechtenstein&quot;,&#xa;&quot;Lithuania&quot;,&#xa;&quot;Luxembourg&quot;,&#xa;&quot;Macedonia&quot;,&#xa;&quot;Madagascar&quot;,&#xa;&quot;Malawi&quot;,&#xa;&quot;Malaysia&quot;,&#xa;&quot;Maldives&quot;,&#xa;&quot;Mali&quot;,&#xa;&quot;Malta&quot;,&#xa;&quot;Marshall Islands&quot;,&#xa;&quot;Mauritania&quot;,&#xa;&quot;Mauritius&quot;,&#xa;&quot;Mexico&quot;,&#xa;&quot;Micronesia&quot;,&#xa;&quot;Moldova&quot;,&#xa;&quot;Monaco&quot;,&#xa;&quot;Mongolia&quot;,&#xa;&quot;Montenegro&quot;,&#xa;&quot;Morocco&quot;,&#xa;&quot;Mozambique&quot;,&#xa;&quot;Myanmar&quot;,&#xa;&quot;Namibia&quot;,&#xa;&quot;Nauru&quot;,&#xa;&quot;Nepal&quot;,&#xa;&quot;Netherlands&quot;,&#xa;&quot;New Zealand&quot;,&#xa;&quot;Nicaragua&quot;,&#xa;&quot;Niger&quot;,&#xa;&quot;Nigeria&quot;,&#xa;&quot;Norway&quot;,&#xa;&quot;Oman&quot;,&#xa;&quot;Pakistan&quot;,&#xa;&quot;Palau&quot;,&#xa;&quot;Panama&quot;,&#xa;&quot;Papua New Guinea&quot;,&#xa;&quot;Paraguay&quot;,&#xa;&quot;Peru&quot;,&#xa;&quot;Philippines&quot;,&#xa;&quot;Poland&quot;,&#xa;&quot;Portugal&quot;,&#xa;&quot;Qatar&quot;,&#xa;&quot;Romania&quot;,&#xa;&quot;Russian Federation&quot;,&#xa;&quot;Rwanda&quot;,&#xa;&quot;St Kitts &amp; Nevis&quot;,&#xa;&quot;St Lucia&quot;,&#xa;&quot;Saint Vincent &amp; the Grenadines&quot;,&#xa;&quot;Samoa&quot;,&#xa;&quot;San Marino&quot;,&#xa;&quot;Sao Tome &amp; Principe&quot;,&#xa;&quot;Saudi Arabia&quot;,&#xa;&quot;Senegal&quot;,&#xa;&quot;Serbia&quot;,&#xa;&quot;Seychelles&quot;,&#xa;&quot;Sierra Leone&quot;,&#xa;&quot;Singapore&quot;,&#xa;&quot;Slovakia&quot;,&#xa;&quot;Slovenia&quot;,&#xa;&quot;Solomon Islands&quot;,&#xa;&quot;Somalia&quot;,&#xa;&quot;South Africa&quot;,&#xa;&quot;Spain&quot;,&#xa;&quot;Sri Lanka&quot;,&#xa;&quot;Sudan&quot;,&#xa;&quot;Suriname&quot;,&#xa;&quot;Swaziland&quot;,&#xa;&quot;Sweden&quot;,&#xa;&quot;Switzerland&quot;,&#xa;&quot;Syria&quot;,&#xa;&quot;Taiwan&quot;,&#xa;&quot;Tajikistan&quot;,&#xa;&quot;Tanzania&quot;,&#xa;&quot;Thailand&quot;,&#xa;&quot;Togo&quot;,&#xa;&quot;Tonga&quot;,&#xa;&quot;Trinidad &amp; Tobago&quot;,&#xa;&quot;Tunisia&quot;,&#xa;&quot;Turkey&quot;,&#xa;&quot;Turkmenistan&quot;,&#xa;&quot;Tuvalu&quot;,&#xa;&quot;Uganda&quot;,&#xa;&quot;Ukraine&quot;,&#xa;&quot;United Arab Emirates&quot;,&#xa;&quot;United Kingdom&quot;,&#xa;&quot;United States&quot;,&#xa;&quot;Uruguay&quot;,&#xa;&quot;Uzbekistan&quot;,&#xa;&quot;Vanuatu&quot;,&#xa;&quot;Vatican City&quot;,&#xa;&quot;Venezuela&quot;,&#xa;&quot;Vietnam&quot;,&#xa;&quot;Yemen&quot;,&#xa;&quot;Zambia&quot;,&#xa;&quot;Zimbabwe&quot; })" type="code"/>
                 </Property>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel37">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qtd.:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="qtdAdicionaStock">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="qtdAdicionaStock.setModel(new SpinnerNumberModel(1,1,100,1));"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
