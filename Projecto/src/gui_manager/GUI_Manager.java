@@ -3435,7 +3435,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_jAdicionarClientesButtonActionPerformed
 
     private void jEliminarFilmeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarFilmeButtonActionPerformed
-        listaFormatos.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+        listaFormatos.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
        
         eliminarFilmesFrame.setVisible(true);
         transferFocus();
@@ -3493,7 +3493,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
         pesquisarFilmesFrame.setVisible(false);
       pesquisarFilmesFrame.transferFocusBackward();
-      listaFormatosResultadosFilmes.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+      listaFormatosResultadosFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
 
       resultadosFrame.setVisible(true);
       transferFocus();
@@ -3606,14 +3606,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         // TODO add your handling code here:
         //refresh Ã  lista de gÃ©neros
         
-       /* TODO: by Lobo: verListaGeneros() devolve um Vector com pares [id_genero, nome_genero].
-        	 * eu percebi que aki tavam a usar os nomes sï¿½, por isso pus a funcao strArrayVectorToArray()
-        	 * para pegar so nos indices 1 de cada par (ou seja, o nome).
-        	 * Se permitirem a gestï¿½o de gï¿½neros vao precisar do ID do genero
-        	 * para lhe alterar o nome (o porquï¿½ eu explico depois).
-        	 * Ou seja, vao ter de guardar os pares e nao o nome, e isto tem de mudar.
-        	 */
-        listaGeneros.setModel(new OurListModel(Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1)));
+        listaGeneros.setModel(new OurListModel(gestorFilmes.verListaGeneros()));
 
         jScrollPane21.setViewportView(listaGeneros);
         //mostrar a frame
@@ -3624,7 +3617,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     private void jAdicionarFilmesToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarFilmesToggleButtonActionPerformed
         // TODO add your handling code here:
         //Set aos generos existentes
-        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
         transferFocus();
@@ -3659,10 +3652,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         String output=gestorFilmes.adicionaGenero(textGenero.getText());
         textGenero.setText(null);
         outGenero.setText(output);
-        /* TODO: by Lobo: ver o TODO gigante que escrevi em cima. Mesma coisa.
-        	 */
-        listaGeneros.setModel(new OurListModel(Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1)));
-
+        listaGeneros.setModel(new OurListModel(gestorFilmes.verListaGeneros()));
 
         jScrollPane21.setViewportView(listaGeneros);
     }//GEN-LAST:event_adicionaGeneroActionPerformed
@@ -3674,9 +3664,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         textGenero.setText(null);
 
         listaGeneros.setModel(new javax.swing.AbstractListModel() {
-        	/* TODO: by Lobo: ver o TODO gigante que escrevi em cima. Mesma coisa.
-        	 */
-        	String[] strings = Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1);
+        	String[] strings = gestorFilmes.verListaGeneros();
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -3685,13 +3673,17 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_adicionaGenero2ActionPerformed
 
     private void listarFormatoEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarFormatoEliminarActionPerformed
-        textEliminaFilmes.setText(gestorFilmes.listarFormato(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem()));
-        
+    	// TODO by Lobo: o verListaStocksFilmeFull() so recebe o ID do filme e lista-te a informação dos stocks do filme em todos os formatos.
+    	// aki so pego no 1º elemento do array de strings que é para o setText funcionar.
+    	// Depois tens de pôr isto como queres ou dizer-me para fazer um metodo k faça o que queres mesmo
+    	
+        // textEliminaFilmes.setText(gestorFilmes.verListaFormatos(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem()));
+    	textEliminaFilmes.setText(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())[0]);
     }//GEN-LAST:event_listarFormatoEliminarActionPerformed
 
     private void eliminaFilmes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaFilmes2ActionPerformed
         // TODO add your handling code here:
-        listaFormatos.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+        listaFormatos.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
        
         eliminarFilmesFrame.setVisible(true);
         transferFocus();
@@ -3706,14 +3698,17 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_voltarEliminaFilmesActionPerformed
 
     private void eliminaFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaFilmesActionPerformed
-        // TODO add your handling code here:
-        gestorFilmes.deleteStock(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem(),(Integer)eliminaSpinner.getValue());
+        // TODO by Lobo: há um método para actualizar o stock (preços e quantidade total),
+    	// outro para incrementar ou decrementar a quantidade total em stock
+    	// e outro para fazer set da quantidade total em stock.
+    	// não sei qual queres aqui mas assumi que o "(Integer)eliminaSpinner.getValue()" tinha o valor da quantidade em stock (nao vi na gui).
+        gestorFilmes.actualizaQuantStock(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem(), ""+(Integer)eliminaSpinner.getValue());
 
     }//GEN-LAST:event_eliminaFilmesActionPerformed
 
     private void jToggleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton17ActionPerformed
         // TODO add your handling code here:
-        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
 
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
@@ -3722,7 +3717,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void jToggleButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton18ActionPerformed
         // TODO add your handling code here:
-        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
 
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
@@ -3731,7 +3726,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
 
     private void jActualizarStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActualizarStockButtonActionPerformed
         // TODO add your handling code here:
-        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
 
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
@@ -3759,9 +3754,10 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_adicionarFilmeActionPerformed
 
     private void adicionarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarStockActionPerformed
-        // TODO add your handling code here:
         String output="";
-        output=gestorFilmes.addStock(jTextField32.getText(), (String)listaFormatosAdicionaFilme.getSelectedItem(), jTextField33.getText(), jTextField34.getText());
+        //TODO by Lobo: toca a preencher isto. Graças aos vossos "jTextField32", "33" e "34" nao faço ideia do que cada um é e nao posso ajudar...
+        // a chamada é adicionaStock(String id_fil, String formato, String quant, String custo_compra, String custo_aluguer)
+        output=gestorFilmes.adicionaStock(jTextField32.getText(), (String)listaFormatosAdicionaFilme.getSelectedItem(), jTextField33.getText(), jTextField34.getText(), "");
         jTextArea12.setText(output);
     }//GEN-LAST:event_adicionarStockActionPerformed
 
@@ -3973,10 +3969,17 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         String output="";
         String idMovie=((String)jList4.getSelectedValue()).split(" ")[0];
         if(jFormattedTextField4.isEditValid()){
-            output=gestorFilmes.alugaFilme(idMovie,
+        	//TODO by Lobo: pus aki um placeholder para o novo "alugaFilme", pk tem mais coisas do que as que aki tavam. E, btw, chama-se adicionaRequisicao() xD
+            /*output=gestorFilmes.alugaFilme(idMovie,
                     (String) listaFormatosResultadosFilmes.getSelectedItem(),
                     jFormattedTextField4.getText(),
-                    gestorUtilizadores.getIdEmpregado());
+                    gestorUtilizadores.getIdEmpregado());*/
+        	output=gestorFilmes.adicionaRequisicao("null",
+        										   gestorUtilizadores.getIdEmpregado(),
+        										   jFormattedTextField4.getText(),
+        										   idMovie,
+        										   (String) listaFormatosResultadosFilmes.getSelectedItem(),
+        										   "null");
         }
        
         jTextField1.setText(output);
@@ -4112,7 +4115,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         String output=gestorFilmes.removeGeneroNome(nomeGenero);
         outGenero.setText(output);
         if(!output.equals(Consts.GENERO_EM_USO))
-            listaGeneros.setModel(new OurListModel(Utils.strArrayVectorToArray(gestorFilmes.verListaGeneros(), 1)));
+            listaGeneros.setModel(new OurListModel(gestorFilmes.verListaGeneros()));
 
     }//GEN-LAST:event_eliminaGeneroActionPerformed
 
@@ -4121,7 +4124,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         String output=gestorFilmes.removeFormatoNome(nomeFormato);
         outFormato.setText(output);
         if(!output.equals(Consts.FORMATO_EM_USO))
-            listaFormato.setModel(new OurListModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+            listaFormato.setModel(new OurListModel(gestorFilmes.verListaFormatos()));
 
     }//GEN-LAST:event_eliminarFormatoActionPerformed
 
@@ -4130,7 +4133,7 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
         textFormato.setText(null);
         outFormato.setText(output);
         
-        listaFormato.setModel(new OurListModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+        listaFormato.setModel(new OurListModel(gestorFilmes.verListaFormatos()));
     }//GEN-LAST:event_adicionarFormatoActionPerformed
 
     private void voltarFormatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarFormatosActionPerformed
@@ -4148,13 +4151,13 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
     }//GEN-LAST:event_formatosFrameWindowClosing
 
     private void jFormatosFrameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormatosFrameButtonActionPerformed
-        listaFormato.setModel(new OurListModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+        listaFormato.setModel(new OurListModel(gestorFilmes.verListaFormatos()));
         formatosFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jFormatosFrameButtonActionPerformed
 
     private void jFormatosFrameButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormatosFrameButton1ActionPerformed
-        listaFormato.setModel(new OurListModel(Utils.strArrayVectorToArray(gestorFilmes.verListaFormatos(), 1)));
+        listaFormato.setModel(new OurListModel(gestorFilmes.verListaFormatos()));
         formatosFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jFormatosFrameButton1ActionPerformed

@@ -41,6 +41,7 @@ public class GestorUtilizadores {
      * faz display dos dados pessoais do utiizador
      * @return
      */
+    // TODO
     public String [] verHistorico(){
         //pesquisar pelo username e devolver uma listagem do historico
         String [] hist = {"pedro","daniel","daniela"};
@@ -53,6 +54,7 @@ public class GestorUtilizadores {
      * @param formato
      * @return
      */
+    // TODO
     public String alugar(String id, String formato){
         Utils.dbg("id: "+id);
         Utils.dbg("formato: "+formato);
@@ -65,6 +67,7 @@ public class GestorUtilizadores {
      * @param idRequisicao
      * @return
      */
+    // TODO
     public String entregar(String idRequisicao ){
         Utils.dbg("id_req: "+idRequisicao);
         return null;
@@ -73,6 +76,7 @@ public class GestorUtilizadores {
      * mostra a lista de requisiçoes actuais do cliente
      * @return
      */
+    // TODO
     public String [] verListadeRequisicoes(){
         String [] reqs = {"pedro","daniel","daniela"};
         return reqs;
@@ -82,13 +86,9 @@ public class GestorUtilizadores {
      * calcula o preço da requisição
      * @return
      */
+    // TODO
     public String calcularPrecoRequisicao(String idRequisicao ){
         Utils.dbg("id_req: "+idRequisicao);
         return "100";
-    }
-
-    public String [] verListadeGeneros(){
-        String [] gens = {"terror","drama","XXX"};
-        return gens;
     }
 }

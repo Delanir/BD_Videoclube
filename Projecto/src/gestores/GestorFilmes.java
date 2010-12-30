@@ -8,52 +8,58 @@ import outros.Utils;
 import bd.DBHandler;
 
 /**
- * Trata da gestÃ£o de filmes
- * @author Daniela
+ * Trata da gestão de filmes, stocks, formatos, géneros e requisições.
  */
 public class GestorFilmes
 {
 	/* ---------------------------------------------------------------- */
 	/* ---------------------------- FILMES ---------------------------- */
 	/* ---------------------------------------------------------------- */
-	public Vector<String[]> verListaFilmes() {
-		return DBHandler.getFilmes();
+	public String[] verListaFilmes() {
+		Vector<String[]> vec = DBHandler.getFilmes();
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
 	}
 	
-	public Vector<String[]> getFilmesOrdTitulo() {
-		return DBHandler.getFilmesOrdTitulo();
+	public String[] verListaFilmesOrdTitulo() {
+		Vector<String[]> vec = DBHandler.getFilmesOrdTitulo();
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
 	}
 	
-	public Vector<String[]> getFilmesOrdAno() {
-		return DBHandler.getFilmesOrdAno();
+	public String[] verListaFilmesOrdAno() {
+		Vector<String[]> vec = DBHandler.getFilmesOrdAno();
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
 	}
 	
-	public Vector<String[]> getFilmesOrdRankIMDB() {
-		return DBHandler.getFilmesOrdRankIMDB();
-	}
-	
-	//TODO: Gui String[] em vez de Filme
-	public String[] getFilme(String id) {
-		/*String[] filme = DBHandler.getFilme(id);
-		String[] generosFilme = DBHandler.getGenerosFilmeNome(id);
-		return Utils.extend(filme, generosFilme);*/
-            String[] ret={"tit", "ano", "real", "imdb", "pais", "prod", "desc","img"};
-            return ret;
+	public String[] verListaFilmesOrdRankIMDB() {
+		Vector<String[]> vec = DBHandler.getFilmesOrdRankIMDB();
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
 	}
 	
 	/**
-	 * Adiciona um filme ï¿½ base de dados
+	 * Obtém os campos do filme, na ordem definida pela BD.
+	 * Contém os nomes dos géneros do filme no fim do array.
 	 */
-	// TODO: assumi que "String[] generos" contï¿½m IDs e nï¿½o nomes de gï¿½neros.
-	// tambï¿½m assumi que o ano e ratingIMDB vï¿½m correctos, embora ainda tenha a verificaï¿½ï¿½o
-	// TODO: adicionar generos (difï¿½cil. tenho de saber o ID do filme k acabei de adicionar)
+	public String[] getFilme(String id) {
+		String[] filme = DBHandler.getFilme(id);
+		String[] generosFilme = DBHandler.getGenerosFilmeNome(id);
+		return Utils.extend(filme, generosFilme);
+	}
+	
+	/**
+	 * Adiciona um filme à base de dados
+	 * String[] generos deve conter os nomes dos géneros e não os seus IDs.
+	 */
+	// TODO: adicionar generos
 	public String adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
 		DBHandler.adicionaFilme(titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
 		Utils.dbg("O seguinte filme foi adicionado: (" + ano + ") " + titulo);
 		return "O seguinte filme foi adicionado: (" + ano + ") " + titulo;
 	}
 
-	// TODO: adicionar generos (difï¿½cil. tenho de saber o ID do filme k acabei de adicionar)
+	/**
+	 *  String[] generos deve conter os nomes dos géneros e não os seus IDs.
+	 */
+	// TODO: adicionar generos
 	public String actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
 		DBHandler.actualizaFilme(id, titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
 		Utils.dbg("O filme com o ID " + id + " foi actualizado.");
@@ -72,77 +78,93 @@ public class GestorFilmes
 		return "O filme foi re-validado.";
 	}
 	
-	
-	/* --------------------------------------------------------------------------------- */
-	/**
-	 * @param idMovie identificador unÃ­voco do filme na base de dados
-	 * @param formato bluray, dvd,etc..
-	 * @param custo quanto Ã© que o filme custou ao videoclube
-	 * @param custoAluger preÃ§o praticado no aluguer
-	 * @return
-	 */
-	// TODO: do it
-	public String addStock(String idMovie, String formato, String custo, String custoAluger) {
-
-		return null;
-
-	}
-
-	/**
-	 * @param idMovie identificador unÃ­voco do filme na base de dados
-	 * @param formato bluray, dvd,etc..
-	 * @param quantidade nÃºmero de cÃ³pias a eliminar
-	 * @return
-	 */
-	// TODO: do it
-	public String deleteStock(String idMovie, String formato, int quantidade) {
-		Utils.dbg("gestorFilmes: Eliminou Supostamente:" + idMovie + " " + formato + " " + quantidade);
-		return null;
-	}
-
 	/**
 	 * Cada parÃ¢metro pode ser null se nÃ£o for para ser utilizado na mega query
+	 * Strings devolvidas em formato "id : (ano) titulo"
 	 */
-	 //Strings devolvidas em formato "id: (ano) titulo"
 	public String[] procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
-		String []listaResultados= new String[6];
+		/*String []listaResultados= new String[6];
 		listaResultados[0]="222 Apocalipse Now";
 		listaResultados[1]="2 Toy Story 3";
 		listaResultados[2]="34 Tangled";
 		listaResultados[3]="666 Inception";
 		listaResultados[2]="4 Titanic";
 		listaResultados[3]="1 The Pianist";
-                return listaResultados;
-		/*Vector<String[]> vec = DBHandler.procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
-		String[] ret = new String[vec.size()];
-		int i=0;
-		for(String[] sa : vec) {
-			ret[i] = sa[0] + ": (" + sa[1] + ") " + sa[2];
-			i++;
-		}
-		return ret;*/
+		return listaResultados;*/
+		Vector<String[]> vec = DBHandler.procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
 	}
-
-
+	
+	/* ---------------------------------------------------------------- */
+	/* ---------------------------- STOCKS ---------------------------- */
+	/* ---------------------------------------------------------------- */
 	/**
-	 * Query Ã  bd para ver quantas unidades disponiveis do filme hÃ¡
-	 * @param idFilme
-	 * @param formato
+	 * Query para ver os stocks de um filme.
+	 * "nome_formato" : "disponiveis" unid. disponíveis, "custo_aluguer" €
+	 */
+	public String[] verListaStocksFilme(String id_fil) {
+		Vector<String[]> vec = DBHandler.getStocksDeFilme(id_fil);
+		return Utils.formattedFromVector(vec, "%s : %s unid. disponíveis, %s €", new int[]{6, 2, 5});
+	}
+	
+	/**
+	 * Query para ver os stocks de um filme com toda a informação (para administração).
+	 * "nome_formato" : "disponiveis"/"quant" disp., "custo_aluguer" € (orig. "custo_compra" €)
+	 */
+	public String[] verListaStocksFilmeFull(String id_fil) {
+		Vector<String[]> vec = DBHandler.getStocksDeFilme(id_fil);
+		return Utils.formattedFromVector(vec, "%s : %s/%s disp., %s € (orig. %s €)", new int[]{6, 2, 3, 5, 4});
+	}
+	
+	/**
+	 * @param id_fil identificador unÃ­voco do filme na base de dados
+	 * @param formato bluray, dvd, etc..
+	 * @quant quant número inicial de exemplares no stock (o valor de disponíveis é colocado a este valor)
+	 * @param custo_compra quanto Ã© que o filme custou ao videoclube
+	 * @param custo_aluguer preÃ§o praticado no aluguer
 	 * @return
 	 */
-	// TODO: do it
-	public String listarFormato(String idFilme, String formato) {
-		Utils.dbg(formato);
-		return "ID: " + idFilme + " Formato: " + formato +
-			   "\nQuantidade Stock: " + "3" +
-			   "\nQuantidade DisponÃ­vel" + "1";
+	public String adicionaStock(String id_fil, String formato, String quant, String custo_compra, String custo_aluguer) {
+		if(!DBHandler.stockExisteNomeFormato(id_fil, formato)) {
+			DBHandler.adicionaStockNomeFormato(id_fil, formato, quant, custo_compra, custo_aluguer);
+			return "Novo stock adicionado.";
+		} else {
+			return "Já existe um stock desse filme no formato indicado.";
+		}
+	}
+	
+	//TODO: questão da quantidade.
+	public String actualizaStock(String id_fil, String formato, String quant, String custo_compra, String custo_aluguer) {
+		DBHandler.actualizaStockNomeFormato(id_fil, formato, quant, custo_compra, custo_aluguer);
+		return "Stock actualizado.";
+	}
+	
+	public String actualizaQuantStock(String id_fil, String formato, String quant) {
+		DBHandler.actualizaQuantStock(id_fil, formato, quant);
+		return "Stock actualizado.";
+	}
+	
+	public String actualizaQuantStockIncr(String id_fil, String formato, String incr) {
+		DBHandler.actualizaQuantStockIncr(id_fil, formato, incr);
+		return "Stock actualizado.";
+	}
+	
+	/**
+	 * @param id_fil identificador unívoco do filme na base de dados
+	 * @param formato bluray, dvd, etc..
+	 * @return
+	 */
+	public String removeStock(String id_fil, String formato) {
+		DBHandler.removeStockNomeFormato(id_fil, formato);
+		return "Stock removido.";
 	}
 	
 	/* ------------------------------------------------------------------ */
 	/* ---------------------------- FORMATOS ---------------------------- */
 	/* ------------------------------------------------------------------ */
-	public Vector<String[]> verListaFormatos() {
-		return DBHandler.getFormatosOrdNome();
+	public String[] verListaFormatos() {
+		Vector<String[]> vec = DBHandler.getFormatosOrdNome();
+		return Utils.formattedFromVector(vec, "%s", new int[]{1});
 	}
 	
 	public String getFormatoNome(String id) {
@@ -150,7 +172,7 @@ public class GestorFilmes
 	}
 	
 	/**
-	 * Adiciona um novo formato ï¿½ base de dados
+	 * Adiciona um novo formato à base de dados
 	 */
 	public String adicionaFormato(String nome) {
 		if (!DBHandler.formatoExiste("", nome)) {
@@ -185,10 +207,11 @@ public class GestorFilmes
 	}
 
 	/* ----------------------------------------------------------------- */
-	/* ---------------------------- Gï¿½NEROS ---------------------------- */
+	/* ---------------------------- GÉNEROS ---------------------------- */
 	/* ----------------------------------------------------------------- */
-	public Vector<String[]> verListaGeneros() {
-		return DBHandler.getGenerosOrdNome();
+	public String[] verListaGeneros() {
+		Vector<String[]> vec = DBHandler.getGenerosOrdNome();
+		return Utils.formattedFromVector(vec, "%s", new int[]{1});
 	}
 	
 	public String getGeneroNome(String id) {
@@ -196,7 +219,7 @@ public class GestorFilmes
 	}
 	
 	/**
-	 * Adiciona um novo gï¿½nero ï¿½ base de dados
+	 * Adiciona um novo género à base de dados.
 	 */
 	public String adicionaGenero(String nome) {
 		if (!DBHandler.generoExiste("", nome)) {
@@ -230,29 +253,28 @@ public class GestorFilmes
 			return Consts.GENERO_EM_USO;
 	}
 
-    /**
-     * -----------------------------ALUGUER------------------------------------
-     */
-
-    /**
-     *
-     * @param idFilme
-     * @param formato
-     * @param idCliente
-     * @param idEmpregado
-     * @return
-     */
-    public String alugaFilme(String idFilme, String formato, String idCliente, String idEmpregado){
-        return "Alugado/NÃ£o Alugado";
-    }
-    
-    /**
-     * vai buscar os formatos e o preço do aluguer de um filme
-     */
-    // TODO
-    public String [] getFormatoPreco(String idMovie){
-        //pode devolver no formato preço + formatos para ser mais simples digo eu
-        return null;
-    }
-
+	/* --------------------------------------------------------------------- */
+	/* ---------------------------- REQUISIÇÕES ---------------------------- */
+	/* --------------------------------------------------------------------- */
+	
+	/**
+	 * "(data -- data_limite) : (ano) titulo [formato]"
+	 */
+	public String[] verListaRequisicoesCliente(String id) {
+		Vector<String[]> vec = DBHandler.getRequisicoesClientePlus(id);
+		return Utils.formattedFromVector(vec, "(%s -- %s) : (%s) %s [%s]", new int[]{6, 7, 9, 10, 11});
+	}
+	
+	public String[] verListaRequisicoesClienteBI(String bi) {
+		Vector<String[]> vec = DBHandler.getRequisicoesClienteBIPlus(bi);
+		return Utils.formattedFromVector(vec, "(%s -- %s) : (%s) %s [%s]", new int[]{6, 7, 9, 10, 11});
+	}
+	
+	// TODO: data_limite provavelmente não será calculada antes deste método...
+	// o mais certo é ficar no DBHandler, onde se pode juntar um numero de dias ao SYSDATE
+	public String adicionaRequisicao(String id_maq, String emp_id_pes, String id_pes, String id_fil, String formato, String data_limite) {
+		DBHandler.adicionaRequisicaoNomeFormato(id_maq, emp_id_pes, id_pes, id_fil, formato, data_limite); 
+		return "Requisição adicionada.";
+	}
 }
+
