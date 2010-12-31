@@ -3527,9 +3527,9 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     }//GEN-LAST:event_jLoginButtonActionPerformed
 
     private void jAdicionarATMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarATMButtonActionPerformed
-        
-        gestorMaquinas.adicionaMaquinaATM(""+((Double)jSpinner6.getValue()));
-        outMaquinas.setText("Output");
+        String output="";
+        output=gestorMaquinas.adicionaMaquinaATM(""+((Double)jSpinner6.getValue()));
+        outMaquinas.setText(output);
         listaMaquinas.setModel(new OurListModel(gestorMaquinas.verListaMaquinasATM()));
     }//GEN-LAST:event_jAdicionarATMButtonActionPerformed
 
@@ -4043,7 +4043,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         if(biPesquisarClientes!=null&&!biPesquisarClientes.getText().isEmpty()){
             try{
                 Integer.parseInt(biPesquisarClientes.getText());
-                out=gestorClientes.procuraCliente(biPesquisarClientes.getText());
+                out=gestorClientes.procuraClienteBI(biPesquisarClientes.getText());
                 if(out!=null&&out.length!=0){
                     outPesquisarClientes.setText("");
                     for(int i=0; i<out.length;i++)
