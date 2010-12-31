@@ -221,7 +221,7 @@ public class GestorFilmes
 	
 	public String removeFormatoNome(String nome) {
 		if (!DBHandler.formatoEmUsoNome(nome)) {
-			DBHandler.removeFormato(nome);
+			DBHandler.removeFormatoNome(nome);
 			return "Formato removido.";
 		} else
 			return Consts.FORMATO_EM_USO;
