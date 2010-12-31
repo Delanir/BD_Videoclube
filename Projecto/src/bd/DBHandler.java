@@ -1315,7 +1315,7 @@ public class DBHandler
 		return select("SELECT *" +
 					  " FROM " + tabela +
 
-					  " WHERE " + Utils.list(campos, "=", valores, "AND ") +
+					  " WHERE " + Utils.list(campos, "=", valores, " AND ") +
 
 					  (validos ? "":" AND VALIDO = 1"));
 	}
