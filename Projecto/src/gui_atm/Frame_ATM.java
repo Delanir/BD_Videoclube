@@ -1,5 +1,6 @@
 package gui_atm;
 
+import bd.DBHandler;
 import gestores.*;
 
 import java.awt.Component;
@@ -26,6 +27,7 @@ public class Frame_ATM  extends JFrame{
     /**
     * @param args the command line arguments
     */
+    private DBHandler bd;
     private javax.swing.ButtonGroup bgroup;
     GestorUtilizadores gerir_users = new GestorUtilizadores();
     GestorFilmes gestorFilmes = new GestorFilmes();
@@ -46,6 +48,14 @@ public class Frame_ATM  extends JFrame{
     
     /** Creates new form Frame_ATM */
     public Frame_ATM() {
+
+        try{
+            bd=new DBHandler();
+        }catch (Exception e){
+            System.exit(-1);
+        }
+
+
         //initializes all the componentes needed in the GUI
        
         setSize(800, 600);

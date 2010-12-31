@@ -13,17 +13,17 @@ public class Consts
 	public final static int LIMITE_DIAS = 8;
 	public final static double PERCENT_CADA_DIA = 0.08;
 	
-	/** A constante que define o valor inteiro devolvido em caso de erro na função de conversão String -> int. */
+	/** A constante que define o valor inteiro devolvido em caso de erro na funï¿½ï¿½o de conversï¿½o String -> int. */
 	public final static int ERRO_INT = Integer.MIN_VALUE;
-	/** A constante que define o valor inteiro devolvido em caso de erro na função de conversão String -> double. */
+	/** A constante que define o valor inteiro devolvido em caso de erro na funï¿½ï¿½o de conversï¿½o String -> double. */
 	public final static double ERRO_DOUBLE = Double.MIN_VALUE;
 	
-	public final static String GENERO_EXISTE = "Já existe um género com esse nome!";
-	public final static String FORMATO_EXISTE = "Já existe um formato com esse nome!";
-	public final static String FORMATO_EM_USO = "Existe pelo menos um stock de um filme neste formato. Por favor elimine primeiro todas as referências a este formato.";
-	public final static String GENERO_EM_USO = "Existe pelo menos um filme pertencente a esse género. Por favor elimine primeiro todas as referências a este género.";
-	public final static String BI_CLIENTE_EXISTE = "Já existe um cliente com esse BI!";
-	public final static String BI_EMPREGADO_EXISTE = "Já existe um empregado com esse BI!";
+	public final static String GENERO_EXISTE = "Jï¿½ existe um gï¿½nero com esse nome!";
+	public final static String FORMATO_EXISTE = "Jï¿½ existe um formato com esse nome!";
+	public final static String FORMATO_EM_USO = "Existe pelo menos um stock de um filme neste formato. Por favor elimine primeiro todas as referï¿½ncias a este formato.";
+	public final static String GENERO_EM_USO = "Existe pelo menos um filme pertencente a esse gï¿½nero. Por favor elimine primeiro todas as referï¿½ncias a este gï¿½nero.";
+	public final static String BI_CLIENTE_EXISTE = "Jï¿½ existe um cliente com esse BI!";
+	public final static String BI_EMPREGADO_EXISTE = "Jï¿½ existe um empregado com esse BI!";
 	
 	public static final boolean DEBUG = true;
 }
