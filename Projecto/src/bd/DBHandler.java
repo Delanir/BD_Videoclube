@@ -227,9 +227,9 @@ public class DBHandler
 		String query = "SELECT ID_PES, NOME_PESSOA, BI" +
 					   " FROM clientes" +
 					   " WHERE ID_PES = ID_PES" +	// redund�ncia para evitar o caso em que o WHERE fica sem nada
-					   (nome.isEmpty()?"":" AND nome_pessoa = "+p("%"+nome+"%")) +
-					   (morada.isEmpty()?"":" AND morada = "+p("%"+morada+"%")) +
-					   (email.isEmpty()?"":" AND email = "+p("%"+email+"%")) +
+					   (nome.isEmpty()?"":" AND nome_pessoa LIKE "+p("%"+nome+"%")) +
+					   (morada.isEmpty()?"":" AND morada LIKE "+p("%"+morada+"%")) +
+					   (email.isEmpty()?"":" AND email LIKE "+p("%"+email+"%")) +
 					   (telefone.isEmpty()?"":" AND telefone = "+telefone);
 		return select(query);
 	}
@@ -327,9 +327,9 @@ public class DBHandler
 					   " WHERE ID_PES = ID_PES" +	// redund�ncia para evitar o caso em que o WHERE fica sem nada
 					   (is_admin.isEmpty()?"":" AND is_admin = "+is_admin) +
 					   (salarioLow.isEmpty()||salarioHigh.isEmpty()?"":" AND salario BETWEEN "+salarioLow+" AND "+salarioHigh) +
-					   (nome.isEmpty()?"":" AND nome_pessoa = "+p("%"+nome+"%")) +
-					   (morada.isEmpty()?"":" AND morada = "+p("%"+morada+"%")) +
-					   (email.isEmpty()?"":" AND email = "+p("%"+email+"%")) +
+					   (nome.isEmpty()?"":" AND nome_pessoa LIKE "+p("%"+nome+"%")) +
+					   (morada.isEmpty()?"":" AND morada LIKE "+p("%"+morada+"%")) +
+					   (email.isEmpty()?"":" AND email LIKE "+p("%"+email+"%")) +
 					   (telefone.isEmpty()?"":" AND telefone = "+telefone);
 		return select(query);
 	}
@@ -396,7 +396,7 @@ public class DBHandler
 	 */
 	public static void adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa) {
 		adicionaObjecto("filmes",
-						new String[]{"seq_filme_id.NEXTVAL", p(titulo), p(ano), p(realizador), p(ratingIMDB), p(pais), p(produtora), p(descricao), p(capa), "0"});
+						new String[]{"seq_filme_id.NEXTVAL", p(titulo), p(ano), p(realizador), ratingIMDB, p(pais), p(produtora), p(descricao), p(capa), "0"});
 	}
 	
 	/**
@@ -446,10 +446,10 @@ public class DBHandler
 		String query = "SELECT ID_FIL, ANO, TITULO" +
 					   " FROM filmes" +
 					   " WHERE ID_FIL = ID_FIL" +	// redund�ncia para evitar o caso em que o WHERE fica sem nada
-					   (titulo.isEmpty()?"":" AND titulo = "+p("%"+titulo+"%")) +
-					   (realizador.isEmpty()?"":" AND realizador = "+p("%"+realizador+"%")) +
-					   (pais.isEmpty()?"":" AND pais = "+p("%"+pais+"%")) +
-					   (produtora.isEmpty()?"":" AND produtora = "+p("%"+produtora+"%")) +
+					   (titulo.isEmpty()?"":" AND titulo LIKE "+p("%"+titulo+"%")) +
+					   (realizador.isEmpty()?"":" AND realizador LIKE "+p("%"+realizador+"%")) +
+					   (pais.isEmpty()?"":" AND pais LIKE "+p("%"+pais+"%")) +
+					   (produtora.isEmpty()?"":" AND produtora LIKE "+p("%"+produtora+"%")) +
 					   (anoLow.isEmpty()||anoHigh.isEmpty()?"":" AND ano BETWEEN "+anoLow+" AND "+anoHigh) +
 					   (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND rankIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh) +
 					   (!soValidos ? "":" AND VALIDO = 1");
@@ -661,7 +661,7 @@ public class DBHandler
 	 * @return Vector com os campos de cada m�quina ATM.
 	 */
 	public static Vector<String[]> getMaquinasATM() {
-		return selectAll("maquinasatm", true);
+		return selectAll("maquinasatm", false);
 	}
 	
 	/**
