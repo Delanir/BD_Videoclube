@@ -226,7 +226,7 @@ public class DBHandler
 		String query = "SELECT ID_PES, NOME_PESSOA, BI" +
 					   " FROM clientes" +
 					   " WHERE ID_PES = ID_PES" +	// redund�ncia para evitar o caso em que o WHERE fica sem nada
-					   (nome.isEmpty()?"":" AND nome = "+p("%"+nome+"%")) +
+					   (nome.isEmpty()?"":" AND nome_pessoa = "+p("%"+nome+"%")) +
 					   (morada.isEmpty()?"":" AND morada = "+p("%"+morada+"%")) +
 					   (email.isEmpty()?"":" AND email = "+p("%"+email+"%")) +
 					   (telefone.isEmpty()?"":" AND telefone = "+p("%"+telefone+"%"));
@@ -324,7 +324,7 @@ public class DBHandler
 					   " WHERE ID_PES = ID_PES" +	// redund�ncia para evitar o caso em que o WHERE fica sem nada
 					   (is_admin.isEmpty()?"":" AND is_admin = "+is_admin) +
 					   (salarioLow.isEmpty()||salarioHigh.isEmpty()?"":" AND salario BETWEEN "+salarioLow+" AND "+salarioHigh) +
-					   (nome.isEmpty()?"":" AND nome = "+p("%"+nome+"%")) +
+					   (nome.isEmpty()?"":" AND nome_pessoa = "+p("%"+nome+"%")) +
 					   (morada.isEmpty()?"":" AND morada = "+p("%"+morada+"%")) +
 					   (email.isEmpty()?"":" AND email = "+p("%"+email+"%")) +
 					   (telefone.isEmpty()?"":" AND telefone = "+p("%"+telefone+"%"));

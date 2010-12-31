@@ -1,5 +1,6 @@
 package gestores;
 
+import outros.Consts;
 import outros.Utils;
 import bd.DBHandler;
 
@@ -30,6 +31,9 @@ public class GestorUtilizadores
 	 * @return "1" se é admin autenticado; "0" se é empregado, "FAIL" se falhou
 	 */
 	public String loginEmpregado(String username, String password) {
+		if (Utils.toInt(username) == Consts.ERRO_INT)
+			return "FAIL";
+		
 		if (DBHandler.loginEmpregadoCorrectoBI(username, password)) {
 			this.username = username;
 			if(DBHandler.empregadoEAdminBI(username)) {
