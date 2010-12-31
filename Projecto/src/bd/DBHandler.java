@@ -1314,7 +1314,9 @@ public class DBHandler
 	private static Vector<String[]> selectAll(String tabela, String[] campos, String[] valores, boolean validos) {
 		return select("SELECT *" +
 					  " FROM " + tabela +
-					  " WHERE " + Utils.list(campos, "=", valores, " AND ") +
+
+					  " WHERE " + Utils.list(campos, "=", valores, "AND ") +
+
 					  (validos ? "":" AND VALIDO = 1"));
 	}
 	
