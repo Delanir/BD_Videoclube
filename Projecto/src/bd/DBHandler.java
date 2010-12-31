@@ -1156,7 +1156,9 @@ public class DBHandler
 	 * @return true, se os valores existem em simultâneo nos campos referidos de algum elemento. false, caso contrário.
 	 */
 	private static boolean valorExiste(String tabela, String[] campos, String[] valores, boolean soValidos) {
+		Utils.dbg("bef select");
 		Vector<String[]> vec = selectAll(tabela, campos, valores, soValidos);
+		Utils.dbg("after sel");
 		return (vec.size() > 0);
 	}
 
@@ -1310,9 +1312,11 @@ public class DBHandler
 	}
 	
 	private static Vector<String[]> selectAll(String tabela, String[] campos, String[] valores, boolean validos) {
+		Utils.printStringArray(campos);
+		Utils.printStringArray(valores);
 		return select("SELECT *" +
 					  " FROM " + tabela +
-					  " WHERE " + Utils.list(campos, "=", valores, "AND") +
+					  " WHERE " + Utils.list(campos, "=", valores, " AND ") +
 					  (validos ? "":" AND VALIDO = 1"));
 	}
 	
@@ -1334,19 +1338,25 @@ public class DBHandler
 	
 	private static Vector<String[]> select(String query) {
 		Vector<String[]> objectos = new Vector<String[]>();
+		Utils.dbg("select1");
 		String[] objecto;
 		try {
+			Utils.dbg("select2");
 			Statement st = conn.createStatement();
 			ResultSet rset = st.executeQuery(query);
+			Utils.dbg("select3");
 			ResultSetMetaData rsmd = rset.getMetaData();
 			int n = rsmd.getColumnCount();
-			
+
+			Utils.dbg("select4");
 			while (rset.next()) {
 				objecto = new String[n];
 				for (int i = 0; i < n; i++)
 					objecto[i] = rset.getString(i+1);
 				objectos.add(objecto);
 			}
+
+			Utils.dbg("select5");
 			st.close();
 		} catch (SQLException e) {
 			Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, e);
