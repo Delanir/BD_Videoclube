@@ -46,7 +46,7 @@ public class GestorEmpregados
 	 */
 	public String[] procuraEmpregados(String is_admin, String salarioLow, String salarioHigh, String nome, String bi, String morada, String email, String telefone) {
 		Vector<String[]> vec = DBHandler.procuraEmpregados(is_admin, salarioLow, salarioHigh, nome, morada, email, telefone);
-		return Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1});
+		return Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{2, 4, 3});
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class GestorEmpregados
 	 */
 	public String[] verListaEmpregados() {
 		Vector<String[]> vec = DBHandler.getEmpregados();
-		return Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1});
+		return Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{2, 4, 3});
 	}
 
 	public String invalidaEmpregado(String id) {
