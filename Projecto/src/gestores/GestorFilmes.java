@@ -61,8 +61,12 @@ public class GestorFilmes
 	 */
 	public String[] getFilme(String id) {
 		String[] filme = DBHandler.getFilme(id);
-		String[] generosFilme = DBHandler.getGenerosFilmeNome(id);
-		return Utils.extend(filme, generosFilme);
+		if(filme != null) {
+			String[] generosFilme = DBHandler.getGenerosFilmeNome(id);
+			if(generosFilme != null)
+				return Utils.extend(filme, generosFilme);
+		}
+		return null;
 	}
 	
 	/**

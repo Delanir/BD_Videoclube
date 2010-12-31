@@ -2,7 +2,6 @@ package bd;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -138,11 +137,13 @@ public class DBHandler
 	 * @return os campos do cliente.
 	 */
 	public static String[] getCliente(String id) {
-		return selectAll("clientes", "ID_PES", id, false).get(0);
+		Vector<String[]> vec = selectAll("clientes", "ID_PES", id, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 	
 	public static String[] getClienteBI(String bi) {
-		return selectAll("clientes", "BI", bi, false).get(0);
+		Vector<String[]> vec = selectAll("clientes", "BI", bi, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 
 	/**
@@ -229,7 +230,7 @@ public class DBHandler
 					   (nome.isEmpty()?"":" AND nome_pessoa = "+p("%"+nome+"%")) +
 					   (morada.isEmpty()?"":" AND morada = "+p("%"+morada+"%")) +
 					   (email.isEmpty()?"":" AND email = "+p("%"+email+"%")) +
-					   (telefone.isEmpty()?"":" AND telefone = "+p("%"+telefone+"%"));
+					   (telefone.isEmpty()?"":" AND telefone = "+telefone);
 		return select(query);
 	}
 
@@ -250,11 +251,13 @@ public class DBHandler
 	 * @return os campos do empregado.
 	 */
 	public static String[] getEmpregado(String id) {
-		return selectAll("empregados", "ID_PES", id, false).get(0);
+		Vector<String[]> vec = selectAll("empregados", "ID_PES", id, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 	
 	public static String[] getEmpregadoBI(String bi) {
-		return selectAll("empregados", "BI", bi, false).get(0);
+		Vector<String[]> vec = selectAll("empregados", "BI", bi, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 
 	/**
@@ -327,7 +330,7 @@ public class DBHandler
 					   (nome.isEmpty()?"":" AND nome_pessoa = "+p("%"+nome+"%")) +
 					   (morada.isEmpty()?"":" AND morada = "+p("%"+morada+"%")) +
 					   (email.isEmpty()?"":" AND email = "+p("%"+email+"%")) +
-					   (telefone.isEmpty()?"":" AND telefone = "+p("%"+telefone+"%"));
+					   (telefone.isEmpty()?"":" AND telefone = "+telefone);
 		return select(query);
 	}
 
@@ -376,7 +379,8 @@ public class DBHandler
 	 * @return os campos do filme.
 	 */
 	public static String[] getFilme(String id) {
-		return selectAll("filmes", "ID_FIL", id, false).get(0);
+		Vector<String[]> vec = selectAll("filmes", "ID_FIL", id, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 
 	/**
@@ -533,15 +537,18 @@ public class DBHandler
 	 * @return os campos do formato.
 	 */
 	public static String[] getFormato(String id) {
-		return selectAll("formatos", "ID_FOR", id, false).get(0);
+		Vector<String[]> vec = selectAll("formatos", "ID_FOR", id, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 	
 	public static String getFormatoNome(String id) {
-		return selectAll("formatos", "ID_FOR", id, false).get(0)[1];
+		Vector<String[]> vec = selectAll("formatos", "ID_FOR", id, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0)[1]);
 	}
 	
 	public static String getFormatoID(String nome_formato) {
-		return selectAll("formatos", "NOME_FORMATO", nome_formato, false).get(0)[0];
+		Vector<String[]> vec = selectAll("formatos", "NOME_FORMATO", nome_formato, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0)[0]);
 	}
 	
 	/**
@@ -601,11 +608,13 @@ public class DBHandler
 	 * @return os campos do g�nero.
 	 */
 	public static String[] getGenero(String id) {
-		return selectAll("generos", "ID_GEN", id, false).get(0);
+		Vector<String[]> vec = selectAll("generos", "ID_GEN", id, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 	
 	public static String getGeneroNome(String id) {
-		return selectAll("generos", "ID_GEN", id, false).get(0)[1];
+		Vector<String[]> vec = selectAll("generos", "ID_GEN", id, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0)[1]);
 	}
 	
 	/**
@@ -661,7 +670,8 @@ public class DBHandler
 	 * @return os campos da m�quina ATM.
 	 */
 	public static String[] getMaquinaATM(String id) {
-		return selectAll("maquinasatm", "ID_MAQ", id, false).get(0);
+		Vector<String[]> vec = selectAll("maquinasatm", "ID_MAQ", id, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 
 	/**
@@ -719,7 +729,8 @@ public class DBHandler
 	 * @return os campos do pagamento.
 	 */
 	public static String[] getPagamento(String id_req) {
-		return selectAll("pagamentos", "ID_REQ", id_req, false).get(0);
+		Vector<String[]> vec = selectAll("pagamentos", "ID_REQ", id_req, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 	
 	/**
@@ -793,7 +804,8 @@ public class DBHandler
 	 * @return os campos da requisi��o.
 	 */
 	public static String[] getRequisicao(String id) {
-		return selectAll("requisicoes", "ID_REQ", id, false).get(0);
+		Vector<String[]> vec = selectAll("requisicoes", "ID_REQ", id, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 
 	/**
@@ -865,16 +877,20 @@ public class DBHandler
 	 * @return os campos do stock.
 	 */
 	public static String[] getStock(String id_fil, String id_for) {
-		return selectAll("stocks",
-					 	 new String[]{"ID_FIL", "ID_FOR"},
-					 	 new String[]{id_fil, id_for}, false).get(0);
+		Vector<String[]> vec = selectAll("stocks",
+										 new String[]{"ID_FIL", "ID_FOR"},
+										 new String[]{id_fil, id_for}, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 	
 	public static String[] getStockNomeFormato(String id_fil, String nome_formato) {
 		String id_for = getFormatoID(nome_formato);
-		return selectAll("stocks",
-						 new String[]{"ID_FIL", "ID_FOR"},
-						 new String[]{id_fil, id_for}, false).get(0);
+		if(id_for == null)
+			return null;
+		Vector<String[]> vec = selectAll("stocks",
+										 new String[]{"ID_FIL", "ID_FOR"},
+										 new String[]{id_fil, id_for}, false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 
 	/**
@@ -998,7 +1014,7 @@ public class DBHandler
 					   " FROM empregados" +
 					   " WHERE ID_PES = " + id_emp;
 		Vector<String[]> vec = select(query);
-		return vec.get(0)[0].equals("1");
+		return (vec==null||vec.isEmpty() ? false : vec.get(0)[0].equals("1"));
 	}
 	
 	public static boolean empregadoEAdminBI(String bi) {
@@ -1006,7 +1022,7 @@ public class DBHandler
 					   " FROM empregados" +
 					   " WHERE BI = " + bi;
 		Vector<String[]> vec = select(query);
-		return vec.get(0)[0].equals("1");
+		return (vec==null||vec.isEmpty() ? null : vec.get(0)[0].equals("1"));
 	}
 	
 	/**
@@ -1081,6 +1097,8 @@ public class DBHandler
 	
 	public static boolean formatoEmUsoNome(String nome) {
 		Vector<String[]> vec = select("formatos", new String[]{"ID_FOR"}, "NOME_FORMATO", p(nome), false);
+		if(vec == null || vec.isEmpty())
+			return false;
 		return valorExiste("stocks", "ID_FOR", vec.get(0)[0], false);
 	}
 	
@@ -1096,6 +1114,8 @@ public class DBHandler
 	
 	public static boolean generoEmUsoNome(String nome) {
 		Vector<String[]> vec = select("generos", new String[]{"ID_GEN"}, "NOME_GENERO", nome, false);
+		if(vec == null || vec.isEmpty())
+			return false;
 		return valorExiste("filme_genero", "ID_GEN", vec.get(0)[0], false);
 	}
 	
@@ -1107,6 +1127,8 @@ public class DBHandler
 	 */
 	public static boolean filmeSoTemGenero(String id_fil, String id_gen) {
 		Vector<String[]> vec = getGenerosFilme(id_fil);
+		if(vec == null)
+			return true;
 		return (vec.size() == 1 && vec.get(0).equals(id_gen));
 	}
 	
