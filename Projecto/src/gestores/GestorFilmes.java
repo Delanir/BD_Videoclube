@@ -73,9 +73,10 @@ public class GestorFilmes
 	 * Adiciona um filme à base de dados
 	 * String[] generos deve conter os nomes dos géneros e não os seus IDs.
 	 */
-	// TODO: adicionar generos
 	public String adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
-		DBHandler.adicionaFilme(titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
+		if(generos == null || generos.length == 0)
+			return "O filme a adicionar necessita de pelo menos um género.";
+		DBHandler.adicionaFilme(titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa, generos);
 		Utils.dbg("O seguinte filme foi adicionado: (" + ano + ") " + titulo);
 		return "O seguinte filme foi adicionado: (" + ano + ") " + titulo;
 	}
@@ -83,9 +84,10 @@ public class GestorFilmes
 	/**
 	 *  String[] generos deve conter os nomes dos géneros e não os seus IDs.
 	 */
-	// TODO: adicionar generos
 	public String actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
-		DBHandler.actualizaFilme(id, titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa);
+		if(generos == null || generos.length == 0)
+			return "O filme a actualizar necessita de pelo menos um género.";
+		DBHandler.actualizaFilme(id, titulo, ano, realizador, ratingIMDB, pais, produtora, descricao, capa, generos);
 		Utils.dbg("O filme com o ID " + id + " foi actualizado.");
 		return "O filme foi actualizado.";
 	}
@@ -105,14 +107,34 @@ public class GestorFilmes
 	/**
 	 * Cada parÃ¢metro pode ser null se nÃ£o for para ser utilizado na mega query
 	 * Strings devolvidas em formato "id : (ano) titulo"
+	 * Usa géneros em modo AND (cada género restringe a pesquisa)
 	 */
 	public String[] procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
 		Vector<String[]> vec = DBHandler.procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
 		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
 	}
-	
+
+	/**
+	 * Usa géneros em modo AND (cada género restringe a pesquisa)
+	 */
 	public String[] procuraFilmesPlusInvalidos(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
 		Vector<String[]> vec = DBHandler.procuraFilmesPlusInvalidos(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+	}
+	
+	/**
+	 * Usa géneros em modo OR (cada género alarga a pesquisa)
+	 */
+	public String[] procuraFilmesAnyGen(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
+		Vector<String[]> vec = DBHandler.procuraFilmesAnyGen(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
+		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+	}
+
+	/**
+	 * Usa géneros em modo OR (cada género alarga a pesquisa)
+	 */
+	public String[] procuraFilmesPlusInvalidosAnyGen(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
+		Vector<String[]> vec = DBHandler.procuraFilmesPlusInvalidosAnyGen(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
 		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
 	}
 	
@@ -154,7 +176,6 @@ public class GestorFilmes
 		}
 	}
 	
-	//TODO: questão da quantidade.
 	public String actualizaStock(String id_fil, String formato, String quant, String custo_compra, String custo_aluguer) {
 		DBHandler.actualizaStockNomeFormato(id_fil, formato, quant, custo_compra, custo_aluguer);
 		return "Stock actualizado.";
@@ -318,9 +339,8 @@ public class GestorFilmes
 		return "Material requisitado registado como entregue.";
 	}
 
-	public String calcularPrecoRequisicao(String idMovie) {
-		// TODO Auto-generated method stub
-		return null;
+	public String calcularPrecoRequisicao(String id_req) {
+		return DBHandler.montanteActualRequisicao(id_req);
 	}
 }
 

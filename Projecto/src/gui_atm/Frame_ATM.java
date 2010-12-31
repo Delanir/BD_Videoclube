@@ -1401,6 +1401,7 @@ public class Frame_ATM  extends JFrame{
                         Utils.dbg("nenhuma seleÃ§Ã£o");
                 } else {
                     String idMovie=((String)menuEntregar_filme.getSelectedValue()).split(" ")[0];
+                    // TODO by Lobo: idMovie no calcularPrecoRequisicao? É suposto ser o ID de uma requisiçao.
                     String valor = gestorFilmes.calcularPrecoRequisicao(idMovie);
                     valorapagar.setText(valor);
                 }

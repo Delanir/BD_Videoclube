@@ -43,7 +43,8 @@ public class DBHandler
 				Utils.dbg("false null");
 			else
 				Utils.dbg("other. wtf?");*/
-			Utils.printStringArrayln(Utils.strArrayVectorToArray(select("SELECT montanteAPagar(2) FROM DUAL")));
+			Utils.dbg(montanteActualRequisicao("0"));
+			//Utils.printStringArrayln(Utils.strArrayVectorToArray(select("SELECT montanteAPagar(2) FROM DUAL")));
 			close();
 			System.out.println("tudo bem");
 		} else
@@ -395,9 +396,12 @@ public class DBHandler
 	 * @param descricao a descriï¿½ï¿½o do filme a adicionar.
 	 * @param capa a capa do filme a adicionar.
 	 */
-	public static void adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa) {
+	public static void adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
 		adicionaObjecto("filmes",
 						new String[]{"seq_filme_id.NEXTVAL", p(titulo), p(ano), p(realizador), ratingIMDB, p(pais), p(produtora), p(descricao), p(capa), "0"});
+		String currval = select("SELECT seq_filme_id.CURRVAL FROM DUAL").get(0)[0];
+		for(String gen : generos)
+			adicionaFilmeGeneroNome(currval, gen);
 	}
 	
 	/**
@@ -412,10 +416,20 @@ public class DBHandler
 	 * @param descricao a nova descriï¿½ï¿½o do filme a actualizar.
 	 * @param capa a nova capa do filme a actualizar.
 	 */
-	public static void actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa) {
+	public static void actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
 		actualizaObjecto("filmes", "ID_FIL", id,
 						 getToSetCamposFilmes(),
 					 	 new String[]{p(titulo), ano, p(realizador), ratingIMDB, p(pais), p(produtora), p(descricao), p(capa)});
+		String[] gensActuais = getGenerosFilmeNome(id);
+		int i;
+		for(String gen : generos) {
+			for(i=0; i<gensActuais.length; i++) {
+				if(gensActuais[i].equals(gen))
+					break;
+			}
+			if(i == gensActuais.length)
+				adicionaFilmeGeneroNome(id, gen);
+		}
 	}
 
 	/**
@@ -435,28 +449,41 @@ public class DBHandler
 	}
 	
 	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
-		return procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos, true);
+		return procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos, true, true);
 	}
 	
 	public static Vector<String[]> procuraFilmesPlusInvalidos(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
-		return procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos, false);
+		return procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos, true, false);
 	}
-
-	// TODO: gï¿½neros
-	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos, boolean soValidos) {
-		String query = "SELECT ID_FIL, ANO, TITULO" +
-					   " FROM filmes" +
-					   " WHERE ID_FIL = ID_FIL" +	// redundï¿½ncia para evitar o caso em que o WHERE fica sem nada
-					   (titulo.isEmpty()?"":" AND titulo LIKE "+p("%"+titulo+"%")) +
-					   (realizador.isEmpty()?"":" AND realizador LIKE "+p("%"+realizador+"%")) +
-					   (pais.isEmpty()?"":" AND pais LIKE "+p("%"+pais+"%")) +
-					   (produtora.isEmpty()?"":" AND produtora LIKE "+p("%"+produtora+"%")) +
-					   (anoLow.isEmpty()||anoHigh.isEmpty()?"":" AND ano BETWEEN "+anoLow+" AND "+anoHigh) +
-					   (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND rankIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh) +
-					   (!soValidos ? "":" AND VALIDO = 1");
-		/*for(String id_gen : generos) {
-			query += " AND " + ) +
-		}*/
+	
+	public static Vector<String[]> procuraFilmesAnyGen(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
+		return procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos, false, true);
+	}
+	
+	public static Vector<String[]> procuraFilmesPlusInvalidosAnyGen(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
+		return procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos, false, false);
+	}
+	
+	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos, boolean restrictGen, boolean soValidos) {
+		String op = (restrictGen ? " AND " : " OR ");
+		String query = "SELECT f.ID_FIL, f.ANO, f.TITULO" +
+					   " FROM filmes f";
+		if(generos != null) {
+			query += ", generos g, filme_genero fg" +
+					 " WHERE f.ID_FIL = fg.ID_FIL" +
+					   " AND g.ID_GEN = fg.ID_GEN";
+			for(String gen : generos)
+				query += op + "g.NOME_GENERO = " + gen;
+		} else {
+			query += " WHERE f.ID_FIL = f.ID_FIL";		//redundância para evitar o caso em que o WHERE fica sem nada
+		}
+		query += (titulo.isEmpty()?"":" AND titulo LIKE "+p("%"+titulo+"%")) +
+			     (realizador.isEmpty()?"":" AND realizador LIKE "+p("%"+realizador+"%")) +
+			     (pais.isEmpty()?"":" AND pais LIKE "+p("%"+pais+"%")) +
+			     (produtora.isEmpty()?"":" AND produtora LIKE "+p("%"+produtora+"%")) +
+			     (anoLow.isEmpty()||anoHigh.isEmpty()?"":" AND ano BETWEEN "+anoLow+" AND "+anoHigh) +
+			     (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND rankIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh) +
+			     (!soValidos ? "":" AND VALIDO = 1");
 		return select(query);
 	}
 
@@ -505,7 +532,12 @@ public class DBHandler
 		adicionaObjecto("filme_genero",
 						new String[]{id_fil, id_gen});
 	}
-
+	
+	public static void adicionaFilmeGeneroNome(String id_fil, String nome_genero) {
+		adicionaObjecto("filme_genero",
+						new String[]{id_fil, "(SELECT id_gen FROM generos WHERE nome_genero = "+p(nome_genero)+")"});
+	}
+	
 	/**
 	 * Remove uma relaï¿½ï¿½o filme/gï¿½nero da BD.
 	 * @param id_fil ID do filme na relaï¿½ï¿½o.
@@ -852,6 +884,11 @@ public class DBHandler
 		removeObjecto("requisicoes", "ID_REQ", id);
 	}
 
+	public static String montanteActualRequisicao(String id) {
+		String res = select("SELECT montanteAPagar("+id+") FROM DUAL").get(0)[0];
+		return (res==null ? "0.00" : res);
+	}
+	
 	/* ---------------------------------------------------------------- */
 	/* ---------------------------- STOCKS ---------------------------- */
 	/* ---------------------------------------------------------------- */
@@ -1216,7 +1253,6 @@ public class DBHandler
 		execute("INSERT INTO " + tabela +
 				" VALUES(" + Utils.list(valores, ",") + ")");
 	}
-	
 	/**
 	 * Actualiza um objecto na BD. Funï¿½ï¿½o genï¿½rica.
 	 * @param tabela a tabela na qual actualizar o objecto.
