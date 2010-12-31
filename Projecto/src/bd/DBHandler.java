@@ -34,7 +34,8 @@ public class DBHandler
 			//System.out.println(Utils.list(getFilme("2"), ","));
 			//executeNoCommit("");
 
-                        /*Vector<String[]> vec = select("SELECT * from requisicoes WHERE data_limite is null");
+
+			/*Vector<String[]> vec = select("SELECT * from requisicoes WHERE data_limite is null");
 
 			if(vec.get(0)[8] == null)
 				Utils.dbg("true null");
@@ -444,15 +445,15 @@ public class DBHandler
 	// TODO: g�neros
 	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos, boolean soValidos) {
 		String query = "SELECT ID_FIL, ANO, TITULO" +
-					   " FROM filmes f" +
+					   " FROM filmes" +
 					   " WHERE ID_FIL = ID_FIL" +	// redund�ncia para evitar o caso em que o WHERE fica sem nada
 					   (titulo.isEmpty()?"":" AND titulo = "+p("%"+titulo+"%")) +
 					   (realizador.isEmpty()?"":" AND realizador = "+p("%"+realizador+"%")) +
 					   (pais.isEmpty()?"":" AND pais = "+p("%"+pais+"%")) +
 					   (produtora.isEmpty()?"":" AND produtora = "+p("%"+produtora+"%")) +
 					   (anoLow.isEmpty()||anoHigh.isEmpty()?"":" AND ano BETWEEN "+anoLow+" AND "+anoHigh) +
-					   (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND ratingIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh) +
-					   (soValidos ? "":" AND VALIDO = 1");
+					   (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND rankIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh) +
+					   (!soValidos ? "":" AND VALIDO = 1");
 		/*for(String id_gen : generos) {
 			query += " AND " + ) +
 		}*/
@@ -781,7 +782,7 @@ public class DBHandler
 		return select("SELECT r.*, f.ano, f.titulo, fo.nome_formato" +
 					  " FROM requisicoes r, filmes f, formatos fo" +
 					  " WHERE r.ID_FIL = f.ID_FIL" +
-					    " AND r.ID_FOR = ID_FOR" +
+					    " AND r.ID_FOR = fo.ID_FOR" +
 						" AND r.ID_PES =" + id);
 	}
 	
@@ -793,7 +794,7 @@ public class DBHandler
 		return select("SELECT r.*, f.ano, f.titulo, fo.nome_formato" +
 					  " FROM requisicoes r, filmes f, formatos fo, clientes c" +
 					  " WHERE r.ID_FIL = f.ID_FIL" +
-					    " AND r.ID_FOR = ID_FOR" +
+					    " AND r.ID_FOR = fo.ID_FOR" +
 					    " AND r.ID_PES = c.ID_PES" +
 						" AND c.BI =" + bi);
 	}
@@ -1199,7 +1200,7 @@ public class DBHandler
 									  " FROM " + tabela +
 									  " WHERE " + campo + "=" + valor +
 									  " AND " + exceptCampo + "!=" + exceptValor +
-									  (soValidos ? "":" AND VALIDO = 1"));
+									  (!soValidos ? "":" AND VALIDO = 1"));
 		return (vec.size() > 0);
 	}
 	
@@ -1305,17 +1306,17 @@ public class DBHandler
 	 * @param tabela tabela de onde obter os dados.
 	 * @return Vector com os campos de cada linha da tabela.
 	 */
-	private static Vector<String[]> selectAll(String tabela, boolean validos) {
+	private static Vector<String[]> selectAll(String tabela, boolean soValidos) {
 		return select("SELECT *" +
 					  " FROM " + tabela +
-					  (validos ? "":" AND VALIDO = 1"));
+					  (!soValidos ? "":" WHERE VALIDO = 1"));
 	}
 	
-	private static Vector<String[]> selectAll(String tabela, String campoOrder, boolean validos) {
+	private static Vector<String[]> selectAll(String tabela, String campoOrder, boolean soValidos) {
 		return select("SELECT *" +
 					  " FROM " + tabela +
-					  " ORDER BY " + campoOrder +
-					  (validos ? "":" AND VALIDO = 1"));
+					  (!soValidos ? "":" WHERE VALIDO = 1") +
+					  (" ORDER BY " + campoOrder));
 	}
 	
 	/**
@@ -1326,20 +1327,20 @@ public class DBHandler
 	 * @param valor o valor a procurar no campo.
 	 * @return Vector com todos os campos dos objectos.
 	 */
-	private static Vector<String[]> selectAll(String tabela, String campo, String valor, boolean validos) {
+	private static Vector<String[]> selectAll(String tabela, String campo, String valor, boolean soValidos) {
 		return select("SELECT *" +
 					  " FROM " + tabela +
 					  " WHERE " + campo + "=" + valor +
-					  (validos ? "":" AND VALIDO = 1"));
+					  (!soValidos ? "":" AND VALIDO = 1"));
 	}
 	
-	private static Vector<String[]> selectAll(String tabela, String[] campos, String[] valores, boolean validos) {
+	private static Vector<String[]> selectAll(String tabela, String[] campos, String[] valores, boolean soValidos) {
 		return select("SELECT *" +
 					  " FROM " + tabela +
 
 					  " WHERE " + Utils.list(campos, "=", valores, " AND ") +
 
-					  (validos ? "":" AND VALIDO = 1"));
+					  (!soValidos ? "":" AND VALIDO = 1"));
 	}
 	
 	/**
@@ -1351,11 +1352,11 @@ public class DBHandler
 	 * @param valor o valor a procurar no campo.
 	 * @return Vector com os campos seleccionados dos objectos.
 	 */
-	private static Vector<String[]> select(String tabela, String[] camposSel, String campo, String valor, boolean validos) {
+	private static Vector<String[]> select(String tabela, String[] camposSel, String campo, String valor, boolean soValidos) {
 		return select("SELECT " + Utils.list(camposSel, ",") +
 					  " FROM " + tabela +
 					  " WHERE " + campo + "=" + valor +
-					  (validos ? "":" AND VALIDO = 1"));
+					  (!soValidos ? "":" AND VALIDO = 1"));
 	}
 	
 	private static Vector<String[]> select(String query) {

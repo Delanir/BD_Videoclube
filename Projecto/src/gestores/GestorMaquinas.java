@@ -39,13 +39,7 @@ public class GestorMaquinas
 	 */
 	public String[] verListaMaquinasATM() {
 		Vector<String[]> vec = DBHandler.getMaquinasATM();
-		String[] ret = new String[vec.size()];
-		int i=0;
-		for(String[] sa : vec) {
-			ret[i] = sa[0] + " : " + sa[2] + ", " + sa[1];
-			i++;
-		}
-		return ret;
+		return Utils.formattedFromVector(vec, "%s : %s, %s [%s]", new int[]{0, 3, 1, 2});
 	}
 
 	public String invalidaMaquinaATM(String id) {
