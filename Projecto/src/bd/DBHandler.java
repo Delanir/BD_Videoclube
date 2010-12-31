@@ -34,14 +34,14 @@ public class DBHandler
 			//System.out.println(Utils.list(getFilme("2"), ","));
 			//executeNoCommit("");
 
-                        Vector<String[]> vec = select("SELECT * from requisicoes WHERE data_limite is null");
+                        /*Vector<String[]> vec = select("SELECT * from requisicoes WHERE data_limite is null");
 
 			if(vec.get(0)[8] == null)
 				Utils.dbg("true null");
 			else if(vec.get(0)[8].equals("null"))
 				Utils.dbg("false null");
 			else
-				Utils.dbg("other. wtf?");
+				Utils.dbg("other. wtf?");*/
 			Utils.printStringArrayln(Utils.strArrayVectorToArray(select("SELECT montanteAPagar(2) FROM DUAL")));
 			close();
 			System.out.println("tudo bem");
