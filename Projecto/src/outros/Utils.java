@@ -161,12 +161,9 @@ public class Utils
 	 * "strs" e "strs2" (separados por "sep").
 	 */
 	public static String list(String[] strs, String sep, String[] strs2, String sep2) {
-		Utils.dbg("list1");
 		String lista = strs[0] + sep + strs2[0];
-		Utils.dbg("list2");
 		for (int i = 1; i < strs.length; i++)
 			lista += sep2 + strs[i] + sep + strs2[i];
-		Utils.dbg("list3");
 		return lista;
 	}
 	
