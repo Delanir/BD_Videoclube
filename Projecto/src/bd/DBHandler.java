@@ -1113,28 +1113,28 @@ public class DBHandler
 	public static boolean loginClienteCorrecto(String id_pes, String password) {
 		return valorExiste("clientes",
 						   new String[]{"ID_PES", "PASSWORD"},
-						   new String[]{id_pes, password},
+						   new String[]{id_pes, p(password)},
 						   true);
 	}
 	
 	public static boolean loginClienteCorrectoBI(String bi, String password) {
 		return valorExiste("clientes",
 						   new String[]{"BI", "PASSWORD"},
-						   new String[]{bi, password},
+						   new String[]{bi, p(password)},
 						   true);
 	}
 	
 	public static boolean loginEmpregadoCorrecto(String id_pes, String password) {
 		return valorExiste("empregados",
 						   new String[]{"ID_PES", "PASSWORD"},
-						   new String[]{id_pes, password},
+						   new String[]{id_pes, p(password)},
 						   true);
 	}
 	
 	public static boolean loginEmpregadoCorrectoBI(String bi, String password) {
 		return valorExiste("empregados",
 						   new String[]{"BI", "PASSWORD"},
-						   new String[]{bi, password},
+						   new String[]{bi, p(password)},
 						   true);
 	}
 	
