@@ -1,5 +1,6 @@
 package gestores;
 
+import outros.Utils;
 import bd.DBHandler;
 
 public class GestorUtilizadores
@@ -31,10 +32,11 @@ public class GestorUtilizadores
 	public String loginEmpregado(String username, String password) {
 		if (DBHandler.loginEmpregadoCorrectoBI(username, password)) {
 			this.username = username;
-			if(DBHandler.empregadoEAdminBI(username))
+			if(DBHandler.empregadoEAdminBI(username)) {
 				return "1";
-			else
+			} else {
 				return "0";
+			}
 		} else if(DBHandler.loginEmpregadoCorrecto(username, password)) {
 			this.username = username;
 			if(DBHandler.empregadoEAdmin(username))

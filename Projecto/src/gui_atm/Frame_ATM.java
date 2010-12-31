@@ -50,7 +50,7 @@ public class Frame_ATM  extends JFrame{
     public Frame_ATM() {
 
         try{
-            db=new DBHandler();
+            bd=new DBHandler();
         }catch (Exception e){
             System.exit(-1);
         }

@@ -3511,8 +3511,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     }//GEN-LAST:event_jEscolherFicheiroButtonActionPerformed
 
     private void jLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonActionPerformed
-        //TODO: descomentar
-        
         String out=gestorUtilizadores.loginEmpregado(jUsernameField.getText(), jPasswordField.getText());
         if(!out.equals("FAIL")){
             if(out.equals("1")){
@@ -3524,7 +3522,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
             }
             jLoginPanel.setVisible(false);
         }
-       
        jUsernameField.setText("");
        jPasswordField.setText("");
     }//GEN-LAST:event_jLoginButtonActionPerformed
