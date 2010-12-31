@@ -11,6 +11,7 @@
 
 package gui_manager;
 
+import bd.DBHandler;
 import com.toedter.calendar.JCalendar;
 import gestores.*;
 import java.beans.PropertyChangeEvent;
@@ -38,6 +39,9 @@ import outros.Utils;
  * @author Daniela
  */
 public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeListener {
+    //DATA BASE
+    private DBHandler db;
+
     //Gestores
     private GestorUtilizadores gestorUtilizadores;
     private GestorFilmes gestorFilmes;
@@ -58,6 +62,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
     
     public static void main(String args[]) {
     	Utils.dbg("Here");
+        
         new GUI_Manager().setVisible(true);
         //adds the panels to the interface
 
@@ -70,6 +75,14 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
     
     /** Creates new form GUI_Manager */
     public GUI_Manager() {
+
+
+        try{
+            db=new DBHandler();
+        }catch (Exception e){
+            System.exit(-1);
+        }
+
 
         filePath="";
         gestorUtilizadores=new GestorUtilizadores();
@@ -3499,8 +3512,8 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
     private void jLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonActionPerformed
         //TODO: descomentar
-        /**
-        String out=gestorUtilizadores.login(jUsernameField.getText(), jPasswordField.getText());
+        
+        String out=gestorUtilizadores.loginEmpregado(jUsernameField.getText(), jPasswordField.getText());
         if(!out.equals("FAIL")){
             if(out.equals("1")){
                 //administrador
@@ -3511,7 +3524,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
             }
             jLoginPanel.setVisible(false);
         }
-        */
+       
        jUsernameField.setText("");
        jPasswordField.setText("");
     }//GEN-LAST:event_jLoginButtonActionPerformed
