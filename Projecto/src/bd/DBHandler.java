@@ -1457,19 +1457,56 @@ public class DBHandler
 	/* ---------------------------------------------------------------- */
 
         public static String estatisticasContabilidade(){
-        try {
-            executeNoCommit("EXECUTE contabilidade");
-            Vector <String []> out=select("SELECT col1, col2, col4 FROM tops");
-            conn.commit();
-            return "LUCRO: "+out.get(0)[0]+
-                    "€\n DESPESAS "+out.get(0)[1]+
-                    "€\n TOTALFACTURADO "+out.get(0)[2]+"€";
-        } catch (SQLException ex) {
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            try {
+                executeNoCommit("EXECUTE contabilidade");
+                Vector <String []> out=select("SELECT col1, col2, col4 FROM tops");
+                conn.commit();
+                return "LUCRO: "+out.get(0)[0]+
+                        "€\n DESPESAS "+out.get(0)[1]+
+                        "€\n TOTALFACTURADO "+out.get(0)[2]+"€";
+            } catch (SQLException ex) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return "";
         }
 
+        public static String estatisticasTop10Clientes(){
+            try {
+                executeNoCommit("EXECUTE top10clientes");
+                Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM tops");
+                conn.commit();
+                String output="TOP 10 Clientes\nID:\tBI:\tNOME:\tNº Requisições\n";
+                if(out!=null){
+                    for(int i=0; i<out.size();i++){
+                        output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[3]+"\n";
+                    }
+                    return output;
+                }
+                return "";
+            } catch (SQLException ex) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return "";
+        }
+
+        public static String estatisticasTop10Filmes(){
+            try {
+                executeNoCommit("EXECUTE top10filmes");
+                Vector <String []> out=select("SELECT col1, col3, col4 FROM tops");
+                conn.commit();
+                String output="TOP 10 filmes\nID:\tTITULO:\tNº Requisições\n";
+                if(out!=null){
+                    for(int i=0; i<out.size();i++){
+                        output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\n";
+                    }
+                    return output;
+                }
+                return "";
+            } catch (SQLException ex) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return "";
+        }
 
 	/* ---------------------------------------------------------------- */
 	/* ---------------------------- OUTROS ---------------------------- */
