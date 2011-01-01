@@ -233,7 +233,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         dataInit = new javax.swing.JButton();
         dataEnd = new javax.swing.JButton();
         jCheckBox5 = new javax.swing.JCheckBox();
-        jButton6 = new javax.swing.JButton();
+        consultarEstatisticas = new javax.swing.JButton();
         jClientesManagerPanel = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         pagamentosAtraso = new javax.swing.JList();
@@ -728,10 +728,10 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         jCheckBox5.setText("Clientes");
 
-        jButton6.setText("Consultar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        consultarEstatisticas.setText("Consultar");
+        consultarEstatisticas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                consultarEstatisticasActionPerformed(evt);
             }
         });
 
@@ -762,7 +762,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                             .addComponent(jButton5))
                         .addGap(18, 18, 18)
                         .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6)
+                            .addComponent(consultarEstatisticas)
                             .addComponent(dataEnd)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(94, 94, 94))
@@ -795,7 +795,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(consultarEstatisticas))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(59, Short.MAX_VALUE))
@@ -3885,7 +3885,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         resetDatas();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void consultarEstatisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEstatisticasActionPerformed
         // TODO add your handling code here:
         jTextArea2.setText("");
         if(jCheckBox5.isSelected()){
@@ -3908,7 +3908,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
             //Clientes
             jTextArea2.append(gestorEstatisticas.getEstatisticas(calendarBegin, calendarEnd));
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_consultarEstatisticasActionPerformed
 
     private void notificarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notificarClientesActionPerformed
         notificarClientesFrame.setVisible(true);
@@ -4182,6 +4182,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JTextField biEmpregados;
     private javax.swing.JTextField biNotificarClientes;
     private javax.swing.JTextField biPesquisarClientes;
+    private javax.swing.JButton consultarEstatisticas;
     private javax.swing.JComboBox countriesList;
     private javax.swing.JComboBox countriesList1;
     private javax.swing.JTextField custoAdicionaStock;
@@ -4222,7 +4223,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;

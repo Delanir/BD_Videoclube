@@ -5,6 +5,7 @@
 
 package gestores;
 
+import bd.DBHandler;
 import java.util.GregorianCalendar;
 
 /**
@@ -38,8 +39,9 @@ public class GestorEstatisticas
 	 * @return
 	 */
 	public String getEstatisticas(GregorianCalendar begin, GregorianCalendar end) {
-
-		return null;
+                
+                
+		return DBHandler.estatisticasContabilidade();
 	}
 
 	/**

@@ -1452,6 +1452,25 @@ public class DBHandler
 		return rs.getString(1);
 	}*/
 
+        /* ---------------------------------------------------------------- */
+	/* ------------------------- ESTATÍSTICAS ------------------------- */
+	/* ---------------------------------------------------------------- */
+
+        public static String estatisticasContabilidade(){
+        try {
+            executeNoCommit("EXECUTE contabilidade");
+            Vector <String []> out=select("SELECT col1, col2, col4 FROM tops");
+            conn.commit();
+            return "LUCRO: "+out.get(0)[0]+
+                    "€\n DESPESAS "+out.get(0)[1]+
+                    "€\n TOTALFACTURADO "+out.get(0)[2]+"€";
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return "";
+        }
+
+
 	/* ---------------------------------------------------------------- */
 	/* ---------------------------- OUTROS ---------------------------- */
 	/* ---------------------------------------------------------------- */
