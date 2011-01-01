@@ -4,7 +4,7 @@ public class Consts
 {
 	public final static String ORACLE_USER = "bd01";
 	public final static String ORACLE_PASS = "bd01";
-	public final static String ORACLE_URL  = "jdbc:oracle:thin:@127.0.0.1:1521:orcl";
+	public final static String ORACLE_URL  = "jdbc:oracle:thin:@Daniela-PC:1521:orcl";
 
 	public final static String EMAIL_SMTP_HOST = "smtp.sapo.pt";
 	public final static int    EMAIL_SMTP_PORT = 25;

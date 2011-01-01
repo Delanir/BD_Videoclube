@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -77,11 +78,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
     public GUI_Manager() {
 
 
-        try{
-            db=new DBHandler();
-        }catch (Exception e){
-            System.exit(-1);
-        }
+        
 
 
         filePath="";
@@ -1187,22 +1184,25 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jMenuAdministradorPanelLayout.setHorizontalGroup(
             jMenuAdministradorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jMenuAdministradorPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                .addGroup(jMenuAdministradorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jMenuAdministradorPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE))
+                    .addGroup(jMenuAdministradorPanelLayout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jSairButton)))
                 .addContainerGap())
-            .addGroup(jMenuAdministradorPanelLayout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
-                .addComponent(jSairButton)
-                .addGap(32, 32, 32))
         );
         jMenuAdministradorPanelLayout.setVerticalGroup(
             jMenuAdministradorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jMenuAdministradorPanelLayout.createSequentialGroup()
-                .addGroup(jMenuAdministradorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jMenuAdministradorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jSairButton))
+                    .addGroup(jMenuAdministradorPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSairButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1408,15 +1408,16 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jMenuOperatorPanelLayout.setHorizontalGroup(
             jMenuOperatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jMenuOperatorPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                .addGroup(jMenuOperatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jMenuOperatorPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE))
+                    .addGroup(jMenuOperatorPanelLayout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSairButton2)))
                 .addContainerGap())
-            .addGroup(jMenuOperatorPanelLayout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
-                .addComponent(jSairButton2)
-                .addGap(32, 32, 32))
         );
         jMenuOperatorPanelLayout.setVerticalGroup(
             jMenuOperatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1904,7 +1905,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
         .addGroup(adicionarFilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adicionarFilmeFrameLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jAdicionarFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jAdicionarFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
 
@@ -3482,10 +3483,10 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     }//GEN-LAST:event_pesquisarFilmeActionPerformed
 
     private void jSairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButtonActionPerformed
-        // TODO invalidar sessão
+        
         //Set panel's visibility
 
-        
+        db.close();
         jLoginPanel.setVisible(true);
         
         jMenuOperatorPanel.setVisible(false);
@@ -3494,9 +3495,9 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     }//GEN-LAST:event_jSairButtonActionPerformed
 
     private void jSairButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButton2ActionPerformed
-        // TODO invalidar sessão
+        
         //Set panel's visibility
-
+        db.close();
         jLoginPanel.setVisible(true);
        
         jMenuOperatorPanel.setVisible(false);
@@ -3512,6 +3513,12 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
     private void jLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonActionPerformed
         String out=gestorUtilizadores.loginEmpregado(jUsernameField.getText(), jPasswordField.getText());
+        try{
+            db=new DBHandler();
+        }catch (Exception e){
+            System.exit(-1);
+        }
+
         if(!out.equals("FAIL")){
             if(out.equals("1")){
                 //administrador
