@@ -42,12 +42,9 @@ public class GestorClientes
 	}
 	
 	public String[] procuraClienteBI(String bi) {
-                try{
-                    Integer.parseInt(bi);
-                    Utils.dbg(bi);
+                if(Utils.isNumber(bi)){
+                
                     return DBHandler.getClienteBI(bi);
-                }catch (NumberFormatException e){
-                    
                 }
                 return null;
 	}

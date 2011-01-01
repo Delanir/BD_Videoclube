@@ -5,9 +5,9 @@ import java.util.GregorianCalendar;
 import java.util.Vector;
 
 /**
- * A classe de utilitários. Contém métodos úteis a toda a aplicação.
- * ex.: conversão de String para inteiro, conversão e subtracção de datas, contextualização de erros, etc.
- * Recorre à classe Consts.
+ * A classe de utilitï¿½rios. Contï¿½m mï¿½todos ï¿½teis a toda a aplicaï¿½ï¿½o.
+ * ex.: conversï¿½o de String para inteiro, conversï¿½o e subtracï¿½ï¿½o de datas, contextualizaï¿½ï¿½o de erros, etc.
+ * Recorre ï¿½ classe Consts.
  */
 public class Utils
 {
@@ -23,12 +23,12 @@ public class Utils
 	}
 	
 	/* ------------------------------------------------------------------------------------- */
-	/* ---------------------------- MÉTODOS DE VECTORS E ARRAYS ---------------------------- */
+	/* ---------------------------- Mï¿½TODOS DE VECTORS E ARRAYS ---------------------------- */
 	/* ------------------------------------------------------------------------------------- */
 
 	/* ---------------------------- UTILS ---------------------------- */
 	/**
-	 * Une o conteúdo de dois arrays de Strings num só.
+	 * Une o conteï¿½do de dois arrays de Strings num sï¿½.
 	 */
 	public static String[] extend(String[] a1, String[] a2) {
 		String[] ret = new String[a1.length + a2.length];
@@ -41,7 +41,7 @@ public class Utils
 	}
 	
 	/**
-	 * Obtém um array de Strings com os elementos do array original a partir do índice "from". 
+	 * Obtï¿½m um array de Strings com os elementos do array original a partir do ï¿½ndice "from". 
 	 */
 	public static String[] extract(String[] sa, int from) {
 		String[] ret = new String[sa.length - from];
@@ -51,10 +51,10 @@ public class Utils
 		return ret;
 	}
 	
-	/* ---------------------------- CONVERSÃO ---------------------------- */
+	/* ---------------------------- CONVERSï¿½O ---------------------------- */
 	/**
 	 * Converte um Vector de arrays de Strings para um array apenas,
-	 * com os antigos arrays em sequência.
+	 * com os antigos arrays em sequï¿½ncia.
 	 */
 	public static String[] strArrayVectorToArray(Vector<String[]> vec) {
 		int i = 0, j, size=0;
@@ -71,7 +71,7 @@ public class Utils
 	
 	/**
 	 * Converte um Vector de arrays de Strings para um array apenas,
-	 * usando somente o elemento de índice "index" de cada array.
+	 * usando somente o elemento de ï¿½ndice "index" de cada array.
 	 */
 	public static String[] strArrayVectorToArray(Vector<String[]> vec, int index) {
 		String[] ret = new String[vec.size()];
@@ -97,7 +97,7 @@ public class Utils
 	}
 	
 	/**
-	 * Gera um array de Strings, em que cada String são os elementos de índice "indexes"
+	 * Gera um array de Strings, em que cada String sï¿½o os elementos de ï¿½ndice "indexes"
 	 * em cada String[] do Vector<String[]> passado, formatadas segundo "macro".
 	 */
 	public static String[] formattedFromVector(Vector<String[]> vec, String macro, int[] indexes) {
@@ -118,7 +118,7 @@ public class Utils
 		return ret;
 	}
 
-	/* ---------------------------- GERAÇÃO DE STRINGS ---------------------------- */
+	/* ---------------------------- GERAï¿½ï¿½O DE STRINGS ---------------------------- */
 	/**
 	 * Devolve uma string com os elementos "strs" separados pela string "sep".
 	 * @param strs os elementos a juntar numa string apenas.
@@ -168,19 +168,19 @@ public class Utils
 	}
 	
 	/* --------------------------------------------------------------------------- */
-	/* ---------------------------- MÉTODOS DE PRINTS ---------------------------- */
+	/* ---------------------------- Mï¿½TODOS DE PRINTS ---------------------------- */
 	/* --------------------------------------------------------------------------- */
 	/**
-	 * Imprime o erro que ocorreu, bem como o método e classe onde ocorreu.
-	 * @param e a excepção (erro) lançada.
+	 * Imprime o erro que ocorreu, bem como o mï¿½todo e classe onde ocorreu.
+	 * @param e a excepï¿½ï¿½o (erro) lanï¿½ada.
 	 */
 	public static void printError(Exception e) {
-		System.out.println(e.toString() + " no método " + e.getStackTrace()[0].getMethodName() + "() da classe " + e.getStackTrace()[0].getClassName());
+		System.out.println(e.toString() + " no mï¿½todo " + e.getStackTrace()[0].getMethodName() + "() da classe " + e.getStackTrace()[0].getClassName());
 		e.printStackTrace();
 	}
 	
 	/**
-	 * Imprime um Vector de arrays de Strings, um array por linha, separados por vírgulas.
+	 * Imprime um Vector de arrays de Strings, um array por linha, separados por vï¿½rgulas.
 	 * @param vec Vector a imprimir.
 	 */
 	public static void printStringArrayVector(Vector<String[]> vec) {
@@ -193,7 +193,7 @@ public class Utils
 	}
 	
 	/**
-	 * Imprime um array de Strings numa linha, com os elementos separados por vírgulas.
+	 * Imprime um array de Strings numa linha, com os elementos separados por vï¿½rgulas.
 	 */
 	public static void printStringArray(String[] arr) {
 		System.out.print(arr[0]);
@@ -227,12 +227,12 @@ public class Utils
 	}
 	
 	/* --------------------------------------------------------------------------- */
-	/* ---------------------------- MÉTODOS NUMÉRICOS ---------------------------- */
+	/* ---------------------------- Mï¿½TODOS NUMï¿½RICOS ---------------------------- */
 	/* --------------------------------------------------------------------------- */
 	/**
 	 * Converte uma String para inteiro.
-	 * @param strnumber o número (em formato String) a converter.
-	 * @return a String numérica convertida ou ERROR_INT (definido em Consts) se a conversão é impossível.
+	 * @param strnumber o nï¿½mero (em formato String) a converter.
+	 * @return a String numï¿½rica convertida ou ERROR_INT (definido em Consts) se a conversï¿½o ï¿½ impossï¿½vel.
 	 */
 	public static int toInt(String strnumber) {
 		try {
@@ -244,8 +244,8 @@ public class Utils
 	
 	/**
 	 * Converte uma String para double.
-	 * @param strnumber o número (em formato String) a converter.
-	 * @return a o número convertido ou ERROR_DOUBLE (definido em Consts) se a conversão é impossível.
+	 * @param strnumber o nï¿½mero (em formato String) a converter.
+	 * @return a o nï¿½mero convertido ou ERROR_DOUBLE (definido em Consts) se a conversï¿½o ï¿½ impossï¿½vel.
 	 */
 	public static double toDouble(String strnumber) {
 		try {
@@ -256,12 +256,12 @@ public class Utils
 	}
 	
 	/* -------------------------------------------------------------------------- */
-	/* ---------------------------- MÉTODOS DE DATAS ---------------------------- */
+	/* ---------------------------- Mï¿½TODOS DE DATAS ---------------------------- */
 	/* -------------------------------------------------------------------------- */
 	/**
-	 * Converte uma data para formato legível, em String, com o formato "ano/mês/dia".
+	 * Converte uma data para formato legï¿½vel, em String, com o formato "ano/mï¿½s/dia".
 	 * @param date a data (Calendar) a converter.
-	 * @return a data em formato String se a data recebida é válida, "null" caso contrário.
+	 * @return a data em formato String se a data recebida ï¿½ vï¿½lida, "null" caso contrï¿½rio.
 	 */
 	public static String toSimpleDate(Calendar date) {
 		if(date != null)
@@ -271,9 +271,9 @@ public class Utils
 	}
 	
 	/**
-	 * Converte uma data para formato legível, em String, com o formato "ano/mês/dia (hora:minuto)".
+	 * Converte uma data para formato legï¿½vel, em String, com o formato "ano/mï¿½s/dia (hora:minuto)".
 	 * @param date a data (Calendar) a converter.
-	 * @return a data em formato String se a data recebida é válida, "null" caso contrário.
+	 * @return a data em formato String se a data recebida ï¿½ vï¿½lida, "null" caso contrï¿½rio.
 	 */
 	public static String toSimpleTime(Calendar date) {
 		if(date != null)
@@ -283,9 +283,9 @@ public class Utils
 	}
 	
 	/**
-	 * Converte uma String para Calendar, segundo o formato "ano/mês/dia (hora:minuto)" ou somente "ano/mês/dia".
+	 * Converte uma String para Calendar, segundo o formato "ano/mï¿½s/dia (hora:minuto)" ou somente "ano/mï¿½s/dia".
 	 * @param date String a converter.
-	 * @return o Calendar correspondente, null se não conseguiu converter.
+	 * @return o Calendar correspondente, null se nï¿½o conseguiu converter.
 	 */
 	public static Calendar toCalendar(String date) {
 		if(date.contains("("))
@@ -295,9 +295,9 @@ public class Utils
 	}
 	
 	/**
-	 * Converte uma String para Calendar, segundo o formato "ano/mês/dia (hora:minuto)".
+	 * Converte uma String para Calendar, segundo o formato "ano/mï¿½s/dia (hora:minuto)".
 	 * @param date String a converter.
-	 * @return o Calendar correspondente, null se não conseguiu converter.
+	 * @return o Calendar correspondente, null se nï¿½o conseguiu converter.
 	 */
 	private static Calendar toCalendarTime(String date) {
 		String[] dateValues = date.split(" ");
@@ -326,9 +326,9 @@ public class Utils
 	}
 	
 	/**
-	 * Converte uma String para Calendar, segundo o formato "ano/mês/dia".
+	 * Converte uma String para Calendar, segundo o formato "ano/mï¿½s/dia".
 	 * @param date String a converter.
-	 * @return o Calendar correspondente, null se não conseguiu converter.
+	 * @return o Calendar correspondente, null se nï¿½o conseguiu converter.
 	 */
 	private static Calendar toCalendarDate(String date) {
 		String[] dateValues = date.split("/");
@@ -353,10 +353,10 @@ public class Utils
 	}
 	
 	/**
-	 * Calcula a diferença em dias entre duas datas.
-	 * @param c1 a data 1 (à qual subtrair a segunda)
-	 * @param c2 o data 2 (subtraída à primeira)
-	 * @return a diferença em dias (negativo se a segunda for mais recente que a primeira).
+	 * Calcula a diferenï¿½a em dias entre duas datas.
+	 * @param c1 a data 1 (ï¿½ qual subtrair a segunda)
+	 * @param c2 o data 2 (subtraï¿½da ï¿½ primeira)
+	 * @return a diferenï¿½a em dias (negativo se a segunda for mais recente que a primeira).
 	 */
 	public static int difCalendars(Calendar c1, Calendar c2) {
 		long millis = c1.getTimeInMillis() - c2.getTimeInMillis();
@@ -364,11 +364,24 @@ public class Utils
 	}
 	
 	/**
-	 * Calcula a diferença em dias entre uma data e a actual.
-	 * @param cal a data a verificar (subtraída à actual).
-	 * @return a diferença em dias (negativo se a data actual for mais recente que a outra).
+	 * Calcula a diferenï¿½a em dias entre uma data e a actual.
+	 * @param cal a data a verificar (subtraï¿½da ï¿½ actual).
+	 * @return a diferenï¿½a em dias (negativo se a data actual for mais recente que a outra).
 	 */
 	public static int difToCurrentDate(Calendar cal){
 		return difCalendars(cal, new GregorianCalendar());
 	}
+
+        /**
+         * Verifica se um determinado text field sÃ³ contem nÃºmeros
+         */
+        public static boolean isNumber(String str){
+             try{
+                 Integer.parseInt( str);
+                 return true;
+             } catch (NumberFormatException e) {
+                     return false;
+             }
+
+        }
 }

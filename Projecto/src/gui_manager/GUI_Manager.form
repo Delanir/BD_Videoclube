@@ -3183,7 +3183,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jAdicionarClientePanel" min="-2" pref="609" max="-2" attributes="0"/>
+                      <Component id="jAdicionarClientePanel" min="-2" pref="709" max="-2" attributes="0"/>
                       <EmptySpace pref="224" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -3225,20 +3225,28 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="nomeAdicionaClientes" alignment="0" min="-2" pref="208" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="passwordAdicionaClientes" alignment="1" max="32767" attributes="1"/>
-                                          <Component id="telefoneAdicionaClientes" alignment="0" pref="112" max="32767" attributes="1"/>
-                                          <Component id="biAdicionaClientes" max="32767" attributes="1"/>
-                                      </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                                              <Component id="biAdicionaClientes" pref="121" max="32767" attributes="1"/>
                                               <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="passwordAdicionaClientes" alignment="0" max="32767" attributes="1"/>
+                                                  <Component id="telefoneAdicionaClientes" alignment="0" pref="119" max="32767" attributes="1"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="passwordAdicionaClientes2" min="-2" pref="129" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                               <Component id="obterDadosAdicionarClientes" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -3272,7 +3280,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="biAdicionaClientes" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="biAdicionaClientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="obterDadosAdicionarClientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3281,10 +3292,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="obterDadosAdicionarClientes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -3310,7 +3318,7 @@
                       <Component id="jScrollPane7" min="-2" pref="71" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jVoltarACFButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="113" max="32767" attributes="0"/>
+                      <EmptySpace pref="110" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3367,14 +3375,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jVoltarACFButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="telefoneAdicionaClientes">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="239000000"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance())"/>
-              </AuxValues>
-            </Component>
             <Component class="javax.swing.JButton" name="adicionarCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Adicionar/Actualizar"/>
@@ -3417,6 +3417,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="biAdicionaClientes">
+            </Component>
+            <Component class="javax.swing.JTextField" name="telefoneAdicionaClientes">
             </Component>
           </SubComponents>
         </Container>

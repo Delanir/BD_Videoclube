@@ -451,7 +451,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jScrollPane7 = new javax.swing.JScrollPane();
         outputAdicionaClientes = new javax.swing.JTextArea();
         jVoltarACFButton = new javax.swing.JButton();
-        telefoneAdicionaClientes = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
         adicionarCliente = new javax.swing.JButton();
         obterDadosAdicionarClientes = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
@@ -460,6 +459,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jLabel28 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         biAdicionaClientes = new javax.swing.JTextField();
+        telefoneAdicionaClientes = new javax.swing.JTextField();
         eliminarClienteFrame = new javax.swing.JFrame();
         jEliminarClientePanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel50 = new javax.swing.JLabel();
@@ -2750,8 +2750,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         }
     });
 
-    telefoneAdicionaClientes.setText("239000000");
-
     adicionarCliente.setText("Adicionar/Actualizar");
     adicionarCliente.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2796,18 +2794,23 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
                     .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(nomeAdicionaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jAdicionarClientePanelLayout.createSequentialGroup()
-                            .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(passwordAdicionaClientes, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(telefoneAdicionaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                .addComponent(biAdicionaClientes))
                             .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jAdicionarClientePanelLayout.createSequentialGroup()
-                                    .addGap(8, 8, 8)
-                                    .addComponent(jLabel24)
+                                    .addComponent(biAdicionaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addGroup(jAdicionarClientePanelLayout.createSequentialGroup()
+                                    .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(passwordAdicionaClientes, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(telefoneAdicionaClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jAdicionarClientePanelLayout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel24)
+                                    .addGap(18, 18, 18)
                                     .addComponent(passwordAdicionaClientes2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jAdicionarClientePanelLayout.createSequentialGroup()
-                                    .addGap(50, 50, 50)
+                                .addGroup(jAdicionarClientePanelLayout.createSequentialGroup()
+                                    .addGap(31, 31, 31)
                                     .addComponent(obterDadosAdicionarClientes))))
                         .addComponent(moradaAdicionaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                         .addComponent(emailAdicionaClientes)))
@@ -2830,16 +2833,16 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
             .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jAdicionarClientePanelLayout.createSequentialGroup()
                     .addGap(10, 10, 10)
-                    .addComponent(biAdicionaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(biAdicionaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(obterDadosAdicionarClientes))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel26)
                         .addComponent(telefoneAdicionaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jAdicionarClientePanelLayout.createSequentialGroup()
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(obterDadosAdicionarClientes)
-                        .addComponent(jLabel29))))
+                    .addComponent(jLabel29)))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel27)
@@ -2860,7 +2863,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jVoltarACFButton)
-            .addContainerGap(113, Short.MAX_VALUE))
+            .addContainerGap(110, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout adicionarClienteFrameLayout = new javax.swing.GroupLayout(adicionarClienteFrame.getContentPane());
@@ -2871,7 +2874,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         .addGroup(adicionarClienteFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adicionarClienteFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jAdicionarClientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jAdicionarClientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(224, Short.MAX_VALUE)))
     );
     adicionarClienteFrameLayout.setVerticalGroup(
@@ -3975,13 +3978,10 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
     private void adicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarClienteActionPerformed
         String output="";
-        try{
-            Integer.parseInt(biAdicionaClientes.getText());
-        }catch(NumberFormatException e){
-            outputAdicionaClientes.setText("Introduza o BI.");
-            return;
-        }
-        if(!biAdicionaClientes.getText().isEmpty()
+        
+        
+        if(Utils.isNumber(biAdicionaClientes.getText())
+                &&!biAdicionaClientes.getText().isEmpty()
                 &&!passwordAdicionaClientes2.getText().isEmpty()
                 &&(passwordAdicionaClientes2.getText().equals(passwordAdicionaClientes.getText()))){
                 
@@ -4035,8 +4035,8 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private void pesquisarPorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarPorIDActionPerformed
         String [] out;
         if(idPesquisarClientes!=null&&!idPesquisarClientes.getText().isEmpty()){
-            try{
-                Integer.parseInt(idPesquisarClientes.getText());
+            
+            if(Utils.isNumber(idPesquisarClientes.getText())){
                 out=gestorClientes.procuraCliente(idPesquisarClientes.getText());
                 if(out!=null&&out.length!=0){
                     outPesquisarClientes.setText("");
@@ -4046,7 +4046,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
                     outPesquisarClientes.setText(
                         "Não foram encontrados resultados");
                 }
-            }catch (NumberFormatException ex){
+            }else{
                 outPesquisarClientes.setText("Erro: ID tem de ser um Número");
             }
         }
@@ -4055,8 +4055,8 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private void pesquisarPorBIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarPorBIActionPerformed
         String [] out;
         if(biPesquisarClientes!=null&&!biPesquisarClientes.getText().isEmpty()){
-            try{
-                Integer.parseInt(biPesquisarClientes.getText());
+            if(Utils.isNumber(biPesquisarClientes.getText())){
+               
                 out=gestorClientes.procuraClienteBI(biPesquisarClientes.getText());
                 if(out!=null&&out.length!=0){
                     outPesquisarClientes.setText("");
@@ -4066,7 +4066,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
                     outPesquisarClientes.setText(
                         "Não foram encontrados resultados");
                 }
-            }catch (NumberFormatException ex){
+            }else{
                 outPesquisarClientes.setText("Erro: BI tem de ser um Número");
             }
         }
@@ -4384,7 +4384,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JTextField realizadorResultadosFilme;
     private javax.swing.JFrame resultadosFrame;
     private javax.swing.JFormattedTextField salarioEmpregados;
-    private javax.swing.JFormattedTextField telefoneAdicionaClientes;
+    private javax.swing.JTextField telefoneAdicionaClientes;
     private javax.swing.JFormattedTextField telefoneEmpregados;
     private javax.swing.JTextField telefonePesquisarClientes;
     private javax.swing.JTextArea textDescricaoAdicionaFilme;
