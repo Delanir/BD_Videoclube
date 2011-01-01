@@ -205,7 +205,7 @@
                               <Component id="jVenderATMButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="actualizarListaMaquinas" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="159" max="32767" attributes="0"/>
+                          <EmptySpace pref="165" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -392,7 +392,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="jScrollPane3" min="-2" pref="164" max="-2" attributes="0"/>
-                          <EmptySpace pref="53" max="32767" attributes="0"/>
+                          <EmptySpace pref="59" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -578,7 +578,7 @@
                               <Component id="jEliminarClientesButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jAdicionarClientesButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="196" max="32767" attributes="0"/>
+                          <EmptySpace pref="202" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -692,15 +692,14 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="salarioEmpregados" min="-2" pref="48" max="-2" attributes="0"/>
                                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="moradaEmpregados" max="32767" attributes="1"/>
                                                   <Component id="nomeEmpregados" alignment="0" max="32767" attributes="1"/>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="passwordEmpregados" alignment="1" pref="120" max="32767" attributes="1"/>
-                                                          <Component id="telefoneEmpregados" alignment="0" pref="120" max="32767" attributes="1"/>
-                                                          <Component id="biEmpregados" alignment="0" pref="120" max="32767" attributes="1"/>
+                                                          <Component id="biEmpregados" alignment="0" pref="120" max="32767" attributes="0"/>
+                                                          <Component id="telefoneEmpregados" alignment="0" pref="120" max="32767" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -722,13 +721,18 @@
                                                       <Component id="opRadio" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="salarioEmpregados" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jScrollPane4" alignment="0" pref="459" max="32767" attributes="1"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="actualzarListaEmpregados" min="-2" pref="114" max="-2" attributes="1"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="actualzarListaEmpregados" min="-2" pref="124" max="-2" attributes="1"/>
+                                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                           <Component id="jDespedirEmpregadoButton" min="-2" pref="115" max="-2" attributes="1"/>
                                       </Group>
                                       <Component id="jScrollPane5" alignment="0" min="-2" pref="459" max="-2" attributes="1"/>
@@ -752,8 +756,8 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="biEmpregados" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="obterDadosEmpregadoActualizacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="biEmpregados" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -768,8 +772,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="telefoneEmpregados" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="telefoneEmpregados" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -785,6 +789,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="salarioEmpregados" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -805,7 +810,7 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane5" min="-2" pref="67" max="-2" attributes="0"/>
-                          <EmptySpace pref="26" max="32767" attributes="0"/>
+                          <EmptySpace pref="32" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -993,32 +998,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualzarListaEmpregadosActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JFormattedTextField" name="telefoneEmpregados">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="239000000"/>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance())"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JFormattedTextField" name="salarioEmpregados">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="2000"/>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance())"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JFormattedTextField" name="biEmpregados">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="&quot;&quot;" type="code"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance())"/>
-                  </AuxValues>
-                </Component>
                 <Component class="javax.swing.JButton" name="obterDadosEmpregadoActualizacao">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Obter dados para actualza&#xe7;&#xe3;o"/>
@@ -1026,6 +1005,20 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="obterDadosEmpregadoActualizacaoActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="biEmpregados">
+                </Component>
+                <Component class="javax.swing.JTextField" name="telefoneEmpregados">
+                </Component>
+                <Component class="javax.swing.JTextField" name="salarioEmpregados">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="2000"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel38">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x20ac;"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -1078,7 +1071,7 @@
                               <Component id="jPesquisarButton" pref="57" max="32767" attributes="0"/>
                               <Component id="jFormatosFrameButton" alignment="0" pref="57" max="32767" attributes="1"/>
                           </Group>
-                          <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

@@ -246,35 +246,36 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jLabel31 = new javax.swing.JLabel();
         verificarRequesicoes = new javax.swing.JButton();
         jEmpregadosManagerPanel = new javax.swing.JPanel();
-        javax.swing.JLabel jLabel12 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         listaEmpregados = new javax.swing.JList();
         jDespedirEmpregadoButton = new javax.swing.JToggleButton();
-        javax.swing.JLabel jLabel14 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel15 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel16 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel17 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel18 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel19 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel20 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         adminRadio = new javax.swing.JRadioButton();
         opRadio = new javax.swing.JRadioButton();
-        javax.swing.JLabel jLabel21 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         nomeEmpregados = new javax.swing.JTextField();
         passwordEmpregados = new javax.swing.JPasswordField();
         emailEmpregados = new javax.swing.JTextField();
         moradaEmpregados = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel22 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         passwordEmpregados2 = new javax.swing.JPasswordField();
         jAdicionarEmpregadoButton = new javax.swing.JToggleButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         outEmpregados = new javax.swing.JTextArea();
         actualzarListaEmpregados = new javax.swing.JButton();
-        telefoneEmpregados = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
-        salarioEmpregados = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
-        biEmpregados = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
         obterDadosEmpregadoActualizacao = new javax.swing.JButton();
+        biEmpregados = new javax.swing.JTextField();
+        telefoneEmpregados = new javax.swing.JTextField();
+        salarioEmpregados = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
         jFilmesManagerPanel = new javax.swing.JPanel();
         jAdicionarFilmesToggleButton = new javax.swing.JToggleButton();
         jActualizarStockButton = new javax.swing.JToggleButton();
@@ -667,7 +668,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jVenderATMButton)
                     .addComponent(actualizarListaMaquinas))
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Máquinas", jATMManagerPanel);
@@ -797,7 +798,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addComponent(jButton6))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Estatísticas", jEstatisticasPanel);
@@ -895,7 +896,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addComponent(jNotificarClientesButton)
                     .addComponent(jEliminarClientesButton)
                     .addComponent(jAdicionarClientesButton))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Clientes", jClientesManagerPanel);
@@ -964,18 +965,16 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             }
         });
 
-        telefoneEmpregados.setText("239000000");
-
-        salarioEmpregados.setText("2000");
-
-        biEmpregados.setText("");
-
         obterDadosEmpregadoActualizacao.setText("Obter dados para actualzação");
         obterDadosEmpregadoActualizacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 obterDadosEmpregadoActualizacaoActionPerformed(evt);
             }
         });
+
+        salarioEmpregados.setText("2000");
+
+        jLabel38.setText("€");
 
         javax.swing.GroupLayout jEmpregadosManagerPanelLayout = new javax.swing.GroupLayout(jEmpregadosManagerPanel);
         jEmpregadosManagerPanel.setLayout(jEmpregadosManagerPanelLayout);
@@ -1000,15 +999,14 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                                     .addComponent(jLabel18))
                                 .addGap(52, 52, 52)
                                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(salarioEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(moradaEmpregados)
                                         .addComponent(nomeEmpregados)
                                         .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                                            .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(passwordEmpregados, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                                .addComponent(telefoneEmpregados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                                .addComponent(biEmpregados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                                            .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(passwordEmpregados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                                .addComponent(biEmpregados, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                                .addComponent(telefoneEmpregados, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                 .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
@@ -1022,12 +1020,16 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                                         .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
                                             .addComponent(adminRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(opRadio)))))
+                                            .addComponent(opRadio)))
+                                    .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
+                                        .addComponent(salarioEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel38))))
                             .addComponent(jLabel13)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
                             .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                                .addComponent(actualzarListaEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(actualzarListaEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
                                 .addComponent(jDespedirEmpregadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(318, 318, 318))
@@ -1044,8 +1046,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(biEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(obterDadosEmpregadoActualizacao))
+                    .addComponent(obterDadosEmpregadoActualizacao)
+                    .addComponent(biEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1056,8 +1058,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                         .addComponent(jLabel16)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(telefoneEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19))
+                    .addComponent(jLabel19)
+                    .addComponent(telefoneEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1069,7 +1071,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGap(7, 7, 7)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(salarioEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(salarioEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38))
                 .addGap(18, 18, 18)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
@@ -1087,7 +1090,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addComponent(jDespedirEmpregadoButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Empregados", jEmpregadosManagerPanel);
@@ -1167,7 +1170,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPesquisarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
                     .addComponent(jFormatosFrameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
-                .addGap(222, 222, 222))
+                .addGap(228, 228, 228))
         );
 
         jTabbedPane2.addTab("Gestão de Filmes", jFilmesManagerPanel);
@@ -3544,32 +3547,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         listaMaquinas.setModel(new OurListModel(gestorMaquinas.verListaMaquinasATM()));
     }//GEN-LAST:event_jAdicionarATMButtonActionPerformed
 
-    private void jDespedirEmpregadoButtonComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonComponentResized
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jDespedirEmpregadoButtonComponentResized
-
-    private void jAdicionarEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarEmpregadoButtonActionPerformed
-        String isAdmin="0";
-        if(!nomeEmpregados.getText().isEmpty()
-             &&biEmpregados.isEditValid()
-             &&salarioEmpregados.isEditValid()
-             &&telefoneEmpregados.isEditValid()
-             &&(passwordEmpregados.getText().equals(passwordEmpregados2.getText()))//TODO : Deprecated
-               ){
-               
-            if(adminRadio.isSelected())
-                isAdmin="1";
-            gestorEmpregados.actualizaEmpregado(nomeEmpregados.getText(),
-                    telefoneEmpregados.getText(),
-                    biEmpregados.getText(),
-                    isAdmin,
-                    passwordEmpregados.getText(),
-                    salarioEmpregados.getText(),
-                    emailEmpregados.getText(),
-                    moradaEmpregados.getText());
-        }
-    }//GEN-LAST:event_jAdicionarEmpregadoButtonActionPerformed
-
     private void jVerificarPagamentosAtrasoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVerificarPagamentosAtrasoButtonActionPerformed
 
         pagamentosAtraso.setModel(new OurListModel(gestorClientes.getClientesComEntregasForaDePrazo()));
@@ -3867,19 +3844,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         listaMaquinas.setModel(new OurListModel(gestorMaquinas.verListaMaquinasATM()));
     }//GEN-LAST:event_actualizarListaMaquinasActionPerformed
 
-    private void actualzarListaEmpregadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualzarListaEmpregadosActionPerformed
-
-        listaEmpregados.setModel(new OurListModel(gestorEmpregados.verListaEmpregados()));
-    }//GEN-LAST:event_actualzarListaEmpregadosActionPerformed
-
-    private void jDespedirEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonActionPerformed
-       String output="";
-       String idEmpregado=((String)listaEmpregados.getSelectedValue()).split(" ")[0];
-       output=gestorEmpregados.invalidaEmpregado(idEmpregado);
-       //TODO: Output message
-       outEmpregados.setText(output);
-    }//GEN-LAST:event_jDespedirEmpregadoButtonActionPerformed
-
     private void eliminarClienteFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_eliminarClienteFrameWindowClosing
         
         biEliminaClientes.setText("");
@@ -4072,30 +4036,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         }
     }//GEN-LAST:event_pesquisarPorBIActionPerformed
 
-    private void obterDadosEmpregadoActualizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obterDadosEmpregadoActualizacaoActionPerformed
-        // TODO add your handling code here:
-        String []out;
-        if(biEmpregados.isEditValid()){
-            out=gestorEmpregados.procuraEmpregadoBI(biEmpregados.getText());
-            if(out!=null&&out.length>0){
-                if(out[1].equals("1")){
-                    adminRadio.doClick();
-                }else{
-                    opRadio.doClick();
-                }
-                salarioEmpregados.setText(out[2]);
-                nomeEmpregados.setText(out[3]);
-                passwordEmpregados.setText(out[5]);
-                passwordEmpregados2.setText(out[5]);
-                moradaEmpregados.setText(out[6]);
-                emailEmpregados.setText(out[7]);
-                telefoneEmpregados.setText(out[8]);
-            }
-
-        }
-        
-    }//GEN-LAST:event_obterDadosEmpregadoActualizacaoActionPerformed
-
     private void verificarRequesicoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarRequesicoesActionPerformed
         pagamentosAtraso.setModel(new OurListModel(gestorClientes.getClientesComEntregasPorFazer()));
     }//GEN-LAST:event_verificarRequesicoesActionPerformed
@@ -4156,6 +4096,68 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         transferFocus();
     }//GEN-LAST:event_jFormatosFrameButton1ActionPerformed
 
+    private void obterDadosEmpregadoActualizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obterDadosEmpregadoActualizacaoActionPerformed
+        // TODO add your handling code here:
+        String []out;
+        if(Utils.isNumber(biEmpregados.getText())){
+            out=gestorEmpregados.procuraEmpregadoBI(biEmpregados.getText());
+            if(out!=null&&out.length>0){
+                if(out[1].equals("1")){
+                    adminRadio.doClick();
+                }else{
+                    opRadio.doClick();
+                }
+                salarioEmpregados.setText(out[2]);
+                nomeEmpregados.setText(out[3]);
+                passwordEmpregados.setText(out[5]);
+                passwordEmpregados2.setText(out[5]);
+                moradaEmpregados.setText(out[6]);
+                emailEmpregados.setText(out[7]);
+                telefoneEmpregados.setText(out[8]);
+            }
+
+        }
+    }//GEN-LAST:event_obterDadosEmpregadoActualizacaoActionPerformed
+
+    private void actualzarListaEmpregadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualzarListaEmpregadosActionPerformed
+
+        listaEmpregados.setModel(new OurListModel(gestorEmpregados.verListaEmpregados()));
+}//GEN-LAST:event_actualzarListaEmpregadosActionPerformed
+
+    private void jAdicionarEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarEmpregadoButtonActionPerformed
+        String isAdmin="0";
+        if(!nomeEmpregados.getText().isEmpty()
+                &&Utils.isNumber(biEmpregados.getText())
+                &&Utils.isNumber(salarioEmpregados.getText())
+                &&Utils.isNumber(telefoneEmpregados.getText())
+                &&(passwordEmpregados.getText().equals(passwordEmpregados2.getText()))//TODO : Deprecated
+                ){
+
+            if(adminRadio.isSelected())
+                isAdmin="1";
+            gestorEmpregados.actualizaEmpregado(nomeEmpregados.getText(),
+                    telefoneEmpregados.getText(),
+                    biEmpregados.getText(),
+                    isAdmin,
+                    passwordEmpregados.getText(),
+                    salarioEmpregados.getText(),
+                    emailEmpregados.getText(),
+                    moradaEmpregados.getText());
+        }
+}//GEN-LAST:event_jAdicionarEmpregadoButtonActionPerformed
+
+    private void jDespedirEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonActionPerformed
+        String output="";
+        String idEmpregado=((String)listaEmpregados.getSelectedValue()).split(" ")[0];
+        output=gestorEmpregados.invalidaEmpregado(idEmpregado);
+        //TODO: Output message
+        outEmpregados.setText(output);
+}//GEN-LAST:event_jDespedirEmpregadoButtonActionPerformed
+
+    private void jDespedirEmpregadoButtonComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonComponentResized
+        // TODO add your handling code here:
+}//GEN-LAST:event_jDespedirEmpregadoButtonComponentResized
+
    
     //OUR GUI VARS
     private javax.swing.ButtonGroup bgroup;
@@ -4177,7 +4179,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JTextField anoResultadosFilme;
     private javax.swing.JTextField biAdicionaClientes;
     private javax.swing.JFormattedTextField biEliminaClientes;
-    private javax.swing.JFormattedTextField biEmpregados;
+    private javax.swing.JTextField biEmpregados;
     private javax.swing.JTextField biNotificarClientes;
     private javax.swing.JTextField biPesquisarClientes;
     private javax.swing.JComboBox countriesList;
@@ -4245,7 +4247,18 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JToggleButton jGeneroButton;
     private javax.swing.JPanel jGenerosPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -4260,6 +4273,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -4383,9 +4397,9 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JSpinner qtdAdicionaStock;
     private javax.swing.JTextField realizadorResultadosFilme;
     private javax.swing.JFrame resultadosFrame;
-    private javax.swing.JFormattedTextField salarioEmpregados;
+    private javax.swing.JTextField salarioEmpregados;
     private javax.swing.JTextField telefoneAdicionaClientes;
-    private javax.swing.JFormattedTextField telefoneEmpregados;
+    private javax.swing.JTextField telefoneEmpregados;
     private javax.swing.JTextField telefonePesquisarClientes;
     private javax.swing.JTextArea textDescricaoAdicionaFilme;
     private javax.swing.JTextArea textEliminaFilmes;
