@@ -42,7 +42,14 @@ public class GestorClientes
 	}
 	
 	public String[] procuraClienteBI(String bi) {
-		return DBHandler.getClienteBI(bi);
+                try{
+                    Integer.parseInt(bi);
+                    Utils.dbg(bi);
+                    return DBHandler.getClienteBI(bi);
+                }catch (NumberFormatException e){
+                    
+                }
+                return null;
 	}
 
 	/**
@@ -98,12 +105,12 @@ public class GestorClientes
 	public void notificarCliente(String id, String mensagem) {
         String[] out;
 		if (id != null && id.isEmpty()) {
-			// procura dados do cliente (contêm e-mail)
+			// procura dados do cliente (contï¿½m e-mail)
             out=DBHandler.getClienteBI(id);
 			// envia email
             if(out != null && out.length != 0 && out[5] != null){
                 try {
-                    EmailSender.send(Consts.EMAIL_SMTP_HOST, Consts.EMAIL_SMTP_PORT, Consts.EMAIL_VIDEOCLUBE, out[5], "Notificação", mensagem);
+                    EmailSender.send(Consts.EMAIL_SMTP_HOST, Consts.EMAIL_SMTP_PORT, Consts.EMAIL_VIDEOCLUBE, out[5], "Notificaï¿½ï¿½o", mensagem);
                 } catch (AddressException ex) {
 
                 } catch (MessagingException ex) {

@@ -451,7 +451,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jScrollPane7 = new javax.swing.JScrollPane();
         outputAdicionaClientes = new javax.swing.JTextArea();
         jVoltarACFButton = new javax.swing.JButton();
-        biAdicionaClientes = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
         telefoneAdicionaClientes = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
         adicionarCliente = new javax.swing.JButton();
         obterDadosAdicionarClientes = new javax.swing.JButton();
@@ -460,6 +459,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        biAdicionaClientes = new javax.swing.JTextField();
         eliminarClienteFrame = new javax.swing.JFrame();
         jEliminarClientePanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel50 = new javax.swing.JLabel();
@@ -2737,7 +2737,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     jLabel29.setText("BI:");
 
     jLabel33.setFont(new java.awt.Font("Tahoma", 0, 16));
-    jLabel33.setText("Adicionar Novo Cliente ( para actualização marcar campos a modificar com V ):");
+    jLabel33.setText("Adicionar Novo Cliente");
 
     outputAdicionaClientes.setColumns(20);
     outputAdicionaClientes.setRows(5);
@@ -2749,8 +2749,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
             jVoltarACFButtonActionPerformed(evt);
         }
     });
-
-    biAdicionaClientes.setText("");
 
     telefoneAdicionaClientes.setText("239000000");
 
@@ -2798,10 +2796,10 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
                     .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(nomeAdicionaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jAdicionarClientePanelLayout.createSequentialGroup()
-                            .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(biAdicionaClientes)
-                                .addComponent(passwordAdicionaClientes)
-                                .addComponent(telefoneAdicionaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(passwordAdicionaClientes, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(telefoneAdicionaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                                .addComponent(biAdicionaClientes))
                             .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jAdicionarClientePanelLayout.createSequentialGroup()
                                     .addGap(8, 8, 8)
@@ -2831,14 +2829,15 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
                 .addComponent(nomeAdicionaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jAdicionarClientePanelLayout.createSequentialGroup()
-                    .addGap(41, 41, 41)
+                    .addGap(10, 10, 10)
+                    .addComponent(biAdicionaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel26)
                         .addComponent(telefoneAdicionaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jAdicionarClientePanelLayout.createSequentialGroup()
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(jAdicionarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(biAdicionaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(obterDadosAdicionarClientes)
                         .addComponent(jLabel29))))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2872,8 +2871,8 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         .addGroup(adicionarClienteFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adicionarClienteFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jAdicionarClientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE)))
+                .addComponent(jAdicionarClientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(224, Short.MAX_VALUE)))
     );
     adicionarClienteFrameLayout.setVerticalGroup(
         adicionarClienteFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3433,6 +3432,8 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
     private void adicionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarClientesActionPerformed
         // TODO add your handling code here:
+        adicionarClienteFrame.setVisible(true);
+        transferFocus();
     }//GEN-LAST:event_adicionarClientesActionPerformed
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
@@ -3974,8 +3975,13 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
     private void adicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarClienteActionPerformed
         String output="";
-        if(biAdicionaClientes.isEditValid()
-                &&!biAdicionaClientes.getText().isEmpty()
+        try{
+            Integer.parseInt(biAdicionaClientes.getText());
+        }catch(NumberFormatException e){
+            outputAdicionaClientes.setText("Introduza o BI.");
+            return;
+        }
+        if(!biAdicionaClientes.getText().isEmpty()
                 &&!passwordAdicionaClientes2.getText().isEmpty()
                 &&(passwordAdicionaClientes2.getText().equals(passwordAdicionaClientes.getText()))){
                 
@@ -3992,6 +3998,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     }//GEN-LAST:event_adicionarClienteActionPerformed
 
     private void obterDadosAdicionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obterDadosAdicionarClientesActionPerformed
+        System.out.println(biAdicionaClientes.getText());
         String [] out=gestorClientes.procuraClienteBI(biAdicionaClientes.getText());
         
         if(out!=null){
@@ -4168,7 +4175,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JButton alugar;
     private javax.swing.JSpinner anoAdicionaFilmeSpinner;
     private javax.swing.JTextField anoResultadosFilme;
-    private javax.swing.JFormattedTextField biAdicionaClientes;
+    private javax.swing.JTextField biAdicionaClientes;
     private javax.swing.JFormattedTextField biEliminaClientes;
     private javax.swing.JFormattedTextField biEmpregados;
     private javax.swing.JTextField biNotificarClientes;

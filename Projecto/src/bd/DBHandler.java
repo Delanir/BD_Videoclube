@@ -205,23 +205,23 @@ public class DBHandler
 	}
 	
 	public static Vector<String[]> getClientesComEntregasPorFazer() {
-		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI" +
+		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI,Count(r.ID_REQ) " +
 					   " FROM clientes c, requisicoes r" +
 					   " WHERE c.ID_PES = r.ID_PES" +
 					   " AND r.DATA_ENTREGA = null" +
 					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI" +
-					   " HAVING COUNT(*) > 0";
+					   " HAVING COUNT(r.ID_REQ) > 0";
 		return select(query);
 	}
 	
 	public static Vector<String[]> getClientesComEntregasForaDePrazo() {
-		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI" +
+		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI ,Count(r.ID_REQ) " +
 					   " FROM clientes c, requisicoes r" +
 					   " WHERE c.ID_PES = r.ID_PES" +
 					   " AND r.DATA_ENTREGA = null" +
 					   " AND r.DATA_LIMITE < SYSDATE" +
 					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI" +
-					   " HAVING COUNT(*) > 0";
+					   " HAVING COUNT(r.ID_REQ) > 0";
 		return select(query);
 	}
 	
@@ -475,7 +475,7 @@ public class DBHandler
 			for(String gen : generos)
 				query += op + "g.NOME_GENERO = " + gen;
 		} else {
-			query += " WHERE f.ID_FIL = f.ID_FIL";		//redundância para evitar o caso em que o WHERE fica sem nada
+			query += " WHERE f.ID_FIL = f.ID_FIL";		//redundï¿½ncia para evitar o caso em que o WHERE fica sem nada
 		}
 		query += (titulo.isEmpty()?"":" AND titulo LIKE "+p("%"+titulo+"%")) +
 			     (realizador.isEmpty()?"":" AND realizador LIKE "+p("%"+realizador+"%")) +
