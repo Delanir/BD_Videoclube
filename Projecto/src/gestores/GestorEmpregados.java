@@ -44,7 +44,7 @@ public class GestorEmpregados
 	 * Procura empregados com as informações nos campos não nulos passados.
 	 * Strings devolvidas no formato "id : [BI] nome"
 	 */
-	public String[] procuraEmpregados(String is_admin, String salarioLow, String salarioHigh, String nome, String bi, String morada, String email, String telefone) {
+	public String[] procuraEmpregados(String is_admin, String salarioLow, String salarioHigh, String nome, String morada, String email, String telefone) {
 		Vector<String[]> vec = DBHandler.procuraEmpregados(is_admin, salarioLow, salarioHigh, nome, morada, email, telefone);
 		return Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{2, 4, 3});
 	}
