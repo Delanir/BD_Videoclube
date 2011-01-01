@@ -231,7 +231,7 @@ public class DBHandler
 					   " WHERE ID_PES = ID_PES" +	// redund�ncia para evitar o caso em que o WHERE fica sem nada
 					   (nome.isEmpty()?"":" AND nome_pessoa LIKE "+p("%"+nome+"%")) +
 					   (morada.isEmpty()?"":" AND morada LIKE "+p("%"+morada+"%")) +
-					   (email.isEmpty()?"":" AND email LIKE "+p("%"+email+"%")) +
+					   (email.isEmpty()?"":" AND e-mail LIKE "+p("%"+email+"%")) +
 					   (telefone.isEmpty()?"":" AND telefone = "+telefone);
 		return select(query);
 	}
@@ -331,7 +331,7 @@ public class DBHandler
 					   (salarioLow.isEmpty()||salarioHigh.isEmpty()?"":" AND salario BETWEEN "+salarioLow+" AND "+salarioHigh) +
 					   (nome.isEmpty()?"":" AND nome_pessoa LIKE "+p("%"+nome+"%")) +
 					   (morada.isEmpty()?"":" AND morada LIKE "+p("%"+morada+"%")) +
-					   (email.isEmpty()?"":" AND email LIKE "+p("%"+email+"%")) +
+					   (email.isEmpty()?"":" AND e-mail LIKE "+p("%"+email+"%")) +
 					   (telefone.isEmpty()?"":" AND telefone = "+telefone);
 		return select(query);
 	}
