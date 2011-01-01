@@ -3512,13 +3512,13 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     }//GEN-LAST:event_jEscolherFicheiroButtonActionPerformed
 
     private void jLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonActionPerformed
-        String out=gestorUtilizadores.loginEmpregado(jUsernameField.getText(), jPasswordField.getText());
-        try{
+         try{
             db=new DBHandler();
         }catch (Exception e){
             System.exit(-1);
         }
-
+        String out=gestorUtilizadores.loginEmpregado(jUsernameField.getText(), jPasswordField.getText());
+       
         if(!out.equals("FAIL")){
             if(out.equals("1")){
                 //administrador
