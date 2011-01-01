@@ -20,7 +20,7 @@ public class GestorEmpregados
 	 * Actualiza os dados se já existir.
 	 */
 	public String actualizaEmpregado(String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone) {
-		if (DBHandler.biEmpregadoExiste(bi)) {
+		if (!DBHandler.biEmpregadoExiste(bi)) {
 			DBHandler.adicionaEmpregado(is_admin, salario, nome, bi, password, morada, email, telefone);
 			return "Novo empregado adicionado.";
 		} else {

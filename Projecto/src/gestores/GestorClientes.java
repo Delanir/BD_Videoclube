@@ -25,7 +25,7 @@ public class GestorClientes
 	 * Actualiza os dados se j� existir.
 	 */
 	public String actualizaCliente(String nome, String bi, String password, String morada, String email, String telefone) {
-		if (DBHandler.biClienteExiste(bi)) {
+		if (!DBHandler.biClienteExiste(bi)) {
 			DBHandler.adicionaCliente(nome, bi, password, morada, email, telefone);
 			return "Novo cliente adicionado.";
 		} else {
