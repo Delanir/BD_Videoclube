@@ -203,28 +203,14 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jMenuAdministradorPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        jATMManagerPanel = new javax.swing.JPanel();
-        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaMaquinas = new javax.swing.JList();
-        jVenderATMButton = new javax.swing.JButton();
-        jAdicionarATMButton = new javax.swing.JButton();
-        javax.swing.JLabel jLabel8 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        outMaquinas = new javax.swing.JTextArea();
-        jSpinner6 = new javax.swing.JSpinner();
-        jSpinner6.setModel(new SpinnerNumberModel(2000.00,0.00,10000.00,0.50));
-        javax.swing.JLabel jLabel97 = new javax.swing.JLabel();
-        actualizarListaMaquinas = new javax.swing.JButton();
         jEstatisticasPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         statsArea = new javax.swing.JTextArea();
         javax.swing.JLabel jLabel9 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        empregadosCheckBox = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        filmesCheckBox = new javax.swing.JCheckBox();
+        maquinasCheckBox = new javax.swing.JCheckBox();
         javax.swing.JLabel jLabel10 = new javax.swing.JLabel();
         dateBegin = new javax.swing.JTextField();
         javax.swing.JLabel jLabel11 = new javax.swing.JLabel();
@@ -232,7 +218,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jButton5 = new javax.swing.JButton();
         dataInit = new javax.swing.JButton();
         dataEnd = new javax.swing.JButton();
-        jCheckBox5 = new javax.swing.JCheckBox();
+        clientesCheckBox = new javax.swing.JCheckBox();
         consultarEstatisticas = new javax.swing.JButton();
         jClientesManagerPanel = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -283,6 +269,20 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jPesquisarButton = new javax.swing.JToggleButton();
         jGeneroButton = new javax.swing.JToggleButton();
         jFormatosFrameButton = new javax.swing.JButton();
+        jATMManagerPanel = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaMaquinas = new javax.swing.JList();
+        jVenderATMButton = new javax.swing.JButton();
+        jAdicionarATMButton = new javax.swing.JButton();
+        javax.swing.JLabel jLabel8 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        outMaquinas = new javax.swing.JTextArea();
+        jSpinner6 = new javax.swing.JSpinner();
+        jSpinner6.setModel(new SpinnerNumberModel(2000.00,0.00,10000.00,0.50));
+        javax.swing.JLabel jLabel97 = new javax.swing.JLabel();
+        actualizarListaMaquinas = new javax.swing.JButton();
         jSairButton = new javax.swing.JButton();
         jMenuOperatorPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -375,10 +375,10 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         javax.swing.JLabel jLabel89 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel90 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel91 = new javax.swing.JLabel();
-        jSpinner4 = new javax.swing.JSpinner();
-        jSpinner4.setModel(new SpinnerNumberModel(1.0,1,10,0.1));
-        jSpinner5 = new javax.swing.JSpinner();
-        jSpinner5.setModel(new SpinnerNumberModel(10.0,1,10,0.1));
+        imdbBSpinner = new javax.swing.JSpinner();
+        imdbBSpinner.setModel(new SpinnerNumberModel(1.0,1,10,0.1));
+        imdbESpinner = new javax.swing.JSpinner();
+        imdbESpinner.setModel(new SpinnerNumberModel(10.0,1,10,0.1));
         javax.swing.JLabel jLabel92 = new javax.swing.JLabel();
         textRealizadorPesquisaFilmes = new javax.swing.JTextField();
         textIdPesquisaFilmes = new javax.swing.JTextField();
@@ -389,10 +389,10 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         countriesList1 = new javax.swing.JComboBox();
         jLabel94 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel95 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner1.setModel(new SpinnerNumberModel(1917,1917,2300,1));
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner3.setModel(new SpinnerNumberModel(2011,1917,2300,1));
+        anoBSpinner = new javax.swing.JSpinner();
+        anoBSpinner.setModel(new SpinnerNumberModel(1917,1917,2300,1));
+        anoESpinner = new javax.swing.JSpinner();
+        anoESpinner.setModel(new SpinnerNumberModel(2011,1917,2300,1));
         pesquisarTodos = new javax.swing.JButton();
         procurarID = new javax.swing.JButton();
         generosBox = new javax.swing.JComboBox();
@@ -587,96 +587,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 24));
         jLabel6.setText("Administrador");
 
-        jLabel3.setText("Adicionar Máquina:");
-
-        jLabel4.setText("Vender Máquina:");
-
-        listaMaquinas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(listaMaquinas);
-
-        jVenderATMButton.setText("Vender");
-        jVenderATMButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jVenderATMButtonActionPerformed(evt);
-            }
-        });
-
-        jAdicionarATMButton.setText("Adicionar");
-        jAdicionarATMButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAdicionarATMButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setText("Custo:");
-
-        outMaquinas.setColumns(20);
-        outMaquinas.setEditable(false);
-        outMaquinas.setRows(5);
-        jScrollPane2.setViewportView(outMaquinas);
-
-        jLabel97.setText("€");
-
-        actualizarListaMaquinas.setText("Actualizar");
-        actualizarListaMaquinas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarListaMaquinasActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jATMManagerPanelLayout = new javax.swing.GroupLayout(jATMManagerPanel);
-        jATMManagerPanel.setLayout(jATMManagerPanelLayout);
-        jATMManagerPanelLayout.setHorizontalGroup(
-            jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jATMManagerPanelLayout.createSequentialGroup()
-                .addContainerGap(600, Short.MAX_VALUE)
-                .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel3)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jATMManagerPanelLayout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel97)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jAdicionarATMButton))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jATMManagerPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(actualizarListaMaquinas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jVenderATMButton)))
-                .addGap(133, 133, 133))
-        );
-        jATMManagerPanelLayout.setVerticalGroup(
-            jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jATMManagerPanelLayout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jAdicionarATMButton)
-                    .addComponent(jLabel8)
-                    .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel97))
-                .addGap(55, 55, 55)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jVenderATMButton)
-                    .addComponent(actualizarListaMaquinas))
-                .addContainerGap(165, Short.MAX_VALUE))
-        );
-
-        jTabbedPane2.addTab("Gestão Máquinas", jATMManagerPanel);
-
         statsArea.setColumns(20);
         statsArea.setEditable(false);
         statsArea.setRows(5);
@@ -684,10 +594,10 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         jLabel9.setText("Estatísticas:");
 
-        jCheckBox1.setText("Empregados");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        empregadosCheckBox.setText("Empregados");
+        empregadosCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                empregadosCheckBoxActionPerformed(evt);
             }
         });
 
@@ -698,9 +608,9 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             }
         });
 
-        jCheckBox3.setText("Filmes");
+        filmesCheckBox.setText("Filmes");
 
-        jCheckBox4.setText("Máquinas");
+        maquinasCheckBox.setText("Máquinas");
 
         jLabel10.setText("Data Início:");
 
@@ -731,7 +641,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             }
         });
 
-        jCheckBox5.setText("Clientes");
+        clientesCheckBox.setText("Clientes");
 
         consultarEstatisticas.setText("Consultar");
         consultarEstatisticas.addActionListener(new java.awt.event.ActionListener() {
@@ -745,13 +655,13 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jEstatisticasPanelLayout.setHorizontalGroup(
             jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEstatisticasPanelLayout.createSequentialGroup()
-                .addContainerGap(596, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1)
+                    .addComponent(empregadosCheckBox)
                     .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox4)
+                    .addComponent(clientesCheckBox)
+                    .addComponent(filmesCheckBox)
+                    .addComponent(maquinasCheckBox)
                     .addComponent(jLabel9)
                     .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
                         .addComponent(jLabel10)
@@ -778,15 +688,15 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGap(48, 48, 48)
                 .addComponent(jLabel9)
                 .addGap(12, 12, 12)
-                .addComponent(jCheckBox1)
+                .addComponent(empregadosCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCheckBox2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox5)
+                .addComponent(clientesCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox3)
+                .addComponent(filmesCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox4)
+                .addComponent(maquinasCheckBox)
                 .addGap(18, 18, 18)
                 .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -803,7 +713,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addComponent(consultarEstatisticas))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Estatísticas", jEstatisticasPanel);
@@ -880,7 +790,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                             .addComponent(verificarRequesicoes)
                             .addComponent(jVerificarPagamentosAtrasoButton)))
                     .addComponent(jScrollPane6))
-                .addContainerGap(553, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jClientesManagerPanelLayout.setVerticalGroup(
             jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -901,7 +811,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addComponent(jNotificarClientesButton)
                     .addComponent(jEliminarClientesButton)
                     .addComponent(jAdicionarClientesButton))
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Clientes", jClientesManagerPanel);
@@ -1038,7 +948,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel13)
                                 .addGap(64, 64, 64)))))
-                .addContainerGap(589, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jEmpregadosManagerPanelLayout.setVerticalGroup(
             jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1096,7 +1006,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                             .addComponent(jDespedirEmpregadoButton))))
                 .addGap(18, 18, 18)
                 .addComponent(actualzarListaEmpregados)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Empregados", jEmpregadosManagerPanel);
@@ -1154,20 +1064,19 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addComponent(jFormatosFrameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                     .addComponent(jAdicionarFilmesToggleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jActualizarStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPesquisarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jGeneroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(620, Short.MAX_VALUE))
+                .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jActualizarStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPesquisarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jGeneroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         jFilmesManagerPanelLayout.setVerticalGroup(
             jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFilmesManagerPanelLayout.createSequentialGroup()
                 .addGap(156, 156, 156)
-                .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jActualizarStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jAdicionarFilmesToggleButton, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
+                .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jActualizarStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                    .addComponent(jAdicionarFilmesToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jGeneroButton, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
@@ -1180,6 +1089,96 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         );
 
         jTabbedPane2.addTab("Gestão de Filmes", jFilmesManagerPanel);
+
+        jLabel3.setText("Adicionar Máquina:");
+
+        jLabel4.setText("Vender Máquina:");
+
+        listaMaquinas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(listaMaquinas);
+
+        jVenderATMButton.setText("Vender");
+        jVenderATMButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVenderATMButtonActionPerformed(evt);
+            }
+        });
+
+        jAdicionarATMButton.setText("Adicionar");
+        jAdicionarATMButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAdicionarATMButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Custo:");
+
+        outMaquinas.setColumns(20);
+        outMaquinas.setEditable(false);
+        outMaquinas.setRows(5);
+        jScrollPane2.setViewportView(outMaquinas);
+
+        jLabel97.setText("€");
+
+        actualizarListaMaquinas.setText("Actualizar");
+        actualizarListaMaquinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarListaMaquinasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jATMManagerPanelLayout = new javax.swing.GroupLayout(jATMManagerPanel);
+        jATMManagerPanel.setLayout(jATMManagerPanelLayout);
+        jATMManagerPanelLayout.setHorizontalGroup(
+            jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jATMManagerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel3)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jATMManagerPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel97)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jAdicionarATMButton))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jATMManagerPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(actualizarListaMaquinas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jVenderATMButton)))
+                .addContainerGap(212, Short.MAX_VALUE))
+        );
+        jATMManagerPanelLayout.setVerticalGroup(
+            jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jATMManagerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAdicionarATMButton)
+                    .addComponent(jLabel8)
+                    .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel97))
+                .addGap(55, 55, 55)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jVenderATMButton)
+                    .addComponent(actualizarListaMaquinas))
+                .addContainerGap(210, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Gestão Máquinas", jATMManagerPanel);
 
         jSairButton.setText("Sair");
         jSairButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1914,7 +1913,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
         .addGroup(adicionarFilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adicionarFilmeFrameLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jAdicionarFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jAdicionarFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
 
@@ -2327,18 +2326,18 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 .addComponent(jLabel90))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSpinner4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(anoBSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(imdbBSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesqisaFilmesPanelLayout.createSequentialGroup()
                                     .addComponent(jLabel91)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jSpinner5))
+                                    .addComponent(imdbESpinner))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesqisaFilmesPanelLayout.createSequentialGroup()
                                     .addComponent(jLabel95)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(anoESpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addComponent(procurarID))
                     .addGap(96, 96, 96))
                 .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
@@ -2369,15 +2368,15 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
                     .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel90)
-                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imdbBSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel91)
-                        .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(imdbESpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel94)
                         .addComponent(jLabel95)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(anoBSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(anoESpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
                     .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel86)
@@ -2616,73 +2615,72 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                     .addGap(490, 490, 490)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                    .addGap(626, 626, 626)
-                    .addComponent(jLabel76)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)))
-            .addContainerGap())
-        .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-            .addGap(86, 86, 86)
-            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel77)
-                .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jResultadosFilmePanelLayout.createSequentialGroup()
-                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jResultadosFilmePanelLayout.createSequentialGroup()
-                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel82)
-                                .addComponent(jLabel79)
-                                .addComponent(jLabel74)
-                                .addComponent(jLabel83)
-                                .addComponent(jLabel75))
-                            .addGap(31, 31, 31)
-                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(listaFormatosResultadosFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(83, 83, 83)
+                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel77)
+                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                                    .addGap(21, 21, 21)
-                                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(paisResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tituloResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(produtorResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(realizadorResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(31, 31, 31)
-                                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel84)
-                                        .addComponent(jLabel81)
-                                        .addComponent(jLabel80))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(imdbResultadosFilme)
-                                        .addComponent(anoResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jScrollPane18)))
+                                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jResultadosFilmePanelLayout.createSequentialGroup()
+                                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel82)
+                                                .addComponent(jLabel79)
+                                                .addComponent(jLabel74)
+                                                .addComponent(jLabel83)
+                                                .addComponent(jLabel75))
+                                            .addGap(31, 31, 31)
+                                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(listaFormatosResultadosFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
+                                                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(jScrollPane18, javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jResultadosFilmePanelLayout.createSequentialGroup()
+                                                            .addGap(21, 21, 21)
+                                                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addComponent(paisResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(tituloResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(produtorResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(realizadorResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                            .addGap(31, 31, 31)
+                                                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(jLabel84)
+                                                                .addComponent(jLabel81)
+                                                                .addComponent(jLabel80))))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(imdbResultadosFilme)
+                                                        .addComponent(anoResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
+                                            .addGap(1, 1, 1)
+                                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel98)
+                                                .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
+                                                    .addComponent(jLabel99)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(idAlugaFilme, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                                    .addGap(68, 68, 68)
+                                                    .addComponent(alugar))
+                                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE))
+                                            .addGap(18, 18, 18)
+                                            .addComponent(voltarResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(15, 15, 15)
+                                    .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                            .addGap(1, 1, 1)
-                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel98)
-                                .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                                    .addComponent(jLabel99)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(idAlugaFilme, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                                    .addGap(68, 68, 68)
-                                    .addComponent(alugar))
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE))
-                            .addGap(18, 18, 18)
-                            .addComponent(voltarResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(67, 67, 67)))
-            .addGap(149, 149, 149))
-        .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-            .addGap(234, 234, 234)
-            .addComponent(jLabel78)
-            .addContainerGap(303, Short.MAX_VALUE))
+                            .addGap(148, 148, 148)
+                            .addComponent(jLabel78)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(62, 62, 62)))
+            .addContainerGap())
     );
     jResultadosFilmePanelLayout.setVerticalGroup(
         jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jResultadosFilmePanelLayout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel76)
-            .addGap(36, 36, 36)
+            .addContainerGap()
             .addComponent(jLabel78)
             .addGap(9, 9, 9)
             .addComponent(jLabel77)
@@ -2711,13 +2709,16 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                         .addComponent(jLabel81)
                         .addComponent(anoResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
-                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel84)
-                        .addComponent(imdbResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(20, 20, 20)
                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel80))))
+                        .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
+                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel84)
+                                .addComponent(imdbResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(20, 20, 20)
+                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel80))))))
             .addGap(18, 18, 18)
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel75)
@@ -2735,8 +2736,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                         .addComponent(idAlugaFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(voltarResultados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGap(86, 86, 86)
+                .addComponent(voltarResultados))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
@@ -2754,7 +2755,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         resultadosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resultadosFrameLayout.createSequentialGroup()
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jResultadosFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jResultadosFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
 
@@ -3438,9 +3439,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     }//GEN-LAST:event_jVenderATMButtonActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void empregadosCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empregadosCheckBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_empregadosCheckBoxActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
@@ -3493,15 +3494,16 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         String []lista;
         String[] generos={(String) generosBox.getSelectedItem()};
         //procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos)
-        if((Integer)jSpinner1.getValue()<(Integer)jSpinner3.getValue()
-                &&(Integer)jSpinner4.getValue()<(Integer)jSpinner5.getValue()){
+        if((Integer)anoBSpinner.getValue()<(Integer)anoESpinner.getValue()
+                &&(Double)imdbBSpinner.getValue()<(Double)imdbESpinner.getValue()){
+            Utils.dbg("Pesquisa!");
             lista=gestorFilmes.procuraFilmesPlusInvalidos(
                     textTituloPesquisaFilmes.getText(),
-                    ""+(Integer)jSpinner1.getValue(),
-                    ""+(Integer)jSpinner3.getValue(),
+                    ""+(Integer)anoBSpinner.getValue(),
+                    ""+(Integer)anoESpinner.getValue(),
                     textRealizadorPesquisaFilmes.getText(),
-                    ""+(Double)jSpinner4.getValue(),
-                    ""+(Double)jSpinner5.getValue(),
+                    ""+(Double)imdbBSpinner.getValue(),
+                    ""+(Double)imdbESpinner.getValue(),
                     (String) countriesList1.getSelectedItem(),
                     textProdutorPesquisaFilmes.getText(),
                     generos);
@@ -3510,15 +3512,15 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         
         
         //Reset aos campos
-         textRealizadorPesquisaFilmes.setText(null);
-         textIdPesquisaFilmes.setText(null);
-          textTituloPesquisaFilmes.setText(null);
-           textProdutorPesquisaFilmes.setText(null);
-           jSpinner1.setValue((Integer)1);
-           jSpinner3.setValue((Integer)10);
-           jSpinner4.setValue((Integer)1917);
-           jSpinner5.setValue((Integer)2011);
-        pesquisarFilmesFrame.setVisible(false);
+      textRealizadorPesquisaFilmes.setText(null);
+      textIdPesquisaFilmes.setText(null);
+      textTituloPesquisaFilmes.setText(null);
+      textProdutorPesquisaFilmes.setText(null);
+      anoBSpinner.setValue((Integer)1917);
+      anoESpinner.setValue((Integer)2011);
+      imdbBSpinner.setValue((Double)1.0);
+      imdbESpinner.setValue((Double)10.0);
+      pesquisarFilmesFrame.setVisible(false);
       pesquisarFilmesFrame.transferFocusBackward();
       listaFormatosResultadosFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
 
@@ -3711,8 +3713,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     	// outro para incrementar ou decrementar a quantidade total em stock
     	// e outro para fazer set da quantidade total em stock.
     	// n�o sei qual queres aqui mas assumi que o "(Integer)eliminaSpinner.getValue()" tinha o valor da quantidade em stock (nao vi na gui).
-        gestorFilmes.actualizaQuantStock(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem(), ""+(Integer)eliminaSpinner.getValue());
-
+        if(Utils.isNumber(idEliminaFilmes.getText())){
+             gestorFilmes.actualizaQuantStock(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem(), ""+(Integer)eliminaSpinner.getValue());
+             textEliminaFilmes.setText(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())[0]);
+    
+        }
     }//GEN-LAST:event_eliminaFilmesActionPerformed
 
     private void jToggleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton17ActionPerformed
@@ -3783,13 +3788,17 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_pesquisarFilmes2ActionPerformed
 
     private void voltarPesquisarFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarPesquisarFilmesActionPerformed
-        // TODO add your handling code here:
-        textRealizadorPesquisaFilmes.setText(null);
+        
+      //Reset aos campos
+         textRealizadorPesquisaFilmes.setText(null);
          textIdPesquisaFilmes.setText(null);
           textTituloPesquisaFilmes.setText(null);
            textProdutorPesquisaFilmes.setText(null);
-            
-        pesquisarFilmesFrame.setVisible(false);
+          anoBSpinner.setValue((Integer)1917);
+           anoESpinner.setValue((Integer)2011);
+           imdbBSpinner.setValue((Double)1.0);
+           imdbESpinner.setValue((Double)10.0);
+      pesquisarFilmesFrame.setVisible(false);
       pesquisarFilmesFrame.transferFocusBackward();
     }//GEN-LAST:event_voltarPesquisarFilmesActionPerformed
 
@@ -3818,7 +3827,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         paisResultadosFilme.setText(f[i++]);
         produtorResultadosFilme.setText(f[i++]);
         jTextArea14.setText(f[i++]);
-        jLabel76.setIcon(new ImageIcon(f[i++]));
+        try{
+            jLabel76.setIcon(new ImageIcon(f[i++]));
+        }catch (Exception e){
+            Utils.dbg("Não foi encontrada a capa do filme!");
+        }
         // extrair os generos do fim do array
         jList5.setModel(new OurListModel(Utils.extract(f, i+1))); // i+1 em vez de i -> saltar campo VALIDO
     }//GEN-LAST:event_listaResultadosMouseClicked
@@ -3934,23 +3947,23 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void consultarEstatisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEstatisticasActionPerformed
         // TODO add your handling code here:
         statsArea.setText("");
-        if(jCheckBox5.isSelected()){
+        if(clientesCheckBox.isSelected()){
             //Clientes
             statsArea.append(gestorEstatisticas.estatisticasClientes(calendarBegin, calendarEnd));
         }
-         if(jCheckBox3.isSelected()){
+         if(filmesCheckBox.isSelected()){
             //Clientes
             statsArea.append(gestorEstatisticas.estatisticasFilmes(calendarBegin, calendarEnd));
         }
-         if(jCheckBox1.isSelected()){
+         if(empregadosCheckBox.isSelected()){
             //Clientes
             statsArea.append(gestorEstatisticas.estatisticasEmpregados(calendarBegin, calendarEnd));
         }
-        if(jCheckBox4.isSelected()){
+        if(maquinasCheckBox.isSelected()){
             //Clientes
             statsArea.append(gestorEstatisticas.estatisticasMaquinas(calendarBegin, calendarEnd));
         }
-        if(jCheckBox5.isSelected()){
+        if(clientesCheckBox.isSelected()){
             //Clientes
             statsArea.append(gestorEstatisticas.getEstatisticas(calendarBegin, calendarEnd));
         }
@@ -4222,10 +4235,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
          textIdPesquisaFilmes.setText(null);
           textTituloPesquisaFilmes.setText(null);
            textProdutorPesquisaFilmes.setText(null);
-           jSpinner1.setValue((Integer)1);
-           jSpinner3.setValue((Integer)10);
-           jSpinner4.setValue((Integer)1917);
-           jSpinner5.setValue((Integer)2011);
+          anoBSpinner.setValue((Integer)1917);
+           anoESpinner.setValue((Integer)2011);
+           imdbBSpinner.setValue((Double)1.0);
+           imdbESpinner.setValue((Double)10.0);
         pesquisarFilmesFrame.setVisible(false);
       pesquisarFilmesFrame.transferFocusBackward();
       listaFormatosResultadosFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
@@ -4241,10 +4254,14 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             String[] lista={out[0], out[1]};
             listaResultados.setModel(new OurListModel(lista) );
             //Reset aos campos
-             textRealizadorPesquisaFilmes.setText(null);
-             textIdPesquisaFilmes.setText(null);
-              textTituloPesquisaFilmes.setText(null);
-               textProdutorPesquisaFilmes.setText(null);
+         textRealizadorPesquisaFilmes.setText(null);
+         textIdPesquisaFilmes.setText(null);
+          textTituloPesquisaFilmes.setText(null);
+           textProdutorPesquisaFilmes.setText(null);
+           anoBSpinner.setValue((Integer)1917);
+           anoESpinner.setValue((Integer)2011);
+           imdbBSpinner.setValue((Double)1.0);
+           imdbESpinner.setValue((Double)10.0);
 
             pesquisarFilmesFrame.setVisible(false);
           pesquisarFilmesFrame.transferFocusBackward();
@@ -4273,12 +4290,15 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JRadioButton adminRadio;
     private javax.swing.JButton alugar;
     private javax.swing.JSpinner anoAdicionaFilmeSpinner;
+    private javax.swing.JSpinner anoBSpinner;
+    private javax.swing.JSpinner anoESpinner;
     private javax.swing.JTextField anoResultadosFilme;
     private javax.swing.JTextField biAdicionaClientes;
     private javax.swing.JFormattedTextField biEliminaClientes;
     private javax.swing.JTextField biEmpregados;
     private javax.swing.JTextField biNotificarClientes;
     private javax.swing.JTextField biPesquisarClientes;
+    private javax.swing.JCheckBox clientesCheckBox;
     private javax.swing.JButton consultarEstatisticas;
     private javax.swing.JComboBox countriesList;
     private javax.swing.JComboBox countriesList1;
@@ -4301,8 +4321,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField emailAdicionaClientes;
     private javax.swing.JTextField emailEmpregados;
     private javax.swing.JTextField emailPesquisarClientes;
+    private javax.swing.JCheckBox empregadosCheckBox;
     private javax.swing.JButton enviarEmail;
     private javax.swing.JFrame ficheirosFrame;
+    private javax.swing.JCheckBox filmesCheckBox;
     private javax.swing.JFrame formatosFrame;
     private javax.swing.JComboBox generosBox;
     private javax.swing.JFrame generosFrame;
@@ -4310,6 +4332,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField idAlugaFilme;
     private javax.swing.JTextField idEliminaFilmes;
     private javax.swing.JTextField idPesquisarClientes;
+    private javax.swing.JSpinner imdbBSpinner;
+    private javax.swing.JSpinner imdbESpinner;
     private javax.swing.JTextField imdbResultadosFilme;
     private javax.swing.JPanel jATMManagerPanel;
     private javax.swing.JToggleButton jActualizarStockButton;
@@ -4321,11 +4345,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JToggleButton jAdicionarFilmesToggleButton;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton5;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JPanel jClientesManagerPanel;
     private javax.swing.JPanel jClientesManagerPanel1;
     private javax.swing.JToggleButton jDespedirEmpregadoButton;
@@ -4414,11 +4434,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
     private javax.swing.JSpinner jSpinner6;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
@@ -4444,6 +4460,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JList listaResultados;
     private javax.swing.JButton listarFormatoEliminar;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JCheckBox maquinasCheckBox;
     private javax.swing.JTextArea mensagem;
     private javax.swing.JTextField moradaAdicionaClientes;
     private javax.swing.JTextField moradaEmpregados;
