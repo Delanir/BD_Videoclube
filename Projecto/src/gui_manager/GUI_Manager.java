@@ -246,26 +246,26 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jLabel31 = new javax.swing.JLabel();
         verificarRequesicoes = new javax.swing.JButton();
         jEmpregadosManagerPanel = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel12 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel13 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         listaEmpregados = new javax.swing.JList();
         jDespedirEmpregadoButton = new javax.swing.JToggleButton();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel14 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel15 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel16 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel17 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel18 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel19 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel20 = new javax.swing.JLabel();
         adminRadio = new javax.swing.JRadioButton();
         opRadio = new javax.swing.JRadioButton();
-        jLabel21 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel21 = new javax.swing.JLabel();
         nomeEmpregados = new javax.swing.JTextField();
         passwordEmpregados = new javax.swing.JPasswordField();
         emailEmpregados = new javax.swing.JTextField();
         moradaEmpregados = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel22 = new javax.swing.JLabel();
         passwordEmpregados2 = new javax.swing.JPasswordField();
         jAdicionarEmpregadoButton = new javax.swing.JToggleButton();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -390,9 +390,11 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jLabel94 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel95 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
-        jSpinner1.setModel(new SpinnerNumberModel(2010,1917,2300,1));
+        jSpinner1.setModel(new SpinnerNumberModel(1917,1917,2300,1));
         jSpinner3 = new javax.swing.JSpinner();
-        jSpinner3.setModel(new SpinnerNumberModel(2010,1917,2300,1));
+        jSpinner3.setModel(new SpinnerNumberModel(2011,1917,2300,1));
+        pesquisarTodos = new javax.swing.JButton();
+        procurarID = new javax.swing.JButton();
         generosFrame = new javax.swing.JFrame();
         jGenerosPanel = new javax.swing.JPanel();
         jScrollPane21 = new javax.swing.JScrollPane();
@@ -418,8 +420,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         anoResultadosFilme = new javax.swing.JTextField();
         javax.swing.JLabel jLabel77 = new javax.swing.JLabel();
         jScrollPane19 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList();
-        jButton15 = new javax.swing.JButton();
+        listaResultados = new javax.swing.JList();
+        voltarResultados = new javax.swing.JButton();
         jLabel78 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel79 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel80 = new javax.swing.JLabel();
@@ -436,9 +438,9 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         listaFormatosResultadosFilmes = new javax.swing.JComboBox();
         jLabel98 = new javax.swing.JLabel();
         jLabel99 = new javax.swing.JLabel();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField(NumberFormat.getNumberInstance());
         alugar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        idAlugaFilme = new javax.swing.JTextField();
         adicionarClienteFrame = new javax.swing.JFrame();
         jAdicionarClientePanel = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
@@ -625,7 +627,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jATMManagerPanelLayout.setHorizontalGroup(
             jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jATMManagerPanelLayout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
+                .addContainerGap(600, Short.MAX_VALUE)
                 .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel4)
@@ -741,7 +743,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jEstatisticasPanelLayout.setHorizontalGroup(
             jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEstatisticasPanelLayout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
+                .addContainerGap(596, Short.MAX_VALUE)
                 .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBox1)
                     .addComponent(jCheckBox2)
@@ -876,7 +878,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                             .addComponent(verificarRequesicoes)
                             .addComponent(jVerificarPagamentosAtrasoButton)))
                     .addComponent(jScrollPane6))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(553, Short.MAX_VALUE))
         );
         jClientesManagerPanelLayout.setVerticalGroup(
             jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -904,17 +906,12 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         jLabel12.setText("Adicionar Empregado:");
 
-        jLabel13.setText("Eliminar Empregado:");
+        jLabel13.setText("Lista Empregados:");
 
-        listaEmpregados.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         listaEmpregados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane4.setViewportView(listaEmpregados);
 
-        jDespedirEmpregadoButton.setText("Eliminar");
+        jDespedirEmpregadoButton.setText("Eliminar da Lista");
         jDespedirEmpregadoButton.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 jDespedirEmpregadoButtonComponentResized(evt);
@@ -982,63 +979,69 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jEmpregadosManagerPanelLayout.setHorizontalGroup(
             jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addContainerGap()
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                                .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jLabel21)
-                                    .addComponent(jLabel18))
-                                .addGap(52, 52, 52)
-                                .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(moradaEmpregados)
-                                        .addComponent(nomeEmpregados)
-                                        .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                                            .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(passwordEmpregados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                                .addComponent(biEmpregados, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                                .addComponent(telefoneEmpregados, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                                                    .addComponent(jLabel22)
-                                                    .addGap(27, 27, 27)
-                                                    .addComponent(passwordEmpregados2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(obterDadosEmpregadoActualizacao)))
-                                        .addComponent(emailEmpregados))
-                                    .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jAdicionarEmpregadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                                            .addComponent(adminRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(opRadio)))
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel18)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(moradaEmpregados)
+                                    .addComponent(nomeEmpregados)
                                     .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                                        .addComponent(salarioEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel38))))
-                            .addComponent(jLabel13)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                                        .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(passwordEmpregados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                            .addComponent(biEmpregados, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                            .addComponent(telefoneEmpregados, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
+                                                .addComponent(jLabel22)
+                                                .addGap(27, 27, 27)
+                                                .addComponent(passwordEmpregados2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(obterDadosEmpregadoActualizacao)))
+                                    .addComponent(emailEmpregados))
+                                .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
+                                    .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
+                                            .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jAdicionarEmpregadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
+                                                    .addComponent(adminRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(opRadio)))
+                                            .addGap(19, 19, 19))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEmpregadosManagerPanelLayout.createSequentialGroup()
+                                            .addComponent(jDespedirEmpregadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(37, 37, 37)))
+                                    .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(actualzarListaEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                                .addComponent(actualzarListaEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(jDespedirEmpregadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(318, 318, 318))
+                                .addComponent(salarioEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel38)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel13)
+                                .addGap(64, 64, 64)))))
+                .addContainerGap(589, Short.MAX_VALUE))
         );
         jEmpregadosManagerPanelLayout.setVerticalGroup(
             jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1073,25 +1076,25 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(salarioEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel38))
+                    .addComponent(jLabel38)
+                    .addComponent(jLabel13))
                 .addGap(18, 18, 18)
-                .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(opRadio)
-                    .addComponent(adminRadio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jAdicionarEmpregadoButton)
-                .addGap(22, 22, 22)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actualzarListaEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDespedirEmpregadoButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jEmpregadosManagerPanelLayout.createSequentialGroup()
+                        .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(opRadio)
+                            .addComponent(adminRadio))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jAdicionarEmpregadoButton)
+                        .addGap(18, 18, 18)
+                        .addGroup(jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDespedirEmpregadoButton))))
+                .addGap(18, 18, 18)
+                .addComponent(actualzarListaEmpregados)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Empregados", jEmpregadosManagerPanel);
@@ -1154,7 +1157,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPesquisarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jGeneroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(620, Short.MAX_VALUE))
         );
         jFilmesManagerPanelLayout.setVerticalGroup(
             jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1191,7 +1194,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGroup(jMenuAdministradorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jMenuAdministradorPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE))
+                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1113, Short.MAX_VALUE))
                     .addGroup(jMenuAdministradorPanelLayout.createSequentialGroup()
                         .addGap(93, 93, 93)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2068,7 +2071,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
         }
     });
 
-    countriesList1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Afghanistan",
+    countriesList1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "","Afghanistan",
         "Albania",
         "Algeria",
         "Andorra",
@@ -2267,41 +2270,56 @@ jLabel94.setText("Ano: Between");
 
 jLabel95.setText("And");
 
-javax.swing.GroupLayout jPesqisaFilmesPanelLayout = new javax.swing.GroupLayout(jPesqisaFilmesPanel);
-jPesqisaFilmesPanel.setLayout(jPesqisaFilmesPanelLayout);
-jPesqisaFilmesPanelLayout.setHorizontalGroup(
-jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-.addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-    .addContainerGap()
-    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+pesquisarTodos.setText("ver Todos os Filmes");
+pesquisarTodos.addActionListener(new java.awt.event.ActionListener() {
+public void actionPerformed(java.awt.event.ActionEvent evt) {
+    pesquisarTodosActionPerformed(evt);
+    }
+    });
+
+    procurarID.setText("Procurar por ID");
+    procurarID.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            procurarIDActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPesqisaFilmesPanelLayout = new javax.swing.GroupLayout(jPesqisaFilmesPanel);
+    jPesqisaFilmesPanel.setLayout(jPesqisaFilmesPanelLayout);
+    jPesqisaFilmesPanelLayout.setHorizontalGroup(
+        jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+            .addContainerGap()
             .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel87)
-                        .addComponent(jLabel88))
-                    .addGap(18, 18, 18)
-                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(countriesList1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textProdutorPesquisaFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
-                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel86)
-                        .addComponent(jLabel89))
-                    .addGap(40, 40, 40)
-                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textIdPesquisaFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                        .addComponent(textTituloPesquisaFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))))
-            .addGap(77, 77, 77)
-            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel94)
-                        .addComponent(jLabel90)
-                        .addComponent(jLabel92))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel87)
+                                .addComponent(jLabel88))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(countriesList1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textProdutorPesquisaFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
+                        .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel86)
+                                .addComponent(jLabel89))
+                            .addGap(40, 40, 40)
+                            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(textIdPesquisaFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                                .addComponent(textTituloPesquisaFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel92)
+                            .addGap(18, 18, 18)
+                            .addComponent(textRealizadorPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel94)
+                                .addComponent(jLabel90))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jSpinner4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2314,57 +2332,66 @@ jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesqisaFilmesPanelLayout.createSequentialGroup()
                                     .addComponent(jLabel95)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(voltarPesquisarFilmes)))
-                        .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-                            .addComponent(textRealizadorPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
-                .addComponent(pesquisarFilme))
-            .addGap(37, 37, 37))
-        .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-            .addComponent(jLabel85)
-            .addContainerGap(503, Short.MAX_VALUE))))
-);
-jPesqisaFilmesPanelLayout.setVerticalGroup(
-    jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-    .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-        .addGap(34, 34, 34)
-        .addComponent(jLabel85)
-        .addGap(28, 28, 28)
-        .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-            .addComponent(jLabel89)
-            .addComponent(jLabel92)
-            .addComponent(textIdPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(textRealizadorPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-            .addComponent(jLabel86)
-            .addComponent(jLabel90)
-            .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(textTituloPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel91)
-            .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addGap(18, 18, 18)
-        .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-                .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel87)
-                    .addComponent(textProdutorPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel88)
-                    .addComponent(countriesList1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-                .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel94)
-                    .addComponent(jLabel95)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(procurarID))
+                    .addGap(96, 96, 96))
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                    .addComponent(jLabel85)
+                    .addContainerGap(503, Short.MAX_VALUE))
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
                     .addComponent(pesquisarFilme)
-                    .addComponent(voltarPesquisarFilmes))))
-        .addContainerGap(158, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
+                    .addComponent(voltarPesquisarFilmes)
+                    .addGap(112, 112, 112))
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                    .addComponent(pesquisarTodos)
+                    .addContainerGap(449, Short.MAX_VALUE))))
+    );
+    jPesqisaFilmesPanelLayout.setVerticalGroup(
+        jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+            .addGap(34, 34, 34)
+            .addComponent(jLabel85)
+            .addGap(28, 28, 28)
+            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel89)
+                .addComponent(textIdPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(procurarID))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel90)
+                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel91)
+                        .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel94)
+                        .addComponent(jLabel95)
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel86)
+                        .addComponent(textTituloPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel87)
+                        .addComponent(textProdutorPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel88)
+                        .addComponent(countriesList1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel92)
+                        .addComponent(textRealizadorPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(pesquisarFilme)
+                        .addComponent(voltarPesquisarFilmes))))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(pesquisarTodos)
+            .addContainerGap(83, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout pesquisarFilmesFrameLayout = new javax.swing.GroupLayout(pesquisarFilmesFrame.getContentPane());
@@ -2517,20 +2544,20 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
     jScrollPane19.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-    jList4.setModel(new javax.swing.AbstractListModel() {
-        String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-        public int getSize() { return strings.length; }
-        public Object getElementAt(int i) { return strings[i]; }
-    });
-    jList4.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-    jList4.addMouseListener(new java.awt.event.MouseAdapter() {
+    listaResultados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+    listaResultados.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            jList4MouseClicked(evt);
+            listaResultadosMouseClicked(evt);
         }
     });
-    jScrollPane19.setViewportView(jList4);
+    jScrollPane19.setViewportView(listaResultados);
 
-    jButton15.setText("Voltar");
+    voltarResultados.setText("Voltar");
+    voltarResultados.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            voltarResultadosActionPerformed(evt);
+        }
+    });
 
     jLabel78.setFont(new java.awt.Font("Tahoma", 0, 24));
     jLabel78.setText("Resultados Filme");
@@ -2553,11 +2580,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
     jLabel84.setText("IMDB RATING: ");
 
-    jList5.setModel(new javax.swing.AbstractListModel() {
-        String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-        public int getSize() { return strings.length; }
-        public Object getElementAt(int i) { return strings[i]; }
-    });
     jScrollPane20.setViewportView(jList5);
 
     listaFormatosResultadosFilmes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Blu-Ray", "DVD", "UMD"}));
@@ -2565,8 +2587,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     jLabel98.setText("Formato:");
 
     jLabel99.setText("ID do Cliente:");
-
-    jFormattedTextField4.setText("");
 
     alugar.setText("Alugar");
     alugar.addActionListener(new java.awt.event.ActionListener() {
@@ -2623,9 +2643,9 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
                                         .addComponent(jLabel80))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                                         .addComponent(imdbResultadosFilme)
-                                        .addComponent(anoResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(anoResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(jScrollPane18)))
                         .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                             .addGap(1, 1, 1)
@@ -2634,12 +2654,12 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
                                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                                     .addComponent(jLabel99)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                                    .addComponent(idAlugaFilme, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                    .addGap(68, 68, 68)
                                     .addComponent(alugar))
                                 .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE))
                             .addGap(18, 18, 18)
-                            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(voltarResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(67, 67, 67)))
             .addGap(149, 149, 149))
         .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
@@ -2686,8 +2706,8 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
                         .addComponent(imdbResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(20, 20, 20)
                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel80)
-                        .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel80))))
             .addGap(18, 18, 18)
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel75)
@@ -2701,11 +2721,11 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel99)
-                        .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(alugar))
+                        .addComponent(alugar)
+                        .addComponent(idAlugaFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(voltarResultados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGap(86, 86, 86)
             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
@@ -3462,31 +3482,31 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         //TODO fazer parsing do output do método
         String []lista;
         //procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos)
-        lista=gestorFilmes.procuraFilmesPlusInvalidos(
-        		//textIdPesquisaFilmes.getText(),
-                textTituloPesquisaFilmes.getText(),
-                ""+(Integer)jSpinner1.getValue(),
-                ""+(Integer)jSpinner3.getValue(),
-                textRealizadorPesquisaFilmes.getText(),
-                ""+(Double)jSpinner4.getValue(),
-                ""+(Double)jSpinner5.getValue(),
-                (String) countriesList1.getSelectedItem(),
-                textProdutorPesquisaFilmes.getText(),
-                new String[0]);
-
-        String[] strings= new String[lista.length/2];
-        String[] id= new String[lista.length/2];
-        for(int i=0; i<lista.length/2;i++){
-            strings[i]=lista[2*i+1];
-            id[i]=lista[2*i];
+        if((Integer)jSpinner1.getValue()<(Integer)jSpinner3.getValue()
+                &&(Integer)jSpinner4.getValue()<(Integer)jSpinner5.getValue()){
+            lista=gestorFilmes.procuraFilmesPlusInvalidos(
+                    textTituloPesquisaFilmes.getText(),
+                    ""+(Integer)jSpinner1.getValue(),
+                    ""+(Integer)jSpinner3.getValue(),
+                    textRealizadorPesquisaFilmes.getText(),
+                    ""+(Double)jSpinner4.getValue(),
+                    ""+(Double)jSpinner5.getValue(),
+                    (String) countriesList1.getSelectedItem(),
+                    textProdutorPesquisaFilmes.getText(),
+                    new String[0]);
+            listaResultados.setModel(new OurListModel(lista) );
         }
-        jList4.setModel(new OurListModel(lista) );
+        
+        
         //Reset aos campos
          textRealizadorPesquisaFilmes.setText(null);
          textIdPesquisaFilmes.setText(null);
           textTituloPesquisaFilmes.setText(null);
            textProdutorPesquisaFilmes.setText(null);
-
+           jSpinner1.setValue((Integer)1);
+           jSpinner3.setValue((Integer)10);
+           jSpinner4.setValue((Integer)1917);
+           jSpinner5.setValue((Integer)2011);
         pesquisarFilmesFrame.setVisible(false);
       pesquisarFilmesFrame.transferFocusBackward();
       listaFormatosResultadosFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
@@ -3651,7 +3671,8 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     	// Depois tens de p�r isto como queres ou dizer-me para fazer um metodo k fa�a o que queres mesmo
     	
         // textEliminaFilmes.setText(gestorFilmes.verListaFormatos(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem()));
-    	textEliminaFilmes.setText(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())[0]);
+        if(Utils.isNumber(idEliminaFilmes.getText()) )
+            textEliminaFilmes.setText(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())[0]);
     }//GEN-LAST:event_listarFormatoEliminarActionPerformed
 
     private void eliminaFilmes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaFilmes2ActionPerformed
@@ -3764,9 +3785,9 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
       pesquisarFilmesFrame.transferFocusBackward();
     }//GEN-LAST:event_pesquisarFilmesFrameWindowClosing
 
-    private void jList4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList4MouseClicked
+    private void listaResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaResultadosMouseClicked
         // TODO add your handling code here:
-        String idMovie=((String)jList4.getSelectedValue()).split(" ")[0];
+        String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
         //"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"
         String[] f = gestorFilmes.getFilme(idMovie);
         
@@ -3781,7 +3802,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         jLabel76.setIcon(new ImageIcon(f[i++]));
         // extrair os generos do fim do array
         jList5.setModel(new OurListModel(Utils.extract(f, i+1))); // i+1 em vez de i -> saltar campo VALIDO
-    }//GEN-LAST:event_jList4MouseClicked
+    }//GEN-LAST:event_listaResultadosMouseClicked
 
     private void pesquisarClienteFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_pesquisarClienteFrameWindowClosing
         // TODO add your handling code here:
@@ -3929,8 +3950,8 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
     private void alugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alugarActionPerformed
         String output="";
-        String idMovie=((String)jList4.getSelectedValue()).split(" ")[0];
-        if(jFormattedTextField4.isEditValid()){
+        String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
+        if(Utils.isNumber(idAlugaFilme.getText())){
         	//TODO by Lobo: pus aki um placeholder para o novo "alugaFilme", pk tem mais coisas do que as que aki tavam. E, btw, chama-se adicionaRequisicao() xD
             /*output=gestorFilmes.alugaFilme(idMovie,
                     (String) listaFormatosResultadosFilmes.getSelectedItem(),
@@ -3938,7 +3959,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
                     gestorUtilizadores.getIdEmpregado());*/
         	output=gestorFilmes.adicionaRequisicao("null",
                            gestorUtilizadores.getUsername(),
-                           jFormattedTextField4.getText(),
+                           idAlugaFilme.getText(),
                            idMovie,
                            (String) listaFormatosResultadosFilmes.getSelectedItem());
         }
@@ -4141,14 +4162,15 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
             if(adminRadio.isSelected())
                 isAdmin="1";
-            gestorEmpregados.actualizaEmpregado(nomeEmpregados.getText(),
-                    telefoneEmpregados.getText(),
-                    biEmpregados.getText(),
-                    isAdmin,
-                    passwordEmpregados.getText(),
+            //String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone
+            gestorEmpregados.actualizaEmpregado(isAdmin,
                     salarioEmpregados.getText(),
+                    nomeEmpregados.getText(),
+                    biEmpregados.getText(),
+                    passwordEmpregados.getText(),
+                    moradaEmpregados.getText(),
                     emailEmpregados.getText(),
-                    moradaEmpregados.getText());
+                    telefoneEmpregados.getText());
         }
 }//GEN-LAST:event_jAdicionarEmpregadoButtonActionPerformed
 
@@ -4167,6 +4189,52 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         DBHandler.close();
     }//GEN-LAST:event_formWindowClosing
+
+    private void voltarResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarResultadosActionPerformed
+
+        resultadosFrame.setVisible(false);
+        resultadosFrame.transferFocusBackward();
+    }//GEN-LAST:event_voltarResultadosActionPerformed
+
+    private void pesquisarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarTodosActionPerformed
+         listaResultados.setModel(new OurListModel(gestorFilmes.verListaFilmesOrdTituloPlusInvalidos()) );
+        //Reset aos campos
+         textRealizadorPesquisaFilmes.setText(null);
+         textIdPesquisaFilmes.setText(null);
+          textTituloPesquisaFilmes.setText(null);
+           textProdutorPesquisaFilmes.setText(null);
+           jSpinner1.setValue((Integer)1);
+           jSpinner3.setValue((Integer)10);
+           jSpinner4.setValue((Integer)1917);
+           jSpinner5.setValue((Integer)2011);
+        pesquisarFilmesFrame.setVisible(false);
+      pesquisarFilmesFrame.transferFocusBackward();
+      listaFormatosResultadosFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
+
+      resultadosFrame.setVisible(true);
+      transferFocus();
+    }//GEN-LAST:event_pesquisarTodosActionPerformed
+
+    private void procurarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarIDActionPerformed
+        if(Utils.isNumber(textIdPesquisaFilmes.getText())){
+            //{"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"};}
+            String[] out= gestorFilmes.getFilme(textIdPesquisaFilmes.getText());
+            String[] lista={out[0], out[1]};
+            listaResultados.setModel(new OurListModel(lista) );
+            //Reset aos campos
+             textRealizadorPesquisaFilmes.setText(null);
+             textIdPesquisaFilmes.setText(null);
+              textTituloPesquisaFilmes.setText(null);
+               textProdutorPesquisaFilmes.setText(null);
+
+            pesquisarFilmesFrame.setVisible(false);
+          pesquisarFilmesFrame.transferFocusBackward();
+          listaFormatosResultadosFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
+
+          resultadosFrame.setVisible(true);
+          transferFocus();
+      }
+    }//GEN-LAST:event_procurarIDActionPerformed
 
    
     //OUR GUI VARS
@@ -4219,6 +4287,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JFrame formatosFrame;
     private javax.swing.JFrame generosFrame;
     private javax.swing.JTextField idAdicionaStock;
+    private javax.swing.JTextField idAlugaFilme;
     private javax.swing.JTextField idEliminaFilmes;
     private javax.swing.JTextField idPesquisarClientes;
     private javax.swing.JTextField imdbResultadosFilme;
@@ -4231,7 +4300,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JPanel jAdicionarFilmePanel;
     private javax.swing.JToggleButton jAdicionarFilmesToggleButton;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
@@ -4253,22 +4321,10 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JPanel jFilmesManagerPanel1;
     private javax.swing.JButton jFormatosFrameButton;
     private javax.swing.JButton jFormatosFrameButton1;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JToggleButton jGeneroButton;
     private javax.swing.JPanel jGenerosPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -4293,7 +4349,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
-    private javax.swing.JList jList4;
     private javax.swing.JList jList5;
     private javax.swing.JList jList6;
     private javax.swing.JList jList7;
@@ -4365,6 +4420,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JList listaGeneros;
     private javax.swing.JComboBox listaGenerosAdicionaFilmes;
     private javax.swing.JList listaMaquinas;
+    private javax.swing.JList listaResultados;
     private javax.swing.JButton listarFormatoEliminar;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextArea mensagem;
@@ -4402,6 +4458,8 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JFrame pesquisarFilmesFrame;
     private javax.swing.JButton pesquisarPorBI;
     private javax.swing.JButton pesquisarPorID;
+    private javax.swing.JButton pesquisarTodos;
+    private javax.swing.JButton procurarID;
     private javax.swing.JTextField produtorResultadosFilme;
     private javax.swing.JSpinner qtdAdicionaStock;
     private javax.swing.JTextField realizadorResultadosFilme;
@@ -4431,6 +4489,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JButton voltarGeneros;
     private javax.swing.JToggleButton voltarPesquisarCliente;
     private javax.swing.JToggleButton voltarPesquisarFilmes;
+    private javax.swing.JButton voltarResultados;
     // End of variables declaration//GEN-END:variables
 
 }
