@@ -4,6 +4,7 @@ import bd.DBHandler;
 import gestores.*;
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
 import javax.swing.ButtonGroup;
@@ -103,6 +104,65 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setBounds(0, -1, 800, 600);
         jResultadosPanel.setBounds(0, -1, 800, 600);
         jPesquisarPanel.setBounds(0, -1, 800, 600);
+
+        menuResultados_listaFilmes.addListSelectionListener((ListSelectionListener) new ListSelectionListener(){
+        public void valueChanged(ListSelectionEvent evento) {
+            if (evento.getValueIsAdjusting())
+            //ainda selecionando
+            return;
+            JList list = (JList)evento.getSource();
+            if (list.isSelectionEmpty()) {
+                    Utils.dbg("nenhuma seleção");
+            } else {
+                String idMovie=((String)menuResultados_listaFilmes.getSelectedValue()).split(" ")[0];
+                String[] f = gestorFilmes.getFilme(idMovie);
+                //String[] formatos = gestorFilmes.getFormatoPreco(idMovie);
+                DefaultComboBoxModel modeloDados = new DefaultComboBoxModel();
+                int i=1,j=0;
+                menuResultados_titulo.setText(f[i++]);
+                menuResultados_ano.setText(f[i++]);
+                menuResultados_realizador.setText(f[i++]);
+                menuResultados_imdb.setText(f[i++]);
+                menuResultados_pais.setText(f[i++]);
+                menuResultados_produtor.setText(f[i++]);
+                menuResultados_descricao.setText(f[i++]);
+                //menuResultados_imagem.setIcon(new ImageIcon(f[i++]));
+                menuResultados_generos.setModel(new OurListModel(Utils.extract(f, i+2)));
+                String[] formato = gestorFilmes.verListaStocksFilme(idMovie);
+                String quantidade;
+                System.out.println("cenassss "+formato[0]);
+                //menuResultados_preco.setText(formatos[j]);
+                for(j=0;j<formato.length;j++){
+                    modeloDados.addElement(formato[j].split(" : ")[0]);
+                    System.out.println("cenassss222222 "+formato[j].split(" : ")[0]);
+                }
+                menuResultados_formatos.setModel(modeloDados);
+
+            }
+        }});
+
+        menuEntregar_filme.addListSelectionListener((ListSelectionListener) new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent evento) {
+                if (evento.getValueIsAdjusting())
+                //ainda selecionando
+                return;
+                JList list = (JList)evento.getSource();
+                if (list.isSelectionEmpty()) {
+                        Utils.dbg("nenhuma seleção");
+                } else {
+                    String idReq=((String)menuEntregar_filme.getSelectedValue()).split(" ")[0];
+                    valorapagar.setText(gestorFilmes.calcularPrecoRequisicao(idReq));
+                }
+            }
+        });
+
+        menuResultados_formatos.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+            System.out.println("EXPERIENCIA");
+            }
+        });
+
+
     }
 
     /** This method is called from within the constructor to
@@ -137,16 +197,16 @@ public class Frame_ATM  extends JFrame{
         menuPesquisar_generos = new javax.swing.JComboBox();
         menuPesquisar_produtor = new javax.swing.JTextField();
         menuPesquisar_imdbLow = new javax.swing.JSpinner();
-        menuPesquisar_imdbLow.setModel(new SpinnerNumberModel(5.0,1,10,0.1));
+        menuPesquisar_imdbLow.setModel(new SpinnerNumberModel(1.0,1,10,0.1));
         menuPesquisar_realizador = new javax.swing.JTextField();
         menuPesquisar_titulo = new javax.swing.JTextField();
         menuPesquisar_imdbHigh = new javax.swing.JSpinner();
-        menuPesquisar_imdbHigh.setModel(new SpinnerNumberModel(5.0,1,10,0.1));
+        menuPesquisar_imdbHigh.setModel(new SpinnerNumberModel(10.0,1,10,0.1));
         menuPesquisar_anoLow = new javax.swing.JSpinner();
-        menuPesquisar_anoLow.setModel(new SpinnerNumberModel(2010,1917,2300,1));
+        menuPesquisar_anoLow.setModel(new SpinnerNumberModel(1900,1900,2050,1));
         jSearchButton = new javax.swing.JToggleButton();
         menuPesquisar_anoHigh = new javax.swing.JSpinner();
-        menuPesquisar_anoHigh.setModel(new SpinnerNumberModel(2010,1917,2300,1));
+        menuPesquisar_anoHigh.setModel(new SpinnerNumberModel(2011,1900,2050,1));
         menuPesquisar_pais = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -379,7 +439,7 @@ public class Frame_ATM  extends JFrame{
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel11.setText("Entre");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel12.setText("e");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14));
@@ -400,7 +460,7 @@ public class Frame_ATM  extends JFrame{
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel31.setText("Entre");
 
-        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel32.setText("e");
 
         javax.swing.GroupLayout jPesquisarPanelLayout = new javax.swing.GroupLayout(jPesquisarPanel);
@@ -912,7 +972,7 @@ public class Frame_ATM  extends JFrame{
             }
         });
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel24.setText("Histórico");
 
         jList2.setModel(new javax.swing.AbstractListModel() {
@@ -1416,21 +1476,6 @@ public class Frame_ATM  extends JFrame{
             modeloDados.addElement(requisicoes[i]);
         }
         menuEntregar_filme.setModel(modeloDados);
-        menuEntregar_filme.addListSelectionListener((ListSelectionListener) new ListSelectionListener(){
-            public void valueChanged(ListSelectionEvent evento) {
-                if (evento.getValueIsAdjusting())
-                //ainda selecionando
-                return;
-                JList list = (JList)evento.getSource();
-                if (list.isSelectionEmpty()) {
-                        Utils.dbg("nenhuma seleção");
-                } else {
-                    String idReq=((String)menuEntregar_filme.getSelectedValue()).split(" ")[0];
-                    // TODO by Lobo: idMovie no calcularPrecoRequisicao? � suposto ser o ID de uma requisi�ao.
-                    valorapagar.setText(gestorFilmes.calcularPrecoRequisicao(idReq));
-                }
-            }
-        });
         bgroup=new ButtonGroup();
         bgroup.add(jRadioButton3);
         bgroup.add(jRadioButton4);
@@ -1617,11 +1662,11 @@ public class Frame_ATM  extends JFrame{
     private void jVoltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarButtonActionPerformed
         //Set panel's visibility
         menuPesquisar_titulo.setText("");
-        menuPesquisar_anoLow.setValue(2010);
-        menuPesquisar_anoHigh.setValue(2010);
+        menuPesquisar_anoLow.setValue(1900);
+        menuPesquisar_anoHigh.setValue(2011);
         menuPesquisar_realizador.setText("");
-        menuPesquisar_imdbLow.setValue(5);
-        menuPesquisar_imdbHigh.setValue(5);
+        menuPesquisar_imdbLow.setValue(1);
+        menuPesquisar_imdbHigh.setValue(10);
         menuPesquisar_pais.setText("");
         menuPesquisar_produtor.setText("");
         menuPesquisar_generos.setSelectedIndex(-1);
@@ -1639,53 +1684,41 @@ public class Frame_ATM  extends JFrame{
         // TODO: reunir dados para fazer a mega query e fazê-la . reset variáveis de pesquisa?
         //o k ta comentado e pra nao dar merda
         //so esta a ir buscar um genero
-        String [] generos = {null};
+        String [] generos={""};
+        String [] filmesPesquisados;
+        String maiorAno, menorAno,  maiorImdb, menorImdb;
+        if(Integer.parseInt(menuPesquisar_anoHigh.getValue().toString())>Integer.parseInt(menuPesquisar_anoLow.getValue().toString())){
+            maiorAno=menuPesquisar_anoHigh.getValue().toString();
+            menorAno=menuPesquisar_anoLow.getValue().toString();
+        }
+        else{
+            menorAno=menuPesquisar_anoHigh.getValue().toString();
+            maiorAno=menuPesquisar_anoLow.getValue().toString();
+        }
+        if(Double.parseDouble(menuPesquisar_imdbHigh.getValue().toString())>Double.parseDouble(menuPesquisar_imdbLow.getValue().toString())){
+            maiorImdb=menuPesquisar_imdbHigh.getValue().toString();
+            menorImdb=menuPesquisar_imdbLow.getValue().toString();
+        }
+        else{
+            menorImdb=menuPesquisar_imdbHigh.getValue().toString();
+            maiorImdb=menuPesquisar_imdbLow.getValue().toString();
+        }
         if(menuPesquisar_generos.getSelectedItem()!=null){
             generos[0]=menuPesquisar_generos.getSelectedItem().toString();
+            filmesPesquisados = gestorFilmes.procuraFilmes(menuPesquisar_titulo.getText(), menorAno
+                    , maiorAno, menuPesquisar_realizador.getText(), menorImdb, maiorImdb
+                    , menuPesquisar_pais.getText(), menuPesquisar_produtor.getText(), generos);
+        }else{
+            filmesPesquisados = gestorFilmes.procuraFilmes(menuPesquisar_titulo.getText(), menorAno
+                    , maiorAno, menuPesquisar_realizador.getText(), menorImdb, maiorImdb
+                    , menuPesquisar_pais.getText(), menuPesquisar_produtor.getText(), null);
         }
-        String [] filmesPesquisados = gestorFilmes.procuraFilmes(menuPesquisar_titulo.getText(), menuPesquisar_anoLow.getValue().toString()
-                , menuPesquisar_anoHigh.getValue().toString(), menuPesquisar_realizador.getText(), menuPesquisar_imdbLow.getValue().toString()
-                , menuPesquisar_imdbHigh.getValue().toString(), menuPesquisar_pais.getText(), menuPesquisar_produtor.getText()
-                , generos);
         DefaultListModel modeloDados = new DefaultListModel();
         int i;
         for(i=0;i<filmesPesquisados.length;i++){
             modeloDados.addElement(filmesPesquisados[i]);
         }
         menuResultados_listaFilmes.setModel(modeloDados);
-        menuResultados_listaFilmes.addListSelectionListener((ListSelectionListener) new ListSelectionListener(){
-        public void valueChanged(ListSelectionEvent evento) {
-            if (evento.getValueIsAdjusting())
-            //ainda selecionando
-            return;
-            JList list = (JList)evento.getSource();
-            if (list.isSelectionEmpty()) {
-                    Utils.dbg("nenhuma seleção");
-            } else {
-                String idMovie=((String)menuResultados_listaFilmes.getSelectedValue()).split(" ")[0];
-                String[] f = gestorFilmes.getFilme(idMovie);
-                //String[] formatos = gestorFilmes.getFormatoPreco(idMovie);
-                DefaultComboBoxModel modeloDados = new DefaultComboBoxModel();
-                int i=1,j=0;
-                menuResultados_titulo.setText(f[i++]);
-                menuResultados_ano.setText(f[i++]);
-                menuResultados_realizador.setText(f[i++]);
-                menuResultados_imdb.setText(f[i++]);
-                menuResultados_pais.setText(f[i++]);
-                menuResultados_produtor.setText(f[i++]);
-                menuResultados_descricao.setText(f[i++]);
-                //menuResultados_imagem.setIcon(new ImageIcon(f[i++]));
-                menuResultados_generos.setModel(new OurListModel(Utils.extract(f, i+2)));
-                String[] formato = gestorFilmes.verListaStocksFilme(idMovie);
-                System.out.println("cenassss "+formato[0]);
-                /*menuResultados_preco.setText(formatos[j]);
-                for(j=1;j<formatos.length;j++){
-                    modeloDados.addElement(formatos[i]);
-                }
-                menuResultados_formatos.setModel(modeloDados);*/
-
-            }
-        }});
         menuResultados_formatos.setSelectedIndex(-1);
         jDadosPanel.setVisible(false);
         jPaga.setVisible(false);
@@ -1700,12 +1733,20 @@ public class Frame_ATM  extends JFrame{
     private void jVoltarPesquisaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarPesquisaButtonActionPerformed
         // TODO : reset variaveis de presquisa!
         //Set panel's visibility
+        menuResultados_titulo.setText("");
+        menuResultados_produtor.setText("");
+        menuResultados_realizador.setText("");
+        menuResultados_ano.setText("");
+        menuResultados_pais.setText("");
+        menuResultados_imdb.setText("");
+        
+        menuResultados_descricao.setText("");
         menuPesquisar_titulo.setText("");
-        menuPesquisar_anoLow.setValue(2010);
-        menuPesquisar_anoHigh.setValue(2010);
+        menuPesquisar_anoLow.setValue(1900);
+        menuPesquisar_anoHigh.setValue(2011);
         menuPesquisar_realizador.setText("");
-        menuPesquisar_imdbLow.setValue(5);
-        menuPesquisar_imdbHigh.setValue(5);
+        menuPesquisar_imdbLow.setValue(1);
+        menuPesquisar_imdbHigh.setValue(10);
         menuPesquisar_pais.setText("");
         menuPesquisar_produtor.setText("");
         menuPesquisar_generos.setSelectedIndex(-1);
