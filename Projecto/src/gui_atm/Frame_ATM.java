@@ -1425,15 +1425,13 @@ public class Frame_ATM  extends JFrame{
                 if (list.isSelectionEmpty()) {
                         Utils.dbg("nenhuma seleção");
                 } else {
-                    String idMovie=((String)menuEntregar_filme.getSelectedValue()).split(" ")[0];
+                    String idReq=((String)menuEntregar_filme.getSelectedValue()).split(" ")[0];
                     // TODO by Lobo: idMovie no calcularPrecoRequisicao? � suposto ser o ID de uma requisi�ao.
-                    String valor = gestorFilmes.calcularPrecoRequisicao(idMovie);
-                    valorapagar.setText(valor);
+                    valorapagar.setText(gestorFilmes.calcularPrecoRequisicao(idReq));
                 }
             }
         });
         bgroup=new ButtonGroup();
-
         bgroup.add(jRadioButton3);
         bgroup.add(jRadioButton4);
 
@@ -1641,7 +1639,7 @@ public class Frame_ATM  extends JFrame{
         // TODO: reunir dados para fazer a mega query e fazê-la . reset variáveis de pesquisa?
         //o k ta comentado e pra nao dar merda
         //so esta a ir buscar um genero
-        String [] generos = {""};
+        String [] generos = {null};
         if(menuPesquisar_generos.getSelectedItem()!=null){
             generos[0]=menuPesquisar_generos.getSelectedItem().toString();
         }
@@ -1668,7 +1666,7 @@ public class Frame_ATM  extends JFrame{
                 String[] f = gestorFilmes.getFilme(idMovie);
                 //String[] formatos = gestorFilmes.getFormatoPreco(idMovie);
                 DefaultComboBoxModel modeloDados = new DefaultComboBoxModel();
-                int i=0,j=0;
+                int i=1,j=0;
                 menuResultados_titulo.setText(f[i++]);
                 menuResultados_ano.setText(f[i++]);
                 menuResultados_realizador.setText(f[i++]);
@@ -1676,9 +1674,11 @@ public class Frame_ATM  extends JFrame{
                 menuResultados_pais.setText(f[i++]);
                 menuResultados_produtor.setText(f[i++]);
                 menuResultados_descricao.setText(f[i++]);
-                menuResultados_imagem.setIcon(new ImageIcon(f[i++]));
-                /*menuResultados_generos.setModel(new OurListModel(Utils.extract(f, i+1)));
-                menuResultados_preco.setText(formatos[j]);
+                //menuResultados_imagem.setIcon(new ImageIcon(f[i++]));
+                menuResultados_generos.setModel(new OurListModel(Utils.extract(f, i+2)));
+                String[] formato = gestorFilmes.verListaStocksFilme(idMovie);
+                System.out.println("cenassss "+formato[0]);
+                /*menuResultados_preco.setText(formatos[j]);
                 for(j=1;j<formatos.length;j++){
                     modeloDados.addElement(formatos[i]);
                 }
@@ -1750,21 +1750,24 @@ public class Frame_ATM  extends JFrame{
         // TODO: Processar o pedido
         //Set panel's visibility
         String modo_pagamento = "null";
+        String numero_cartao=num_cartao.getText();
+        String numero_css=num_css.getText();
+        int prosseguir=0;
         Component frame = new Component(){};
-        System.out.println("cenas "+ num_css.getText().equals(""));
         try{
             if(jRadioButton3.isSelected()){
                 modo_pagamento="dinheiro";
+                prosseguir=1;
             }else if(jRadioButton4.isSelected()){
                 modo_pagamento="multibanco";
+                if(!numero_cartao.equals("") && !numero_css.equals("") && numero_css.length()>2){
+                    prosseguir=1;
+                }
             }
-            String numero_cartao=num_cartao.getText();
-            String numero_css=num_css.getText();
-            if(!numero_cartao.equals("") && !numero_css.equals("") && numero_css.length()>2 && !modo_pagamento.equals("null")){
+            if(prosseguir==1 && !modo_pagamento.equals("null")){
                 modo_pagamento="null";
-                String idMovie=((String)menuEntregar_filme.getSelectedValue()).split(" ")[0];
+                prosseguir=0;
                 //gerir_users.pagarAluguer(numero_cartao,numero_css,idMovie);
-                String [] f= gestorFilmes.getFilme(idMovie);
                 jDadosPanel.setVisible(false);
                 jPaga.setVisible(true);
                 jEntregaPanel.setVisible(false);
@@ -1773,9 +1776,13 @@ public class Frame_ATM  extends JFrame{
                 jMenuPanel.setVisible(false);
                 jResultadosPanel.setVisible(false);
                 jPesquisarPanel.setVisible(false);
-                menuPaga_titulo.setText(f[0]);
-                menuPaga_preco.setText(f[0]);
-                menuPaga_dataEntrega.setText(f[0]);
+                String res = ((String)menuEntregar_filme.getSelectedValue()).split(" : ", 3)[2];
+		res = res.substring(res.indexOf(") ")+2);
+		res = res.substring(0, res.lastIndexOf(" ["));
+                menuPaga_titulo.setText(res);
+                menuPaga_preco.setText(valorapagar.getText());
+                menuPaga_dataEntrega.setText(((String)menuEntregar_filme.getSelectedValue()).split(" ")[5]);
+                gestorFilmes.entregaRequisicao(((String)menuEntregar_filme.getSelectedValue()).split(" ")[0]);
                 jProgressBar1.setMinimum(0);
                 jProgressBar1.setMaximum(100);
                 for(int i = 0; i<=100;i++){
