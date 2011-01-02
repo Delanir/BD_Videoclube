@@ -49,6 +49,8 @@ public class DBHandler
 				Utils.dbg("false null");
 			else
 				Utils.dbg("other. wtf?");*/
+			//Utils.dbg("1234 [7777777] hhjkbjuhgjk".split("[\[\]]")[1]);
+			Utils.dbg(DBHandler.getClienteBIFromID("1"));
 			Utils.dbg(montanteActualRequisicao("0"));
 			//Utils.printStringArrayln(Utils.strArrayVectorToArray(select("SELECT montanteAPagar(2) FROM DUAL")));
 			close();
@@ -152,6 +154,11 @@ public class DBHandler
 	public static String[] getClienteBI(String bi) {
 		Vector<String[]> vec = selectAll("clientes", "BI", bi, false);
 		return (vec==null||vec.isEmpty() ? null : vec.get(0));
+	}
+	
+	public static String getClienteBIFromID(String id) {
+		Vector<String[]> vec = select("clientes", new String[]{"BI"}, "ID_PES", id, true);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0)[0]);
 	}
 
 	/**
@@ -267,7 +274,12 @@ public class DBHandler
 		Vector<String[]> vec = selectAll("empregados", "BI", bi, false);
 		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
-
+	
+	public static String getEmpregadoBIFromID(String id) {
+		Vector<String[]> vec = select("empregados", new String[]{"BI"}, "ID_PES", id, true);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0)[0]);
+	}
+	
 	/**
 	 * Adiciona um empregado � BD.
 	 * @param is_admin "1" se o empregado a adicionar � administrador. "0" caso contr�rio.
@@ -862,13 +874,13 @@ public class DBHandler
 	 */
 	public static void adicionaRequisicao(String id_maq, String emp_id_pes, String id_pes, String id_fil, String id_for) {
 		adicionaObjecto("requisicoes",
-						new String[]{id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", "SYSDATE + " + Consts.LIMITE_DIAS, "null"});
+						new String[]{"seq_requisicao_id.NEXTVAL", id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", "SYSDATE + " + Consts.LIMITE_DIAS, "null"});
 	}
 
 	public static void adicionaRequisicaoNomeFormato(String id_maq, String emp_id_pes, String id_pes, String id_fil, String nome_formato) {
 		String id_for = getIDFormato(nome_formato);
 		adicionaObjecto("requisicoes",
-						new String[]{id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", "SYSDATE + " + Consts.LIMITE_DIAS, "null"});
+						new String[]{"seq_requisicao_id.NEXTVAL", id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", "SYSDATE + " + Consts.LIMITE_DIAS, "null"});
 	}
 	
 	/**

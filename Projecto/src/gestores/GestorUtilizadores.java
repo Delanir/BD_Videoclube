@@ -17,7 +17,7 @@ public class GestorUtilizadores
 	 * procura autenticar um cliente no sistema
 	 */
 	public String loginCliente(String username, String password) {
-                if (Utils.toInt(username) == Consts.ERRO_INT)
+		if (Utils.toInt(username) == Consts.ERRO_INT)
 			return null;
 		if (DBHandler.loginClienteCorrectoBI(username, password)) {
 			this.username = username;
@@ -44,7 +44,7 @@ public class GestorUtilizadores
 				return "0";
 			}
 		} else if(DBHandler.loginEmpregadoCorrecto(username, password)) {
-			this.username = username;
+			this.username = DBHandler.getEmpregadoBIFromID(username);
 			if(DBHandler.empregadoEAdmin(username))
 				return "1";
 			else
