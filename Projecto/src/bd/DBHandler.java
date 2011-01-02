@@ -50,8 +50,10 @@ public class DBHandler
 			else
 				Utils.dbg("other. wtf?");*/
 			//Utils.dbg("1234 [7777777] hhjkbjuhgjk".split("[\[\]]")[1]);
-			Utils.dbg(DBHandler.getClienteBIFromID("1"));
-			Utils.dbg(montanteActualRequisicao("0"));
+			Utils.printStringArrayVector(getRequisicoesPorEntregarClienteBIPlus("48706618"));
+			Utils.printStringArrayVector(getRequisicoesClienteBIPlus("48706618"));
+			//Utils.dbg(DBHandler.getClienteBIFromID("1"));
+			//Utils.dbg(montanteActualRequisicao("0"));
 			//Utils.printStringArrayln(Utils.strArrayVectorToArray(select("SELECT montanteAPagar(2) FROM DUAL")));
 			close();
 			System.out.println("tudo bem");
@@ -221,7 +223,7 @@ public class DBHandler
 		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI,Count(r.ID_REQ) " +
 					   " FROM clientes c, requisicoes r" +
 					   " WHERE c.ID_PES = r.ID_PES" +
-					   " AND r.DATA_ENTREGA = null" +
+					   " AND r.DATA_ENTREGA IS NULL" +
 					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI" +
 					   " HAVING COUNT(r.ID_REQ) > 0";
 		return select(query);
@@ -231,7 +233,7 @@ public class DBHandler
 		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI ,Count(r.ID_REQ) " +
 					   " FROM clientes c, requisicoes r" +
 					   " WHERE c.ID_PES = r.ID_PES" +
-					   " AND r.DATA_ENTREGA = null" +
+					   " AND r.DATA_ENTREGA IS NULL" +
 					   " AND r.DATA_LIMITE < SYSDATE" +
 					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI" +
 					   " HAVING COUNT(r.ID_REQ) > 0";
@@ -856,7 +858,7 @@ public class DBHandler
 					    " AND r.ID_FOR = fo.ID_FOR" +
 					    " AND r.ID_PES = c.ID_PES" +
 						" AND c.BI =" + bi +
-						" AND r.DATA_ENTREGA = null");
+						" AND r.DATA_ENTREGA IS NULL");
 	}
 	
 	/**
