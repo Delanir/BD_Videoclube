@@ -582,7 +582,7 @@ public class DBHandler
 	}
 	
 	public static String getFormatoID(String nome_formato) {
-		Vector<String[]> vec = selectAll("formatos", "NOME_FORMATO", nome_formato, false);
+		Vector<String[]> vec = selectAll("formatos", "NOME_FORMATO", p(nome_formato), false);
 		return (vec==null||vec.isEmpty() ? null : vec.get(0)[0]);
 	}
 	
