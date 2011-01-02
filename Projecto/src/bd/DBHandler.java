@@ -466,6 +466,7 @@ public class DBHandler
 	}
 	
 	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos, boolean restrictGen, boolean soValidos) {
+		Utils.printStringArray(generos);
 		String op = (restrictGen ? " AND " : " OR ");
 		String query = "SELECT f.ID_FIL, f.ANO, f.TITULO" +
 					   " FROM filmes f";
@@ -474,7 +475,7 @@ public class DBHandler
 					 " WHERE f.ID_FIL = fg.ID_FIL" +
 					   " AND g.ID_GEN = fg.ID_GEN";
 			for(String gen : generos)
-				query += op + "g.NOME_GENERO = " + gen;
+				query += op + "g.NOME_GENERO = " + p(gen);
 		} else {
 			query += " WHERE f.ID_FIL = f.ID_FIL";		//redundÔøΩncia para evitar o caso em que o WHERE fica sem nada
 		}
@@ -1374,9 +1375,7 @@ public class DBHandler
 	private static Vector<String[]> selectAll(String tabela, String[] campos, String[] valores, boolean soValidos) {
 		return select("SELECT *" +
 					  " FROM " + tabela +
-
 					  " WHERE " + Utils.list(campos, "=", valores, " AND ") +
-
 					  (!soValidos ? "":" AND VALIDO = 1"));
 	}
 	
@@ -1467,8 +1466,8 @@ public class DBHandler
 		return rs.getString(1);
 	}*/
 
-        /* ---------------------------------------------------------------- */
-	/* ------------------------- ESTAT√çSTICAS ------------------------- */
+    /* ---------------------------------------------------------------- */
+	/* ------------------------- ESTATÕSTICAS ------------------------- */
 	/* ---------------------------------------------------------------- */
 
         public static String estatisticasContabilidade(){

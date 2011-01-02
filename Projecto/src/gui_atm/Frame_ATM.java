@@ -157,6 +157,7 @@ public class Frame_ATM  extends JFrame{
         menuPaga_preco = new javax.swing.JTextField();
         menuPaga_titulo = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
+        jVoltarButton1 = new javax.swing.JButton();
         jResultadosPanel = new javax.swing.JPanel();
         jSairButton3 = new javax.swing.JButton();
         jAjudaButton3 = new javax.swing.JButton();
@@ -547,6 +548,13 @@ public class Frame_ATM  extends JFrame{
         jLabel49.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel49.setText("A processar entrega...");
 
+        jVoltarButton1.setText("Voltar");
+        jVoltarButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVoltarButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPagaLayout = new javax.swing.GroupLayout(jPaga);
         jPaga.setLayout(jPagaLayout);
         jPagaLayout.setHorizontalGroup(
@@ -555,7 +563,6 @@ public class Frame_ATM  extends JFrame{
                 .addGap(152, 152, 152)
                 .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel49)
-                    .addComponent(jLabel41)
                     .addGroup(jPagaLayout.createSequentialGroup()
                         .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel40)
@@ -566,7 +573,12 @@ public class Frame_ATM  extends JFrame{
                             .addComponent(menuPaga_dataEntrega)
                             .addComponent(menuPaga_preco)
                             .addComponent(menuPaga_titulo)))
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPagaLayout.createSequentialGroup()
+                            .addComponent(jVoltarButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(100, 100, 100))
+                        .addComponent(jLabel41)))
                 .addContainerGap(148, Short.MAX_VALUE))
         );
         jPagaLayout.setVerticalGroup(
@@ -590,7 +602,9 @@ public class Frame_ATM  extends JFrame{
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel41)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(jVoltarButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jSairButton3.setText("SAIR");
@@ -624,7 +638,6 @@ public class Frame_ATM  extends JFrame{
         jLabel15.setText("Género:");
 
         menuResultados_titulo.setEditable(false);
-        menuResultados_titulo.setText("jTextField1");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel16.setText("Ano:");
@@ -633,13 +646,11 @@ public class Frame_ATM  extends JFrame{
         jLabel17.setText("Realizador:");
 
         menuResultados_realizador.setEditable(false);
-        menuResultados_realizador.setText("jTextField2");
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel18.setText("Produtor:");
 
         menuResultados_produtor.setEditable(false);
-        menuResultados_produtor.setText("jTextField3");
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel19.setText("IMDB RATING: ");
@@ -657,10 +668,8 @@ public class Frame_ATM  extends JFrame{
         jLabel22.setText("Resultados:");
 
         menuResultados_ano.setEditable(false);
-        menuResultados_ano.setText("jTextField7");
 
         menuResultados_imdb.setEditable(false);
-        menuResultados_imdb.setText("jTextField9");
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setForeground(new java.awt.Color(255, 153, 153));
@@ -695,7 +704,6 @@ public class Frame_ATM  extends JFrame{
         jLabel23.setText("País:");
 
         menuResultados_pais.setEditable(false);
-        menuResultados_pais.setText("jTextField10");
 
         jButton10.setText("ALUGAR");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -704,8 +712,6 @@ public class Frame_ATM  extends JFrame{
             }
         });
 
-        menuResultados_formatos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel36.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel36.setText("Escolher Formato");
 
@@ -713,18 +719,12 @@ public class Frame_ATM  extends JFrame{
         jLabel37.setText("Preço:");
 
         menuResultados_preco.setEditable(false);
-        menuResultados_preco.setText("jTextField18");
         menuResultados_preco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuResultados_precoActionPerformed(evt);
             }
         });
 
-        menuResultados_generos.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane4.setViewportView(menuResultados_generos);
 
         javax.swing.GroupLayout jResultadosPanelLayout = new javax.swing.GroupLayout(jResultadosPanel);
@@ -737,7 +737,7 @@ public class Frame_ATM  extends JFrame{
                     .addGroup(jResultadosPanelLayout.createSequentialGroup()
                         .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jResultadosPanelLayout.createSequentialGroup()
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
                                 .addGap(130, 130, 130))
                             .addGroup(jResultadosPanelLayout.createSequentialGroup()
                                 .addGap(205, 205, 205)
@@ -745,10 +745,10 @@ public class Frame_ATM  extends JFrame{
                                     .addComponent(jLabel36)
                                     .addComponent(jLabel37))
                                 .addGap(13, 13, 13)
-                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(menuResultados_formatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuResultados_preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(43, 43, 43)
+                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(menuResultados_preco)
+                                    .addComponent(menuResultados_formatos, 0, 65, Short.MAX_VALUE))
+                                .addGap(27, 27, 27)
                                 .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jResultadosPanelLayout.createSequentialGroup()
                                         .addComponent(jVoltarPesquisaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -768,26 +768,27 @@ public class Frame_ATM  extends JFrame{
                         .addGap(18, 18, 18)
                         .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jResultadosPanelLayout.createSequentialGroup()
-                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(menuResultados_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuResultados_realizador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuResultados_pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(49, 49, 49)
+                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(menuResultados_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                                    .addComponent(menuResultados_pais)
+                                    .addComponent(menuResultados_realizador))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel18)
                                     .addComponent(jLabel16)
                                     .addComponent(jLabel19))
                                 .addGap(18, 18, 18)
-                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(menuResultados_imdb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuResultados_ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuResultados_produtor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(menuResultados_ano, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                                    .addComponent(menuResultados_produtor)
+                                    .addComponent(menuResultados_imdb))
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(422, 422, 422)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGap(396, 396, 396)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE))
             .addGroup(jResultadosPanelLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
@@ -799,7 +800,7 @@ public class Frame_ATM  extends JFrame{
                         .addComponent(jLabel13))
                     .addComponent(jLabel22)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(451, Short.MAX_VALUE))
+                .addContainerGap(452, Short.MAX_VALUE))
         );
         jResultadosPanelLayout.setVerticalGroup(
             jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -826,16 +827,14 @@ public class Frame_ATM  extends JFrame{
                             .addGroup(jResultadosPanelLayout.createSequentialGroup()
                                 .addGap(34, 34, 34)
                                 .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jResultadosPanelLayout.createSequentialGroup()
-                                            .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(menuResultados_ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel15))
-                                            .addGap(18, 18, 18)
-                                            .addComponent(menuResultados_produtor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(menuResultados_imdb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jResultadosPanelLayout.createSequentialGroup()
+                                        .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(menuResultados_ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel15))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(menuResultados_produtor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(menuResultados_imdb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jResultadosPanelLayout.createSequentialGroup()
                                         .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(menuResultados_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -850,7 +849,8 @@ public class Frame_ATM  extends JFrame{
                                         .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jLabel17)
                                             .addComponent(menuResultados_realizador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel19))))
+                                            .addComponent(jLabel19)))
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel21)
@@ -859,17 +859,20 @@ public class Frame_ATM  extends JFrame{
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel36)
-                            .addComponent(menuResultados_formatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(menuResultados_preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel37))
-                            .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jVoltarPesquisaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSairButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jResultadosPanelLayout.createSequentialGroup()
+                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel36)
+                                    .addComponent(menuResultados_formatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(36, 36, 36)
+                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(menuResultados_preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel37)))
+                            .addGroup(jResultadosPanelLayout.createSequentialGroup()
+                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jVoltarPesquisaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSairButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
 
@@ -887,7 +890,7 @@ public class Frame_ATM  extends JFrame{
             }
         });
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 24));
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel24.setText("Histórico");
 
         jList2.setModel(new javax.swing.AbstractListModel() {
@@ -914,17 +917,17 @@ public class Frame_ATM  extends JFrame{
                     .addGroup(jHistoricoPanelLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(jHistoricoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel24)
                             .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))))
-                .addContainerGap(137, Short.MAX_VALUE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         jHistoricoPanelLayout.setVerticalGroup(
             jHistoricoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jHistoricoPanelLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel24)
-                .addGap(43, 43, 43)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel48)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -952,7 +955,7 @@ public class Frame_ATM  extends JFrame{
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel2.setText("Password:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 24));
         jLabel5.setText("Videoclube \"a definir\"");
 
         javax.swing.GroupLayout jLoginPanelLayout = new javax.swing.GroupLayout(jLoginPanel);
@@ -1401,7 +1404,7 @@ public class Frame_ATM  extends JFrame{
                         Utils.dbg("nenhuma seleção");
                 } else {
                     String idMovie=((String)menuEntregar_filme.getSelectedValue()).split(" ")[0];
-                    // TODO by Lobo: idMovie no calcularPrecoRequisicao? � suposto ser o ID de uma requisi�ao.
+                    // TODO by Lobo: idMovie no calcularPrecoRequisicao? � suposto ser o ID de uma requisi�ao.
                     String valor = gestorFilmes.calcularPrecoRequisicao(idMovie);
                     valorapagar.setText(valor);
                 }
@@ -1587,6 +1590,15 @@ public class Frame_ATM  extends JFrame{
 
     private void jVoltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarButtonActionPerformed
         //Set panel's visibility
+        menuPesquisar_titulo.setText("");
+        menuPesquisar_anoLow.setValue(0);
+        menuPesquisar_anoHigh.setValue(0);
+        menuPesquisar_realizador.setText("");
+        menuPesquisar_imdbLow.setValue(0);
+        menuPesquisar_imdbHigh.setValue(0);
+        menuPesquisar_pais.setText("");
+        menuPesquisar_produtor.setText("");
+        menuPesquisar_generos.setSelectedIndex(-1);
         jDadosPanel.setVisible(false);
         jPaga.setVisible(false);
         jEntregaPanel.setVisible(false);
@@ -1693,6 +1705,9 @@ public class Frame_ATM  extends JFrame{
 
     private void jMenuButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuButton5ActionPerformed
         //Set panel's visibility
+        bgroup.clearSelection();
+        num_cartao.setText("");
+        num_css.setText("");
         jDadosPanel.setVisible(false);
         jPaga.setVisible(false);
         jEntregaPanel.setVisible(false);
@@ -1706,18 +1721,19 @@ public class Frame_ATM  extends JFrame{
     private void jPagarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPagarButtonActionPerformed
         // TODO: Processar o pedido
         //Set panel's visibility
-        String modo_pagamento;
+        String modo_pagamento = "null";
         Component frame = new Component(){};
         System.out.println("cenas "+ num_css.getText().equals(""));
         try{
             if(jRadioButton3.isSelected()){
                 modo_pagamento="dinheiro";
-            }else{
+            }else if(jRadioButton4.isSelected()){
                 modo_pagamento="multibanco";
             }
             String numero_cartao=num_cartao.getText();
             String numero_css=num_css.getText();
-            if(!numero_cartao.equals("") && !numero_css.equals("") && numero_css.length()>2){
+            if(!numero_cartao.equals("") && !numero_css.equals("") && numero_css.length()>2 && !modo_pagamento.equals("null")){
+                modo_pagamento="null";
                 String idMovie=((String)menuEntregar_filme.getSelectedValue()).split(" ")[0];
                 //gerir_users.pagarAluguer(numero_cartao,numero_css,idMovie);
                 String [] f= gestorFilmes.getFilme(idMovie);
@@ -1802,6 +1818,21 @@ public class Frame_ATM  extends JFrame{
             jPasswordField.setText("");
         }
     }//GEN-LAST:event_jLoginButtonActionPerformed
+
+    private void jVoltarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarButton1ActionPerformed
+        // TODO add your handling code here:
+        bgroup.clearSelection();
+        num_cartao.setText("");
+        num_css.setText("");
+        jDadosPanel.setVisible(false);
+        jPaga.setVisible(false);
+        jEntregaPanel.setVisible(true);
+        jLoginPanel.setVisible(false);
+        jHistoricoPanel.setVisible(false);
+        jMenuPanel.setVisible(false);
+        jResultadosPanel.setVisible(false);
+        jPesquisarPanel.setVisible(false);
+    }//GEN-LAST:event_jVoltarButton1ActionPerformed
 /*
      * Botões _______________Botões___________________Botões__________Botões
      *
@@ -1905,6 +1936,7 @@ public class Frame_ATM  extends JFrame{
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jUsernameField;
     private javax.swing.JButton jVoltarButton;
+    private javax.swing.JButton jVoltarButton1;
     private javax.swing.JButton jVoltarButton4;
     private javax.swing.JButton jVoltarButton6;
     private javax.swing.JButton jVoltarPesquisaButton;
