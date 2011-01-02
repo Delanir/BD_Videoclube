@@ -27,11 +27,11 @@ public class DBHandler
 	 * @param args os argumentos da linha de comandos.
 	 */
 	public static void main(String args[]) {
-		String str = "22 : (1212-3453-346 -- 4645.75) : (2009) cen()[]as de ( ) { } [ ]  quecas [UMD]";
-		String res = str.split(" : ")[2];
+		/*String str = "22 : (1212-3453-346 -- 4645.75) : (2009) : cen()[]as d : e ( ) { } [ ]  quecas [UMD]";
+		String res = str.split(" : ", 3)[2];
 		res = res.substring(res.indexOf(") ")+2);
 		res = res.substring(0, res.lastIndexOf(" ["));
-		System.out.println(res);
+		System.out.println(res);*/
 		open();
 		if (conn != null) {
 			//Icon icon = new ImageIcon("MV5BMTI5Mjc2MTE3OV5BMl5BanBnXkFtZTcwNTc2MzI2Mg@@._V1._CR341,0,1365,1365_SS80_.jpg");

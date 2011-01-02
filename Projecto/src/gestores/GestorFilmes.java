@@ -111,7 +111,7 @@ public class GestorFilmes
 	 */
 	public String[] procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
 		Vector<String[]> vec = DBHandler.procuraFilmes(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class GestorFilmes
 	 */
 	public String[] procuraFilmesPlusInvalidos(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
 		Vector<String[]> vec = DBHandler.procuraFilmesPlusInvalidos(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 	
 	/**
@@ -127,7 +127,7 @@ public class GestorFilmes
 	 */
 	public String[] procuraFilmesAnyGen(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
 		Vector<String[]> vec = DBHandler.procuraFilmesAnyGen(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class GestorFilmes
 	 */
 	public String[] procuraFilmesPlusInvalidosAnyGen(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos) {
 		Vector<String[]> vec = DBHandler.procuraFilmesPlusInvalidosAnyGen(titulo, anoLow, anoHigh, realizador, ratingIMDBLow, ratingIMDBHigh, pais, produtora, generos);
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 	
 	/* ---------------------------------------------------------------- */
