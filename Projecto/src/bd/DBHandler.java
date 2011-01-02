@@ -27,6 +27,11 @@ public class DBHandler
 	 * @param args os argumentos da linha de comandos.
 	 */
 	public static void main(String args[]) {
+		String str = "22 : (1212-3453-346 -- 4645.75) : (2009) cen()[]as de ( ) { } [ ]  quecas [UMD]";
+		String res = str.split(" : ")[2];
+		res = res.substring(res.indexOf(") ")+2);
+		res = res.substring(0, res.lastIndexOf(" ["));
+		System.out.println(res);
 		open();
 		if (conn != null) {
 			//Icon icon = new ImageIcon("MV5BMTI5Mjc2MTE3OV5BMl5BanBnXkFtZTcwNTc2MzI2Mg@@._V1._CR341,0,1365,1365_SS80_.jpg");
@@ -466,7 +471,6 @@ public class DBHandler
 	}
 	
 	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos, boolean restrictGen, boolean soValidos) {
-		Utils.printStringArray(generos);
 		String op = (restrictGen ? " AND " : " OR ");
 		String query = "SELECT f.ID_FIL, f.ANO, f.TITULO" +
 					   " FROM filmes f";
@@ -1255,6 +1259,7 @@ public class DBHandler
 		execute("INSERT INTO " + tabela +
 				" VALUES(" + Utils.list(valores, ",") + ")");
 	}
+	
 	/**
 	 * Actualiza um objecto na BD. Funï¿½ï¿½o genï¿½rica.
 	 * @param tabela a tabela na qual actualizar o objecto.
@@ -1467,7 +1472,7 @@ public class DBHandler
 	}*/
 
     /* ---------------------------------------------------------------- */
-	/* ------------------------- ESTATÍSTICAS ------------------------- */
+	/* ------------------------- ESTATï¿½STICAS ------------------------- */
 	/* ---------------------------------------------------------------- */
 
         public static String estatisticasContabilidade(){
@@ -1521,7 +1526,7 @@ public class DBHandler
 
                 CallableStatement cs = conn.prepareCall ("{ call topMaquinas()}");
                 cs.execute();
-                Vector <String []> out=select("SELECT col1, col2FROM temp");
+                Vector <String []> out=select("SELECT col1, col2 FROM temp");
                 conn.commit();
 
 
