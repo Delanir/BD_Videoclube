@@ -219,7 +219,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         actualizarListaMaquinas = new javax.swing.JButton();
         jEstatisticasPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        statsArea = new javax.swing.JTextArea();
         javax.swing.JLabel jLabel9 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
@@ -673,9 +673,10 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         jTabbedPane2.addTab("Gestão Máquinas", jATMManagerPanel);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        statsArea.setColumns(20);
+        statsArea.setEditable(false);
+        statsArea.setRows(5);
+        jScrollPane3.setViewportView(statsArea);
 
         jLabel9.setText("Estatísticas:");
 
@@ -3363,6 +3364,11 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     );
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    addWindowListener(new java.awt.event.WindowAdapter() {
+        public void windowClosing(java.awt.event.WindowEvent evt) {
+            formWindowClosing(evt);
+        }
+    });
 
     mainPanel.setBackground(new java.awt.Color(204, 255, 153));
     mainPanel.setDoubleBuffered(false);
@@ -3887,26 +3893,26 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
     private void consultarEstatisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEstatisticasActionPerformed
         // TODO add your handling code here:
-        jTextArea2.setText("");
+        statsArea.setText("");
         if(jCheckBox5.isSelected()){
             //Clientes
-            jTextArea2.append(gestorEstatisticas.estatisticasClientes(calendarBegin, calendarEnd));
+            statsArea.append(gestorEstatisticas.estatisticasClientes(calendarBegin, calendarEnd));
         }
          if(jCheckBox3.isSelected()){
             //Clientes
-            jTextArea2.append(gestorEstatisticas.estatisticasFilmes(calendarBegin, calendarEnd));
+            statsArea.append(gestorEstatisticas.estatisticasFilmes(calendarBegin, calendarEnd));
         }
          if(jCheckBox1.isSelected()){
             //Clientes
-            jTextArea2.append(gestorEstatisticas.estatisticasEmpregados(calendarBegin, calendarEnd));
+            statsArea.append(gestorEstatisticas.estatisticasEmpregados(calendarBegin, calendarEnd));
         }
         if(jCheckBox4.isSelected()){
             //Clientes
-            jTextArea2.append(gestorEstatisticas.estatisticasMaquinas(calendarBegin, calendarEnd));
+            statsArea.append(gestorEstatisticas.estatisticasMaquinas(calendarBegin, calendarEnd));
         }
         if(jCheckBox5.isSelected()){
             //Clientes
-            jTextArea2.append(gestorEstatisticas.getEstatisticas(calendarBegin, calendarEnd));
+            statsArea.append(gestorEstatisticas.getEstatisticas(calendarBegin, calendarEnd));
         }
     }//GEN-LAST:event_consultarEstatisticasActionPerformed
 
@@ -4158,6 +4164,10 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         // TODO add your handling code here:
 }//GEN-LAST:event_jDespedirEmpregadoButtonComponentResized
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        DBHandler.close();
+    }//GEN-LAST:event_formWindowClosing
+
    
     //OUR GUI VARS
     private javax.swing.ButtonGroup bgroup;
@@ -4337,7 +4347,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextArea jTextArea14;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton17;
     private javax.swing.JToggleButton jToggleButton18;
@@ -4398,6 +4407,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JTextField realizadorResultadosFilme;
     private javax.swing.JFrame resultadosFrame;
     private javax.swing.JTextField salarioEmpregados;
+    private javax.swing.JTextArea statsArea;
     private javax.swing.JTextField telefoneAdicionaClientes;
     private javax.swing.JTextField telefoneEmpregados;
     private javax.swing.JTextField telefonePesquisarClientes;

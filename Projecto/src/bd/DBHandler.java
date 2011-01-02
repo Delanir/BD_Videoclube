@@ -466,6 +466,7 @@ public class DBHandler
 	}
 	
 	public static Vector<String[]> procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos, boolean restrictGen, boolean soValidos) {
+		Utils.printStringArray(generos);
 		String op = (restrictGen ? " AND " : " OR ");
 		String query = "SELECT f.ID_FIL, f.ANO, f.TITULO" +
 					   " FROM filmes f";
@@ -474,7 +475,7 @@ public class DBHandler
 					 " WHERE f.ID_FIL = fg.ID_FIL" +
 					   " AND g.ID_GEN = fg.ID_GEN";
 			for(String gen : generos)
-				query += op + "g.NOME_GENERO = " + gen;
+				query += op + "g.NOME_GENERO = " + p(gen);
 		} else {
 			query += " WHERE f.ID_FIL = f.ID_FIL";		//redund�ncia para evitar o caso em que o WHERE fica sem nada
 		}
@@ -581,7 +582,7 @@ public class DBHandler
 	}
 	
 	public static String getFormatoID(String nome_formato) {
-		Vector<String[]> vec = selectAll("formatos", "NOME_FORMATO", nome_formato, false);
+		Vector<String[]> vec = selectAll("formatos", "NOME_FORMATO", p(nome_formato), false);
 		return (vec==null||vec.isEmpty() ? null : vec.get(0)[0]);
 	}
 	
@@ -1374,9 +1375,7 @@ public class DBHandler
 	private static Vector<String[]> selectAll(String tabela, String[] campos, String[] valores, boolean soValidos) {
 		return select("SELECT *" +
 					  " FROM " + tabela +
-
 					  " WHERE " + Utils.list(campos, "=", valores, " AND ") +
-
 					  (!soValidos ? "":" AND VALIDO = 1"));
 	}
 	
@@ -1467,8 +1466,8 @@ public class DBHandler
 		return rs.getString(1);
 	}*/
 
-        /* ---------------------------------------------------------------- */
-	/* ------------------------- ESTATÍSTICAS ------------------------- */
+    /* ---------------------------------------------------------------- */
+	/* ------------------------- ESTAT�STICAS ------------------------- */
 	/* ---------------------------------------------------------------- */
 
         public static String estatisticasContabilidade(){
@@ -1517,6 +1516,32 @@ public class DBHandler
             return "";
         }
 
+        public static String estatisticasTopMaquinas(){
+            try {
+
+                CallableStatement cs = conn.prepareCall ("{ call topMaquinas()}");
+                cs.execute();
+                Vector <String []> out=select("SELECT col1, col2FROM temp");
+                conn.commit();
+
+
+                String output="TOP Maquinas\nID:\tNº Requisições\n";
+                if(out!=null){
+                    for(int i=0; i<out.size();i++){
+                        output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\n";
+                    }
+                    return output;
+                }
+                return "";
+            } catch (SQLException ex) {
+                Utils.dbg("excepção no Commit?");
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
+            return "";
+        }
+
         public static String estatisticasTop10Filmes(){
             try {
                 //executeNoCommit("EXECUTE top10filmes");
@@ -1540,6 +1565,8 @@ public class DBHandler
             
             return "";
         }
+
+
 
         public static String estatisticasEmpregados(){
             try {
