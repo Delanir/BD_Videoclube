@@ -399,7 +399,7 @@
         </Component>
         <Component class="javax.swing.JSpinner" name="menuPesquisar_imdbLow">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="menuPesquisar_imdbLow.setModel(new SpinnerNumberModel(5.0,1,10,0.1));"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="menuPesquisar_imdbLow.setModel(new SpinnerNumberModel(1.0,1,10,0.1));"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="menuPesquisar_realizador">
@@ -408,12 +408,12 @@
         </Component>
         <Component class="javax.swing.JSpinner" name="menuPesquisar_imdbHigh">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="menuPesquisar_imdbHigh.setModel(new SpinnerNumberModel(5.0,1,10,0.1));"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="menuPesquisar_imdbHigh.setModel(new SpinnerNumberModel(10.0,1,10,0.1));"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JSpinner" name="menuPesquisar_anoLow">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="menuPesquisar_anoLow.setModel(new SpinnerNumberModel(2010,1917,2300,1));"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="menuPesquisar_anoLow.setModel(new SpinnerNumberModel(1900,1900,2050,1));"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JToggleButton" name="jSearchButton">
@@ -426,7 +426,7 @@
         </Component>
         <Component class="javax.swing.JSpinner" name="menuPesquisar_anoHigh">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="menuPesquisar_anoHigh.setModel(new SpinnerNumberModel(2010,1917,2300,1));"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="menuPesquisar_anoHigh.setModel(new SpinnerNumberModel(2011,1900,2050,1));"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="menuPesquisar_pais">
