@@ -445,7 +445,6 @@
                   <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel49" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel40" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -460,6 +459,13 @@
                           </Group>
                       </Group>
                       <Component id="jProgressBar1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jVoltarButton1" min="-2" pref="88" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel41" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="148" max="32767" attributes="0"/>
               </Group>
@@ -489,7 +495,9 @@
                   <Component id="jProgressBar1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="130" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="jVoltarButton1" min="-2" pref="59" max="-2" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -555,6 +563,14 @@
             <Property name="text" type="java.lang.String" value="A processar entrega..."/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JButton" name="jVoltarButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Voltar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jVoltarButton1ActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jResultadosPanel">
@@ -568,7 +584,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jSeparator2" pref="486" max="32767" attributes="0"/>
+                                  <Component id="jSeparator2" pref="513" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="1">
@@ -578,11 +594,11 @@
                                       <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="menuResultados_formatos" min="-2" max="-2" attributes="0"/>
-                                      <Component id="menuResultados_preco" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="menuResultados_preco" max="32767" attributes="1"/>
+                                      <Component id="menuResultados_formatos" alignment="0" pref="65" max="32767" attributes="1"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="jVoltarPesquisaButton" min="-2" pref="88" max="-2" attributes="0"/>
@@ -608,33 +624,34 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="menuResultados_titulo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="menuResultados_realizador" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="menuResultados_pais" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="menuResultados_titulo" alignment="0" pref="96" max="32767" attributes="1"/>
+                                      <Component id="menuResultados_pais" alignment="0" max="32767" attributes="1"/>
+                                      <Component id="menuResultados_realizador" alignment="0" max="32767" attributes="1"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="menuResultados_imdb" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="menuResultados_ano" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="menuResultados_produtor" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="menuResultados_ano" alignment="0" pref="81" max="32767" attributes="1"/>
+                                      <Component id="menuResultados_produtor" alignment="0" max="32767" attributes="1"/>
+                                      <Component id="menuResultados_imdb" alignment="0" max="32767" attributes="1"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane4" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane4" min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="422" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="396" max="-2" attributes="0"/>
                   <Component id="jSeparator1" pref="1" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
@@ -649,7 +666,7 @@
                       <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" alignment="0" min="-2" pref="481" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="451" max="32767" attributes="0"/>
+                  <EmptySpace pref="452" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -682,18 +699,15 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jScrollPane4" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="menuResultados_ano" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="menuResultados_produtor" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="menuResultados_imdb" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="menuResultados_ano" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="menuResultados_produtor" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="menuResultados_imdb" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
@@ -714,6 +728,7 @@
                                               <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <Component id="jScrollPane4" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -726,19 +741,24 @@
                           <Component id="jSeparator2" min="-2" pref="11" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="menuResultados_formatos" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton10" min="-2" pref="50" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="menuResultados_preco" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="menuResultados_formatos" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="menuResultados_preco" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="jVoltarPesquisaButton" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
-                                  <Component id="jSairButton3" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jButton10" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jVoltarPesquisaButton" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
+                                      <Component id="jSairButton3" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -800,7 +820,6 @@
         <Component class="javax.swing.JTextField" name="menuResultados_titulo">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
@@ -822,7 +841,6 @@
         <Component class="javax.swing.JTextField" name="menuResultados_realizador">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="jTextField2"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel18">
@@ -836,7 +854,6 @@
         <Component class="javax.swing.JTextField" name="menuResultados_produtor">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="jTextField3"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
@@ -883,13 +900,11 @@
         <Component class="javax.swing.JTextField" name="menuResultados_ano">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="jTextField7"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="menuResultados_imdb">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="jTextField9"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel1">
@@ -964,7 +979,6 @@
         <Component class="javax.swing.JTextField" name="menuResultados_pais">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="jTextField10"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton10">
@@ -978,12 +992,7 @@
         <Component class="javax.swing.JComboBox" name="menuResultados_formatos">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
         </Component>
@@ -1006,7 +1015,6 @@
         <Component class="javax.swing.JTextField" name="menuResultados_preco">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="jTextField18"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuResultados_precoActionPerformed"/>
@@ -1026,13 +1034,7 @@
             <Component class="javax.swing.JList" name="menuResultados_generos">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                    <StringItem index="4" value="Item 5"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -1056,22 +1058,22 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabel24" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel48" alignment="0" max="32767" attributes="1"/>
-                              <Component id="jScrollPane3" alignment="0" max="32767" attributes="1"/>
+                              <Component id="jScrollPane3" alignment="0" min="-2" pref="400" max="-2" attributes="1"/>
+                              <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="137" max="32767" attributes="0"/>
+                  <EmptySpace pref="107" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
