@@ -418,7 +418,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         anoResultadosFilme = new javax.swing.JTextField();
         javax.swing.JLabel jLabel77 = new javax.swing.JLabel();
         jScrollPane19 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList();
+        listaResultados = new javax.swing.JList();
         jButton15 = new javax.swing.JButton();
         jLabel78 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel79 = new javax.swing.JLabel();
@@ -2517,20 +2517,20 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
     jScrollPane19.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-    jList4.setModel(new javax.swing.AbstractListModel() {
-        String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-        public int getSize() { return strings.length; }
-        public Object getElementAt(int i) { return strings[i]; }
-    });
-    jList4.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-    jList4.addMouseListener(new java.awt.event.MouseAdapter() {
+    listaResultados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+    listaResultados.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            jList4MouseClicked(evt);
+            listaResultadosMouseClicked(evt);
         }
     });
-    jScrollPane19.setViewportView(jList4);
+    jScrollPane19.setViewportView(listaResultados);
 
     jButton15.setText("Voltar");
+    jButton15.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton15ActionPerformed(evt);
+        }
+    });
 
     jLabel78.setFont(new java.awt.Font("Tahoma", 0, 24));
     jLabel78.setText("Resultados Filme");
@@ -3480,7 +3480,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
             strings[i]=lista[2*i+1];
             id[i]=lista[2*i];
         }
-        jList4.setModel(new OurListModel(lista) );
+        listaResultados.setModel(new OurListModel(lista) );
         //Reset aos campos
          textRealizadorPesquisaFilmes.setText(null);
          textIdPesquisaFilmes.setText(null);
@@ -3651,7 +3651,8 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     	// Depois tens de p�r isto como queres ou dizer-me para fazer um metodo k fa�a o que queres mesmo
     	
         // textEliminaFilmes.setText(gestorFilmes.verListaFormatos(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem()));
-    	textEliminaFilmes.setText(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())[0]);
+        if(Utils.isNumber(idEliminaFilmes.getText()) )
+            textEliminaFilmes.setText(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())[0]);
     }//GEN-LAST:event_listarFormatoEliminarActionPerformed
 
     private void eliminaFilmes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaFilmes2ActionPerformed
@@ -3764,9 +3765,9 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
       pesquisarFilmesFrame.transferFocusBackward();
     }//GEN-LAST:event_pesquisarFilmesFrameWindowClosing
 
-    private void jList4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList4MouseClicked
+    private void listaResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaResultadosMouseClicked
         // TODO add your handling code here:
-        String idMovie=((String)jList4.getSelectedValue()).split(" ")[0];
+        String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
         //"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"
         String[] f = gestorFilmes.getFilme(idMovie);
         
@@ -3781,7 +3782,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         jLabel76.setIcon(new ImageIcon(f[i++]));
         // extrair os generos do fim do array
         jList5.setModel(new OurListModel(Utils.extract(f, i+1))); // i+1 em vez de i -> saltar campo VALIDO
-    }//GEN-LAST:event_jList4MouseClicked
+    }//GEN-LAST:event_listaResultadosMouseClicked
 
     private void pesquisarClienteFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_pesquisarClienteFrameWindowClosing
         // TODO add your handling code here:
@@ -3929,7 +3930,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
 
     private void alugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alugarActionPerformed
         String output="";
-        String idMovie=((String)jList4.getSelectedValue()).split(" ")[0];
+        String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
         if(jFormattedTextField4.isEditValid()){
         	//TODO by Lobo: pus aki um placeholder para o novo "alugaFilme", pk tem mais coisas do que as que aki tavam. E, btw, chama-se adicionaRequisicao() xD
             /*output=gestorFilmes.alugaFilme(idMovie,
@@ -4168,6 +4169,12 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
         DBHandler.close();
     }//GEN-LAST:event_formWindowClosing
 
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+
+        resultadosFrame.setVisible(false);
+        resultadosFrame.transferFocusBackward();
+    }//GEN-LAST:event_jButton15ActionPerformed
+
    
     //OUR GUI VARS
     private javax.swing.ButtonGroup bgroup;
@@ -4293,7 +4300,6 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
-    private javax.swing.JList jList4;
     private javax.swing.JList jList5;
     private javax.swing.JList jList6;
     private javax.swing.JList jList7;
@@ -4365,6 +4371,7 @@ jPesqisaFilmesPanelLayout.setVerticalGroup(
     private javax.swing.JList listaGeneros;
     private javax.swing.JComboBox listaGenerosAdicionaFilmes;
     private javax.swing.JList listaMaquinas;
+    private javax.swing.JList listaResultados;
     private javax.swing.JButton listarFormatoEliminar;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextArea mensagem;

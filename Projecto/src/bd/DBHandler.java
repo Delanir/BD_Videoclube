@@ -1467,7 +1467,7 @@ public class DBHandler
 	}*/
 
     /* ---------------------------------------------------------------- */
-	/* ------------------------- ESTATÍSTICAS ------------------------- */
+	/* ------------------------- ESTATï¿½STICAS ------------------------- */
 	/* ---------------------------------------------------------------- */
 
         public static String estatisticasContabilidade(){
@@ -1521,7 +1521,7 @@ public class DBHandler
 
                 CallableStatement cs = conn.prepareCall ("{ call topMaquinas()}");
                 cs.execute();
-                Vector <String []> out=select("SELECT col1, col2FROM temp");
+                Vector <String []> out=select("SELECT col1, col2 FROM temp");
                 conn.commit();
 
 
