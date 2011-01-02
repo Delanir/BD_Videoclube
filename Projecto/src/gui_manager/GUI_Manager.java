@@ -395,6 +395,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jSpinner3.setModel(new SpinnerNumberModel(2011,1917,2300,1));
         pesquisarTodos = new javax.swing.JButton();
         procurarID = new javax.swing.JButton();
+        generosBox = new javax.swing.JComboBox();
+        jLabel39 = new javax.swing.JLabel();
         generosFrame = new javax.swing.JFrame();
         jGenerosPanel = new javax.swing.JPanel();
         jScrollPane21 = new javax.swing.JScrollPane();
@@ -2284,6 +2286,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         }
     });
 
+    jLabel39.setText("Genero:");
+
     javax.swing.GroupLayout jPesqisaFilmesPanelLayout = new javax.swing.GroupLayout(jPesqisaFilmesPanel);
     jPesqisaFilmesPanel.setLayout(jPesqisaFilmesPanelLayout);
     jPesqisaFilmesPanelLayout.setHorizontalGroup(
@@ -2296,11 +2300,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                         .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
                             .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel87)
-                                .addComponent(jLabel88))
+                                .addComponent(jLabel88)
+                                .addComponent(jLabel39))
                             .addGap(18, 18, 18)
                             .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(countriesList1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textProdutorPesquisaFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
+                                .addComponent(countriesList1, 0, 118, Short.MAX_VALUE)
+                                .addComponent(textProdutorPesquisaFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                                .addComponent(generosBox, 0, 118, Short.MAX_VALUE)))
                         .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
                             .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel86)
@@ -2338,14 +2344,15 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
                     .addComponent(jLabel85)
                     .addContainerGap(503, Short.MAX_VALUE))
-                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
-                    .addComponent(pesquisarFilme)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPesqisaFilmesPanelLayout.createSequentialGroup()
                     .addComponent(voltarPesquisarFilmes)
                     .addGap(112, 112, 112))
                 .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
                     .addComponent(pesquisarTodos)
-                    .addContainerGap(449, Short.MAX_VALUE))))
+                    .addContainerGap(449, Short.MAX_VALUE))
+                .addGroup(jPesqisaFilmesPanelLayout.createSequentialGroup()
+                    .addComponent(pesquisarFilme)
+                    .addContainerGap(503, Short.MAX_VALUE))))
     );
     jPesqisaFilmesPanelLayout.setVerticalGroup(
         jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2387,11 +2394,14 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                         .addComponent(textRealizadorPesquisaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(jPesqisaFilmesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(pesquisarFilme)
-                        .addComponent(voltarPesquisarFilmes))))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(voltarPesquisarFilmes)
+                        .addComponent(generosBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel39))))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+            .addComponent(pesquisarFilme)
+            .addGap(18, 18, 18)
             .addComponent(pesquisarTodos)
-            .addContainerGap(83, Short.MAX_VALUE))
+            .addGap(45, 45, 45))
     );
 
     javax.swing.GroupLayout pesquisarFilmesFrameLayout = new javax.swing.GroupLayout(pesquisarFilmesFrame.getContentPane());
@@ -3481,6 +3491,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         //Fazer a pesquisa
         //TODO fazer parsing do output do método
         String []lista;
+        String[] generos={(String) generosBox.getSelectedItem()};
         //procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos)
         if((Integer)jSpinner1.getValue()<(Integer)jSpinner3.getValue()
                 &&(Integer)jSpinner4.getValue()<(Integer)jSpinner5.getValue()){
@@ -3493,7 +3504,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                     ""+(Double)jSpinner5.getValue(),
                     (String) countriesList1.getSelectedItem(),
                     textProdutorPesquisaFilmes.getText(),
-                    new String[0]);
+                    generos);
             listaResultados.setModel(new OurListModel(lista) );
         }
         
@@ -3590,7 +3601,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_jNotificarClientesButtonActionPerformed
 
     private void jPesquisarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPesquisarButtonActionPerformed
-
+        String[] lista=gestorFilmes.verListaGeneros();
+        String[] inputLista=new String[lista.length+1];
+        inputLista[0]="";
+        System.arraycopy(lista, 0, inputLista, 1, lista.length);
+        generosBox.setModel(new javax.swing.DefaultComboBoxModel(inputLista));
         pesquisarFilmesFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jPesquisarButtonActionPerformed
@@ -3758,7 +3773,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_adicionarStockActionPerformed
 
     private void pesquisarFilmes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarFilmes2ActionPerformed
-        // TODO add your handling code here:
+        String[] lista=gestorFilmes.verListaGeneros();
+        String[] inputLista=new String[lista.length+1];
+        inputLista[0]="";
+        System.arraycopy(lista, 0, inputLista, 1, lista.length);
+        generosBox.setModel(new javax.swing.DefaultComboBoxModel(inputLista));
         pesquisarFilmesFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_pesquisarFilmes2ActionPerformed
@@ -4285,6 +4304,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton enviarEmail;
     private javax.swing.JFrame ficheirosFrame;
     private javax.swing.JFrame formatosFrame;
+    private javax.swing.JComboBox generosBox;
     private javax.swing.JFrame generosFrame;
     private javax.swing.JTextField idAdicionaStock;
     private javax.swing.JTextField idAlugaFilme;
@@ -4340,6 +4360,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
