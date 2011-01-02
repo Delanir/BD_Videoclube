@@ -50,12 +50,15 @@ public class GestorEstatisticas
 	// TODO: do it
 	// TODO: GregorianCalendars? e Strings, nao? :p
 	public String estatisticasClientes(GregorianCalendar begin, GregorianCalendar end) {
-		if (begin != null && end != null) {
+		String estatisticas="";
+                if (begin != null && end != null) {
 			// estatisticas num intrevalo de tempo
+                        
 		} else {
-
+                        //top10clientes
+                    estatisticas+=DBHandler.estatisticasTop10Clientes();
 		}
-		return "Estatisticas Clientes:\n------------------------\n";
+		return "Estatisticas Clientes:\n------------------------\n"+estatisticas;
 	}
 
 	/**
@@ -63,12 +66,13 @@ public class GestorEstatisticas
 	 */
 	// TODO: do it
 	public String estatisticasEmpregados(GregorianCalendar begin, GregorianCalendar end) {
-		if (begin != null && end != null) {
+		 String estatisticas="";
+                if (begin != null && end != null) {
 			// estatisticas num intrevalo de tempo
 		} else {
-
+                    estatisticas+=DBHandler.estatisticasEmpregados();
 		}
-		return "Estatisticas Empregados:\n------------------------\n";
+		return "Estatisticas Empregados:\n------------------------\n"+estatisticas;
 	}
 
     /**
@@ -79,12 +83,14 @@ public class GestorEstatisticas
      */
 	// TODO: do it
     public String estatisticasFilmes(GregorianCalendar begin,GregorianCalendar end){
+        String estatisticas="";
         if(begin!=null&&end!=null){
             //estatisticas num intrevalo de tempo
         }else{
-
+            //top10filmes
+            estatisticas+=DBHandler.estatisticasTop10Filmes();
         }
-        return "Estatisticas Filmes:\n------------------------\n";
+        return "Estatisticas Filmes:\n------------------------\n"+estatisticas;
     }
 	
 	/**
