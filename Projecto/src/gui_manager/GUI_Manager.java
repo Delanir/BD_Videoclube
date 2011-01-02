@@ -17,6 +17,7 @@ import com.toedter.calendar.JCalendar;
 import gestores.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.File;
 import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -231,6 +232,13 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jVerificarPagamentosAtrasoButton = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
         verificarRequesicoes = new javax.swing.JButton();
+        jLabel40 = new javax.swing.JLabel();
+        jScrollPane25 = new javax.swing.JScrollPane();
+        listaRequisicoes = new javax.swing.JList();
+        jLabel100 = new javax.swing.JLabel();
+        entregaFilme = new javax.swing.JButton();
+        jLabel101 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         jEmpregadosManagerPanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel12 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel13 = new javax.swing.JLabel();
@@ -289,7 +297,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jClientesManagerPanel1 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jList6 = new javax.swing.JList();
+        pagamentosAtraso1 = new javax.swing.JList();
         javax.swing.JLabel jLabel41 = new javax.swing.JLabel();
         pesquisarClientes = new javax.swing.JToggleButton();
         adicionarClientes = new javax.swing.JToggleButton();
@@ -298,6 +306,13 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jVerificarPagamentosAtrasoButton1 = new javax.swing.JButton();
         verificarRequesicoes1 = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
+        entregaFilme1 = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel102 = new javax.swing.JLabel();
+        jScrollPane26 = new javax.swing.JScrollPane();
+        listaRequisicoes1 = new javax.swing.JList();
+        jLabel103 = new javax.swing.JLabel();
+        jLabel104 = new javax.swing.JLabel();
         jFilmesManagerPanel1 = new javax.swing.JPanel();
         jToggleButton17 = new javax.swing.JToggleButton();
         jToggleButton18 = new javax.swing.JToggleButton();
@@ -654,8 +669,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jEstatisticasPanel.setLayout(jEstatisticasPanelLayout);
         jEstatisticasPanelLayout.setHorizontalGroup(
             jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEstatisticasPanelLayout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+            .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(empregadosCheckBox)
                     .addComponent(jCheckBox2)
@@ -680,12 +695,12 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                             .addComponent(consultarEstatisticas)
                             .addComponent(dataEnd)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(94, 94, 94))
+                .addContainerGap(680, Short.MAX_VALUE))
         );
         jEstatisticasPanelLayout.setVerticalGroup(
             jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jEstatisticasPanelLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addContainerGap()
                 .addComponent(jLabel9)
                 .addGap(12, 12, 12)
                 .addComponent(empregadosCheckBox)
@@ -713,11 +728,17 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addComponent(consultarEstatisticas))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Estatísticas", jEstatisticasPanel);
 
+        pagamentosAtraso.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        pagamentosAtraso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pagamentosAtrasoMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(pagamentosAtraso);
 
         jLabel23.setText("Clientes com pagamentos em atraso:");
@@ -766,21 +787,36 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             }
         });
 
+        jLabel40.setText("Lista:");
+
+        listaRequisicoes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaRequisicoes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaRequisicoesMouseClicked(evt);
+            }
+        });
+        jScrollPane25.setViewportView(listaRequisicoes);
+
+        jLabel100.setText("Requisições do Cliente:");
+
+        entregaFilme.setText("Entregar Filme");
+        entregaFilme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entregaFilmeActionPerformed(evt);
+            }
+        });
+
+        jLabel101.setText("Valor a pagar:");
+
+        jTextField2.setEditable(false);
+
         javax.swing.GroupLayout jClientesManagerPanelLayout = new javax.swing.GroupLayout(jClientesManagerPanel);
         jClientesManagerPanel.setLayout(jClientesManagerPanelLayout);
         jClientesManagerPanelLayout.setHorizontalGroup(
             jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
-                        .addComponent(jPesquisarClientesButton)
-                        .addGap(10, 10, 10)
-                        .addComponent(jAdicionarClientesButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jNotificarClientesButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jEliminarClientesButton))
+                .addContainerGap()
+                .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
                         .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23)
@@ -789,13 +825,37 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                         .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(verificarRequesicoes)
                             .addComponent(jVerificarPagamentosAtrasoButton)))
-                    .addComponent(jScrollPane6))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(jLabel40)
+                    .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
+                        .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jClientesManagerPanelLayout.createSequentialGroup()
+                                .addComponent(jPesquisarClientesButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jAdicionarClientesButton)))
+                        .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
+                                        .addComponent(jNotificarClientesButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jEliminarClientesButton))
+                                    .addComponent(jLabel100, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jClientesManagerPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel101)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
+                                .addGap(87, 87, 87)
+                                .addComponent(entregaFilme)))))
+                .addGap(618, 618, 618))
         );
         jClientesManagerPanelLayout.setVerticalGroup(
             jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
-                .addGap(101, 101, 101)
+                .addContainerGap()
                 .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31)
                     .addComponent(verificarRequesicoes))
@@ -803,15 +863,30 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
                     .addComponent(jVerificarPagamentosAtrasoButton))
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jClientesManagerPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel100)
+                        .addGap(1, 1, 1)
+                        .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel101)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(68, 68, 68)
                 .addGroup(jClientesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPesquisarClientesButton)
+                    .addComponent(jAdicionarClientesButton)
                     .addComponent(jNotificarClientesButton)
-                    .addComponent(jEliminarClientesButton)
-                    .addComponent(jAdicionarClientesButton))
-                .addContainerGap(154, Short.MAX_VALUE))
+                    .addComponent(jEliminarClientesButton))
+                .addContainerGap(262, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jClientesManagerPanelLayout.createSequentialGroup()
+                .addContainerGap(218, Short.MAX_VALUE)
+                .addComponent(entregaFilme)
+                .addGap(341, 341, 341))
         );
 
         jTabbedPane2.addTab("Gestão Clientes", jClientesManagerPanel);
@@ -948,7 +1023,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel13)
                                 .addGap(64, 64, 64)))))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(589, Short.MAX_VALUE))
         );
         jEmpregadosManagerPanelLayout.setVerticalGroup(
             jEmpregadosManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1006,7 +1081,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                             .addComponent(jDespedirEmpregadoButton))))
                 .addGap(18, 18, 18)
                 .addComponent(actualzarListaEmpregados)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Empregados", jEmpregadosManagerPanel);
@@ -1068,7 +1143,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     .addComponent(jActualizarStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPesquisarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jGeneroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(643, Short.MAX_VALUE))
         );
         jFilmesManagerPanelLayout.setVerticalGroup(
             jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1085,7 +1160,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGroup(jFilmesManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPesquisarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
                     .addComponent(jFormatosFrameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
-                .addGap(228, 228, 228))
+                .addGap(237, 237, 237))
         );
 
         jTabbedPane2.addTab("Gestão de Filmes", jFilmesManagerPanel);
@@ -1152,7 +1227,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                         .addComponent(actualizarListaMaquinas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jVenderATMButton)))
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(723, Short.MAX_VALUE))
         );
         jATMManagerPanelLayout.setVerticalGroup(
             jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1175,7 +1250,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGroup(jATMManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jVenderATMButton)
                     .addComponent(actualizarListaMaquinas))
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Gestão Máquinas", jATMManagerPanel);
@@ -1219,7 +1294,12 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 24));
         jLabel7.setText("Operador");
 
-        jScrollPane12.setViewportView(jList6);
+        pagamentosAtraso1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pagamentosAtraso1MouseClicked(evt);
+            }
+        });
+        jScrollPane12.setViewportView(pagamentosAtraso1);
 
         jLabel41.setText("Clientes com pagamentos em atraso:");
 
@@ -1267,54 +1347,115 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         jLabel32.setText("Clientes com requesições:");
 
+        entregaFilme1.setText("Entregar Filme");
+        entregaFilme1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entregaFilme1ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setEditable(false);
+
+        jLabel102.setText("Valor a pagar:");
+
+        listaRequisicoes1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaRequisicoes1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaRequisicoes1MouseClicked(evt);
+            }
+        });
+        jScrollPane26.setViewportView(listaRequisicoes1);
+
+        jLabel103.setText("Requisições do Cliente:");
+
+        jLabel104.setText("Lista:");
+
         javax.swing.GroupLayout jClientesManagerPanel1Layout = new javax.swing.GroupLayout(jClientesManagerPanel1);
         jClientesManagerPanel1.setLayout(jClientesManagerPanel1Layout);
         jClientesManagerPanel1Layout.setHorizontalGroup(
             jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jClientesManagerPanel1Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+            .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
+                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
+                        .addContainerGap(123, Short.MAX_VALUE)
                         .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
-                                .addComponent(pesquisarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(adicionarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(notificarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
-                            .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
-                                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel41)
-                                    .addComponent(jLabel32))
-                                .addGap(45, 45, 45)
-                                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(verificarRequesicoes1)
-                                    .addComponent(jVerificarPagamentosAtrasoButton1))))
+                            .addComponent(jLabel41)
+                            .addComponent(jLabel32))
+                        .addGap(45, 45, 45))
+                    .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel104)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(verificarRequesicoes1)
+                    .addComponent(jVerificarPagamentosAtrasoButton1))
+                .addGap(230, 230, 230))
+            .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel103, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane26, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jClientesManagerPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel102)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(eliminarClientes)))
-                .addGap(64, 64, 64))
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(150, 150, 150))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jClientesManagerPanel1Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(pesquisarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(adicionarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
+                        .addComponent(entregaFilme1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jClientesManagerPanel1Layout.createSequentialGroup()
+                        .addComponent(notificarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(eliminarClientes)
+                        .addGap(68, 68, 68))))
         );
         jClientesManagerPanel1Layout.setVerticalGroup(
             jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(verificarRequesicoes1)
-                    .addComponent(jLabel32))
-                .addGap(5, 5, 5)
-                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel41)
-                    .addComponent(jVerificarPagamentosAtrasoButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(verificarRequesicoes1)
+                            .addComponent(jLabel32))
+                        .addGap(5, 5, 5)
+                        .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel41)
+                            .addComponent(jVerificarPagamentosAtrasoButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jClientesManagerPanel1Layout.createSequentialGroup()
+                        .addContainerGap(59, Short.MAX_VALUE)
+                        .addComponent(jLabel104)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jClientesManagerPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel103)
+                        .addGap(1, 1, 1)
+                        .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel102)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)))
+                .addGap(18, 18, 18)
+                .addComponent(entregaFilme1)
+                .addGap(48, 48, 48)
                 .addGroup(jClientesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pesquisarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(notificarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eliminarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(adicionarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGap(245, 245, 245))
         );
 
         jTabbedPane3.addTab("Gestão Clientes", jClientesManagerPanel1);
@@ -2540,6 +2681,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     jLabel74.setText("País:");
 
     jTextArea14.setColumns(20);
+    jTextArea14.setEditable(false);
     jTextArea14.setRows(5);
     jScrollPane18.setViewportView(jTextArea14);
 
@@ -2615,7 +2757,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                     .addGap(490, 490, 490)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                     .addGap(83, 83, 83)
                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2627,10 +2769,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jResultadosFilmePanelLayout.createSequentialGroup()
                                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel82)
-                                                .addComponent(jLabel79)
                                                 .addComponent(jLabel74)
                                                 .addComponent(jLabel83)
-                                                .addComponent(jLabel75))
+                                                .addComponent(jLabel75)
+                                                .addComponent(jLabel79))
                                             .addGap(31, 31, 31)
                                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(listaFormatosResultadosFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2638,12 +2780,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                         .addComponent(jScrollPane18, javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jResultadosFilmePanelLayout.createSequentialGroup()
-                                                            .addGap(21, 21, 21)
-                                                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                                .addComponent(paisResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(tituloResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                                 .addComponent(produtorResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(realizadorResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(realizadorResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(tituloResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                                                .addComponent(paisResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
                                                             .addGap(31, 31, 31)
                                                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addComponent(jLabel84)
@@ -2661,19 +2802,22 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                                                     .addComponent(jLabel99)
                                                     .addGap(18, 18, 18)
-                                                    .addComponent(idAlugaFilme, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                                                    .addGap(68, 68, 68)
-                                                    .addComponent(alugar))
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE))
-                                            .addGap(18, 18, 18)
-                                            .addComponent(voltarResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(idAlugaFilme, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(alugar)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(voltarResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(120, 120, 120)))
+                                            .addGap(106, 106, 106)))
                                     .addGap(15, 15, 15)
                                     .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                             .addGap(148, 148, 148)
                             .addComponent(jLabel78)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(62, 62, 62)))
             .addContainerGap())
     );
@@ -2689,20 +2833,21 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                    .addComponent(jLabel79)
-                    .addGap(18, 18, 18)
+                    .addGap(32, 32, 32)
                     .addComponent(jLabel83)
                     .addGap(26, 26, 26)
                     .addComponent(jLabel82)
                     .addGap(18, 18, 18)
                     .addComponent(jLabel74))
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                    .addComponent(tituloResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tituloResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel79))
                     .addGap(18, 18, 18)
                     .addComponent(produtorResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(20, 20, 20)
                     .addComponent(realizadorResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(paisResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2719,7 +2864,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel80))))))
-            .addGap(18, 18, 18)
+            .addGap(25, 25, 25)
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel75)
                 .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2728,16 +2873,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 .addComponent(jLabel98)
                 .addComponent(listaFormatosResultadosFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel99)
-                        .addComponent(alugar)
-                        .addComponent(idAlugaFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel99)
+                .addComponent(idAlugaFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(alugar)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(voltarResultados))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGap(35, 35, 35)
             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
@@ -3818,7 +3960,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
         //"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"
         String[] f = gestorFilmes.getFilme(idMovie);
-        
+        String file="";
         int i=1; // i=1 em vez de i=0 -> saltar campo ID_FIL
         tituloResultadosFilme.setText(f[i++]);
         anoResultadosFilme.setText(f[i++]);
@@ -3828,7 +3970,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         produtorResultadosFilme.setText(f[i++]);
         jTextArea14.setText(f[i++]);
         try{
-            jLabel76.setIcon(new ImageIcon(f[i++]));
+            file=f[i++];
+            File ficheiro= new File(file);
+            if(ficheiro.exists())
+                jLabel76.setIcon(new ImageIcon(file));
         }catch (Exception e){
             Utils.dbg("Não foi encontrada a capa do filme!");
         }
@@ -4272,6 +4417,52 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
       }
     }//GEN-LAST:event_procurarIDActionPerformed
 
+    private void pagamentosAtrasoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagamentosAtrasoMouseClicked
+        String bi=(String) pagamentosAtraso.getSelectedValue();
+        bi=bi.split(" ")[1];
+        bi=bi.substring(1, bi.length()-1);
+        Utils.dbg(bi);
+        listaRequisicoes.setModel(new OurListModel(gestorFilmes.verListaRequisicoesPorEntregarClienteBI(bi)));
+    }//GEN-LAST:event_pagamentosAtrasoMouseClicked
+
+    private void entregaFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entregaFilmeActionPerformed
+        gestorFilmes.entregaRequisicao(((String)listaRequisicoes.getSelectedValue()).split(" ")[0]);
+        pagamentosAtraso.setModel(new OurListModel(gestorClientes.getClientesComEntregasPorFazer()));
+        String bi=(String) pagamentosAtraso.getSelectedValue();
+        bi=bi.split(" ")[1];
+        bi=bi.substring(1, bi.length()-1);
+        Utils.dbg(bi);
+        listaRequisicoes.setModel(new OurListModel(gestorFilmes.verListaRequisicoesPorEntregarClienteBI(bi)));
+    }//GEN-LAST:event_entregaFilmeActionPerformed
+
+    private void listaRequisicoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaRequisicoesMouseClicked
+        String idReq=((String)listaRequisicoes.getSelectedValue()).split(" ")[0];
+        jTextField2.setText(gestorFilmes.calcularPrecoRequisicao(idReq));
+    }//GEN-LAST:event_listaRequisicoesMouseClicked
+
+    private void entregaFilme1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entregaFilme1ActionPerformed
+        gestorFilmes.entregaRequisicao(((String)listaRequisicoes1.getSelectedValue()).split(" ")[0]);
+        pagamentosAtraso1.setModel(new OurListModel(gestorClientes.getClientesComEntregasPorFazer()));
+        String bi=(String) pagamentosAtraso1.getSelectedValue();
+        bi=bi.split(" ")[1];
+        bi=bi.substring(1, bi.length()-1);
+        Utils.dbg(bi);
+        listaRequisicoes1.setModel(new OurListModel(gestorFilmes.verListaRequisicoesPorEntregarClienteBI(bi)));
+    }//GEN-LAST:event_entregaFilme1ActionPerformed
+
+    private void listaRequisicoes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaRequisicoes1MouseClicked
+        String idReq=((String)listaRequisicoes1.getSelectedValue()).split(" ")[0];
+        jTextField3.setText(gestorFilmes.calcularPrecoRequisicao(idReq));
+    }//GEN-LAST:event_listaRequisicoes1MouseClicked
+
+    private void pagamentosAtraso1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagamentosAtraso1MouseClicked
+        String bi=(String) pagamentosAtraso1.getSelectedValue();
+        bi=bi.split(" ")[1];
+        bi=bi.substring(1, bi.length()-1);
+        Utils.dbg(bi);
+        listaRequisicoes1.setModel(new OurListModel(gestorFilmes.verListaRequisicoesPorEntregarClienteBI(bi)));
+    }//GEN-LAST:event_pagamentosAtraso1MouseClicked
+
    
     //OUR GUI VARS
     private javax.swing.ButtonGroup bgroup;
@@ -4322,6 +4513,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField emailEmpregados;
     private javax.swing.JTextField emailPesquisarClientes;
     private javax.swing.JCheckBox empregadosCheckBox;
+    private javax.swing.JButton entregaFilme;
+    private javax.swing.JButton entregaFilme1;
     private javax.swing.JButton enviarEmail;
     private javax.swing.JFrame ficheirosFrame;
     private javax.swing.JCheckBox filmesCheckBox;
@@ -4364,6 +4557,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JToggleButton jGeneroButton;
     private javax.swing.JPanel jGenerosPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
+    private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -4381,6 +4579,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -4391,7 +4590,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JList jList5;
-    private javax.swing.JList jList6;
     private javax.swing.JList jList7;
     private javax.swing.JButton jLoginButton;
     private javax.swing.JPanel jLoginPanel;
@@ -4425,6 +4623,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JScrollPane jScrollPane22;
     private javax.swing.JScrollPane jScrollPane23;
     private javax.swing.JScrollPane jScrollPane24;
+    private javax.swing.JScrollPane jScrollPane25;
+    private javax.swing.JScrollPane jScrollPane26;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -4440,6 +4640,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextArea jTextArea14;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JToggleButton jToggleButton17;
     private javax.swing.JToggleButton jToggleButton18;
     private javax.swing.JToggleButton jToggleButton34;
@@ -4457,6 +4659,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JList listaGeneros;
     private javax.swing.JComboBox listaGenerosAdicionaFilmes;
     private javax.swing.JList listaMaquinas;
+    private javax.swing.JList listaRequisicoes;
+    private javax.swing.JList listaRequisicoes1;
     private javax.swing.JList listaResultados;
     private javax.swing.JButton listarFormatoEliminar;
     private javax.swing.JPanel mainPanel;
@@ -4483,6 +4687,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextArea outPesquisarClientes;
     private javax.swing.JTextArea outputAdicionaClientes;
     private javax.swing.JList pagamentosAtraso;
+    private javax.swing.JList pagamentosAtraso1;
     private javax.swing.JTextField paisResultadosFilme;
     private javax.swing.JPasswordField passwordAdicionaClientes;
     private javax.swing.JPasswordField passwordAdicionaClientes2;

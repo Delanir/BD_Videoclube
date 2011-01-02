@@ -40,6 +40,10 @@ public class GestorEmpregados
 		return DBHandler.getEmpregadoBI(bi);
 	}
 
+	public static String getEmpregadoBIFromID(String id) {
+		return DBHandler.getEmpregadoBIFromID(id);
+	}
+	
 	/**
 	 * Procura empregados com as informações nos campos não nulos passados.
 	 * Strings devolvidas no formato "id : [BI] nome"

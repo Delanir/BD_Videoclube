@@ -49,7 +49,11 @@ public class DBHandler
 				Utils.dbg("false null");
 			else
 				Utils.dbg("other. wtf?");*/
-			Utils.dbg(montanteActualRequisicao("0"));
+			//Utils.dbg("1234 [7777777] hhjkbjuhgjk".split("[\[\]]")[1]);
+			Utils.printStringArrayVector(getRequisicoesPorEntregarClienteBIPlus("48706618"));
+			Utils.printStringArrayVector(getRequisicoesClienteBIPlus("48706618"));
+			//Utils.dbg(DBHandler.getClienteBIFromID("1"));
+			//Utils.dbg(montanteActualRequisicao("0"));
 			//Utils.printStringArrayln(Utils.strArrayVectorToArray(select("SELECT montanteAPagar(2) FROM DUAL")));
 			close();
 			System.out.println("tudo bem");
@@ -153,6 +157,11 @@ public class DBHandler
 		Vector<String[]> vec = selectAll("clientes", "BI", bi, false);
 		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
+	
+	public static String getClienteBIFromID(String id) {
+		Vector<String[]> vec = select("clientes", new String[]{"BI"}, "ID_PES", id, true);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0)[0]);
+	}
 
 	/**
 	 * Adiciona um cliente � BD.
@@ -214,7 +223,7 @@ public class DBHandler
 		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI,Count(r.ID_REQ) " +
 					   " FROM clientes c, requisicoes r" +
 					   " WHERE c.ID_PES = r.ID_PES" +
-					   " AND r.DATA_ENTREGA = null" +
+					   " AND r.DATA_ENTREGA IS NULL" +
 					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI" +
 					   " HAVING COUNT(r.ID_REQ) > 0";
 		return select(query);
@@ -224,7 +233,7 @@ public class DBHandler
 		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI ,Count(r.ID_REQ) " +
 					   " FROM clientes c, requisicoes r" +
 					   " WHERE c.ID_PES = r.ID_PES" +
-					   " AND r.DATA_ENTREGA = null" +
+					   " AND r.DATA_ENTREGA IS NULL" +
 					   " AND r.DATA_LIMITE < SYSDATE" +
 					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI" +
 					   " HAVING COUNT(r.ID_REQ) > 0";
@@ -267,7 +276,12 @@ public class DBHandler
 		Vector<String[]> vec = selectAll("empregados", "BI", bi, false);
 		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
-
+	
+	public static String getEmpregadoBIFromID(String id) {
+		Vector<String[]> vec = select("empregados", new String[]{"BI"}, "ID_PES", id, true);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0)[0]);
+	}
+	
 	/**
 	 * Adiciona um empregado � BD.
 	 * @param is_admin "1" se o empregado a adicionar � administrador. "0" caso contr�rio.
@@ -844,7 +858,7 @@ public class DBHandler
 					    " AND r.ID_FOR = fo.ID_FOR" +
 					    " AND r.ID_PES = c.ID_PES" +
 						" AND c.BI =" + bi +
-						" AND r.DATA_ENTREGA = null");
+						" AND r.DATA_ENTREGA IS NULL");
 	}
 	
 	/**
@@ -862,13 +876,13 @@ public class DBHandler
 	 */
 	public static void adicionaRequisicao(String id_maq, String emp_id_pes, String id_pes, String id_fil, String id_for) {
 		adicionaObjecto("requisicoes",
-						new String[]{id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", "SYSDATE + " + Consts.LIMITE_DIAS, "null"});
+						new String[]{"seq_requisicao_id.NEXTVAL", id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", "SYSDATE + " + Consts.LIMITE_DIAS, "null"});
 	}
 
 	public static void adicionaRequisicaoNomeFormato(String id_maq, String emp_id_pes, String id_pes, String id_fil, String nome_formato) {
 		String id_for = getIDFormato(nome_formato);
 		adicionaObjecto("requisicoes",
-						new String[]{id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", "SYSDATE + " + Consts.LIMITE_DIAS, "null"});
+						new String[]{"seq_requisicao_id.NEXTVAL", id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", "SYSDATE + " + Consts.LIMITE_DIAS, "null"});
 	}
 	
 	/**
