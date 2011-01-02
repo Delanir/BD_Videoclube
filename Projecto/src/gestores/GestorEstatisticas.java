@@ -66,12 +66,13 @@ public class GestorEstatisticas
 	 */
 	// TODO: do it
 	public String estatisticasEmpregados(GregorianCalendar begin, GregorianCalendar end) {
-		if (begin != null && end != null) {
+		 String estatisticas="";
+                if (begin != null && end != null) {
 			// estatisticas num intrevalo de tempo
 		} else {
-
+                    estatisticas+=DBHandler.estatisticasEmpregados();
 		}
-		return "Estatisticas Empregados:\n------------------------\n";
+		return "Estatisticas Empregados:\n------------------------\n"+estatisticas;
 	}
 
     /**
@@ -86,7 +87,8 @@ public class GestorEstatisticas
         if(begin!=null&&end!=null){
             //estatisticas num intrevalo de tempo
         }else{
-
+            //top10filmes
+            estatisticas+=DBHandler.estatisticasTop10Filmes();
         }
         return "Estatisticas Filmes:\n------------------------\n"+estatisticas;
     }
