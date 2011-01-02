@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import outros.OurListModel;
@@ -102,7 +103,6 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setBounds(0, -1, 800, 600);
         jResultadosPanel.setBounds(0, -1, 800, 600);
         jPesquisarPanel.setBounds(0, -1, 800, 600);
-
     }
 
     /** This method is called from within the constructor to
@@ -137,12 +137,16 @@ public class Frame_ATM  extends JFrame{
         menuPesquisar_generos = new javax.swing.JComboBox();
         menuPesquisar_produtor = new javax.swing.JTextField();
         menuPesquisar_imdbLow = new javax.swing.JSpinner();
+        menuPesquisar_imdbLow.setModel(new SpinnerNumberModel(5.0,1,10,0.1));
         menuPesquisar_realizador = new javax.swing.JTextField();
         menuPesquisar_titulo = new javax.swing.JTextField();
         menuPesquisar_imdbHigh = new javax.swing.JSpinner();
+        menuPesquisar_imdbHigh.setModel(new SpinnerNumberModel(5.0,1,10,0.1));
         menuPesquisar_anoLow = new javax.swing.JSpinner();
+        menuPesquisar_anoLow.setModel(new SpinnerNumberModel(2010,1917,2300,1));
         jSearchButton = new javax.swing.JToggleButton();
         menuPesquisar_anoHigh = new javax.swing.JSpinner();
+        menuPesquisar_anoHigh.setModel(new SpinnerNumberModel(2010,1917,2300,1));
         menuPesquisar_pais = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -158,6 +162,7 @@ public class Frame_ATM  extends JFrame{
         menuPaga_titulo = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
         jVoltarButton1 = new javax.swing.JButton();
+        jSairButton1 = new javax.swing.JButton();
         jResultadosPanel = new javax.swing.JPanel();
         jSairButton3 = new javax.swing.JButton();
         jAjudaButton3 = new javax.swing.JButton();
@@ -374,15 +379,15 @@ public class Frame_ATM  extends JFrame{
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel11.setText("Entre");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14));
-        jLabel12.setText("E");
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setText("e");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel10.setText("IMDB RATING: ");
 
         menuPesquisar_generos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jSearchButton.setText("SEARCH");
+        jSearchButton.setText("PESQUISAR");
         jSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSearchButtonActionPerformed(evt);
@@ -395,8 +400,8 @@ public class Frame_ATM  extends JFrame{
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel31.setText("Entre");
 
-        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14));
-        jLabel32.setText("E");
+        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel32.setText("e");
 
         javax.swing.GroupLayout jPesquisarPanelLayout = new javax.swing.GroupLayout(jPesquisarPanel);
         jPesquisarPanel.setLayout(jPesquisarPanelLayout);
@@ -413,57 +418,56 @@ public class Frame_ATM  extends JFrame{
                             .addGroup(jPesquisarPanelLayout.createSequentialGroup()
                                 .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesquisarPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel8)
+                                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel29))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(menuPesquisar_realizador, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
+                                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(menuPesquisar_pais, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                                            .addComponent(menuPesquisar_realizador, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesquisarPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(menuPesquisar_produtor, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
-                                    .addGroup(jPesquisarPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(menuPesquisar_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE))
-                                    .addGroup(jPesquisarPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel29)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(menuPesquisar_pais, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)))
+                                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(menuPesquisar_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                                            .addComponent(menuPesquisar_produtor, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))))
                                 .addGap(33, 33, 33)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(menuPesquisar_generos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(101, 101, 101))
+                                .addComponent(menuPesquisar_generos, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(84, 84, 84))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPesquisarPanelLayout.createSequentialGroup()
+                                .addComponent(jSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+                                .addComponent(jVoltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(jSairButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(73, 73, 73))
+                            .addGroup(jPesquisarPanelLayout.createSequentialGroup()
                                 .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesquisarPanelLayout.createSequentialGroup()
-                                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesquisarPanelLayout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel31))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesquisarPanelLayout.createSequentialGroup()
-                                                .addComponent(jLabel10)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel11)))
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel31))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesquisarPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel10)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(menuPesquisar_imdbLow, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(menuPesquisar_anoLow, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel32)
-                                            .addComponent(jLabel12)))
-                                    .addComponent(jSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(40, 40, 40)
+                                        .addComponent(jLabel11)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(menuPesquisar_imdbLow, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(menuPesquisar_anoLow, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                                 .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPesquisarPanelLayout.createSequentialGroup()
-                                        .addComponent(jVoltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(jSairButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(73, 73, 73))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(menuPesquisar_imdbHigh, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(menuPesquisar_anoHigh, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)))))))
+                                    .addComponent(jLabel32)
+                                    .addComponent(jLabel12))
+                                .addGap(40, 40, 40)
+                                .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(menuPesquisar_imdbHigh, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(menuPesquisar_anoHigh, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(296, 296, 296)))))
                 .addContainerGap())
             .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPesquisarPanelLayout.createSequentialGroup()
@@ -497,25 +501,31 @@ public class Frame_ATM  extends JFrame{
                 .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(menuPesquisar_pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel31)
-                    .addComponent(menuPesquisar_anoLow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel32)
-                    .addComponent(menuPesquisar_anoHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(menuPesquisar_imdbLow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel12)
-                    .addComponent(menuPesquisar_imdbHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
-                .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSairButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jVoltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPesquisarPanelLayout.createSequentialGroup()
+                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel31)
+                            .addComponent(menuPesquisar_anoLow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(menuPesquisar_imdbLow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(61, 61, 61)
+                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jSairButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jVoltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPesquisarPanelLayout.createSequentialGroup()
+                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel32)
+                            .addComponent(menuPesquisar_anoHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(menuPesquisar_imdbHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(47, 47, 47))
             .addGroup(jPesquisarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPesquisarPanelLayout.createSequentialGroup()
@@ -555,30 +565,40 @@ public class Frame_ATM  extends JFrame{
             }
         });
 
+        jSairButton1.setText("SAIR");
+        jSairButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSairButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPagaLayout = new javax.swing.GroupLayout(jPaga);
         jPaga.setLayout(jPagaLayout);
         jPagaLayout.setHorizontalGroup(
             jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPagaLayout.createSequentialGroup()
-                .addGap(152, 152, 152)
                 .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel49)
                     .addGroup(jPagaLayout.createSequentialGroup()
+                        .addGap(152, 152, 152)
                         .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel40)
-                            .addComponent(jLabel39)
-                            .addComponent(jLabel38))
+                            .addComponent(jLabel49)
+                            .addGroup(jPagaLayout.createSequentialGroup()
+                                .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel40)
+                                    .addComponent(jLabel39)
+                                    .addComponent(jLabel38))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(menuPaga_dataEntrega)
+                                    .addComponent(menuPaga_preco)
+                                    .addComponent(menuPaga_titulo)))
+                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel41)))
+                    .addGroup(jPagaLayout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(jVoltarButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(menuPaga_dataEntrega)
-                            .addComponent(menuPaga_preco)
-                            .addComponent(menuPaga_titulo)))
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPagaLayout.createSequentialGroup()
-                            .addComponent(jVoltarButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(100, 100, 100))
-                        .addComponent(jLabel41)))
+                        .addComponent(jSairButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(148, Short.MAX_VALUE))
         );
         jPagaLayout.setVerticalGroup(
@@ -602,9 +622,11 @@ public class Frame_ATM  extends JFrame{
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel41)
-                .addGap(46, 46, 46)
-                .addComponent(jVoltarButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jVoltarButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSairButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
         );
 
         jSairButton3.setText("SAIR");
@@ -910,17 +932,17 @@ public class Frame_ATM  extends JFrame{
             .addGroup(jHistoricoPanelLayout.createSequentialGroup()
                 .addGroup(jHistoricoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jHistoricoPanelLayout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(jVoltarButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(jSairButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jHistoricoPanelLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(jHistoricoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING))))
-                .addContainerGap(107, Short.MAX_VALUE))
+                            .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jHistoricoPanelLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(jVoltarButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(jSairButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jHistoricoPanelLayout.setVerticalGroup(
             jHistoricoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -931,11 +953,11 @@ public class Frame_ATM  extends JFrame{
                 .addComponent(jLabel48)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addGroup(jHistoricoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jVoltarButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSairButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         jLoginPanel.setMaximumSize(new java.awt.Dimension(800, 600));
@@ -1258,7 +1280,7 @@ public class Frame_ATM  extends JFrame{
         jDadosPanelLayout.setHorizontalGroup(
             jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDadosPanelLayout.createSequentialGroup()
-                .addContainerGap(345, Short.MAX_VALUE)
+                .addContainerGap(355, Short.MAX_VALUE)
                 .addComponent(jVoltarButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(jSairButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1266,7 +1288,7 @@ public class Frame_ATM  extends JFrame{
             .addGroup(jDadosPanelLayout.createSequentialGroup()
                 .addGap(143, 143, 143)
                 .addComponent(jLabel25)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addContainerGap(335, Short.MAX_VALUE))
             .addGroup(jDadosPanelLayout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addGroup(jDadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1517,6 +1539,7 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
+        DBHandler.close();
     }//GEN-LAST:event_jSairButton3ActionPerformed
 
     private void menuResultados_precoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuResultados_precoActionPerformed
@@ -1534,6 +1557,7 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
+        DBHandler.close();
     }//GEN-LAST:event_jSairButton6ActionPerformed
 
     private void jSairButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButton5ActionPerformed
@@ -1547,6 +1571,7 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
+        DBHandler.close();
     }//GEN-LAST:event_jSairButton5ActionPerformed
 
     private void jSairButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButton4ActionPerformed
@@ -1560,6 +1585,7 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
+        DBHandler.close();
     }//GEN-LAST:event_jSairButton4ActionPerformed
 
     private void jSairButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButton2ActionPerformed
@@ -1573,6 +1599,7 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
+        DBHandler.close();
     }//GEN-LAST:event_jSairButton2ActionPerformed
 
     private void jSairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButtonActionPerformed
@@ -1586,16 +1613,17 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
+        DBHandler.close();
     }//GEN-LAST:event_jSairButtonActionPerformed
 
     private void jVoltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarButtonActionPerformed
         //Set panel's visibility
         menuPesquisar_titulo.setText("");
-        menuPesquisar_anoLow.setValue(0);
-        menuPesquisar_anoHigh.setValue(0);
+        menuPesquisar_anoLow.setValue(2010);
+        menuPesquisar_anoHigh.setValue(2010);
         menuPesquisar_realizador.setText("");
-        menuPesquisar_imdbLow.setValue(0);
-        menuPesquisar_imdbHigh.setValue(0);
+        menuPesquisar_imdbLow.setValue(5);
+        menuPesquisar_imdbHigh.setValue(5);
         menuPesquisar_pais.setText("");
         menuPesquisar_produtor.setText("");
         menuPesquisar_generos.setSelectedIndex(-1);
@@ -1673,11 +1701,11 @@ public class Frame_ATM  extends JFrame{
         // TODO : reset variaveis de presquisa!
         //Set panel's visibility
         menuPesquisar_titulo.setText("");
-        menuPesquisar_anoLow.setValue(0);
-        menuPesquisar_anoHigh.setValue(0);
+        menuPesquisar_anoLow.setValue(2010);
+        menuPesquisar_anoHigh.setValue(2010);
         menuPesquisar_realizador.setText("");
-        menuPesquisar_imdbLow.setValue(0);
-        menuPesquisar_imdbHigh.setValue(0);
+        menuPesquisar_imdbLow.setValue(5);
+        menuPesquisar_imdbHigh.setValue(5);
         menuPesquisar_pais.setText("");
         menuPesquisar_produtor.setText("");
         menuPesquisar_generos.setSelectedIndex(-1);
@@ -1833,6 +1861,20 @@ public class Frame_ATM  extends JFrame{
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
     }//GEN-LAST:event_jVoltarButton1ActionPerformed
+
+    private void jSairButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButton1ActionPerformed
+        // TODO: Invalidar a sessão
+        //Set panel's visibility
+        jDadosPanel.setVisible(false);
+        jPaga.setVisible(false);
+        jEntregaPanel.setVisible(false);
+        jLoginPanel.setVisible(true);
+        jHistoricoPanel.setVisible(false);
+        jMenuPanel.setVisible(false);
+        jResultadosPanel.setVisible(false);
+        jPesquisarPanel.setVisible(false);
+        DBHandler.close();
+    }//GEN-LAST:event_jSairButton1ActionPerformed
 /*
      * Botões _______________Botões___________________Botões__________Botões
      *
@@ -1921,6 +1963,7 @@ public class Frame_ATM  extends JFrame{
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JPanel jResultadosPanel;
     private javax.swing.JButton jSairButton;
+    private javax.swing.JButton jSairButton1;
     private javax.swing.JButton jSairButton2;
     private javax.swing.JButton jSairButton3;
     private javax.swing.JButton jSairButton4;
