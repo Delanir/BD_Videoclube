@@ -1255,6 +1255,7 @@ public class DBHandler
 		execute("INSERT INTO " + tabela +
 				" VALUES(" + Utils.list(valores, ",") + ")");
 	}
+	
 	/**
 	 * Actualiza um objecto na BD. Fun��o gen�rica.
 	 * @param tabela a tabela na qual actualizar o objecto.
