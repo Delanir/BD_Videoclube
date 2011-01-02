@@ -235,9 +235,9 @@ public class DBHandler
 		String query = "SELECT ID_PES, NOME_PESSOA, BI" +
 					   " FROM clientes" +
 					   " WHERE ID_PES = ID_PES" +	// redund�ncia para evitar o caso em que o WHERE fica sem nada
-					   (nome.isEmpty()?"":" AND nome_pessoa LIKE "+p("%"+nome+"%")) +
-					   (morada.isEmpty()?"":" AND morada LIKE "+p("%"+morada+"%")) +
-					   (email.isEmpty()?"":" AND e_mail LIKE "+p("%"+email+"%")) +
+					   (nome.isEmpty()?"":" AND LOWER(nome_pessoa) LIKE "+p("%"+nome.toLowerCase()+"%")) +
+					   (morada.isEmpty()?"":" AND LOWER(morada) LIKE "+p("%"+morada.toLowerCase()+"%")) +
+					   (email.isEmpty()?"":" AND LOWER(e_mail) LIKE "+p("%"+email.toLowerCase()+"%")) +
 					   (telefone.isEmpty()?"":" AND telefone = "+telefone);
 		return select(query);
 	}
@@ -335,9 +335,9 @@ public class DBHandler
 					   " WHERE ID_PES = ID_PES" +	// redund�ncia para evitar o caso em que o WHERE fica sem nada
 					   (is_admin.isEmpty()?"":" AND is_admin = "+is_admin) +
 					   (salarioLow.isEmpty()||salarioHigh.isEmpty()?"":" AND salario BETWEEN "+salarioLow+" AND "+salarioHigh) +
-					   (nome.isEmpty()?"":" AND nome_pessoa LIKE "+p("%"+nome+"%")) +
-					   (morada.isEmpty()?"":" AND morada LIKE "+p("%"+morada+"%")) +
-					   (email.isEmpty()?"":" AND e_mail LIKE "+p("%"+email+"%")) +
+					   (nome.isEmpty()?"":" AND LOWER(nome_pessoa) LIKE "+p("%"+nome.toLowerCase()+"%")) +
+					   (morada.isEmpty()?"":" AND LOWER(morada) LIKE "+p("%"+morada.toLowerCase()+"%")) +
+					   (email.isEmpty()?"":" AND LOWER(e_mail) LIKE "+p("%"+email.toLowerCase()+"%")) +
 					   (telefone.isEmpty()?"":" AND telefone = "+telefone);
 		return select(query);
 	}
@@ -483,10 +483,10 @@ public class DBHandler
 		} else {
 			query += " WHERE f.ID_FIL = f.ID_FIL";		//redund�ncia para evitar o caso em que o WHERE fica sem nada
 		}
-		query += (titulo.isEmpty()?"":" AND titulo LIKE "+p("%"+titulo+"%")) +
-			     (realizador.isEmpty()?"":" AND realizador LIKE "+p("%"+realizador+"%")) +
-			     (pais.isEmpty()?"":" AND pais LIKE "+p("%"+pais+"%")) +
-			     (produtora.isEmpty()?"":" AND produtora LIKE "+p("%"+produtora+"%")) +
+		query += (titulo.isEmpty()?"":" AND LOWER(titulo) LIKE "+p("%"+titulo.toLowerCase()+"%")) +
+			     (realizador.isEmpty()?"":" AND LOWER(realizador) LIKE "+p("%"+realizador.toLowerCase()+"%")) +
+			     (pais.isEmpty()?"":" AND LOWER(pais) LIKE "+p("%"+pais.toLowerCase()+"%")) +
+			     (produtora.isEmpty()?"":" AND LOWER(produtora) LIKE "+p("%"+produtora.toLowerCase()+"%")) +
 			     (anoLow.isEmpty()||anoHigh.isEmpty()?"":" AND ano BETWEEN "+anoLow+" AND "+anoHigh) +
 			     (ratingIMDBLow.isEmpty()||ratingIMDBHigh.isEmpty()?"":" AND rankIMDB BETWEEN "+ratingIMDBLow+" AND "+ratingIMDBHigh) +
 			     (!soValidos ? "":" AND VALIDO = 1");
@@ -541,7 +541,7 @@ public class DBHandler
 	
 	public static void adicionaFilmeGeneroNome(String id_fil, String nome_genero) {
 		adicionaObjecto("filme_genero",
-						new String[]{id_fil, "(SELECT id_gen FROM generos WHERE nome_genero = "+p(nome_genero)+")"});
+						new String[]{id_fil, "(SELECT id_gen FROM generos WHERE LOWER(nome_genero) = "+p(nome_genero.toLowerCase())+")"});
 	}
 	
 	/**
@@ -580,13 +580,13 @@ public class DBHandler
 		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 	
-	public static String getFormatoNome(String id) {
+	public static String getNomeFormato(String id) {
 		Vector<String[]> vec = selectAll("formatos", "ID_FOR", id, false);
 		return (vec==null||vec.isEmpty() ? null : vec.get(0)[1]);
 	}
 	
-	public static String getFormatoID(String nome_formato) {
-		Vector<String[]> vec = selectAll("formatos", "NOME_FORMATO", p(nome_formato), false);
+	public static String getIDFormato(String nome_formato) {
+		Vector<String[]> vec = selectAll("formatos", "LOWER(NOME_FORMATO)", p(nome_formato.toLowerCase()), false);
 		return (vec==null||vec.isEmpty() ? null : vec.get(0)[0]);
 	}
 	
@@ -651,7 +651,7 @@ public class DBHandler
 		return (vec==null||vec.isEmpty() ? null : vec.get(0));
 	}
 	
-	public static String getGeneroNome(String id) {
+	public static String getNomeGenero(String id) {
 		Vector<String[]> vec = selectAll("generos", "ID_GEN", id, false);
 		return (vec==null||vec.isEmpty() ? null : vec.get(0)[1]);
 	}
@@ -837,6 +837,16 @@ public class DBHandler
 						" AND c.BI =" + bi);
 	}
 	
+	public static Vector<String[]> getRequisicoesPorEntregarClienteBIPlus(String bi) {
+		return select("SELECT r.*, f.ano, f.titulo, fo.nome_formato" +
+					  " FROM requisicoes r, filmes f, formatos fo, clientes c" +
+					  " WHERE r.ID_FIL = f.ID_FIL" +
+					    " AND r.ID_FOR = fo.ID_FOR" +
+					    " AND r.ID_PES = c.ID_PES" +
+						" AND c.BI =" + bi +
+						" AND r.DATA_ENTREGA = null");
+	}
+	
 	/**
 	 * Obt�m os dados de uma requisi��o.
 	 * @param id o ID da requisi��o.
@@ -856,7 +866,7 @@ public class DBHandler
 	}
 
 	public static void adicionaRequisicaoNomeFormato(String id_maq, String emp_id_pes, String id_pes, String id_fil, String nome_formato) {
-		String id_for = getFormatoID(nome_formato);
+		String id_for = getIDFormato(nome_formato);
 		adicionaObjecto("requisicoes",
 						new String[]{id_maq, emp_id_pes, id_pes, id_fil, id_for, "SYSDATE", "SYSDATE + " + Consts.LIMITE_DIAS, "null"});
 	}
@@ -928,7 +938,7 @@ public class DBHandler
 	}
 	
 	public static String[] getStockNomeFormato(String id_fil, String nome_formato) {
-		String id_for = getFormatoID(nome_formato);
+		String id_for = getIDFormato(nome_formato);
 		if(id_for == null)
 			return null;
 		Vector<String[]> vec = selectAll("stocks",
@@ -951,7 +961,7 @@ public class DBHandler
 	}
 	
 	public static void adicionaStockNomeFormato(String id_fil, String nome_formato, String quant, String custo_compra, String custo_aluguer) {
-		String id_for = getFormatoID(nome_formato);
+		String id_for = getIDFormato(nome_formato);
 		adicionaObjecto("stocks",
 						new String[]{id_fil, id_for, quant, quant, custo_compra, custo_aluguer});
 	}
@@ -973,7 +983,7 @@ public class DBHandler
 	}
 	
 	public static void actualizaStockNomeFormato(String id_fil, String nome_formato, String quant, String custo_compra, String custo_aluguer) {
-		String id_for = getFormatoID(nome_formato);
+		String id_for = getIDFormato(nome_formato);
 		actualizaObjecto("stocks",
 						 new String[]{"ID_FIL", "ID_FOR"},
 						 new String[]{id_fil, id_for},
@@ -1017,7 +1027,7 @@ public class DBHandler
 	}
 	
 	public static void removeStockNomeFormato(String id_fil, String nome_formato) {
-		String id_for = getFormatoID(nome_formato);
+		String id_for = getIDFormato(nome_formato);
 		removeStock(id_fil, id_for);
 	}
 	
@@ -1090,7 +1100,7 @@ public class DBHandler
 	 * @return true, se existe outro g�nero com esse nome.  false, caso contr�rio.
 	 */
 	public static boolean generoExiste(String id_gen, String nome) {
-		return valorExiste("generos", "NOME_GENERO", p(nome), "ID_GEN", id_gen, false);
+		return valorExiste("generos", "LOWER(NOME_GENERO)", p(nome.toLowerCase()), "ID_GEN", id_gen, false);
 	}
 	
 	/**
@@ -1101,7 +1111,7 @@ public class DBHandler
 	 * @return true, se existe outro formato com esse nome. false, caso contr�rio.
 	 */
 	public static boolean formatoExiste(String id_for, String nome) {
-		return valorExiste("formatos", "NOME_FORMATO", p(nome), "ID_FOR", id_for, false);
+		return valorExiste("formatos", "LOWER(NOME_FORMATO)", p(nome.toLowerCase()), "ID_FOR", id_for, false);
 	}
 
 	/**
@@ -1118,14 +1128,7 @@ public class DBHandler
 	}
 	
 	public static boolean stockExisteNomeFormato(String id_fil, String nome_formato) {
-		/*String query = "SELECT s.ID_FIL, s.ID_FOR" +
-					   " FROM stocks s, formatos f" +
-					   " WHERE s.ID_FOR = f.ID_FOR" +
-					   " AND s.ID_FIL = " + id_fil +
-					   " AND f.NOME_FORMATO = " + nome_formato;
-		Vector<String[]> vec = select(query);
-		return (vec.size() > 0);*/
-		String id_for = getFormatoID(nome_formato);
+		String id_for = getIDFormato(nome_formato);
 		return stockExiste(id_fil, id_for);
 	}
 
@@ -1140,7 +1143,7 @@ public class DBHandler
 	}
 	
 	public static boolean formatoEmUsoNome(String nome) {
-		Vector<String[]> vec = select("formatos", new String[]{"ID_FOR"}, "NOME_FORMATO", p(nome), false);
+		Vector<String[]> vec = select("formatos", new String[]{"ID_FOR"}, "LOWER(NOME_FORMATO)", p(nome.toLowerCase()), false);
 		if(vec == null || vec.isEmpty())
 			return false;
 		return valorExiste("stocks", "ID_FOR", vec.get(0)[0], false);
@@ -1157,7 +1160,7 @@ public class DBHandler
 	}
 	
 	public static boolean generoEmUsoNome(String nome) {
-		Vector<String[]> vec = select("generos", new String[]{"ID_GEN"}, "NOME_GENERO", nome, false);
+		Vector<String[]> vec = select("generos", new String[]{"ID_GEN"}, "LOWER(NOME_GENERO)", p(nome.toLowerCase()), false);
 		if(vec == null || vec.isEmpty())
 			return false;
 		return valorExiste("filme_genero", "ID_GEN", vec.get(0)[0], false);
@@ -1174,6 +1177,13 @@ public class DBHandler
 		if(vec == null)
 			return true;
 		return (vec.size() == 1 && vec.get(0).equals(id_gen));
+	}
+	
+	public static boolean requisicaoEntregue(String id_req) {
+		return valorExiste("requisicoes",
+						   new String[]{"ID_REQ", "DATA_ENTREGA"},
+						   new String[]{id_req, null},
+						   false);
 	}
 	
 	public static boolean loginClienteCorrecto(String id_pes, String password) {

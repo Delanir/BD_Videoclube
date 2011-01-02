@@ -209,8 +209,8 @@ public class GestorFilmes
 		return Utils.formattedFromVector(vec, "%s", new int[]{1});
 	}
 	
-	public String getFormatoNome(String id) {
-		return DBHandler.getFormatoNome(id);
+	public String getNomeFormato(String id) {
+		return DBHandler.getNomeFormato(id);
 	}
 	
 	/**
@@ -256,8 +256,8 @@ public class GestorFilmes
 		return Utils.formattedFromVector(vec, "%s", new int[]{1});
 	}
 	
-	public String getGeneroNome(String id) {
-		return DBHandler.getGeneroNome(id);
+	public String getNomeGenero(String id) {
+		return DBHandler.getNomeGenero(id);
 	}
 	
 	/**
@@ -329,14 +329,23 @@ public class GestorFilmes
 		return out;
 	}
 	
+	public String[] verListaRequisicoesPorEntregarClienteBI(String bi) {
+		Vector<String[]> vec = DBHandler.getRequisicoesPorEntregarClienteBIPlus(bi);
+		String[] out = Utils.formattedFromVector(vec, "%s : (%s -- %s) : (%s) %s [%s]", new int[]{0, 6, 7, 9, 10, 11});
+		return out;
+	}
+	
 	public String adicionaRequisicao(String id_maq, String emp_bi, String bi, String id_fil, String formato) {
 		DBHandler.adicionaRequisicaoNomeFormato(id_maq, emp_bi, bi, id_fil, formato); 
 		return "Requisição adicionada.";
 	}
 	
 	public String entregaRequisicao(String id_req) {
-		DBHandler.actualizaRequisicao(id_req); 
-		return "Material requisitado registado como entregue.";
+		if(!DBHandler.requisicaoEntregue(id_req)) {
+			DBHandler.actualizaRequisicao(id_req); 
+			return "Material requisitado registado como entregue.";
+		} else
+			return "A requisição já foi entregue anteriormente!";
 	}
 
 	public String calcularPrecoRequisicao(String id_req) {
