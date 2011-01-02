@@ -1517,6 +1517,32 @@ public class DBHandler
             return "";
         }
 
+        public static String estatisticasTopMaquinas(){
+            try {
+
+                CallableStatement cs = conn.prepareCall ("{ call topMaquinas()}");
+                cs.execute();
+                Vector <String []> out=select("SELECT col1, col2FROM temp");
+                conn.commit();
+
+
+                String output="TOP Maquinas\nID:\tNº Requisições\n";
+                if(out!=null){
+                    for(int i=0; i<out.size();i++){
+                        output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\n";
+                    }
+                    return output;
+                }
+                return "";
+            } catch (SQLException ex) {
+                Utils.dbg("excepção no Commit?");
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
+            return "";
+        }
+
         public static String estatisticasTop10Filmes(){
             try {
                 //executeNoCommit("EXECUTE top10filmes");
@@ -1540,6 +1566,8 @@ public class DBHandler
             
             return "";
         }
+
+
 
         public static String estatisticasEmpregados(){
             try {

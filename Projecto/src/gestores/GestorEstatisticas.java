@@ -101,11 +101,12 @@ public class GestorEstatisticas
 	 */
 	// TODO
 	public String estatisticasMaquinas(GregorianCalendar begin, GregorianCalendar end) {
+                String estatisticas="";
 		if (begin != null && end != null) {
 			// estatisticas num intrevalo de tempo
 		} else {
-
+                    estatisticas+=DBHandler.estatisticasTopMaquinas();
 		}
-		return "Estatisticas Maquinas:\n------------------------\n";
+		return "Estatisticas Maquinas:\n------------------------\n"+estatisticas;
 	}
 }
