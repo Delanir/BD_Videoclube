@@ -2810,7 +2810,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="490" max="-2" attributes="0"/>
-                              <Component id="jSeparator4" pref="136" max="32767" attributes="0"/>
+                              <Component id="jSeparator4" pref="463" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
@@ -2823,10 +2823,10 @@
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="jLabel82" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jLabel79" alignment="0" min="-2" max="-2" attributes="0"/>
                                                           <Component id="jLabel74" alignment="0" min="-2" max="-2" attributes="0"/>
                                                           <Component id="jLabel83" min="-2" max="-2" attributes="0"/>
                                                           <Component id="jLabel75" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jLabel79" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -2835,12 +2835,11 @@
                                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                                   <Component id="jScrollPane18" alignment="0" max="32767" attributes="1"/>
                                                                   <Group type="102" alignment="0" attributes="0">
-                                                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                                          <Component id="paisResultadosFilme" alignment="0" max="32767" attributes="1"/>
-                                                                          <Component id="tituloResultadosFilme" alignment="0" max="32767" attributes="1"/>
+                                                                      <Group type="103" groupAlignment="1" attributes="0">
                                                                           <Component id="produtorResultadosFilme" alignment="0" max="32767" attributes="1"/>
                                                                           <Component id="realizadorResultadosFilme" alignment="0" min="-2" pref="82" max="-2" attributes="1"/>
+                                                                          <Component id="tituloResultadosFilme" alignment="0" pref="154" max="32767" attributes="1"/>
+                                                                          <Component id="paisResultadosFilme" alignment="0" pref="154" max="32767" attributes="1"/>
                                                                       </Group>
                                                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -2866,14 +2865,17 @@
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <Component id="jLabel99" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                              <Component id="idAlugaFilme" pref="92" max="32767" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                                              <Component id="idAlugaFilme" pref="51" max="32767" attributes="0"/>
+                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
                                                               <Component id="alugar" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                              <Component id="jTextField1" min="-2" pref="194" max="-2" attributes="0"/>
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Component id="voltarResultados" min="-2" pref="88" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                                                           </Group>
-                                                          <Component id="jTextField1" alignment="0" pref="307" max="32767" attributes="0"/>
                                                       </Group>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="voltarResultados" min="-2" pref="88" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -2885,7 +2887,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
                                       <Component id="jLabel78" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="154" max="-2" attributes="0"/>
+                                      <EmptySpace pref="481" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
@@ -2907,8 +2909,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel79" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="jLabel83" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="jLabel82" min="-2" max="-2" attributes="0"/>
@@ -2916,12 +2917,15 @@
                               <Component id="jLabel74" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="tituloResultadosFilme" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="tituloResultadosFilme" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel79" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="produtorResultadosFilme" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Component id="realizadorResultadosFilme" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="paisResultadosFilme" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -2946,7 +2950,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel75" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane18" min="-2" pref="74" max="-2" attributes="0"/>
@@ -2957,19 +2961,14 @@
                           <Component id="listaFormatosResultadosFilmes" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel99" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="alugar" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="idAlugaFilme" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="voltarResultados" min="-2" max="-2" attributes="1"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel99" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="idAlugaFilme" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="alugar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="voltarResultados" alignment="3" min="-2" max="-2" attributes="1"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="jSeparator4" min="-2" pref="0" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -3003,6 +3002,7 @@
                 <Component class="javax.swing.JTextArea" name="jTextArea14">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
                 </Component>

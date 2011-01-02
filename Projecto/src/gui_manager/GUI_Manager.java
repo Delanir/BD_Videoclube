@@ -17,6 +17,7 @@ import com.toedter.calendar.JCalendar;
 import gestores.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.File;
 import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -2540,6 +2541,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     jLabel74.setText("País:");
 
     jTextArea14.setColumns(20);
+    jTextArea14.setEditable(false);
     jTextArea14.setRows(5);
     jScrollPane18.setViewportView(jTextArea14);
 
@@ -2615,7 +2617,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                     .addGap(490, 490, 490)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                     .addGap(83, 83, 83)
                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2627,10 +2629,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jResultadosFilmePanelLayout.createSequentialGroup()
                                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel82)
-                                                .addComponent(jLabel79)
                                                 .addComponent(jLabel74)
                                                 .addComponent(jLabel83)
-                                                .addComponent(jLabel75))
+                                                .addComponent(jLabel75)
+                                                .addComponent(jLabel79))
                                             .addGap(31, 31, 31)
                                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(listaFormatosResultadosFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2638,12 +2640,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                         .addComponent(jScrollPane18, javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jResultadosFilmePanelLayout.createSequentialGroup()
-                                                            .addGap(21, 21, 21)
-                                                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                                .addComponent(paisResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(tituloResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                                 .addComponent(produtorResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(realizadorResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(realizadorResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(tituloResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                                                .addComponent(paisResultadosFilme, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
                                                             .addGap(31, 31, 31)
                                                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addComponent(jLabel84)
@@ -2661,19 +2662,22 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                                                     .addComponent(jLabel99)
                                                     .addGap(18, 18, 18)
-                                                    .addComponent(idAlugaFilme, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                                                    .addGap(68, 68, 68)
-                                                    .addComponent(alugar))
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE))
-                                            .addGap(18, 18, 18)
-                                            .addComponent(voltarResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(idAlugaFilme, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(alugar)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(voltarResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(120, 120, 120)))
+                                            .addGap(106, 106, 106)))
                                     .addGap(15, 15, 15)
                                     .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                             .addGap(148, 148, 148)
                             .addComponent(jLabel78)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(62, 62, 62)))
             .addContainerGap())
     );
@@ -2689,20 +2693,21 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                    .addComponent(jLabel79)
-                    .addGap(18, 18, 18)
+                    .addGap(32, 32, 32)
                     .addComponent(jLabel83)
                     .addGap(26, 26, 26)
                     .addComponent(jLabel82)
                     .addGap(18, 18, 18)
                     .addComponent(jLabel74))
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                    .addComponent(tituloResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tituloResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel79))
                     .addGap(18, 18, 18)
                     .addComponent(produtorResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(20, 20, 20)
                     .addComponent(realizadorResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(paisResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2719,7 +2724,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel80))))))
-            .addGap(18, 18, 18)
+            .addGap(25, 25, 25)
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel75)
                 .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2728,16 +2733,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 .addComponent(jLabel98)
                 .addComponent(listaFormatosResultadosFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel99)
-                        .addComponent(alugar)
-                        .addComponent(idAlugaFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel99)
+                .addComponent(idAlugaFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(alugar)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(voltarResultados))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGap(35, 35, 35)
             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
@@ -3818,7 +3820,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
         //"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"
         String[] f = gestorFilmes.getFilme(idMovie);
-        
+        String file="";
         int i=1; // i=1 em vez de i=0 -> saltar campo ID_FIL
         tituloResultadosFilme.setText(f[i++]);
         anoResultadosFilme.setText(f[i++]);
@@ -3828,7 +3830,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         produtorResultadosFilme.setText(f[i++]);
         jTextArea14.setText(f[i++]);
         try{
-            jLabel76.setIcon(new ImageIcon(f[i++]));
+            file=f[i++];
+            File ficheiro= new File(file);
+            if(ficheiro.exists())
+                jLabel76.setIcon(new ImageIcon(file));
         }catch (Exception e){
             Utils.dbg("Não foi encontrada a capa do filme!");
         }
