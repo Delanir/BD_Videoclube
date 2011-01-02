@@ -42,13 +42,15 @@ public class GestorClientes
 	}
 	
 	public String[] procuraClienteBI(String bi) {
-                if(Utils.isNumber(bi)){
-                
-                    return DBHandler.getClienteBI(bi);
-                }
-                return null;
+        if(Utils.isNumber(bi))
+            return DBHandler.getClienteBI(bi);
+        return null;
 	}
-
+	
+	public static String getClienteBIFromID(String id) {
+		return DBHandler.getClienteBIFromID(id);
+	}
+	
 	/**
 	 * Procura clientes com as informa��es nos campos n�o nulos passados.
 	 * Strings devolvidas no formato "id : [BI] nome"
