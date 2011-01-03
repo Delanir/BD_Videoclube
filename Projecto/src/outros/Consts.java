@@ -4,7 +4,6 @@ public class Consts
 {
 	public final static String ORACLE_USER = "bd01";
 	public final static String ORACLE_PASS = "bd01";
-	public final static String ORACLE_URL2  = "jdbc:oracle:thin:@Daniela-PC:1521:orcl";
 	public final static String ORACLE_URL  = "jdbc:oracle:thin:@localhost:1521:orcl";
 
 	public final static String EMAIL_SMTP_HOST = "smtp.sapo.pt";
@@ -26,5 +25,5 @@ public class Consts
 	public final static String BI_CLIENTE_EXISTE = "J� existe um cliente com esse BI!";
 	public final static String BI_EMPREGADO_EXISTE = "J� existe um empregado com esse BI!";
 	
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
 }
