@@ -1888,6 +1888,6 @@ public class DBHandler
 	 * @return a string, com plicas e os ap�strofes diplicados.
 	 */
 	private static String p(String s) {
-		return "'" + s.replace("'", "''") + "'";
+		return "'" + (s==null ? "" : s.replace("'", "''")) + "'";
 	}
 }
