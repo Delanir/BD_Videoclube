@@ -342,7 +342,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 				calendarEnd = new GregorianCalendar(cal.get(Calendar.YEAR),
 						cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
 				dateEnd.setText(calendarEnd.get(Calendar.DAY_OF_MONTH) + "/"
-						+ calendarEnd.get(Calendar.MONTH) + "/"
+						+ (calendarEnd.get(Calendar.MONTH)+1) + "/"
 						+ calendarEnd.get(Calendar.YEAR));
 
 			} else {
@@ -350,7 +350,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 				calendarBegin = new GregorianCalendar(cal.get(Calendar.YEAR),
 						cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
 				dateBegin.setText(calendarBegin.get(Calendar.DAY_OF_MONTH)
-						+ "/" + calendarBegin.get(Calendar.MONTH) + "/"
+						+ "/" + (calendarBegin.get(Calendar.MONTH)+1) + "/"
 						+ calendarBegin.get(Calendar.YEAR));
 			}
 
@@ -4397,6 +4397,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void consultarEstatisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEstatisticasActionPerformed
         // TODO add your handling code here:
         statsArea.setText("");
+       
         if(clientesCheckBox.isSelected()){
             //Clientes
             statsArea.append(gestorEstatisticas.estatisticasClientes(calendarBegin, calendarEnd));
