@@ -4178,7 +4178,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     	// e outro para fazer set da quantidade total em stock.
     	// n�o sei qual queres aqui mas assumi que o "(Integer)eliminaSpinner.getValue()" tinha o valor da quantidade em stock (nao vi na gui).
         if(Utils.isInt(idEliminaFilmes.getText())){
-             String aux=((String)textEliminaFilmes.getSelectedValue()).split(" ")[0];
+             String aux=((String)textEliminaFilmes.getSelectedValue()).split(" : ")[0];
 
              gestorFilmes.removeStock(idEliminaFilmes.getText(), aux);
              textEliminaFilmes.setModel(new OurListModel(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())));
@@ -4215,7 +4215,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void adicionarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarFilmeActionPerformed
         // TODO : Só DA PARA ESCOLHER 1GENERO POR AGORA
         String output="";
-        String []generos=new String[generosVector.size()+1];
+        int size=0;
+        if(generosVector!=null)
+            size=generosVector.size();
+        String []generos=new String[size+1];
         generos[0]=(String)listaGenerosAdicionaFilmes.getSelectedItem();
         for(int i=1;i<generos.length;i++)
             generos[i]=generosVector.elementAt(i-1);
@@ -4235,6 +4238,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generos);
         generosVector=new Vector <String>();
         outAdicionaFilme.setText(output);
+        filePath=null;
     }//GEN-LAST:event_adicionarFilmeActionPerformed
 
     private void adicionarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarStockActionPerformed
@@ -4747,7 +4751,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_procurarIDActionPerformed
 
     private void entregaFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entregaFilmeActionPerformed
-        if(((String)listaRequisicoes.getSelectedValue())==null){
+        if(((String)listaRequisicoes.getSelectedValue())!=null){
             gestorFilmes.entregaRequisicao(((String)listaRequisicoes.getSelectedValue()).split(" ")[0]);
             pagamentosAtraso.setModel(new OurListModel(null));
             listaRequisicoes.setModel(new OurListModel(null));
