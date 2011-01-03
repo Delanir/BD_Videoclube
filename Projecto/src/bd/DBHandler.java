@@ -580,7 +580,7 @@ public class DBHandler
 	 */
 	public static void removeFilmeGenero(String id_fil, String id_gen) {
 		removeObjecto("filme_genero",
-					  getToSetCamposFilmeGenero(),
+					  new String[]{"ID_GEN", "ID_FIL"},
 					  new String[]{id_gen, id_fil});
 	}
 
