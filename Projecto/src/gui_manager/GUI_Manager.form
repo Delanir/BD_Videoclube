@@ -84,7 +84,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="24" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="[NOME DO VIDEOCLUBE]"/>
+            <Property name="text" type="java.lang.String" value="Videoclube Lumi&#xe8;re"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -611,51 +611,54 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="moradaEmpregados" max="32767" attributes="1"/>
-                                              <Component id="nomeEmpregados" alignment="0" max="32767" attributes="1"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="moradaEmpregados" max="32767" attributes="1"/>
+                                                  <Component id="nomeEmpregados" alignment="0" max="32767" attributes="1"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="passwordEmpregados" alignment="1" pref="120" max="32767" attributes="1"/>
+                                                          <Component id="biEmpregados" alignment="0" pref="120" max="32767" attributes="0"/>
+                                                          <Component id="telefoneEmpregados" alignment="0" pref="120" max="32767" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Group type="102" alignment="1" attributes="0">
+                                                              <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                                              <Component id="passwordEmpregados2" min="-2" pref="102" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Component id="obterDadosEmpregadoActualizacao" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Component id="emailEmpregados" alignment="0" max="32767" attributes="1"/>
+                                              </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="passwordEmpregados" alignment="1" pref="120" max="32767" attributes="1"/>
-                                                      <Component id="biEmpregados" alignment="0" pref="120" max="32767" attributes="0"/>
-                                                      <Component id="telefoneEmpregados" alignment="0" pref="120" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                                          <Component id="passwordEmpregados2" min="-2" pref="102" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="obterDadosEmpregadoActualizacao" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Component id="emailEmpregados" alignment="0" max="32767" attributes="1"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Component id="jAdicionarEmpregadoButton" alignment="1" min="-2" pref="166" max="-2" attributes="1"/>
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <Component id="adminRadio" min="-2" pref="103" max="-2" attributes="1"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="opRadio" min="-2" max="-2" attributes="0"/>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Group type="103" groupAlignment="1" attributes="0">
+                                                              <Component id="jAdicionarEmpregadoButton" alignment="1" min="-2" pref="166" max="-2" attributes="1"/>
+                                                              <Group type="102" alignment="1" attributes="0">
+                                                                  <Component id="adminRadio" min="-2" pref="103" max="-2" attributes="1"/>
+                                                                  <EmptySpace max="-2" attributes="0"/>
+                                                                  <Component id="opRadio" min="-2" max="-2" attributes="0"/>
+                                                              </Group>
                                                           </Group>
+                                                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <Component id="jDespedirEmpregadoButton" min="-2" pref="115" max="-2" attributes="1"/>
+                                                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                                      </Group>
                                                   </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="jDespedirEmpregadoButton" min="-2" pref="115" max="-2" attributes="1"/>
-                                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="actualzarListaEmpregados" min="-2" pref="124" max="-2" attributes="1"/>
+                                                      <Component id="jScrollPane4" min="-2" pref="225" max="-2" attributes="1"/>
                                                   </Group>
-                                              </Group>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="actualzarListaEmpregados" alignment="0" min="-2" pref="124" max="-2" attributes="1"/>
-                                                  <Component id="jScrollPane4" alignment="0" min="-2" pref="134" max="-2" attributes="1"/>
                                               </Group>
                                           </Group>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="1">
                                           <Component id="salarioEmpregados" min="-2" pref="50" max="-2" attributes="0"/>
@@ -668,7 +671,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="589" max="32767" attributes="0"/>
+                          <EmptySpace pref="520" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -723,8 +726,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="opRadio" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -738,6 +740,7 @@
                                       <Component id="jDespedirEmpregadoButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="jScrollPane4" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="actualzarListaEmpregados" min="-2" max="-2" attributes="0"/>
