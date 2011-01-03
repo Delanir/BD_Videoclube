@@ -248,7 +248,7 @@ public class DBHandler
 	}
 	
 	public static Vector<String[]> procuraClientes(String nome, String morada, String email, String telefone) {
-		String query = "SELECT ID_PES, NOME_PESSOA, BI" +
+		String query = "SELECT ID_PES, NOME_PESSOA, BI, VALIDO" +
 					   " FROM clientes" +
 					   " WHERE ID_PES = ID_PES" +	// redund�ncia para evitar o caso em que o WHERE fica sem nada
 					   (nome.isEmpty()?"":" AND LOWER(nome_pessoa) LIKE "+p("%"+nome.toLowerCase()+"%")) +

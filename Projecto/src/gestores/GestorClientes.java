@@ -57,10 +57,10 @@ public class GestorClientes
 	 */
 	public String[] procuraClientes(String nome, String morada, String email, String telefone) {
 		Vector<String[]> vec = DBHandler.procuraClientes(nome, morada, email, telefone);
-		String[] out = Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1});
+		String[] out = Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1, 3});
 		int i=0;
 		for(String[] sa : vec) {
-			if(sa[7].equals("0"))
+			if(sa[3].equals("0"))
 				out[i] = out[i] + " (inválido)";
 			i++;
 		}
