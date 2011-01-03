@@ -134,13 +134,13 @@ public class Frame_ATM  extends JFrame{
                     if(ficheiro.exists())
                         menuResultados_imagem.setIcon(new ImageIcon(file));
                 }catch (Exception e){
+                    menuResultados_imagem.setIcon(null);
                     Utils.dbg("Não foi encontrada a capa do filme!");
                 }
                 menuResultados_generos.setModel(new OurListModel(Utils.extract(f, i+1)));
                 String[] formato = gestorFilmes.verListaStocksFilme(idMovie);
                 for(j=0;j<formato.length;j++){
                     modeloDados.addElement(formato[j]);
-                    //System.out.println("cenassss222222 "+formato[j].split(" : ")[0]);
                 }
                 menuResultados_formatos.setModel(modeloDados);
 
@@ -1623,7 +1623,7 @@ public class Frame_ATM  extends JFrame{
         menuResultados_ano.setText("");
         menuResultados_pais.setText("");
         menuResultados_imdb.setText("");
-        
+        menuResultados_imagem.setIcon(null);
         menuResultados_descricao.setText("");
         menuResultados_formatos.setModel(modeloDados);
         menuResultados_generos.setModel(modeloDados);
