@@ -259,6 +259,42 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 }
             });
 
+            listaEmpregados.addListSelectionListener((ListSelectionListener) new ListSelectionListener(){
+                public void valueChanged(ListSelectionEvent evento) {
+                    if (evento.getValueIsAdjusting())
+                    //ainda selecionando
+                    return;
+                    JList list = (JList)evento.getSource();
+                    if (list.isSelectionEmpty()) {
+                            Utils.dbg("nenhuma seleção");
+                    } else {
+                        String []out;
+                        
+                        String idEmpregado=(String)listaEmpregados.getSelectedValue();
+                        if(idEmpregado!=null){
+                            idEmpregado=idEmpregado.split(" ")[0];
+                            out=gestorEmpregados.procuraEmpregadoBI(idEmpregado);
+                            biEmpregados.setText(idEmpregado);
+                            if(out!=null&&out.length>0){
+                                if(out[1].equals("1")){
+                                    adminRadio.doClick();
+                                }else{
+                                    opRadio.doClick();
+                                }
+                                salarioEmpregados.setText(out[2]);
+                                nomeEmpregados.setText(out[3]);
+                                passwordEmpregados.setText(out[5]);
+                                passwordEmpregados2.setText(out[5]);
+                                moradaEmpregados.setText(out[6]);
+                                emailEmpregados.setText(out[7]);
+                                telefoneEmpregados.setText(out[8]);
+                            }
+
+                        }
+
+                    }
+                }
+            });
 
       }
 
@@ -1034,6 +1070,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         adminRadio.setText("Administrador");
 
+        opRadio.setSelected(true);
         opRadio.setText("Operador");
 
         jLabel21.setText("Salário:");
@@ -3762,6 +3799,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         //TODO fazer parsing do output do método
         String []lista;
         String[] generos={(String) generosBox.getSelectedItem()};
+        if(generos[0].isEmpty())
+            generos=null;
         //procuraFilmes(String titulo, String anoLow, String anoHigh, String realizador, String ratingIMDBLow, String ratingIMDBHigh, String pais, String produtora, String[] generos)
         if((Integer)anoBSpinner.getValue()<(Integer)anoESpinner.getValue()
                 &&(Double)imdbBSpinner.getValue()<(Double)imdbESpinner.getValue()){
@@ -4448,7 +4487,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             if(adminRadio.isSelected())
                 isAdmin="1";
             //String is_admin, String salario, String nome, String bi, String password, String morada, String email, String telefone
-            gestorEmpregados.actualizaEmpregado(isAdmin,
+            String out=gestorEmpregados.actualizaEmpregado(isAdmin,
                     salarioEmpregados.getText(),
                     nomeEmpregados.getText(),
                     biEmpregados.getText(),
@@ -4456,6 +4495,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                     moradaEmpregados.getText(),
                     emailEmpregados.getText(),
                     telefoneEmpregados.getText());
+            
         }
 }//GEN-LAST:event_jAdicionarEmpregadoButtonActionPerformed
 

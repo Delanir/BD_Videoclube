@@ -861,6 +861,7 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="opRadio">
                   <Properties>
+                    <Property name="selected" type="boolean" value="true"/>
                     <Property name="text" type="java.lang.String" value="Operador"/>
                   </Properties>
                 </Component>
