@@ -4672,8 +4672,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                     emailEmpregados.getText(),
                     telefoneEmpregados.getText());
             outEmpregados.setText(out);
+        }else{
+            outEmpregados.setText("Não foi possivel adicionar o empregado.");
         }
-        outEmpregados.setText("Não foi possivel adicionar o empregado.");
 }//GEN-LAST:event_jAdicionarEmpregadoButtonActionPerformed
 
     private void jDespedirEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonActionPerformed
