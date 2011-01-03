@@ -2977,12 +2977,15 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                                 .addComponent(imdbResultadosFilme)
                                                                 .addComponent(anoResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                            .addGap(18, 18, 18)
+                                                            .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                                                             .addGap(54, 54, 54)
                                                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                                 .addComponent(eliminarStockFilme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(adicionarStockFilme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                                                .addComponent(adicionarStockFilme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                         .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                                             .addGap(1, 1, 1)
                                             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2999,13 +3002,12 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                     .addComponent(voltarResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(120, 120, 120)))
                                             .addGap(106, 106, 106)))
-                                    .addGap(15, 15, 15)
-                                    .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(67, 67, 67))
                                 .addComponent(jScrollPane19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                             .addGap(148, 148, 148)
                             .addComponent(jLabel78)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(62, 62, 62)))
             .addContainerGap())
     );
@@ -3042,17 +3044,15 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                         .addComponent(jLabel81)
                         .addComponent(anoResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
+                    .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel84)
+                        .addComponent(imdbResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(20, 20, 20)
                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
-                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel84)
-                                .addComponent(imdbResultadosFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(20, 20, 20)
-                            .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel80))))))
-            .addGap(25, 25, 25)
+                        .addComponent(jLabel80)
+                        .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jLabel76, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+            .addGap(36, 36, 36)
             .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                     .addGroup(jResultadosFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3091,7 +3091,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         resultadosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resultadosFrameLayout.createSequentialGroup()
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jResultadosFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jResultadosFilmePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
 
@@ -4224,8 +4224,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         generos[0]=(String)listaGenerosAdicionaFilmes.getSelectedItem();
         for(int i=1;i<generos.length;i++)
             generos[i]=generosVector.elementAt(i-1);
-        
-        
+        for(int j=1;j<generos.length;j++)
+            Utils.dbg(generos[j]);
         
         //adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos
         output=gestorFilmes.adicionaFilme(
@@ -4799,7 +4799,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_adicionarFilmeFrameWindowClosing
 
     private void generoExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoExtraActionPerformed
-        //generosVector.add((String)listaGenerosAdicionaFilmes1.getSelectedItem());
+        generosVector.add((String)listaGenerosAdicionaFilmes.getSelectedItem());
     }//GEN-LAST:event_generoExtraActionPerformed
 
     private void voltarResultadosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarResultadosClientesActionPerformed
