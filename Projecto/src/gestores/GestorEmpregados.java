@@ -50,7 +50,14 @@ public class GestorEmpregados
 	 */
 	public String[] procuraEmpregados(String is_admin, String salarioLow, String salarioHigh, String nome, String morada, String email, String telefone) {
 		Vector<String[]> vec = DBHandler.procuraEmpregados(is_admin, salarioLow, salarioHigh, nome, morada, email, telefone);
-		return setInfo(vec);
+		String[] out = Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1});
+		int i=0;
+		for(String[] sa : vec) {
+			if(sa[3].equals("0"))
+				out[i] = out[i] + " (inválido)";
+			i++;
+		}
+		return out;
 	}
 
 	/**
@@ -59,7 +66,14 @@ public class GestorEmpregados
 	 */
 	public String[] verListaEmpregados() {
 		Vector<String[]> vec = DBHandler.getEmpregados();
-		return setInfo(vec);
+		String[] out = Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 4, 3});
+		int i=0;
+		for(String[] sa : vec) {
+			if(sa[9].equals("0"))
+				out[i] = out[i] + " (inválido)";
+			i++;
+		}
+		return out;
 	}
 
 	public String invalidaEmpregado(String id) {
@@ -79,16 +93,5 @@ public class GestorEmpregados
 			return "O empregado foi invalidado.";
 		} else
 			return "O empregado é o único administrador de sistema. Não pode ser invalidado.";
-	}
-	
-	private static String[] setInfo(Vector<String[]> vec) {
-		String[] out = Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 4, 3});
-		int i=0;
-		for(String[] sa : vec) {
-			if(sa[9].equals("0"))
-				out[i] = out[i] + " (inválido)";
-			i++;
-		}
-		return out;
 	}
 }

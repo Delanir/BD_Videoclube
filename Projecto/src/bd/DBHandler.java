@@ -356,8 +356,8 @@ public class DBHandler
 	}
 	
 	public static Vector<String[]> procuraEmpregados(String is_admin, String salarioLow, String salarioHigh, String nome, String morada, String email, String telefone) {
-		String query = "SELECT ID_PES, NOME_PESSOA, BI" +
-					   " FROM clientes" +
+		String query = "SELECT ID_PES, NOME_PESSOA, BI, VALIDO" +
+					   " FROM empregados" +
 					   " WHERE ID_PES = ID_PES" +	// redund�ncia para evitar o caso em que o WHERE fica sem nada
 					   (is_admin.isEmpty()?"":" AND is_admin = "+is_admin) +
 					   (salarioLow.isEmpty()||salarioHigh.isEmpty()?"":" AND salario BETWEEN "+salarioLow+" AND "+salarioHigh) +
