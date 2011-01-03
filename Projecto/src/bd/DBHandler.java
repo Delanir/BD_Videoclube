@@ -1137,6 +1137,10 @@ public class DBHandler
 		return valorExiste("generos", "LOWER(NOME_GENERO)", p(nome.toLowerCase()), "ID_GEN", id_gen, false);
 	}
 	
+	public static boolean generoExiste(String nome) {
+		return valorExiste("generos", "LOWER(NOME_GENERO)", p(nome.toLowerCase()), false);
+	}
+	
 	/**
 	 * Verifica se determinado nome de formato existe, exclu�ndo o formato com o ID passado
 	 * (compara��o n�o olha a diferen�as de mai�sculas/min�sculas).
@@ -1146,6 +1150,10 @@ public class DBHandler
 	 */
 	public static boolean formatoExiste(String id_for, String nome) {
 		return valorExiste("formatos", "LOWER(NOME_FORMATO)", p(nome.toLowerCase()), "ID_FOR", id_for, false);
+	}
+	
+	public static boolean formatoExiste(String nome) {
+		return valorExiste("formatos", "LOWER(NOME_FORMATO)", p(nome.toLowerCase()), false);
 	}
 
 	/**
