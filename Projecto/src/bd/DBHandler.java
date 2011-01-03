@@ -428,7 +428,7 @@ public class DBHandler
 	 */
 	public static void adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
 		adicionaObjecto("filmes",
-						new String[]{"seq_filme_id.NEXTVAL", p(titulo), p(ano), p(realizador), ratingIMDB, p(pais), p(produtora), p(descricao), p(capa), "0"});
+						new String[]{"seq_filme_id.NEXTVAL", p(titulo), ano, p(realizador), ratingIMDB, p(pais), p(produtora), p(descricao), p(capa), "0"});
 		String currval = select("SELECT seq_filme_id.CURRVAL FROM DUAL").get(0)[0];
 		for(String gen : generos)
 			adicionaFilmeGeneroNome(currval, gen);
