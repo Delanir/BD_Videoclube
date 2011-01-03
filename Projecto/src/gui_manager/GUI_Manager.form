@@ -1585,7 +1585,7 @@
                               <Component id="jFormatosFrameButton1" pref="65" max="32767" attributes="1"/>
                               <Component id="pesquisarFilmes2" alignment="0" pref="65" max="32767" attributes="1"/>
                           </Group>
-                          <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -4475,9 +4475,10 @@
     </Container>
     <Container class="javax.swing.JDialog" name="extraFrame">
       <Properties>
+        <Property name="defaultCloseOperation" type="int" value="2"/>
         <Property name="alwaysOnTop" type="boolean" value="true"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[300, 200]"/>
+          <Dimension value="[500, 300]"/>
         </Property>
       </Properties>
 

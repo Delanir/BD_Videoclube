@@ -1642,7 +1642,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGroup(jFilmesManagerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jFormatosFrameButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                     .addComponent(pesquisarFilmes2, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
-                .addGap(164, 164, 164))
+                .addGap(200, 200, 200))
         );
 
         jTabbedPane3.addTab("Gestão de Filmes", jFilmesManagerPanel1);
@@ -3668,8 +3668,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addContainerGap(31, Short.MAX_VALUE))
     );
 
+    extraFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     extraFrame.setAlwaysOnTop(true);
-    extraFrame.setMinimumSize(new java.awt.Dimension(300, 200));
+    extraFrame.setMinimumSize(new java.awt.Dimension(500, 300));
 
     listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -4042,8 +4043,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void jToggleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton17ActionPerformed
         // TODO add your handling code here:
         listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
-
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
+        listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jToggleButton17ActionPerformed
@@ -4051,7 +4052,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void jToggleButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton18ActionPerformed
         // TODO add your handling code here:
         listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
-
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
@@ -4059,10 +4059,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_jToggleButton18ActionPerformed
 
     private void jActualizarStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActualizarStockButtonActionPerformed
-        // TODO add your handling code here:
-        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
-
+       listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
+        listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jActualizarStockButtonActionPerformed
@@ -4195,7 +4194,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_voltarAdcionaFilmesActionPerformed
 
     private void jVerificarPagamentosAtrasoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVerificarPagamentosAtrasoButton1ActionPerformed
-        pagamentosAtraso.setModel(new OurListModel(gestorClientes.getClientesComEntregasForaDePrazo()));
+        pagamentosAtraso1.setModel(new OurListModel(gestorClientes.getClientesComEntregasForaDePrazo()));
     }//GEN-LAST:event_jVerificarPagamentosAtrasoButton1ActionPerformed
 
     private void actualizarListaMaquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarListaMaquinasActionPerformed
@@ -4400,7 +4399,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_verificarRequesicoesActionPerformed
 
     private void verificarRequesicoes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarRequesicoes1ActionPerformed
-        pagamentosAtraso.setModel(new OurListModel(gestorClientes.getClientesComEntregasPorFazer()));
+        pagamentosAtraso1.setModel(new OurListModel(gestorClientes.getClientesComEntregasPorFazer()));
     }//GEN-LAST:event_verificarRequesicoes1ActionPerformed
 
     private void eliminaGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaGeneroActionPerformed
@@ -4519,7 +4518,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 }//GEN-LAST:event_jDespedirEmpregadoButtonComponentResized
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        DBHandler.close();
+        try{
+            DBHandler.close();
+        }catch(Exception e){}
+        
     }//GEN-LAST:event_formWindowClosing
 
     private void voltarResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarResultadosActionPerformed
