@@ -1462,7 +1462,7 @@ public class Frame_ATM  extends JFrame{
         Component frame = new Component() {};
         String verifica_aluguer=null;
         try{
-            Utils.dbg("idMaquina: "+idMaquina+"ola "+menuResultados_listaFilmes.getSelectedValue().toString().split(" :")[0]+" formato "+menuResultados_formatos.getSelectedValue().toString().split(" :")[0]);
+            Utils.dbg("idMaquina: "+idMaquina+" ola "+menuResultados_listaFilmes.getSelectedValue().toString().split(" :")[0]+" formato "+menuResultados_formatos.getSelectedValue().toString().split(" :")[0]);
             verifica_aluguer=gestorFilmes.adicionaRequisicao(idMaquina,null,gerir_users.getUsername()
                     ,menuResultados_listaFilmes.getSelectedValue().toString().split(" :")[0]
                     , menuResultados_formatos.getSelectedValue().toString().split(" :")[0]);
