@@ -3958,7 +3958,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     	// Depois tens de p�r isto como queres ou dizer-me para fazer um metodo k fa�a o que queres mesmo
     	
         // textEliminaFilmes.setText(gestorFilmes.verListaFormatos(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem()));
-        if(Utils.isNumber(idEliminaFilmes.getText()) )
+        if(Utils.isInt(idEliminaFilmes.getText()) )
             textEliminaFilmes.setModel(new OurListModel(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())));
     }//GEN-LAST:event_listarFormatoEliminarActionPerformed
 
@@ -3982,7 +3982,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     	// outro para incrementar ou decrementar a quantidade total em stock
     	// e outro para fazer set da quantidade total em stock.
     	// n�o sei qual queres aqui mas assumi que o "(Integer)eliminaSpinner.getValue()" tinha o valor da quantidade em stock (nao vi na gui).
-        if(Utils.isNumber(idEliminaFilmes.getText())){
+        if(Utils.isInt(idEliminaFilmes.getText())){
              String aux=((String)textEliminaFilmes.getSelectedValue()).split(" ")[0];
 
              gestorFilmes.actualizaQuantStock(idEliminaFilmes.getText(), aux, ""+(Integer)eliminaSpinner.getValue());
@@ -4236,7 +4236,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void alugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alugarActionPerformed
         String output="";
         String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
-        if(Utils.isNumber(idAlugaFilme.getText())){
+        if(Utils.isInt(idAlugaFilme.getText())){
         	//TODO by Lobo: pus aki um placeholder para o novo "alugaFilme", pk tem mais coisas do que as que aki tavam. E, btw, chama-se adicionaRequisicao() xD
             /*output=gestorFilmes.alugaFilme(idMovie,
                     (String) listaFormatosResultadosFilmes.getSelectedItem(),
@@ -4256,7 +4256,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         String output="";
         
         
-        if(Utils.isNumber(biAdicionaClientes.getText())
+        if(Utils.isInt(biAdicionaClientes.getText())
                 &&!biAdicionaClientes.getText().isEmpty()
                 &&!passwordAdicionaClientes2.getText().isEmpty()
                 &&(passwordAdicionaClientes2.getText().equals(passwordAdicionaClientes.getText()))){
@@ -4289,7 +4289,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     private void eliminarClienteBIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarClienteBIActionPerformed
 
-        if(Utils.isNumber(biEliminaClientes.getText())){
+        if(Utils.isInt(biEliminaClientes.getText())){
             outEliminaClientes.setText(
                     gestorClientes.invalidaClienteBI(biEliminaClientes.getText()));
         }else{
@@ -4312,7 +4312,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         String [] out;
         if(idPesquisarClientes!=null&&!idPesquisarClientes.getText().isEmpty()){
             
-            if(Utils.isNumber(idPesquisarClientes.getText())){
+            if(Utils.isInt(idPesquisarClientes.getText())){
                 out=gestorClientes.procuraCliente(idPesquisarClientes.getText());
                 if(out!=null&&out.length!=0){
                     outPesquisarClientes.setText("");
@@ -4331,7 +4331,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void pesquisarPorBIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarPorBIActionPerformed
         String [] out;
         if(biPesquisarClientes!=null&&!biPesquisarClientes.getText().isEmpty()){
-            if(Utils.isNumber(biPesquisarClientes.getText())){
+            if(Utils.isInt(biPesquisarClientes.getText())){
                
                 out=gestorClientes.procuraClienteBI(biPesquisarClientes.getText());
                 if(out!=null&&out.length!=0){
@@ -4411,7 +4411,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void obterDadosEmpregadoActualizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obterDadosEmpregadoActualizacaoActionPerformed
         // TODO add your handling code here:
         String []out;
-        if(Utils.isNumber(biEmpregados.getText())){
+        if(Utils.isInt(biEmpregados.getText())){
             out=gestorEmpregados.procuraEmpregadoBI(biEmpregados.getText());
             if(out!=null&&out.length>0){
                 if(out[1].equals("1")){
@@ -4439,9 +4439,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void jAdicionarEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarEmpregadoButtonActionPerformed
         String isAdmin="0";
         if(!nomeEmpregados.getText().isEmpty()
-                &&Utils.isNumber(biEmpregados.getText())
-                &&Utils.isNumber(salarioEmpregados.getText())
-                &&Utils.isNumber(telefoneEmpregados.getText())
+                &&Utils.isInt(biEmpregados.getText())
+                &&Utils.isDouble(salarioEmpregados.getText())
+                &&Utils.isInt(telefoneEmpregados.getText())
                 &&(passwordEmpregados.getText().equals(passwordEmpregados2.getText()))//TODO : Deprecated
                 ){
 
@@ -4504,7 +4504,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_pesquisarTodosActionPerformed
 
     private void procurarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarIDActionPerformed
-        if(Utils.isNumber(textIdPesquisaFilmes.getText())){
+        if(Utils.isInt(textIdPesquisaFilmes.getText())){
             //{"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"};}
             String[] out= gestorFilmes.getFilme(textIdPesquisaFilmes.getText());
             

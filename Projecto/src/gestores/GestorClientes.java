@@ -42,7 +42,7 @@ public class GestorClientes
 	}
 	
 	public String[] procuraClienteBI(String bi) {
-        if(Utils.isNumber(bi))
+        if(Utils.isInt(bi))
             return DBHandler.getClienteBI(bi);
         return null;
 	}

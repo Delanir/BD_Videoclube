@@ -375,7 +375,7 @@ public class Utils
     /**
      * Verifica se um determinado text field só contem números
      */
-    public static boolean isNumber(String str){
+    public static boolean isInt(String str){
          try{
              Integer.parseInt(str);
              return true;
@@ -383,4 +383,13 @@ public class Utils
         	 return false;
          }
     }
+    
+    public static boolean isDouble(String str){
+        try{
+        	Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+        	return false;
+        }
+   }
 }
