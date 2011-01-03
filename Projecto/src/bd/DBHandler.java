@@ -1660,6 +1660,29 @@ public class DBHandler
         return "";
     }
 
+    public static String estatisticasTotalGeneros(){
+        try {
+            //executeNoCommit("EXECUTE top10filmes");
+
+            CallableStatement cs = conn.prepareCall ("{ call totalGeneros()}");
+            cs.execute();
+            Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
+            conn.commit();
+
+            String output="Total Generos: "+out.get(0)[1]+"\nGénero mais Popular\nID_GEN:\tNOME:\tNº Requisições\n";
+            if(out!=null){
+                output+=out.get(0)[0]+"\t"+out.get(0)[2]+"\t"+out.get(0)[3]+"\n";
+                
+                return output;
+            }
+            return "";
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return "";
+    }
+
 
 
     public static String estatisticasEmpregados(){

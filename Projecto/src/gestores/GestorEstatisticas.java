@@ -89,6 +89,7 @@ public class GestorEstatisticas
         }else{
             //top10filmes
             estatisticas+=DBHandler.estatisticasTop10Filmes();
+            estatisticas+="\n"+DBHandler.estatisticasTotalGeneros();
         }
         return "Estatisticas Filmes:\n------------------------\n"+estatisticas;
     }
@@ -107,6 +108,7 @@ public class GestorEstatisticas
 		} else {
                     estatisticas+=DBHandler.estatisticasTopMaquinas();
 		}
+                
 		return "Estatisticas Maquinas:\n------------------------\n"+estatisticas;
 	}
 }
