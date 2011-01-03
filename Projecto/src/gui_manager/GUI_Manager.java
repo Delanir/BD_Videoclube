@@ -272,7 +272,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                         
                         String idEmpregado=(String)listaEmpregados.getSelectedValue();
                         if(idEmpregado!=null){
-                            idEmpregado=idEmpregado.split(" ")[0];
+                            idEmpregado=idEmpregado.split(" ")[2];
+                            idEmpregado=idEmpregado.substring(1, idEmpregado.length()-1);
                             out=gestorEmpregados.procuraEmpregadoBI(idEmpregado);
                             biEmpregados.setText(idEmpregado);
                             if(out!=null&&out.length>0){
