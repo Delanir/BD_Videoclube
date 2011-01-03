@@ -306,7 +306,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     if (list.isSelectionEmpty()) {
                             Utils.dbg("nenhuma seleção");
                     } else {
-                        String idCliente=(String)listaResultadosClientes.getSelectedValue();
+                        String idCliente=((String)listaResultadosClientes.getSelectedValue()).split(" ")[0];
                         String []out=gestorClientes.procuraCliente(idCliente);
                         //"ID_PES", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"};}
                         nomeResultadosClientes.setText(out[1]);
@@ -1116,6 +1116,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         });
 
         outEmpregados.setColumns(20);
+        outEmpregados.setEditable(false);
         outEmpregados.setRows(5);
         jScrollPane5.setViewportView(outEmpregados);
 
@@ -4512,7 +4513,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             
             if(Utils.isInt(idPesquisarClientes.getText())){
                 out=gestorClientes.procuraCliente(idPesquisarClientes.getText());
-                listaResultadosClientes.setModel(new OurListModel(out));
+                String[] aux=new String[1];
+                aux[0]=out[0]+" : ["+out[2]+"] "+out[1];
+                listaResultadosClientes.setModel(new OurListModel(aux));
                 pesquisarClienteFrame.setVisible(false);
                 pesquisarClienteFrame.transferFocusBackward();
                 resultadosClientes.setVisible(true);
@@ -4670,7 +4673,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                     telefoneEmpregados.getText());
             outEmpregados.setText(out);
         }
-        outEmpregados.setText("Não foi possivel adicionar o filme.");
+        outEmpregados.setText("Não foi possivel adicionar o empregado.");
 }//GEN-LAST:event_jAdicionarEmpregadoButtonActionPerformed
 
     private void jDespedirEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonActionPerformed
@@ -4755,7 +4758,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     private void eliminarStockFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarStockFilmeActionPerformed
         // TODO add your handling code here:
-       String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
+       String idMovie=((String)listaResultados.getSelectedValue());
+       if(idMovie!=null&&!idMovie.isEmpty())
+        idMovie=idMovie.split(" ")[0];
        idEliminaFilmes.setText(idMovie);
        textEliminaFilmes.setModel(new OurListModel(gestorFilmes.verListaStocksFilmeFull(idMovie)));
        resultadosFrame.setVisible(false);
@@ -4767,7 +4772,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void adicionarStockFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarStockFilmeActionPerformed
         // TODO add your handling code here:
          // TODO add your handling code here:
-       String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
+       String idMovie=((String)listaResultados.getSelectedValue());
+       if(idMovie!=null&&!idMovie.isEmpty())
+        idMovie=idMovie.split(" ")[0];
        idAdicionaStock.setText(idMovie);
        resultadosFrame.setVisible(false);
        resultadosFrame.transferFocusBackward();
