@@ -386,7 +386,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         statsArea = new javax.swing.JTextArea();
         javax.swing.JLabel jLabel9 = new javax.swing.JLabel();
         empregadosCheckBox = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        contabilidadeBox = new javax.swing.JCheckBox();
         filmesCheckBox = new javax.swing.JCheckBox();
         maquinasCheckBox = new javax.swing.JCheckBox();
         javax.swing.JLabel jLabel10 = new javax.swing.JLabel();
@@ -806,10 +806,10 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
             }
         });
 
-        jCheckBox2.setText("Contabilidade");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        contabilidadeBox.setText("Contabilidade");
+        contabilidadeBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                contabilidadeBoxActionPerformed(evt);
             }
         });
 
@@ -863,7 +863,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addContainerGap()
                 .addGroup(jEstatisticasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(empregadosCheckBox)
-                    .addComponent(jCheckBox2)
+                    .addComponent(contabilidadeBox)
                     .addComponent(clientesCheckBox)
                     .addComponent(filmesCheckBox)
                     .addComponent(maquinasCheckBox)
@@ -895,7 +895,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addGap(12, 12, 12)
                 .addComponent(empregadosCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox2)
+                .addComponent(contabilidadeBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(clientesCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3906,9 +3906,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }//GEN-LAST:event_empregadosCheckBoxActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void contabilidadeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contabilidadeBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_contabilidadeBoxActionPerformed
 
     private void jPesquisarClientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPesquisarClientesButtonActionPerformed
         listaResultadosClientes.setModel(new OurListModel(gestorClientes.verListaClientes()));
@@ -4414,7 +4414,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             //Clientes
             statsArea.append(gestorEstatisticas.estatisticasMaquinas(calendarBegin, calendarEnd));
         }
-        if(clientesCheckBox.isSelected()){
+        if(contabilidadeBox.isSelected()){
             //Clientes
             statsArea.append(gestorEstatisticas.getEstatisticas(calendarBegin, calendarEnd));
         }
@@ -4834,6 +4834,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField biResultadosClientes;
     private javax.swing.JCheckBox clientesCheckBox;
     private javax.swing.JButton consultarEstatisticas;
+    private javax.swing.JCheckBox contabilidadeBox;
     private javax.swing.JComboBox countriesList;
     private javax.swing.JComboBox countriesList1;
     private javax.swing.JTextField custoAdicionaStock;
@@ -4884,7 +4885,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton5;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JPanel jClientesManagerPanel;
     private javax.swing.JPanel jClientesManagerPanel1;
     private javax.swing.JToggleButton jDespedirEmpregadoButton;

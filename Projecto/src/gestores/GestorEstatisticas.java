@@ -42,8 +42,24 @@ public class GestorEstatisticas
 	 */
 	public String getEstatisticas(GregorianCalendar begin, GregorianCalendar end) {
                 
-                
-		return DBHandler.estatisticasContabilidade();
+                String estatisticas="";
+                if (begin != null && end != null) {
+			// estatisticas num intrevalo de tempo
+                        GregorianCalendar now=new GregorianCalendar();
+
+                        if(begin.compareTo(end)<0&&end.compareTo(now)<0){
+
+                             estatisticas+=DBHandler.estatisticasContabilidadeData(
+                                     calendarize(begin),
+                                     calendarize(end));
+                        }else{
+                            estatisticas+="Datas mal especificadas";
+                        }
+		} else {
+                        //top10clientes
+                    estatisticas+=DBHandler.estatisticasContabilidade();
+		}
+		return estatisticas;
 	}
 
 	/**

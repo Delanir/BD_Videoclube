@@ -1594,6 +1594,24 @@ public class DBHandler
         return "";
     }
 
+    public static String estatisticasContabilidadeData(String inicio,String fim){
+        try {
+
+            CallableStatement cs = conn.prepareCall ("{ call contabilidadeData("+p(inicio)+", "+p(fim)+")}");
+            cs.execute();
+            Vector <String []> out=select("SELECT col1, col2, col4 FROM temp");
+            conn.commit();
+
+            return "LUCRO: "+out.get(0)[0]+
+                    "€\n DESPESAS "+out.get(0)[1]+
+                    "€\n TOTALFACTURADO "+out.get(0)[2]+"€";
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return "";
+    }
+
     public static String estatisticasTop10Clientes(){
         try {
            
