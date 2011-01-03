@@ -306,7 +306,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                     if (list.isSelectionEmpty()) {
                             Utils.dbg("nenhuma seleção");
                     } else {
-                        String idCliente=(String)listaResultadosClientes.getSelectedValue();
+                        String idCliente=((String)listaResultadosClientes.getSelectedValue()).split(" ")[0];
                         String []out=gestorClientes.procuraCliente(idCliente);
                         //"ID_PES", "NOME_PESSOA", "BI", "PASSWORD", "MORADA", "E_MAIL", "TELEFONE", "VALIDO", "DATA_REGISTO"};}
                         nomeResultadosClientes.setText(out[1]);
@@ -4512,7 +4512,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             
             if(Utils.isInt(idPesquisarClientes.getText())){
                 out=gestorClientes.procuraCliente(idPesquisarClientes.getText());
-                listaResultadosClientes.setModel(new OurListModel(out));
+                String[] aux=new String[1];
+                aux[0]=out[0]+" : ["+out[2]+"] "+out[1];
+                listaResultadosClientes.setModel(new OurListModel(aux));
                 pesquisarClienteFrame.setVisible(false);
                 pesquisarClienteFrame.transferFocusBackward();
                 resultadosClientes.setVisible(true);
