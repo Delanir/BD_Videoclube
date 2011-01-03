@@ -2267,10 +2267,7 @@
                                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="eliminaSpinner" min="-2" pref="50" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
                                                   <Component id="eliminaFilmes" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
@@ -2308,11 +2305,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane17" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="eliminaSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="eliminaFilmes" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="eliminaFilmes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="voltarEliminaFilmes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="158" max="32767" attributes="0"/>
@@ -2350,20 +2343,6 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel69">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nova Qtd.:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JSpinner" name="eliminaSpinner">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="eliminaSpinner.setModel(new SpinnerNumberModel(0,0,100,1));"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JToggleButton" name="voltarEliminaFilmes">

@@ -550,9 +550,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         idEliminaFilmes = new javax.swing.JTextField();
         javax.swing.JLabel jLabel68 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel72 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel69 = new javax.swing.JLabel();
-        eliminaSpinner = new javax.swing.JSpinner();
-        eliminaSpinner.setModel(new SpinnerNumberModel(0,0,100,1));
         voltarEliminaFilmes = new javax.swing.JToggleButton();
         listarFormatoEliminar = new javax.swing.JButton();
         jScrollPane17 = new javax.swing.JScrollPane();
@@ -2258,8 +2255,6 @@ generoExtra.addActionListener(new java.awt.event.ActionListener() {
     jLabel72.setFont(new java.awt.Font("Tahoma", 0, 16));
     jLabel72.setText("Eliminar Stock");
 
-    jLabel69.setText("Nova Qtd.:");
-
     voltarEliminaFilmes.setText("Voltar");
     voltarEliminaFilmes.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2295,10 +2290,7 @@ generoExtra.addActionListener(new java.awt.event.ActionListener() {
                                 .addGap(29, 29, 29)
                                 .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jEliminarFilmePanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel69)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(eliminaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(32, 32, 32)
+                                        .addGap(140, 140, 140)
                                         .addComponent(eliminaFilmes))
                                     .addGroup(jEliminarFilmePanelLayout.createSequentialGroup()
                                         .addGap(27, 27, 27)
@@ -2325,10 +2317,7 @@ generoExtra.addActionListener(new java.awt.event.ActionListener() {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
-            .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel69)
-                .addComponent(eliminaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(eliminaFilmes))
+            .addComponent(eliminaFilmes)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(voltarEliminaFilmes)
             .addContainerGap(158, Short.MAX_VALUE))
@@ -4187,7 +4176,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         if(Utils.isInt(idEliminaFilmes.getText())){
              String aux=((String)textEliminaFilmes.getSelectedValue()).split(" ")[0];
 
-             gestorFilmes.actualizaQuantStock(idEliminaFilmes.getText(), aux, ""+(Integer)eliminaSpinner.getValue());
+             gestorFilmes.removeStock(idEliminaFilmes.getText(), aux);
              textEliminaFilmes.setModel(new OurListModel(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())));
     
         }
@@ -4246,7 +4235,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     private void adicionarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarStockActionPerformed
         String output="";
-        output=gestorFilmes.adicionaStock(idAdicionaStock.getText(),
+        output=gestorFilmes.actualizaStock(idAdicionaStock.getText(),
                 (String)listaFormatosAdicionaFilme.getSelectedItem(),
                 ""+((Integer)qtdAdicionaStock.getValue()),
                 custoAdicionaStock.getText(),
@@ -4855,7 +4844,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JToggleButton eliminaFilmes;
     private javax.swing.JToggleButton eliminaFilmes2;
     private javax.swing.JButton eliminaGenero;
-    private javax.swing.JSpinner eliminaSpinner;
     private javax.swing.JButton eliminarClienteBI;
     private javax.swing.JFrame eliminarClienteFrame;
     private javax.swing.JButton eliminarClientes;
