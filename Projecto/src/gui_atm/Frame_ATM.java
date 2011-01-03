@@ -721,17 +721,11 @@ public class Frame_ATM  extends JFrame{
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(menuResultados_imagem)
-                .addContainerGap(53, Short.MAX_VALUE))
+            .addComponent(menuResultados_imagem, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(menuResultados_imagem)
-                .addContainerGap(35, Short.MAX_VALUE))
+            .addComponent(menuResultados_imagem, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
         );
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12));
@@ -966,7 +960,7 @@ public class Frame_ATM  extends JFrame{
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel2.setText("Password:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 24));
         jLabel5.setText("Videoclube Lumière");
 
         javax.swing.GroupLayout jLoginPanelLayout = new javax.swing.GroupLayout(jLoginPanel);

@@ -250,6 +250,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                             if(ficheiro.exists())
                                 jLabel76.setIcon(new ImageIcon(file));
                         }catch (Exception e){
+                            jLabel76.setIcon(null);
                             Utils.dbg("Não foi encontrada a capa do filme!");
                         }
                         // extrair os generos do fim do array
@@ -2847,6 +2848,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     resultadosFrame.setAlwaysOnTop(true);
     resultadosFrame.setMinimumSize(new java.awt.Dimension(800, 600));
+    resultadosFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+        public void windowClosing(java.awt.event.WindowEvent evt) {
+            resultadosFrameWindowClosing(evt);
+        }
+    });
 
     paisResultadosFilme.setEditable(false);
 
@@ -4348,6 +4354,14 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     private void voltarAdcionaFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarAdcionaFilmesActionPerformed
         // TODO add your handling code here:
+        textTituloAdicionaFilme.setText("");
+        textRealizadorAdicionaFilme.setText("");
+        textProdutorAdicionaFilme.setText("");
+        textDescricaoAdicionaFilme.setText("");
+        filePath=null;
+
+        outAdicionaFilme.setText("");
+        filePath=null;
         //TODO: RESET
         generosVector= new Vector<String>();
        adicionarFilmeFrame.setVisible(false);
@@ -4702,7 +4716,19 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_formWindowClosing
 
     private void voltarResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarResultadosActionPerformed
+        //reset campos
 
+
+        tituloResultadosFilme.setText("");
+        anoResultadosFilme.setText("");
+        realizadorResultadosFilme.setText("");
+        imdbResultadosFilme.setText("");
+        paisResultadosFilme.setText("");
+        produtorResultadosFilme.setText("");
+        jTextArea14.setText("");
+        jLabel76.setIcon(null);
+
+        //
         resultadosFrame.setVisible(false);
         resultadosFrame.transferFocusBackward();
     }//GEN-LAST:event_voltarResultadosActionPerformed
@@ -4793,6 +4819,17 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_adicionarStockFilmeActionPerformed
 
     private void adicionarFilmeFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_adicionarFilmeFrameWindowClosing
+      // TODO add your handling code here:
+        textTituloAdicionaFilme.setText("");
+        textRealizadorAdicionaFilme.setText("");
+        textProdutorAdicionaFilme.setText("");
+        textDescricaoAdicionaFilme.setText("");
+        filePath=null;
+
+        outAdicionaFilme.setText("");
+        filePath=null;
+        //TODO: RESET
+        generosVector= new Vector<String>();
       generosVector= new Vector<String>();
       adicionarFilmeFrame.setVisible(false);
       adicionarFilmeFrame.transferFocusBackward();
@@ -4820,6 +4857,23 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         resultadosClientes.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void resultadosFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_resultadosFrameWindowClosing
+         //reset campos
+
+        tituloResultadosFilme.setText("");
+        anoResultadosFilme.setText("");
+        realizadorResultadosFilme.setText("");
+        imdbResultadosFilme.setText("");
+        paisResultadosFilme.setText("");
+        produtorResultadosFilme.setText("");
+        jTextArea14.setText("");
+        jLabel76.setIcon(null);
+
+        //
+        resultadosFrame.setVisible(false);
+        resultadosFrame.transferFocusBackward();
+    }//GEN-LAST:event_resultadosFrameWindowClosing
 
    
     //OUR GUI VARS

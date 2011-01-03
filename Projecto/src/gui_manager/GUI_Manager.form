@@ -2951,6 +2951,9 @@
           <Dimension value="[800, 600]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="resultadosFrameWindowClosing"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">
