@@ -6,7 +6,9 @@
 package gestores;
 
 import bd.DBHandler;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
+import outros.Utils;
 
 /**
  * Esta classe é responsável pelos pedidos e tratamento de dados estatísticos
@@ -53,7 +55,16 @@ public class GestorEstatisticas
 		String estatisticas="";
                 if (begin != null && end != null) {
 			// estatisticas num intrevalo de tempo
-                        
+                        GregorianCalendar now=new GregorianCalendar();
+                      
+                        if(begin.compareTo(end)<0&&end.compareTo(now)<0){
+                             Utils.dbg("here sucker");
+                             estatisticas+=DBHandler.estatisticasTop10ClientesData(
+                                     calendarize(begin),
+                                     calendarize(end));
+                        }else{
+                            estatisticas+="Datas mal especificadas";
+                        }
 		} else {
                         //top10clientes
                     estatisticas+=DBHandler.estatisticasTop10Clientes();
@@ -69,12 +80,40 @@ public class GestorEstatisticas
 		 String estatisticas="";
                 if (begin != null && end != null) {
 			// estatisticas num intrevalo de tempo
+                        // estatisticas num intrevalo de tempo
+                        GregorianCalendar now=new GregorianCalendar();
+
+                        if(begin.compareTo(end)<0&&end.compareTo(now)<0){
+                             Utils.dbg("here sucker");
+                             estatisticas+=DBHandler.estatisticasEmpregadosData(
+                                     calendarize(begin),
+                                     calendarize(end));
+                        }else{
+                            estatisticas+="Datas mal especificadas";
+                        }
 		} else {
                     estatisticas+=DBHandler.estatisticasEmpregados();
 		}
 		return "Estatisticas Empregados:\n------------------------\n"+estatisticas;
 	}
 
+        private String calendarize(GregorianCalendar d){
+            String out="";
+            if(d.get(Calendar.DAY_OF_MONTH)<10){
+                out+="0"+d.get(Calendar.DAY_OF_MONTH);
+            }else{
+                out+=d.get(Calendar.DAY_OF_MONTH);
+            }
+            if(d.get(Calendar.MONTH)+1<10){
+                out+="/" + "0"+(d.get(Calendar.MONTH)+1);
+            }else{
+                out+="/" + d.get(Calendar.MONTH);
+            }
+                
+            out+="/"+ d.get(Calendar.YEAR);
+            Utils.dbg(out);
+            return out;
+        }
     /**
      * gera uma string com as estatisticas mais relevantes relativas aos clientes
      * @param begin
@@ -86,10 +125,24 @@ public class GestorEstatisticas
         String estatisticas="";
         if(begin!=null&&end!=null){
             //estatisticas num intrevalo de tempo
+            GregorianCalendar now=new GregorianCalendar();
+
+            if(begin.compareTo(end)<0&&end.compareTo(now)<0){
+                 Utils.dbg("here sucker");
+                 estatisticas+=DBHandler.estatisticasTop10FilmesData(
+                         calendarize(begin),
+                         calendarize(end));
+                 estatisticas+=DBHandler.estatisticasTotalGenerosData(
+                         calendarize(begin),
+                         calendarize(end));
+            }else{
+                estatisticas+="Datas mal especificadas";
+            }
         }else{
             //top10filmes
             estatisticas+=DBHandler.estatisticasTop10Filmes();
             estatisticas+="\n"+DBHandler.estatisticasTotalGeneros();
+            estatisticas+="\n"+DBHandler.estatisticasTotalFilmes();
         }
         return "Estatisticas Filmes:\n------------------------\n"+estatisticas;
     }
@@ -105,6 +158,16 @@ public class GestorEstatisticas
                 String estatisticas="";
 		if (begin != null && end != null) {
 			// estatisticas num intrevalo de tempo
+                        GregorianCalendar now=new GregorianCalendar();
+
+                        if(begin.compareTo(end)<0&&end.compareTo(now)<0){
+                             Utils.dbg("here sucker");
+                             estatisticas+=DBHandler.estatisticasTopMaquinasData(
+                                     calendarize(begin),
+                                     calendarize(end));
+                        }else{
+                            estatisticas+="Datas mal especificadas";
+                        }
 		} else {
                     estatisticas+=DBHandler.estatisticasTopMaquinas();
 		}

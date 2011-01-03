@@ -1597,8 +1597,6 @@ public class DBHandler
     public static String estatisticasTop10Clientes(){
         try {
            
-            //executeNoCommitEst("EXECUTE top10clientes");
-            
             CallableStatement cs = conn.prepareCall ("{ call top10clientes()}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
@@ -1619,6 +1617,33 @@ public class DBHandler
             
         }
         
+        return "";
+    }
+
+    public static String estatisticasTop10ClientesData(String inicio,String fim){
+        try {
+
+            CallableStatement cs = conn.prepareCall ("{ call top10clientesData("+p(inicio)+", "+p(fim)+")}");
+            Utils.dbg("{ call top10clientesData("+p(inicio)+", "+p(fim)+")}");
+            cs.execute();
+            Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
+            conn.commit();
+
+
+            String output="TOP 10 Clientes\nID:\tBI:\tNOME:\tNº Requisições\n";
+            if(out!=null){
+                for(int i=0; i<out.size();i++){
+                    output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[3]+"\n";
+                }
+                return output;
+            }
+            return "";
+        } catch (SQLException ex) {
+            Utils.dbg("excepção no Commit?");
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
         return "";
     }
 
@@ -1648,11 +1673,37 @@ public class DBHandler
         return "";
     }
 
-    public static String estatisticasTop10Filmes(){
+    public static String estatisticasTopMaquinasData(String inicio,String fim){
+        try {
+
+            CallableStatement cs = conn.prepareCall ("{ call topMaquinasData("+p(inicio)+", "+p(fim)+")}");
+            cs.execute();
+            Vector <String []> out=select("SELECT col1, col2 FROM temp");
+            conn.commit();
+
+
+            String output="TOP Maquinas\nID:\tNº Requisições\n";
+            if(out!=null){
+                for(int i=0; i<out.size();i++){
+                    output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\n";
+                }
+                return output;
+            }
+            return "";
+        } catch (SQLException ex) {
+            Utils.dbg("excepção no Commit?");
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        return "";
+    }
+
+    public static String estatisticasTop10FilmesData(String inicio,String fim){
         try {
             //executeNoCommit("EXECUTE top10filmes");
             
-            CallableStatement cs = conn.prepareCall ("{ call top10filmes()}");
+            CallableStatement cs = conn.prepareCall ("{ call top10filmesData("+p(inicio)+", "+p(fim)+")}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col3, col4 FROM temp");
             conn.commit();
@@ -1669,6 +1720,53 @@ public class DBHandler
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        return "";
+    }
+
+    public static String estatisticasTop10Filmes(){
+        try {
+            //executeNoCommit("EXECUTE top10filmes");
+
+            CallableStatement cs = conn.prepareCall ("{ call top10filmes()}");
+            cs.execute();
+            Vector <String []> out=select("SELECT col1, col3, col4 FROM temp");
+            conn.commit();
+
+            String output="TOP 10 filmes\nID:\tTITULO:\tNº Requisições\n";
+            if(out!=null){
+                for(int i=0; i<out.size();i++){
+                    output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\n";
+                }
+                return output;
+            }
+            return "";
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return "";
+    }
+
+    public static String estatisticasTotalGenerosData(String inicio,String fim){
+        try {
+            //executeNoCommit("EXECUTE top10filmes");
+
+            CallableStatement cs = conn.prepareCall ("{ call totalGenerosData("+p(inicio)+", "+p(fim)+")}");
+            cs.execute();
+            Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
+            conn.commit();
+
+            String output="Total Generos: "+out.get(0)[1]+"\nGénero mais Popular\nID_GEN:\tNOME:\tNº Requisições\n";
+            if(out!=null){
+                output+=out.get(0)[0]+"\t"+out.get(0)[2]+"\t"+out.get(0)[3]+"\n";
+
+                return output;
+            }
+            return "";
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return "";
     }
 
@@ -1695,7 +1793,51 @@ public class DBHandler
         return "";
     }
 
+    public static String estatisticasTotalFilmes(){
+        try {
+            //executeNoCommit("EXECUTE top10filmes");
 
+            CallableStatement cs = conn.prepareCall ("{ call totalFilmes()}");
+            cs.execute();
+            Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
+            conn.commit();
+
+            String output="Total Filmes: "+out.get(0)[0]+
+                    "\nTotal Exemplares: "+out.get(0)[1]
+                    +"\nFormato mais Popular\tNº Requisições\n";
+            if(out!=null){
+                output+=out.get(0)[2]+"\t"+out.get(0)[3]+"\n";
+
+                return output;
+            }
+            return "";
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return "";
+    }
+
+    public static String estatisticasEmpregadosData(String inicio,String fim){
+        try {
+            CallableStatement cs = conn.prepareCall ("{ call empregadosInfoData("+p(inicio)+", "+p(fim)+")}");
+            cs.execute();
+
+            Vector <String []> out=select("SELECT col1, col2, col4 FROM temp");
+            conn.commit();
+            String output="NºEMPREGADOS:\t% ADMINISTRADORES:\tDESPESAS C/ORDENADOS\n";
+            if(out!=null){
+                for(int i=0; i<out.size();i++){
+                    output+=out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[0]+"\n";
+                }
+                return output;
+            }
+            return "";
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+    }
 
     public static String estatisticasEmpregados(){
         try {
