@@ -167,18 +167,14 @@ public class GestorFilmes
 	 * @param custo_aluguer pre√ßo praticado no aluguer
 	 * @return
 	 */
-	public String adicionaStock(String id_fil, String formato, String quant, String custo_compra, String custo_aluguer) {
+	public String actualizaStock(String id_fil, String formato, String quant, String custo_compra, String custo_aluguer) {
 		if(!DBHandler.stockExisteNomeFormato(id_fil, formato)) {
 			DBHandler.adicionaStockNomeFormato(id_fil, formato, quant, custo_compra, custo_aluguer);
 			return "Novo stock adicionado.";
 		} else {
-			return "J· existe um stock desse filme no formato indicado.";
+			DBHandler.actualizaStockNomeFormato(id_fil, formato, quant, custo_compra, custo_aluguer);
+			return "Stock actualizado.";
 		}
-	}
-	
-	public String actualizaStock(String id_fil, String formato, String quant, String custo_compra, String custo_aluguer) {
-		DBHandler.actualizaStockNomeFormato(id_fil, formato, quant, custo_compra, custo_aluguer);
-		return "Stock actualizado.";
 	}
 	
 	public String actualizaQuantStock(String id_fil, String formato, String quant) {

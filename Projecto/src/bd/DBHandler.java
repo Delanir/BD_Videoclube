@@ -1020,16 +1020,37 @@ public class DBHandler
 	
 	public static void actualizaStockNomeFormato(String id_fil, String nome_formato, String quant, String custo_compra, String custo_aluguer) {
 		String id_for = getIDFormato(nome_formato);
-		actualizaObjecto("stocks",
-						 new String[]{"ID_FIL", "ID_FOR"},
-						 new String[]{id_fil, id_for},
-						 getToSetCamposStocks(),
-						 new String[]{quant, custo_compra, custo_aluguer});
+		Vector<String[]> vec = select("SELECT quant, disponiveis FROM stocks WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for);
+		if(vec == null)
+			return;
+		int oldQuant = Utils.toInt(vec.get(0)[0]);
+		int disp  = Utils.toInt(vec.get(0)[1]);
+		int newQuant = Utils.toInt(quant);
+		int change = newQuant - oldQuant;
+		if(disp + change < 0)
+			disp = 0;
+		
+		String comando = "UPDATE stocks SET custo_compra = " + custo_compra +
+											", custo_aluguer = " + custo_aluguer +
+											", quant = " + quant +
+											", disponiveis = " + disp +
+						 " WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for;
+		execute(comando);
 	}
 	
 	public static void actualizaQuantStock(String id_fil, String nome_formato, String quant) {
 		String id_for = getIDFormato(nome_formato);
-		String comando = "UPDATE stocks SET quant = " + quant +
+		Vector<String[]> vec = select("SELECT quant, disponiveis FROM stocks WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for);
+		if(vec == null)
+			return;
+		int oldQuant = Utils.toInt(vec.get(0)[0]);
+		int oldDisp  = Utils.toInt(vec.get(0)[1]);
+		int newQuant = Utils.toInt(quant);
+		int change = newQuant - oldQuant;
+		if(oldDisp + change < 0)
+			change = -oldDisp;
+		
+		String comando = "UPDATE stocks SET quant = " + quant + ", disponiveis = " + (oldDisp+change) +
 						 " WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for;
 		execute(comando);
 	}
