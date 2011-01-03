@@ -565,8 +565,10 @@ public class DBHandler
 	
 	public static void adicionaFilmeGeneroNome(String id_fil, String nome_genero) {
 		String id_gen = getIDGenero(nome_genero);
-		adicionaObjecto("filme_genero",
-						new String[]{id_gen, id_fil});
+		if(!filmeTemGenero(id_fil, id_gen)) {
+			adicionaObjecto("filme_genero",
+							new String[]{id_gen, id_fil});
+		}
 	}
 	
 	/**
@@ -1219,6 +1221,14 @@ public class DBHandler
 		if(vec == null)
 			return true;
 		return (vec.size() == 1 && vec.get(0).equals(id_gen));
+	}
+	
+	public static boolean filmeTemGenero(String id_fil, String id_gen) {
+		Vector<String[]> vec = selectAll("filme_genero",
+									  new String[]{"ID_GEN", "ID_FIL"},
+									  new String[]{id_gen, id_fil},
+									  false);
+		return (vec != null && !vec.isEmpty());
 	}
 	
 	public static boolean requisicaoEntregue(String id_req) {
