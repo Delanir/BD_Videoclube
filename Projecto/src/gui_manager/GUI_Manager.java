@@ -1116,6 +1116,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         });
 
         outEmpregados.setColumns(20);
+        outEmpregados.setEditable(false);
         outEmpregados.setRows(5);
         jScrollPane5.setViewportView(outEmpregados);
 
@@ -4672,7 +4673,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                     telefoneEmpregados.getText());
             outEmpregados.setText(out);
         }
-        outEmpregados.setText("Não foi possivel adicionar o filme.");
+        outEmpregados.setText("Não foi possivel adicionar o empregado.");
 }//GEN-LAST:event_jAdicionarEmpregadoButtonActionPerformed
 
     private void jDespedirEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonActionPerformed
