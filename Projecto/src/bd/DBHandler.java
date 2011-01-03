@@ -1578,16 +1578,21 @@ public class DBHandler
 
     public static String estatisticasContabilidade(){
         try {
-            
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call contabilidade()}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col2, col4 FROM temp");
             conn.commit();
-            
+            conn.setAutoCommit(true);
             return "LUCRO: "+out.get(0)[0]+
                     "€\n DESPESAS "+out.get(0)[1]+
                     "€\n TOTALFACTURADO "+out.get(0)[2]+"€";
         } catch (SQLException ex) {
+            try {
+                conn.setAutoCommit(true);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
            
         }
@@ -1596,16 +1601,21 @@ public class DBHandler
 
     public static String estatisticasContabilidadeData(String inicio,String fim){
         try {
-
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call contabilidadeData("+p(inicio)+", "+p(fim)+")}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col2, col4 FROM temp");
             conn.commit();
-
+            conn.setAutoCommit(true);
             return "LUCRO: "+out.get(0)[0]+
                     "€\n DESPESAS "+out.get(0)[1]+
                     "€\n TOTALFACTURADO "+out.get(0)[2]+"€";
         } catch (SQLException ex) {
+            try {
+                conn.setAutoCommit(true);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
 
         }
@@ -1614,7 +1624,7 @@ public class DBHandler
 
     public static String estatisticasTop10Clientes(){
         try {
-           
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call top10clientes()}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
@@ -1626,12 +1636,18 @@ public class DBHandler
                 for(int i=0; i<out.size();i++){
                     output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[3]+"\n";
                 }
+                conn.setAutoCommit(true);
                 return output;
             }
+            conn.setAutoCommit(true);
             return "";
         } catch (SQLException ex) {
-            Utils.dbg("excepção no Commit?");
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                conn.setAutoCommit(true);
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
             
         }
         
@@ -1640,7 +1656,7 @@ public class DBHandler
 
     public static String estatisticasTop10ClientesData(String inicio,String fim){
         try {
-
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call top10clientesData("+p(inicio)+", "+p(fim)+")}");
             Utils.dbg("{ call top10clientesData("+p(inicio)+", "+p(fim)+")}");
             cs.execute();
@@ -1653,12 +1669,18 @@ public class DBHandler
                 for(int i=0; i<out.size();i++){
                     output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[3]+"\n";
                 }
+                conn.setAutoCommit(true);
                 return output;
             }
+            conn.setAutoCommit(true);
             return "";
         } catch (SQLException ex) {
-            Utils.dbg("excepção no Commit?");
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                conn.setAutoCommit(true);
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
 
         }
 
@@ -1667,7 +1689,7 @@ public class DBHandler
 
     public static String estatisticasTopMaquinas(){
         try {
-
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call topMaquinas()}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col2 FROM temp");
@@ -1679,12 +1701,18 @@ public class DBHandler
                 for(int i=0; i<out.size();i++){
                     output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\n";
                 }
+                conn.setAutoCommit(true);
                 return output;
             }
+            conn.setAutoCommit(true);
             return "";
         } catch (SQLException ex) {
-            Utils.dbg("excepção no Commit?");
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                conn.setAutoCommit(true);
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
 
         }
 
@@ -1693,7 +1721,7 @@ public class DBHandler
 
     public static String estatisticasTopMaquinasData(String inicio,String fim){
         try {
-
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call topMaquinasData("+p(inicio)+", "+p(fim)+")}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col2 FROM temp");
@@ -1705,12 +1733,18 @@ public class DBHandler
                 for(int i=0; i<out.size();i++){
                     output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\n";
                 }
+                conn.setAutoCommit(true);
                 return output;
             }
+            conn.setAutoCommit(true);
             return "";
         } catch (SQLException ex) {
-            Utils.dbg("excepção no Commit?");
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                conn.setAutoCommit(true);
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
 
         }
 
@@ -1719,8 +1753,7 @@ public class DBHandler
 
     public static String estatisticasTop10FilmesData(String inicio,String fim){
         try {
-            //executeNoCommit("EXECUTE top10filmes");
-            
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call top10filmesData("+p(inicio)+", "+p(fim)+")}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col3, col4 FROM temp");
@@ -1731,11 +1764,18 @@ public class DBHandler
                 for(int i=0; i<out.size();i++){
                     output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\n";
                 }
+                conn.setAutoCommit(true);
                 return output;
             }
+            conn.setAutoCommit(true);
             return "";
         } catch (SQLException ex) {
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                conn.setAutoCommit(true);
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
         
         return "";
@@ -1743,8 +1783,7 @@ public class DBHandler
 
     public static String estatisticasTop10Filmes(){
         try {
-            //executeNoCommit("EXECUTE top10filmes");
-
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call top10filmes()}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col3, col4 FROM temp");
@@ -1755,11 +1794,18 @@ public class DBHandler
                 for(int i=0; i<out.size();i++){
                     output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\n";
                 }
+                conn.setAutoCommit(true);
                 return output;
             }
+            conn.setAutoCommit(true);
             return "";
         } catch (SQLException ex) {
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                conn.setAutoCommit(true);
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
 
         return "";
@@ -1767,8 +1813,8 @@ public class DBHandler
 
     public static String estatisticasTotalGenerosData(String inicio,String fim){
         try {
-            //executeNoCommit("EXECUTE top10filmes");
-
+            
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call totalGenerosData("+p(inicio)+", "+p(fim)+")}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
@@ -1777,11 +1823,17 @@ public class DBHandler
             String output="Total Generos: "+out.get(0)[1]+"\nGénero mais Popular\nID_GEN:\tNOME:\tNº Requisições\n";
             if(out!=null){
                 output+=out.get(0)[0]+"\t"+out.get(0)[2]+"\t"+out.get(0)[3]+"\n";
-
+                conn.setAutoCommit(true);
                 return output;
             }
+            conn.setAutoCommit(true);
             return "";
         } catch (SQLException ex) {
+            try {
+                conn.setAutoCommit(true);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -1790,8 +1842,7 @@ public class DBHandler
 
     public static String estatisticasTotalGeneros(){
         try {
-            //executeNoCommit("EXECUTE top10filmes");
-
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call totalGeneros()}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
@@ -1800,12 +1851,18 @@ public class DBHandler
             String output="Total Generos: "+out.get(0)[1]+"\nGénero mais Popular\nID_GEN:\tNOME:\tNº Requisições\n";
             if(out!=null){
                 output+=out.get(0)[0]+"\t"+out.get(0)[2]+"\t"+out.get(0)[3]+"\n";
-                
+                conn.setAutoCommit(true);
                 return output;
             }
+            conn.setAutoCommit(true);
             return "";
         } catch (SQLException ex) {
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                conn.setAutoCommit(true);
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
 
         return "";
@@ -1813,8 +1870,7 @@ public class DBHandler
 
     public static String estatisticasTotalFilmes(){
         try {
-            //executeNoCommit("EXECUTE top10filmes");
-
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call totalFilmes()}");
             cs.execute();
             Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
@@ -1825,12 +1881,18 @@ public class DBHandler
                     +"\nFormato mais Popular\tNº Requisições\n";
             if(out!=null){
                 output+=out.get(0)[2]+"\t"+out.get(0)[3]+"\n";
-
+                conn.setAutoCommit(true);
                 return output;
             }
+            conn.setAutoCommit(true);
             return "";
         } catch (SQLException ex) {
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                conn.setAutoCommit(true);
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
 
         return "";
@@ -1838,6 +1900,7 @@ public class DBHandler
 
     public static String estatisticasEmpregadosData(String inicio,String fim){
         try {
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call empregadosInfoData("+p(inicio)+", "+p(fim)+")}");
             cs.execute();
 
@@ -1848,17 +1911,25 @@ public class DBHandler
                 for(int i=0; i<out.size();i++){
                     output+=out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[0]+"\n";
                 }
+                conn.setAutoCommit(true);
                 return output;
             }
+            conn.setAutoCommit(true);
             return "";
         } catch (SQLException ex) {
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                conn.setAutoCommit(true);
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
         return "";
     }
 
     public static String estatisticasEmpregados(){
         try {
+            conn.setAutoCommit(false);
             CallableStatement cs = conn.prepareCall ("{ call empregadosInfo()}");
             cs.execute();
 
@@ -1869,12 +1940,20 @@ public class DBHandler
                 for(int i=0; i<out.size();i++){
                     output+=out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[0]+"\n";
                 }
+                conn.setAutoCommit(true);
                 return output;
             }
+            conn.setAutoCommit(true);
             return "";
         } catch (SQLException ex) {
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+                conn.setAutoCommit(true);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
+        
         return "";
     }
 
