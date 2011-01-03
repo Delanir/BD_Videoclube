@@ -1044,11 +1044,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jScrollPane4.setViewportView(listaEmpregados);
 
         jDespedirEmpregadoButton.setText("Eliminar da Lista");
-        jDespedirEmpregadoButton.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                jDespedirEmpregadoButtonComponentResized(evt);
-            }
-        });
         jDespedirEmpregadoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jDespedirEmpregadoButtonActionPerformed(evt);
@@ -4496,8 +4491,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                     moradaEmpregados.getText(),
                     emailEmpregados.getText(),
                     telefoneEmpregados.getText());
-            
+            outEmpregados.setText(out);
         }
+        outEmpregados.setText("Não foi possivel adicionar o filme.");
 }//GEN-LAST:event_jAdicionarEmpregadoButtonActionPerformed
 
     private void jDespedirEmpregadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonActionPerformed
@@ -4507,10 +4503,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         //TODO: Output message
         outEmpregados.setText(output);
 }//GEN-LAST:event_jDespedirEmpregadoButtonActionPerformed
-
-    private void jDespedirEmpregadoButtonComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDespedirEmpregadoButtonComponentResized
-        // TODO add your handling code here:
-}//GEN-LAST:event_jDespedirEmpregadoButtonComponentResized
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         try{
@@ -4548,8 +4540,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         if(Utils.isInt(textIdPesquisaFilmes.getText())){
             //{"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"};}
             String[] out= gestorFilmes.getFilme(textIdPesquisaFilmes.getText());
-            
-            listaResultados.setModel(new OurListModel(out) );
+            String[] lista=new String[1];
+            lista[0]=out[0]+" "+out[1];
+            listaResultados.setModel(new OurListModel(lista) );
             //Reset aos campos
          textRealizadorPesquisaFilmes.setText(null);
          textIdPesquisaFilmes.setText(null);

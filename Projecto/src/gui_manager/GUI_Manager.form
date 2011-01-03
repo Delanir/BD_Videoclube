@@ -787,7 +787,6 @@
                     <Property name="text" type="java.lang.String" value="Eliminar da Lista"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="componentResized" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jDespedirEmpregadoButtonComponentResized"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDespedirEmpregadoButtonActionPerformed"/>
                   </Events>
                 </Component>
