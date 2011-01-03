@@ -573,8 +573,8 @@ public class Frame_ATM  extends JFrame{
         jLabel40.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel40.setText("Data Limite de Entrega:");
 
-        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 14));
-        jLabel41.setText("Aguarde enquanto o seu filme é entregue.");
+        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel41.setText("Videoclube Lumière. O melhor do cinema perto de si!");
 
         menuPaga_dataEntrega.setEditable(false);
         menuPaga_dataEntrega.setText("jFormattedTextField1");
@@ -585,8 +585,8 @@ public class Frame_ATM  extends JFrame{
         menuPaga_titulo.setEditable(false);
         menuPaga_titulo.setText("jTextField21");
 
-        jLabel49.setFont(new java.awt.Font("Tahoma", 0, 24));
-        jLabel49.setText("A processar entrega...");
+        jLabel49.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel49.setText("Entrega realizada com sucesso!");
 
         jVoltarButton1.setText("Voltar");
         jVoltarButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -622,21 +622,23 @@ public class Frame_ATM  extends JFrame{
                                     .addComponent(menuPaga_dataEntrega)
                                     .addComponent(menuPaga_preco)
                                     .addComponent(menuPaga_titulo)))
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel41)))
+                            .addComponent(jLabel41)
+                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPagaLayout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addComponent(jVoltarButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jSairButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPagaLayout.setVerticalGroup(
             jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPagaLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jLabel49)
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel41)
+                .addGap(27, 27, 27)
                 .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel38)
                     .addComponent(menuPaga_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -650,13 +652,11 @@ public class Frame_ATM  extends JFrame{
                     .addComponent(menuPaga_dataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel41)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addGroup(jPagaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jVoltarButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSairButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         jSairButton3.setText("SAIR");
@@ -778,8 +778,8 @@ public class Frame_ATM  extends JFrame{
                             .addGroup(jResultadosPanelLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(38, 38, 38)
                                 .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jResultadosPanelLayout.createSequentialGroup()
@@ -977,7 +977,7 @@ public class Frame_ATM  extends JFrame{
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel2.setText("Password:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 24));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLabel5.setText("Videoclube Lumière");
 
         javax.swing.GroupLayout jLoginPanelLayout = new javax.swing.GroupLayout(jLoginPanel);
@@ -1035,7 +1035,7 @@ public class Frame_ATM  extends JFrame{
             }
         });
 
-        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 24));
+        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel33.setText("Entregar Filme");
 
         jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1143,78 +1143,80 @@ public class Frame_ATM  extends JFrame{
             .addGroup(jEntregaPanelLayout.createSequentialGroup()
                 .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                        .addGap(202, 202, 202)
+                        .addGap(245, 245, 245)
                         .addComponent(jLabel33))
                     .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(60, 60, 60)
+                        .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                                .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel42)
-                                    .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jEntregaPanelLayout.createSequentialGroup()
+                                .addGap(113, 113, 113)
+                                .addComponent(jPagarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(75, 75, 75)
+                                .addComponent(jMenuButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(59, 59, 59)
+                                .addComponent(jSairButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jEntregaPanelLayout.createSequentialGroup()
+                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(40, 40, 40)
+                                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jEntregaPanelLayout.createSequentialGroup()
+                                    .addGap(9, 9, 9)
+                                    .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jEntregaPanelLayout.createSequentialGroup()
+                                            .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jRadioButton3)
-                                                .addGap(35, 35, 35))
-                                            .addComponent(jRadioButton4))))
-                                .addGap(232, 232, 232)
-                                .addComponent(jLabel44)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(valorapagar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                                .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel35)
-                                    .addComponent(jLabel34))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(jPagarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(jMenuButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(jSairButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(141, Short.MAX_VALUE))
+                                                .addComponent(jRadioButton4))
+                                            .addGap(21, 21, 21))
+                                        .addGroup(jEntregaPanelLayout.createSequentialGroup()
+                                            .addComponent(jLabel42)
+                                            .addGap(16, 16, 16))
+                                        .addComponent(jLabel35))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jEntregaPanelLayout.createSequentialGroup()
+                                            .addComponent(jLabel34)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                                            .addComponent(jLabel44)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(valorapagar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)))))))
+                .addGap(189, 189, 189))
         );
         jEntregaPanelLayout.setVerticalGroup(
             jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jEntregaPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel33)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(43, 43, 43)
+                .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jEntregaPanelLayout.createSequentialGroup()
+                        .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(valorapagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel44)
+                            .addComponent(jLabel34))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6))
                     .addGroup(jEntregaPanelLayout.createSequentialGroup()
                         .addComponent(jLabel35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel34))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(valorapagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel44))
-                    .addGroup(jEntregaPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel42)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRadioButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton4)))
-                .addGap(18, 18, 18)
+                        .addComponent(jRadioButton4)
+                        .addGap(31, 31, 31)))
                 .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(32, 32, 32)
                 .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPagarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                     .addComponent(jSairButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jMenuButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(46, 46, 46))
         );
 
         jSairButton6.setText("SAIR");
@@ -1479,7 +1481,7 @@ public class Frame_ATM  extends JFrame{
         }
         catch(NullPointerException e){
             JOptionPane.showMessageDialog(frame,
-                    "Tem de seleccionar um filme",
+                    "Tem de seleccionar um filme e o seu formato",
                     "Aviso!",
                     JOptionPane.WARNING_MESSAGE);
         }
@@ -1748,14 +1750,14 @@ public class Frame_ATM  extends JFrame{
                 }
             }else{
                 JOptionPane.showMessageDialog(frame,
-                "Dados incorectos",
+                "Tem de seleccionar um filme e escolher o método de pagamento",
                 "Aviso!",
                 JOptionPane.WARNING_MESSAGE);
             }
 
         }catch(NullPointerException e){
             JOptionPane.showMessageDialog(frame,
-                "Dados incorrectos",
+                "Tem de seleccionar um filme e escolher o método de pagamento",
                 "Aviso!",
                 JOptionPane.WARNING_MESSAGE);
         }
