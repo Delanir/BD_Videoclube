@@ -656,10 +656,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         eliminarFormato = new javax.swing.JButton();
         jScrollPane24 = new javax.swing.JScrollPane();
         outFormato = new javax.swing.JTextArea();
-        extraFrame = new javax.swing.JDialog();
-        listaGenerosAdicionaFilmes1 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
 
         jLoginButton.setText("Login");
@@ -3668,51 +3664,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addContainerGap(31, Short.MAX_VALUE))
     );
 
-    extraFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    extraFrame.setAlwaysOnTop(true);
-    extraFrame.setMinimumSize(new java.awt.Dimension(500, 300));
-
-    listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-    jButton1.setText("Adicionar Género");
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton1ActionPerformed(evt);
-        }
-    });
-
-    jButton2.setText("Voltar");
-    jButton2.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton2ActionPerformed(evt);
-        }
-    });
-
-    javax.swing.GroupLayout extraFrameLayout = new javax.swing.GroupLayout(extraFrame.getContentPane());
-    extraFrame.getContentPane().setLayout(extraFrameLayout);
-    extraFrameLayout.setHorizontalGroup(
-        extraFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(extraFrameLayout.createSequentialGroup()
-            .addGap(61, 61, 61)
-            .addGroup(extraFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jButton1)
-                .addComponent(listaGenerosAdicionaFilmes1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jButton2)
-            .addContainerGap(153, Short.MAX_VALUE))
-    );
-    extraFrameLayout.setVerticalGroup(
-        extraFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(extraFrameLayout.createSequentialGroup()
-            .addGap(119, 119, 119)
-            .addComponent(listaGenerosAdicionaFilmes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
-            .addGroup(extraFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton1)
-                .addComponent(jButton2))
-            .addContainerGap(120, Short.MAX_VALUE))
-    );
-
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     addWindowListener(new java.awt.event.WindowAdapter() {
         public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -3947,7 +3898,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         //Set aos generos existentes
         listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
-        listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
+        //listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jAdicionarFilmesToggleButtonActionPerformed
@@ -4044,7 +3995,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
-        listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
+        //listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jToggleButton17ActionPerformed
@@ -4053,7 +4004,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
-        listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
+        //listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jToggleButton18ActionPerformed
@@ -4061,7 +4012,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void jActualizarStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActualizarStockButtonActionPerformed
        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
         listaGenerosAdicionaFilmes.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
-        listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
+        //listaGenerosAdicionaFilmes1.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaGeneros()));
         adicionarFilmeFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jActualizarStockButtonActionPerformed
@@ -4073,6 +4024,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         generos[0]=(String)listaGenerosAdicionaFilmes.getSelectedItem();
         for(int i=1;i<generos.length;i++)
             generos[i]=generosVector.elementAt(i-1);
+        
+        
+        
         //adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos
         output=gestorFilmes.adicionaFilme(
         		textTituloAdicionaFilme.getText(),
@@ -4553,8 +4507,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         if(Utils.isNumber(textIdPesquisaFilmes.getText())){
             //{"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"};}
             String[] out= gestorFilmes.getFilme(textIdPesquisaFilmes.getText());
-            String[] lista={out[0], out[1]};
-            listaResultados.setModel(new OurListModel(lista) );
+            
+            listaResultados.setModel(new OurListModel(out) );
             //Reset aos campos
          textRealizadorPesquisaFilmes.setText(null);
          textIdPesquisaFilmes.setText(null);
@@ -4608,15 +4562,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
        transferFocus();
     }//GEN-LAST:event_adicionarStockFilmeActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        extraFrame.setVisible(false);
-        extraFrame.transferFocusBackward();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        generosVector.add((String)listaGenerosAdicionaFilmes1.getSelectedItem());
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void adicionarFilmeFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_adicionarFilmeFrameWindowClosing
       generosVector= new Vector<String>();
       adicionarFilmeFrame.setVisible(false);
@@ -4624,8 +4569,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_adicionarFilmeFrameWindowClosing
 
     private void generoExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoExtraActionPerformed
-        extraFrame.setVisible(true);
-        adicionarFilmeFrame.transferFocus();
+        //generosVector.add((String)listaGenerosAdicionaFilmes1.getSelectedItem());
     }//GEN-LAST:event_generoExtraActionPerformed
 
    
@@ -4683,7 +4627,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton entregaFilme;
     private javax.swing.JButton entregaFilme1;
     private javax.swing.JButton enviarEmail;
-    private javax.swing.JDialog extraFrame;
     private javax.swing.JFrame ficheirosFrame;
     private javax.swing.JCheckBox filmesCheckBox;
     private javax.swing.JFrame formatosFrame;
@@ -4705,9 +4648,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JToggleButton jAdicionarEmpregadoButton;
     private javax.swing.JPanel jAdicionarFilmePanel;
     private javax.swing.JToggleButton jAdicionarFilmesToggleButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JPanel jClientesManagerPanel;
@@ -4828,7 +4769,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JComboBox listaFormatosResultadosFilmes;
     private javax.swing.JList listaGeneros;
     private javax.swing.JComboBox listaGenerosAdicionaFilmes;
-    private javax.swing.JComboBox listaGenerosAdicionaFilmes1;
     private javax.swing.JList listaMaquinas;
     private javax.swing.JList listaRequisicoes;
     private javax.swing.JList listaRequisicoes1;
