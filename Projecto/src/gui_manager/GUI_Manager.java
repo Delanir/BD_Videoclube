@@ -4758,7 +4758,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     private void eliminarStockFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarStockFilmeActionPerformed
         // TODO add your handling code here:
-       String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
+       String idMovie=((String)listaResultados.getSelectedValue());
+       if(idMovie!=null&&!idMovie.isEmpty())
+        idMovie=idMovie.split(" ")[0];
        idEliminaFilmes.setText(idMovie);
        textEliminaFilmes.setModel(new OurListModel(gestorFilmes.verListaStocksFilmeFull(idMovie)));
        resultadosFrame.setVisible(false);
@@ -4770,7 +4772,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void adicionarStockFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarStockFilmeActionPerformed
         // TODO add your handling code here:
          // TODO add your handling code here:
-       String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
+       String idMovie=((String)listaResultados.getSelectedValue());
+       if(idMovie!=null&&!idMovie.isEmpty())
+        idMovie=idMovie.split(" ")[0];
        idAdicionaStock.setText(idMovie);
        resultadosFrame.setVisible(false);
        resultadosFrame.transferFocusBackward();
