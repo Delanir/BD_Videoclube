@@ -32,6 +32,8 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.ListModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import outros.Consts;
 import outros.OurListModel;
 import outros.Utils;
@@ -109,6 +111,8 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         bgroup.add(adminRadio);
         bgroup.add(opRadio);
 
+        //Listners para as listas
+        listnersListas();
     }
 
       public void init(){
@@ -145,6 +149,116 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jPesquisarClientePanel.setBounds(0, -1, 800, 600);
 
     }
+
+      //Listners das Listas
+
+      public void listnersListas(){
+
+             listaRequisicoes1.addListSelectionListener((ListSelectionListener) new ListSelectionListener(){
+                public void valueChanged(ListSelectionEvent evento) {
+                    if (evento.getValueIsAdjusting())
+                    //ainda selecionando
+                    return;
+                    JList list = (JList)evento.getSource();
+                    if (list.isSelectionEmpty()) {
+                            Utils.dbg("nenhuma seleção");
+                    } else {
+                        String idReq=((String)listaRequisicoes1.getSelectedValue()).split(" ")[0];
+                        jTextField3.setText(gestorFilmes.calcularPrecoRequisicao(idReq));
+                    }
+                }
+            });
+
+            pagamentosAtraso1.addListSelectionListener((ListSelectionListener) new ListSelectionListener(){
+                public void valueChanged(ListSelectionEvent evento) {
+                    if (evento.getValueIsAdjusting())
+                    //ainda selecionando
+                    return;
+                    JList list = (JList)evento.getSource();
+                    if (list.isSelectionEmpty()) {
+                            Utils.dbg("nenhuma seleção");
+                    } else {
+                        String bi=(String) pagamentosAtraso1.getSelectedValue();
+                        bi=bi.split(" ")[2];
+                        bi=bi.substring(1, bi.length()-1);
+                        Utils.dbg(bi);
+                        listaRequisicoes1.setModel(new OurListModel(gestorFilmes.verListaRequisicoesPorEntregarClienteBI(bi)));
+                    }
+                }
+            });
+
+            listaRequisicoes.addListSelectionListener((ListSelectionListener) new ListSelectionListener(){
+                public void valueChanged(ListSelectionEvent evento) {
+                    if (evento.getValueIsAdjusting())
+                    //ainda selecionando
+                    return;
+                    JList list = (JList)evento.getSource();
+                    if (list.isSelectionEmpty()) {
+                            Utils.dbg("nenhuma seleção");
+                    } else {
+                        String idReq=((String)listaRequisicoes.getSelectedValue()).split(" ")[0];
+                        jTextField2.setText(gestorFilmes.calcularPrecoRequisicao(idReq));
+                    }
+                }
+            });
+
+            pagamentosAtraso.addListSelectionListener((ListSelectionListener) new ListSelectionListener(){
+                public void valueChanged(ListSelectionEvent evento) {
+                    if (evento.getValueIsAdjusting())
+                    //ainda selecionando
+                    return;
+                    JList list = (JList)evento.getSource();
+                    if (list.isSelectionEmpty()) {
+                            Utils.dbg("nenhuma seleção");
+                    } else {
+                        String bi=(String) pagamentosAtraso.getSelectedValue();
+                        bi=bi.split(" ")[2];
+                        bi=bi.substring(1, bi.length()-1);
+                        Utils.dbg(bi);
+                        listaRequisicoes.setModel(new OurListModel(gestorFilmes.verListaRequisicoesPorEntregarClienteBI(bi)));
+                    }
+                }
+            });
+
+            listaResultados.addListSelectionListener((ListSelectionListener) new ListSelectionListener(){
+                public void valueChanged(ListSelectionEvent evento) {
+                    if (evento.getValueIsAdjusting())
+                    //ainda selecionando
+                    return;
+                    JList list = (JList)evento.getSource();
+                    if (list.isSelectionEmpty()) {
+                            Utils.dbg("nenhuma seleção");
+                    } else {
+                        // TODO add your handling code here:
+                        String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
+                        //"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"
+                        String[] f = gestorFilmes.getFilme(idMovie);
+                        String file="";
+                        int i=1; // i=1 em vez de i=0 -> saltar campo ID_FIL
+                        tituloResultadosFilme.setText(f[i++]);
+                        anoResultadosFilme.setText(f[i++]);
+                        realizadorResultadosFilme.setText(f[i++]);
+                        imdbResultadosFilme.setText(f[i++]);
+                        paisResultadosFilme.setText(f[i++]);
+                        produtorResultadosFilme.setText(f[i++]);
+                        jTextArea14.setText(f[i++]);
+                        try{
+                            file=f[i++];
+                            File ficheiro= new File(file);
+                            if(ficheiro.exists())
+                                jLabel76.setIcon(new ImageIcon(file));
+                        }catch (Exception e){
+                            Utils.dbg("Não foi encontrada a capa do filme!");
+                        }
+                        // extrair os generos do fim do array
+                        jList5.setModel(new OurListModel(Utils.extract(f, i+1))); // i+1 em vez de i -> saltar campo VALIDO
+
+                    }
+                }
+            });
+
+
+      }
 
       //Datas
 
@@ -734,11 +848,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jTabbedPane2.addTab("Estatísticas", jEstatisticasPanel);
 
         pagamentosAtraso.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        pagamentosAtraso.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pagamentosAtrasoMouseClicked(evt);
-            }
-        });
         jScrollPane6.setViewportView(pagamentosAtraso);
 
         jLabel23.setText("Clientes com pagamentos em atraso:");
@@ -790,11 +899,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jLabel40.setText("Lista:");
 
         listaRequisicoes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        listaRequisicoes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listaRequisicoesMouseClicked(evt);
-            }
-        });
         jScrollPane25.setViewportView(listaRequisicoes);
 
         jLabel100.setText("Requisições do Cliente:");
@@ -1294,11 +1398,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 24));
         jLabel7.setText("Operador");
 
-        pagamentosAtraso1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pagamentosAtraso1MouseClicked(evt);
-            }
-        });
         jScrollPane12.setViewportView(pagamentosAtraso1);
 
         jLabel41.setText("Clientes com pagamentos em atraso:");
@@ -1359,11 +1458,6 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jLabel102.setText("Valor a pagar:");
 
         listaRequisicoes1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        listaRequisicoes1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listaRequisicoes1MouseClicked(evt);
-            }
-        });
         jScrollPane26.setViewportView(listaRequisicoes1);
 
         jLabel103.setText("Requisições do Cliente:");
@@ -2696,11 +2790,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     jScrollPane19.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
     listaResultados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-    listaResultados.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            listaResultadosMouseClicked(evt);
-        }
-    });
     jScrollPane19.setViewportView(listaResultados);
 
     voltarResultados.setText("Voltar");
@@ -3955,32 +4044,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
       pesquisarFilmesFrame.transferFocusBackward();
     }//GEN-LAST:event_pesquisarFilmesFrameWindowClosing
 
-    private void listaResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaResultadosMouseClicked
-        // TODO add your handling code here:
-        String idMovie=((String)listaResultados.getSelectedValue()).split(" ")[0];
-        //"ID_FIL", "TITULO", "ANO", "REALIZADOR", "RANKIMDB", "PAIS", "PRODUTORA", "DESCRICAO", "CAPA", "VALIDO"
-        String[] f = gestorFilmes.getFilme(idMovie);
-        String file="";
-        int i=1; // i=1 em vez de i=0 -> saltar campo ID_FIL
-        tituloResultadosFilme.setText(f[i++]);
-        anoResultadosFilme.setText(f[i++]);
-        realizadorResultadosFilme.setText(f[i++]);
-        imdbResultadosFilme.setText(f[i++]);
-        paisResultadosFilme.setText(f[i++]);
-        produtorResultadosFilme.setText(f[i++]);
-        jTextArea14.setText(f[i++]);
-        try{
-            file=f[i++];
-            File ficheiro= new File(file);
-            if(ficheiro.exists())
-                jLabel76.setIcon(new ImageIcon(file));
-        }catch (Exception e){
-            Utils.dbg("Não foi encontrada a capa do filme!");
-        }
-        // extrair os generos do fim do array
-        jList5.setModel(new OurListModel(Utils.extract(f, i+1))); // i+1 em vez de i -> saltar campo VALIDO
-    }//GEN-LAST:event_listaResultadosMouseClicked
-
     private void pesquisarClienteFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_pesquisarClienteFrameWindowClosing
         // TODO add your handling code here:
         pesquisarClienteFrame.setVisible(false);
@@ -4417,51 +4480,17 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
       }
     }//GEN-LAST:event_procurarIDActionPerformed
 
-    private void pagamentosAtrasoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagamentosAtrasoMouseClicked
-        String bi=(String) pagamentosAtraso.getSelectedValue();
-        bi=bi.split(" ")[1];
-        bi=bi.substring(1, bi.length()-1);
-        Utils.dbg(bi);
-        listaRequisicoes.setModel(new OurListModel(gestorFilmes.verListaRequisicoesPorEntregarClienteBI(bi)));
-    }//GEN-LAST:event_pagamentosAtrasoMouseClicked
-
     private void entregaFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entregaFilmeActionPerformed
         gestorFilmes.entregaRequisicao(((String)listaRequisicoes.getSelectedValue()).split(" ")[0]);
-        pagamentosAtraso.setModel(new OurListModel(gestorClientes.getClientesComEntregasPorFazer()));
-        String bi=(String) pagamentosAtraso.getSelectedValue();
-        bi=bi.split(" ")[1];
-        bi=bi.substring(1, bi.length()-1);
-        Utils.dbg(bi);
-        listaRequisicoes.setModel(new OurListModel(gestorFilmes.verListaRequisicoesPorEntregarClienteBI(bi)));
+        pagamentosAtraso.setModel(new OurListModel(null));
+        listaRequisicoes.setModel(new OurListModel(null));
     }//GEN-LAST:event_entregaFilmeActionPerformed
-
-    private void listaRequisicoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaRequisicoesMouseClicked
-        String idReq=((String)listaRequisicoes.getSelectedValue()).split(" ")[0];
-        jTextField2.setText(gestorFilmes.calcularPrecoRequisicao(idReq));
-    }//GEN-LAST:event_listaRequisicoesMouseClicked
 
     private void entregaFilme1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entregaFilme1ActionPerformed
         gestorFilmes.entregaRequisicao(((String)listaRequisicoes1.getSelectedValue()).split(" ")[0]);
-        pagamentosAtraso1.setModel(new OurListModel(gestorClientes.getClientesComEntregasPorFazer()));
-        String bi=(String) pagamentosAtraso1.getSelectedValue();
-        bi=bi.split(" ")[1];
-        bi=bi.substring(1, bi.length()-1);
-        Utils.dbg(bi);
-        listaRequisicoes1.setModel(new OurListModel(gestorFilmes.verListaRequisicoesPorEntregarClienteBI(bi)));
+        pagamentosAtraso1.setModel(new OurListModel(null));
+        listaRequisicoes1.setModel(new OurListModel(null));
     }//GEN-LAST:event_entregaFilme1ActionPerformed
-
-    private void listaRequisicoes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaRequisicoes1MouseClicked
-        String idReq=((String)listaRequisicoes1.getSelectedValue()).split(" ")[0];
-        jTextField3.setText(gestorFilmes.calcularPrecoRequisicao(idReq));
-    }//GEN-LAST:event_listaRequisicoes1MouseClicked
-
-    private void pagamentosAtraso1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagamentosAtraso1MouseClicked
-        String bi=(String) pagamentosAtraso1.getSelectedValue();
-        bi=bi.split(" ")[1];
-        bi=bi.substring(1, bi.length()-1);
-        Utils.dbg(bi);
-        listaRequisicoes1.setModel(new OurListModel(gestorFilmes.verListaRequisicoesPorEntregarClienteBI(bi)));
-    }//GEN-LAST:event_pagamentosAtraso1MouseClicked
 
    
     //OUR GUI VARS
