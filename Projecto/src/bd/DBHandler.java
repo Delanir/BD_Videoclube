@@ -225,23 +225,25 @@ public class DBHandler
 	}
 	
 	public static Vector<String[]> getClientesComEntregasPorFazer() {
-		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI,Count(r.ID_REQ) " +
+		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI, COUNT(r.ID_REQ), c.VALIDO" +
 					   " FROM clientes c, requisicoes r" +
 					   " WHERE c.ID_PES = r.ID_PES" +
 					   " AND r.DATA_ENTREGA IS NULL" +
-					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI" +
-					   " HAVING COUNT(r.ID_REQ) > 0";
+					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI, c.VALIDO" +
+					   " HAVING COUNT(r.ID_REQ) > 0" +
+					   " ORDER BY c.ID_PES";
 		return select(query);
 	}
 	
 	public static Vector<String[]> getClientesComEntregasForaDePrazo() {
-		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI ,Count(r.ID_REQ) " +
+		String query = "SELECT c.ID_PES, c.NOME_PESSOA, c.BI, COUNT(r.ID_REQ), c.VALIDO " +
 					   " FROM clientes c, requisicoes r" +
 					   " WHERE c.ID_PES = r.ID_PES" +
 					   " AND r.DATA_ENTREGA IS NULL" +
 					   " AND r.DATA_LIMITE < SYSDATE" +
-					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI" +
-					   " HAVING COUNT(r.ID_REQ) > 0";
+					   " GROUP BY c.ID_PES, c.NOME_PESSOA, c.BI, c.VALIDO" +
+					   " HAVING COUNT(r.ID_REQ) > 0" +
+					   " ORDER BY c.ID_PES";
 		return select(query);
 	}
 	
