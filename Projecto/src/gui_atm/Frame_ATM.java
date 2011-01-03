@@ -273,7 +273,6 @@ public class Frame_ATM  extends JFrame{
         jLabel2 = new javax.swing.JLabel();
         jPasswordField = new javax.swing.JPasswordField();
         jUsernameField = new javax.swing.JTextField();
-        jUsernameField.setText("Insert Username Here");
         jLabel5 = new javax.swing.JLabel();
         jEntregaPanel = new javax.swing.JPanel();
         jSairButton5 = new javax.swing.JButton();
@@ -573,7 +572,7 @@ public class Frame_ATM  extends JFrame{
         jLabel40.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel40.setText("Data Limite de Entrega:");
 
-        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel41.setText("Videoclube Lumière. O melhor do cinema perto de si!");
 
         menuPaga_dataEntrega.setEditable(false);
@@ -585,7 +584,7 @@ public class Frame_ATM  extends JFrame{
         menuPaga_titulo.setEditable(false);
         menuPaga_titulo.setText("jTextField21");
 
-        jLabel49.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel49.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel49.setText("Entrega realizada com sucesso!");
 
         jVoltarButton1.setText("Voltar");
@@ -709,7 +708,7 @@ public class Frame_ATM  extends JFrame{
         });
         jScrollPane1.setViewportView(menuResultados_listaFilmes);
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel22.setText("Resultados (seleccione o que pretender alugar):");
 
         menuResultados_ano.setEditable(false);
@@ -1035,13 +1034,13 @@ public class Frame_ATM  extends JFrame{
             }
         });
 
-        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel33.setText("Entregar Filme");
 
-        jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel34.setText("Filme a Entregar:");
 
-        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel35.setText("1. Escolha o filme a entregar.");
 
         jLabel42.setFont(new java.awt.Font("Tahoma", 0, 14));
