@@ -1085,7 +1085,7 @@ public class DBHandler
 	 */
 	public static void removeStock(String id_fil, String id_for) {
 		removeObjecto("stocks",
-					  new String[]{"ID_FIL", "IF_FOR"},
+					  new String[]{"ID_FIL", "ID_FOR"},
 					  new String[]{id_fil, id_for});
 	}
 	
