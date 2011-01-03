@@ -1024,11 +1024,13 @@ public class DBHandler
 		if(vec == null)
 			return;
 		int oldQuant = Utils.toInt(vec.get(0)[0]);
-		int disp  = Utils.toInt(vec.get(0)[1]);
+		int disp 	 = Utils.toInt(vec.get(0)[1]);
 		int newQuant = Utils.toInt(quant);
 		int change = newQuant - oldQuant;
 		if(disp + change < 0)
 			disp = 0;
+		else
+			disp += change;
 		
 		String comando = "UPDATE stocks SET custo_compra = " + custo_compra +
 											", custo_aluguer = " + custo_aluguer +
@@ -1044,13 +1046,15 @@ public class DBHandler
 		if(vec == null)
 			return;
 		int oldQuant = Utils.toInt(vec.get(0)[0]);
-		int oldDisp  = Utils.toInt(vec.get(0)[1]);
+		int disp 	 = Utils.toInt(vec.get(0)[1]);
 		int newQuant = Utils.toInt(quant);
 		int change = newQuant - oldQuant;
-		if(oldDisp + change < 0)
-			change = -oldDisp;
+		if(disp + change < 0)
+			disp = 0;
+		else
+			disp += change;
 		
-		String comando = "UPDATE stocks SET quant = " + quant + ", disponiveis = " + (oldDisp+change) +
+		String comando = "UPDATE stocks SET quant = " + quant + ", disponiveis = " + disp +
 						 " WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for;
 		execute(comando);
 	}
