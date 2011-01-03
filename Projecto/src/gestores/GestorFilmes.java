@@ -332,8 +332,11 @@ public class GestorFilmes
 	}
 	
 	public String adicionaRequisicao(String id_maq, String emp_bi, String bi, String id_fil, String formato) {
-		DBHandler.adicionaRequisicaoNomeFormato(id_maq, emp_bi, bi, id_fil, formato); 
-		return "Requisição adicionada.";
+		if(DBHandler.stockTemDisponiveis(id_fil, formato)) {
+			DBHandler.adicionaRequisicaoNomeFormato(id_maq, emp_bi, bi, id_fil, formato); 
+			return "Requisição adicionada.";
+		} else
+			return "Não há unidades disponíveis para fazer a requisição.";
 	}
 	
 	public String entregaRequisicao(String id_req) {

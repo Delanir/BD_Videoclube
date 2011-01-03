@@ -1197,6 +1197,18 @@ public class DBHandler
 						   new String[]{id_fil, id_for},
 						   false);
 	}
+
+	public static boolean stockTemDisponiveis(String id_fil, String nome_formato) {
+		String id_for = getIDFormato(nome_formato);
+		String query = "SELECT disponiveis" +
+					   " FROM stocks" +
+					   " WHERE ID_FOR = " + id_for +
+					     " AND ID_FIL = " + id_fil;
+		Vector<String[]> vec = select(query);
+		if(vec == null || vec.isEmpty())
+			return false;
+		return (Utils.toInt(vec.get(0)[0]) > 0);
+	}
 	
 	public static boolean stockExisteNomeFormato(String id_fil, String nome_formato) {
 		String id_for = getIDFormato(nome_formato);
