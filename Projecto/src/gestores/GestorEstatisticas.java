@@ -53,7 +53,7 @@ public class GestorEstatisticas
                                      calendarize(begin),
                                      calendarize(end));
                         }else{
-                            estatisticas+="Datas mal especificadas";
+                            estatisticas+="Datas mal especificadas\n";
                         }
 		} else {
                         //top10clientes
@@ -79,7 +79,7 @@ public class GestorEstatisticas
                                      calendarize(begin),
                                      calendarize(end));
                         }else{
-                            estatisticas+="Datas mal especificadas";
+                            estatisticas+="Datas mal especificadas\n";
                         }
 		} else {
                         //top10clientes
@@ -105,7 +105,7 @@ public class GestorEstatisticas
                                      calendarize(begin),
                                      calendarize(end));
                         }else{
-                            estatisticas+="Datas mal especificadas";
+                            estatisticas+="Datas mal especificadas\n";
                         }
 		} else {
                     estatisticas+=DBHandler.estatisticasEmpregados();
@@ -152,7 +152,7 @@ public class GestorEstatisticas
                          calendarize(begin),
                          calendarize(end));
             }else{
-                estatisticas+="Datas mal especificadas";
+                estatisticas+="Datas mal especificadas\n";
             }
         }else{
             //top10filmes
@@ -182,7 +182,7 @@ public class GestorEstatisticas
                                      calendarize(begin),
                                      calendarize(end));
                         }else{
-                            estatisticas+="Datas mal especificadas";
+                            estatisticas+="Datas mal especificadas\n";
                         }
 		} else {
                     estatisticas+=DBHandler.estatisticasTopMaquinas();

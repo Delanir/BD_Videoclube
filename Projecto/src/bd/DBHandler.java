@@ -1820,8 +1820,9 @@ public class DBHandler
             Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
             conn.commit();
 
-            String output="Total Generos: "+out.get(0)[1]+"\nGénero mais Popular\nID_GEN:\tNOME:\tNº Requisições\n";
-            if(out!=null){
+           if((out!=null)&&(out.get(0).length>1)){
+               String output="Total Generos: "+out.get(0)[1]+"\nGénero mais Popular\nID_GEN:\tNOME:\tNº Requisições\n";
+            
                 output+=out.get(0)[0]+"\t"+out.get(0)[2]+"\t"+out.get(0)[3]+"\n";
                 conn.setAutoCommit(true);
                 return output;
@@ -1848,8 +1849,9 @@ public class DBHandler
             Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
             conn.commit();
 
-            String output="Total Generos: "+out.get(0)[1]+"\nGénero mais Popular\nID_GEN:\tNOME:\tNº Requisições\n";
-            if(out!=null){
+           
+            if((out!=null)&&(out.get(0).length>1)){
+                String output="Total Generos: "+out.get(0)[1]+"\nGénero mais Popular\nID_GEN:\tNOME:\tNº Requisições\n";
                 output+=out.get(0)[0]+"\t"+out.get(0)[2]+"\t"+out.get(0)[3]+"\n";
                 conn.setAutoCommit(true);
                 return output;
@@ -1876,10 +1878,11 @@ public class DBHandler
             Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
             conn.commit();
 
-            String output="Total Filmes: "+out.get(0)[0]+
+            
+            if((out!=null)&&(out.get(0).length>1)){
+                String output="Total Filmes: "+out.get(0)[0]+
                     "\nTotal Exemplares: "+out.get(0)[1]
                     +"\nFormato mais Popular\tNº Requisições\n";
-            if(out!=null){
                 output+=out.get(0)[2]+"\t"+out.get(0)[3]+"\n";
                 conn.setAutoCommit(true);
                 return output;
