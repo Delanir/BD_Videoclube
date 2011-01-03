@@ -57,7 +57,14 @@ public class GestorClientes
 	 */
 	public String[] procuraClientes(String nome, String morada, String email, String telefone) {
 		Vector<String[]> vec = DBHandler.procuraClientes(nome, morada, email, telefone);
-		return setInfo(vec);
+		String[] out = Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1});
+		int i=0;
+		for(String[] sa : vec) {
+			if(sa[7].equals("0"))
+				out[i] = out[i] + " (inválido)";
+			i++;
+		}
+		return out;
 	}
 
 	/**
@@ -66,7 +73,14 @@ public class GestorClientes
 	 */
 	public String[] verListaClientes() {
 		Vector<String[]> vec = DBHandler.getClientes();
-		return setInfo(vec);
+		String[] out = Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1});
+		int i=0;
+		for(String[] sa : vec) {
+			if(sa[7].equals("0"))
+				out[i] = out[i] + " (inválido)";
+			i++;
+		}
+		return out;
 	}
 
 	public String invalidaCliente(String id) {
@@ -87,7 +101,14 @@ public class GestorClientes
 	 */
 	public String[] getClientesComEntregasPorFazer() {
 		Vector<String[]> vec = DBHandler.getClientesComEntregasPorFazer();
-		return setInfo(vec);
+		String[] out = Utils.formattedFromVector(vec, "%s : [%s] %s (x%s)", new int[]{0, 2, 1, 3});
+		int i=0;
+		for(String[] sa : vec) {
+			if(sa[4].equals("0"))
+				out[i] = out[i] + " (inválido)";
+			i++;
+		}
+		return out;
 	}
 
 	/**
@@ -95,14 +116,10 @@ public class GestorClientes
 	 */
 	public static String[] getClientesComEntregasForaDePrazo() {
 		Vector<String[]> vec = DBHandler.getClientesComEntregasForaDePrazo();
-		return setInfo(vec);
-	}
-	
-	private static String[] setInfo(Vector<String[]> vec) {
-		String[] out = Utils.formattedFromVector(vec, "%s : [%s] %s", new int[]{0, 2, 1});
+		String[] out = Utils.formattedFromVector(vec, "%s : [%s] %s (x%s)", new int[]{0, 2, 1, 3});
 		int i=0;
 		for(String[] sa : vec) {
-			if(sa[7].equals("0"))
+			if(sa[4].equals("0"))
 				out[i] = out[i] + " (inválido)";
 			i++;
 		}
