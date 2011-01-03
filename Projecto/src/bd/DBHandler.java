@@ -1017,15 +1017,15 @@ public class DBHandler
 						 new String[]{quant, custo_compra, custo_aluguer});
 	}
 	
-	public static void actualizaQuantStock(String id_fil, String id_for, String quant) {
+	public static void actualizaQuantStock(String id_fil, String nome_formato, String quant) {
 		String comando = "UPDATE stocks SET quant = " + quant +
-						 " WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for;
+						 " WHERE ID_FIL = " + id_fil + " AND NOME_FORMATO = " + p(nome_formato);
 		execute(comando);
 	}
 	
-	public static void actualizaQuantStockIncr(String id_fil, String id_for, String incr) {
+	public static void actualizaQuantStockIncr(String id_fil, String nome_formato, String incr) {
 		String comando = "UPDATE stocks SET quant = quant + " + incr +
-						 " WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for;
+						 " WHERE ID_FIL = " + id_fil + " AND NOME_FORMATO = " + p(nome_formato);
 		execute(comando);
 	}
 	
