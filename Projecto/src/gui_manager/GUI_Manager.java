@@ -609,7 +609,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         jScrollPane8 = new javax.swing.JScrollPane();
         listaEliminarClientes = new javax.swing.JList();
         eliminarClientesLista = new javax.swing.JButton();
-        biEliminaClientes = new javax.swing.JFormattedTextField(NumberFormat.getIntegerInstance());
+        biEliminaClientes = new javax.swing.JTextField();
         notificarClientesFrame = new javax.swing.JFrame();
         jNotificarClientePanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel35 = new javax.swing.JLabel();
@@ -2842,7 +2842,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     jLabel98.setText("Formato:");
 
-    jLabel99.setText("ID do Cliente:");
+    jLabel99.setText("BI do Cliente:");
 
     alugar.setText("Alugar");
     alugar.addActionListener(new java.awt.event.ActionListener() {
@@ -2928,7 +2928,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                 .addGroup(jResultadosFilmePanelLayout.createSequentialGroup()
                                                     .addComponent(jLabel99)
                                                     .addGap(18, 18, 18)
-                                                    .addComponent(idAlugaFilme, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                                                    .addComponent(idAlugaFilme, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                                                     .addGap(18, 18, 18)
                                                     .addComponent(alugar)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -3228,6 +3228,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         }
     });
 
+    listaEliminarClientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
     jScrollPane8.setViewportView(listaEliminarClientes);
 
     eliminarClientesLista.setText("Eliminar da Lista de Clientes");
@@ -3236,8 +3237,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             eliminarClientesListaActionPerformed(evt);
         }
     });
-
-    biEliminaClientes.setText(" ");
 
     javax.swing.GroupLayout jEliminarClientePanelLayout = new javax.swing.GroupLayout(jEliminarClientePanel);
     jEliminarClientePanel.setLayout(jEliminarClientePanelLayout);
@@ -3256,13 +3255,14 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                             .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
                         .addGroup(jEliminarClientePanelLayout.createSequentialGroup()
-                            .addComponent(jLabel51)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(biEliminaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addGroup(jEliminarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jEliminarClientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(eliminarClientesLista)
-                                .addComponent(eliminarClienteBI))
+                                .addGroup(jEliminarClientePanelLayout.createSequentialGroup()
+                                    .addComponent(jLabel51)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(biEliminaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(56, 56, 56)
+                                    .addComponent(eliminarClienteBI)))
                             .addGap(140, 140, 140)))))
             .addGap(117, 117, 117))
     );
@@ -4335,7 +4335,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     private void eliminarClienteBIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarClienteBIActionPerformed
 
-        if(biEliminaClientes.isEditValid()){
+        if(Utils.isNumber(biEliminaClientes.getText())){
             outEliminaClientes.setText(
                     gestorClientes.invalidaClienteBI(biEliminaClientes.getText()));
         }else{
@@ -4651,7 +4651,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JSpinner anoESpinner;
     private javax.swing.JTextField anoResultadosFilme;
     private javax.swing.JTextField biAdicionaClientes;
-    private javax.swing.JFormattedTextField biEliminaClientes;
+    private javax.swing.JTextField biEliminaClientes;
     private javax.swing.JTextField biEmpregados;
     private javax.swing.JTextField biNotificarClientes;
     private javax.swing.JTextField biPesquisarClientes;
