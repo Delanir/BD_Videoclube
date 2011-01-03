@@ -114,7 +114,7 @@ public class GestorClientes
 	/**
 	 * Strings devolvidas no formato "id : [BI] nome"
 	 */
-	public static String[] getClientesComEntregasForaDePrazo() {
+	public String[] getClientesComEntregasForaDePrazo() {
 		Vector<String[]> vec = DBHandler.getClientesComEntregasForaDePrazo();
 		String[] out = Utils.formattedFromVector(vec, "%s : [%s] %s (x%s)", new int[]{0, 2, 1, 3});
 		int i=0;

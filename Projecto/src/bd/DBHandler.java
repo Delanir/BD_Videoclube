@@ -428,6 +428,7 @@ public class DBHandler
 	 * @param descricao a descri��o do filme a adicionar.
 	 * @param capa a capa do filme a adicionar.
 	 */
+	//TODO
 	public static void adicionaFilme(String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
 		adicionaObjecto("filmes",
 						new String[]{"seq_filme_id.NEXTVAL", p(titulo), ano, p(realizador), ratingIMDB, p(pais), p(produtora), p(descricao), p(capa), "0"});
@@ -448,6 +449,7 @@ public class DBHandler
 	 * @param descricao a nova descri��o do filme a actualizar.
 	 * @param capa a nova capa do filme a actualizar.
 	 */
+	//TODO
 	public static void actualizaFilme(String id, String titulo, String ano, String realizador, String ratingIMDB, String pais, String produtora, String descricao, String capa, String[] generos) {
 		actualizaObjecto("filmes", "ID_FIL", id,
 						 getToSetCamposFilmes(),
@@ -564,7 +566,8 @@ public class DBHandler
 		adicionaObjecto("filme_genero",
 						new String[]{id_gen, id_fil});
 	}
-	
+
+	//TODO
 	public static void adicionaFilmeGeneroNome(String id_fil, String nome_genero) {
 		String id_gen = getIDGenero(nome_genero);
 		if(!filmeTemGenero(id_fil, id_gen)) {
@@ -1017,7 +1020,8 @@ public class DBHandler
 						 getToSetCamposStocks(),
 						 new String[]{quant, custo_compra, custo_aluguer});
 	}
-	
+
+	//TODO
 	public static void actualizaStockNomeFormato(String id_fil, String nome_formato, String quant, String custo_compra, String custo_aluguer) {
 		String id_for = getIDFormato(nome_formato);
 		Vector<String[]> vec = select("SELECT quant, disponiveis FROM stocks WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for);
@@ -1039,7 +1043,8 @@ public class DBHandler
 						 " WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for;
 		execute(comando);
 	}
-	
+
+	//TODO
 	public static void actualizaQuantStock(String id_fil, String nome_formato, String quant) {
 		String id_for = getIDFormato(nome_formato);
 		Vector<String[]> vec = select("SELECT quant, disponiveis FROM stocks WHERE ID_FIL = " + id_fil + " AND ID_FOR = " + id_for);
@@ -1546,11 +1551,6 @@ public class DBHandler
 		}
 	}
 
-
-	/**
-         *
-         * @param comando
-         */
 	private static void executeNoCommitEst(String comando) {
 		try {
 			Statement st = conn.createStatement();

@@ -4178,7 +4178,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     	// e outro para fazer set da quantidade total em stock.
     	// n�o sei qual queres aqui mas assumi que o "(Integer)eliminaSpinner.getValue()" tinha o valor da quantidade em stock (nao vi na gui).
         if(Utils.isInt(idEliminaFilmes.getText())){
-             String aux=((String)textEliminaFilmes.getSelectedValue()).split(" ")[0];
+             String aux=((String)textEliminaFilmes.getSelectedValue()).split(" : ")[0];
 
              gestorFilmes.removeStock(idEliminaFilmes.getText(), aux);
              textEliminaFilmes.setModel(new OurListModel(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())));
@@ -4747,7 +4747,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_procurarIDActionPerformed
 
     private void entregaFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entregaFilmeActionPerformed
-        if(((String)listaRequisicoes.getSelectedValue())==null){
+        if(((String)listaRequisicoes.getSelectedValue())!=null){
             gestorFilmes.entregaRequisicao(((String)listaRequisicoes.getSelectedValue()).split(" ")[0]);
             pagamentosAtraso.setModel(new OurListModel(null));
             listaRequisicoes.setModel(new OurListModel(null));
