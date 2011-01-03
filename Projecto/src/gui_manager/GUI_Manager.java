@@ -1746,6 +1746,9 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        ficheirosFrame.setAlwaysOnTop(true);
+        ficheirosFrame.setMinimumSize(new java.awt.Dimension(800, 600));
+
         jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFileChooser1ActionPerformed(evt);
