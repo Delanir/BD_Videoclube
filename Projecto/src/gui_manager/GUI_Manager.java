@@ -244,6 +244,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
                         jTextArea14.setText(f[i++]);
                         try{
                             file=f[i++];
+
                             File ficheiro= new File(file);
                             if(ficheiro.exists())
                                 jLabel76.setIcon(new ImageIcon(file));
@@ -482,19 +483,18 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
         qtdAdicionaStock = new javax.swing.JSpinner();
         eliminarFilmesFrame = new javax.swing.JFrame();
         jEliminarFilmePanel = new javax.swing.JPanel();
-        jScrollPane17 = new javax.swing.JScrollPane();
-        textEliminaFilmes = new javax.swing.JTextArea();
         eliminaFilmes = new javax.swing.JToggleButton();
         idEliminaFilmes = new javax.swing.JTextField();
-        listaFormatos = new javax.swing.JComboBox();
         javax.swing.JLabel jLabel68 = new javax.swing.JLabel();
-        jLabel70 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel72 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel69 = new javax.swing.JLabel();
         eliminaSpinner = new javax.swing.JSpinner();
         eliminaSpinner.setModel(new SpinnerNumberModel(0,0,100,1));
         voltarEliminaFilmes = new javax.swing.JToggleButton();
         listarFormatoEliminar = new javax.swing.JButton();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        textEliminaFilmes = new javax.swing.JList();
+        jLabel70 = new javax.swing.JLabel();
         pesquisarFilmesFrame = new javax.swing.JFrame();
         jPesqisaFilmesPanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel85 = new javax.swing.JLabel();
@@ -2155,10 +2155,6 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
     eliminarFilmesFrame.setAlwaysOnTop(true);
     eliminarFilmesFrame.setMinimumSize(new java.awt.Dimension(800, 600));
 
-    textEliminaFilmes.setColumns(20);
-    textEliminaFilmes.setRows(5);
-    jScrollPane17.setViewportView(textEliminaFilmes);
-
     eliminaFilmes.setText("Eliminar Stock");
     eliminaFilmes.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2166,11 +2162,7 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
         }
     });
 
-    listaFormatos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Blu-Ray", "DVD", "UMD"}));
-
     jLabel68.setText("ID:");
-
-    jLabel70.setText("Formato:");
 
     jLabel72.setFont(new java.awt.Font("Tahoma", 0, 16));
     jLabel72.setText("Eliminar Stock");
@@ -2191,38 +2183,40 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
         }
     });
 
+    jScrollPane17.setViewportView(textEliminaFilmes);
+
+    jLabel70.setText("Lista de Stocks:");
+
     javax.swing.GroupLayout jEliminarFilmePanelLayout = new javax.swing.GroupLayout(jEliminarFilmePanel);
     jEliminarFilmePanel.setLayout(jEliminarFilmePanelLayout);
     jEliminarFilmePanelLayout.setHorizontalGroup(
         jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jEliminarFilmePanelLayout.createSequentialGroup()
             .addContainerGap()
-            .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(voltarEliminaFilmes)
+            .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel72, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jEliminarFilmePanelLayout.createSequentialGroup()
-                            .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel70)
-                                .addComponent(jLabel68))
-                            .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jEliminarFilmePanelLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel69)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(eliminaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18))
-                                .addGroup(jEliminarFilmePanelLayout.createSequentialGroup()
-                                    .addGap(27, 27, 27)
-                                    .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(voltarEliminaFilmes)
+                    .addGroup(jEliminarFilmePanelLayout.createSequentialGroup()
+                        .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel72, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jEliminarFilmePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel68)
+                                .addGap(29, 29, 29)
+                                .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jEliminarFilmePanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel69)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(eliminaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(eliminaFilmes))
+                                    .addGroup(jEliminarFilmePanelLayout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
                                         .addComponent(idEliminaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(listaFormatos, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(103, 103, 103)))
-                            .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(eliminaFilmes)
-                                .addComponent(listarFormatoEliminar)))
-                        .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(52, 52, 52)
+                                        .addComponent(listarFormatoEliminar)))))
+                        .addGap(85, 85, 85)))
+                .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel70))
             .addContainerGap(167, Short.MAX_VALUE))
     );
     jEliminarFilmePanelLayout.setVerticalGroup(
@@ -2233,19 +2227,17 @@ jAdicionarFilmePanelLayout.setHorizontalGroup(
             .addGap(11, 11, 11)
             .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel68)
-                .addComponent(idEliminaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(listarFormatoEliminar)
-                .addComponent(jLabel70)
-                .addComponent(listaFormatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(idEliminaFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(listarFormatoEliminar))
+            .addGap(12, 12, 12)
+            .addComponent(jLabel70)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
             .addGroup(jEliminarFilmePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel69)
-                .addComponent(eliminaFilmes)
-                .addComponent(eliminaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(eliminaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(eliminaFilmes))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(voltarEliminaFilmes)
             .addContainerGap(158, Short.MAX_VALUE))
@@ -3691,8 +3683,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_jAdicionarClientesButtonActionPerformed
 
     private void jEliminarFilmeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarFilmeButtonActionPerformed
-        listaFormatos.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
-       
+        
         eliminarFilmesFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_jEliminarFilmeButtonActionPerformed
@@ -3920,20 +3911,19 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     	
         // textEliminaFilmes.setText(gestorFilmes.verListaFormatos(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem()));
         if(Utils.isNumber(idEliminaFilmes.getText()) )
-            textEliminaFilmes.setText(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())[0]);
+            textEliminaFilmes.setModel(new OurListModel(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())));
     }//GEN-LAST:event_listarFormatoEliminarActionPerformed
 
     private void eliminaFilmes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaFilmes2ActionPerformed
         // TODO add your handling code here:
-        listaFormatos.setModel(new javax.swing.DefaultComboBoxModel(gestorFilmes.verListaFormatos()));
-       
+        
         eliminarFilmesFrame.setVisible(true);
         transferFocus();
     }//GEN-LAST:event_eliminaFilmes2ActionPerformed
 
     private void voltarEliminaFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarEliminaFilmesActionPerformed
         // TODO add your handling code here:
-        textEliminaFilmes.setText(null);
+        textEliminaFilmes.setModel(null);
         idEliminaFilmes.setText(null);
          eliminarFilmesFrame.setVisible(false);
        eliminarFilmesFrame.transferFocusBackward();
@@ -3945,8 +3935,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     	// e outro para fazer set da quantidade total em stock.
     	// n�o sei qual queres aqui mas assumi que o "(Integer)eliminaSpinner.getValue()" tinha o valor da quantidade em stock (nao vi na gui).
         if(Utils.isNumber(idEliminaFilmes.getText())){
-             gestorFilmes.actualizaQuantStock(idEliminaFilmes.getText(), (String)listaFormatos.getSelectedItem(), ""+(Integer)eliminaSpinner.getValue());
-             textEliminaFilmes.setText(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())[0]);
+             String aux=((String)textEliminaFilmes.getSelectedValue()).split(" ")[0];
+
+             gestorFilmes.actualizaQuantStock(idEliminaFilmes.getText(), aux, ""+(Integer)eliminaSpinner.getValue());
+             textEliminaFilmes.setModel(new OurListModel(gestorFilmes.verListaStocksFilmeFull(idEliminaFilmes.getText())));
     
         }
     }//GEN-LAST:event_eliminaFilmesActionPerformed
@@ -4682,7 +4674,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JList listaEliminarClientes;
     private javax.swing.JList listaEmpregados;
     private javax.swing.JList listaFormato;
-    private javax.swing.JComboBox listaFormatos;
     private javax.swing.JComboBox listaFormatosAdicionaFilme;
     private javax.swing.JComboBox listaFormatosResultadosFilmes;
     private javax.swing.JList listaGeneros;
@@ -4742,7 +4733,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField telefoneEmpregados;
     private javax.swing.JTextField telefonePesquisarClientes;
     private javax.swing.JTextArea textDescricaoAdicionaFilme;
-    private javax.swing.JTextArea textEliminaFilmes;
+    private javax.swing.JList textEliminaFilmes;
     private javax.swing.JTextField textFormato;
     private javax.swing.JTextField textGenero;
     private javax.swing.JTextField textIdPesquisaFilmes;
