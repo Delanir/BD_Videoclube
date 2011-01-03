@@ -1813,8 +1813,16 @@ public class Frame_ATM  extends JFrame{
 
     private void jVoltarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarButton1ActionPerformed
         // TODO add your handling code here:
+        String [] requisicoes = gestorFilmes.verListaRequisicoesPorEntregarClienteBI(gerir_users.getUsername());
+        int i;
+        DefaultListModel modeloDados = new DefaultListModel();
+        for(i=0;i<requisicoes.length;i++){
+            modeloDados.addElement(requisicoes[i]);
+        }
+        menuEntregar_filme.setModel(modeloDados);
         bgroup.clearSelection();
         num_cartao.setText("");
+        valorapagar.setText("");
         num_css.setText("");
         jDadosPanel.setVisible(false);
         jPaga.setVisible(false);
