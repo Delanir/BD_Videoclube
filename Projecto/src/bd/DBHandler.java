@@ -560,12 +560,13 @@ public class DBHandler
 	 */
 	public static void adicionaFilmeGenero(String id_fil, String id_gen) {
 		adicionaObjecto("filme_genero",
-						new String[]{id_fil, id_gen});
+						new String[]{id_gen, id_fil});
 	}
 	
 	public static void adicionaFilmeGeneroNome(String id_fil, String nome_genero) {
+		String id_gen = getIDGenero(nome_genero);
 		adicionaObjecto("filme_genero",
-						new String[]{id_fil, "(SELECT id_gen FROM generos WHERE LOWER(nome_genero) = "+p(nome_genero.toLowerCase())+")"});
+						new String[]{id_gen, id_fil});
 	}
 	
 	/**
@@ -576,7 +577,7 @@ public class DBHandler
 	public static void removeFilmeGenero(String id_fil, String id_gen) {
 		removeObjecto("filme_genero",
 					  getToSetCamposFilmeGenero(),
-					  new String[]{id_fil, id_gen});
+					  new String[]{id_gen, id_fil});
 	}
 
 	/* ------------------------------------------------------------------ */
@@ -673,6 +674,11 @@ public class DBHandler
 	public static String[] getGenero(String id) {
 		Vector<String[]> vec = selectAll("generos", "ID_GEN", id, false);
 		return (vec==null||vec.isEmpty() ? null : vec.get(0));
+	}
+	
+	public static String getIDGenero(String nome) {
+		Vector<String[]> vec = selectAll("generos", "LOWER(NOME_GENERO)", p(nome.toLowerCase()), false);
+		return (vec==null||vec.isEmpty() ? null : vec.get(0)[0]);
 	}
 	
 	public static String getNomeGenero(String id) {

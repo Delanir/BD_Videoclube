@@ -17,42 +17,42 @@ public class GestorFilmes
 	/* ---------------------------------------------------------------- */
 	public String[] verListaFilmes() {
 		Vector<String[]> vec = DBHandler.getFilmes();
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 	
 	public String[] verListaFilmesOrdTitulo() {
 		Vector<String[]> vec = DBHandler.getFilmesOrdTitulo();
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 	
 	public String[] verListaFilmesOrdAno() {
 		Vector<String[]> vec = DBHandler.getFilmesOrdAno();
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 	
 	public String[] verListaFilmesOrdRankIMDB() {
 		Vector<String[]> vec = DBHandler.getFilmesOrdRankIMDB();
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 	
 	public String[] verListaFilmesPlusInvalidos() {
 		Vector<String[]> vec = DBHandler.getFilmesPlusInvalidos();
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 	
 	public String[] verListaFilmesOrdTituloPlusInvalidos() {
 		Vector<String[]> vec = DBHandler.getFilmesOrdTituloPlusInvalidos();
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 	
 	public String[] verListaFilmesOrdAnoPlusInvalidos() {
 		Vector<String[]> vec = DBHandler.getFilmesOrdAnoPlusInvalidos();
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 	
 	public String[] verListaFilmesOrdRankIMDBPlusInvalidos() {
 		Vector<String[]> vec = DBHandler.getFilmesOrdRankIMDBPlusInvalidos();
-		return Utils.formattedFromVector(vec, "%s : (ano) %s", new int[]{0, 1, 2});
+		return Utils.formattedFromVector(vec, "%s : (%s) %s", new int[]{0, 1, 2});
 	}
 	
 	/**
