@@ -6,6 +6,7 @@ import gestores.*;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Scanner;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -116,9 +117,9 @@ public class Frame_ATM  extends JFrame{
             } else {
                 String idMovie=((String)menuResultados_listaFilmes.getSelectedValue()).split(" ")[0];
                 String[] f = gestorFilmes.getFilme(idMovie);
-                //String[] formatos = gestorFilmes.getFormatoPreco(idMovie);
                 DefaultListModel modeloDados = new DefaultListModel();
                 int i=1,j=0;
+                String file;
                 menuResultados_titulo.setText(f[i++]);
                 menuResultados_ano.setText(f[i++]);
                 menuResultados_realizador.setText(f[i++]);
@@ -126,8 +127,15 @@ public class Frame_ATM  extends JFrame{
                 menuResultados_pais.setText(f[i++]);
                 menuResultados_produtor.setText(f[i++]);
                 menuResultados_descricao.setText(f[i++]);
-                //menuResultados_imagem.setIcon(new ImageIcon(f[i++]));
-                menuResultados_generos.setModel(new OurListModel(Utils.extract(f, i+2)));
+                 try{
+                    file=f[i++];
+                    File ficheiro= new File(file);
+                    if(ficheiro.exists())
+                        menuResultados_imagem.setIcon(new ImageIcon(file));
+                }catch (Exception e){
+                    Utils.dbg("Não foi encontrada a capa do filme!");
+                }
+                menuResultados_generos.setModel(new OurListModel(Utils.extract(f, i+1)));
                 String[] formato = gestorFilmes.verListaStocksFilme(idMovie);
                 for(j=0;j<formato.length;j++){
                     modeloDados.addElement(formato[j]);
@@ -752,7 +760,7 @@ public class Frame_ATM  extends JFrame{
 
         jScrollPane6.setViewportView(menuResultados_formatos);
 
-        jLabel36.setText("Escolha o formato do filme pretendido");
+        jLabel36.setText("Escolha o formato do filme pretendido:");
 
         javax.swing.GroupLayout jResultadosPanelLayout = new javax.swing.GroupLayout(jResultadosPanel);
         jResultadosPanel.setLayout(jResultadosPanelLayout);
@@ -764,14 +772,14 @@ public class Frame_ATM  extends JFrame{
                     .addGroup(jResultadosPanelLayout.createSequentialGroup()
                         .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jResultadosPanelLayout.createSequentialGroup()
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
                                 .addGap(130, 130, 130))
                             .addGroup(jResultadosPanelLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38)
                                 .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jResultadosPanelLayout.createSequentialGroup()
                                         .addComponent(jVoltarPesquisaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -811,7 +819,7 @@ public class Frame_ATM  extends JFrame{
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(396, 396, 396)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
             .addGroup(jResultadosPanelLayout.createSequentialGroup()
                 .addGap(132, 132, 132)
                 .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -820,7 +828,7 @@ public class Frame_ATM  extends JFrame{
                         .addGap(134, 134, 134)
                         .addComponent(jLabel13))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(452, Short.MAX_VALUE))
+                .addContainerGap(734, Short.MAX_VALUE))
         );
         jResultadosPanelLayout.setVerticalGroup(
             jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -836,11 +844,9 @@ public class Frame_ATM  extends JFrame{
                         .addComponent(jLabel22)
                         .addGap(3, 3, 3)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jResultadosPanelLayout.createSequentialGroup()
-                                .addGap(34, 34, 34)
+                                .addGap(40, 40, 40)
                                 .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jResultadosPanelLayout.createSequentialGroup()
                                         .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -869,23 +875,26 @@ public class Frame_ATM  extends JFrame{
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel21)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jResultadosPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jResultadosPanelLayout.createSequentialGroup()
-                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jResultadosPanelLayout.createSequentialGroup()
-                                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jVoltarPesquisaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jSairButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jScrollPane6, 0, 0, Short.MAX_VALUE))
-                                .addGap(15, 15, 15))
-                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jResultadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jVoltarPesquisaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSairButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jResultadosPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel36)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane6, 0, 0, Short.MAX_VALUE)))
+                        .addGap(71, 71, 71)))
+                .addContainerGap(60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jSairButton4.setText("SAIR");
@@ -1136,6 +1145,29 @@ public class Frame_ATM  extends JFrame{
                         .addGap(202, 202, 202)
                         .addComponent(jLabel33))
                     .addGroup(jEntregaPanelLayout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jEntregaPanelLayout.createSequentialGroup()
+                                .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel42)
+                                    .addGroup(jEntregaPanelLayout.createSequentialGroup()
+                                        .addGap(25, 25, 25)
+                                        .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jEntregaPanelLayout.createSequentialGroup()
+                                                .addComponent(jRadioButton3)
+                                                .addGap(35, 35, 35))
+                                            .addComponent(jRadioButton4))))
+                                .addGap(232, 232, 232)
+                                .addComponent(jLabel44)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(valorapagar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jEntregaPanelLayout.createSequentialGroup()
+                                .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel35)
+                                    .addComponent(jLabel34))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jEntregaPanelLayout.createSequentialGroup()
                         .addGap(126, 126, 126)
                         .addComponent(jPagarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
@@ -1144,40 +1176,17 @@ public class Frame_ATM  extends JFrame{
                         .addComponent(jSairButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jEntregaPanelLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                                    .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel42)
-                                        .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                                            .addGap(25, 25, 25)
-                                            .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                                                    .addComponent(jRadioButton3)
-                                                    .addGap(35, 35, 35))
-                                                .addComponent(jRadioButton4))))
-                                    .addGap(232, 232, 232)
-                                    .addComponent(jLabel44)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(valorapagar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                                    .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel35)
-                                        .addComponent(jLabel34))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jEntregaPanelLayout.createSequentialGroup()
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(199, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         jEntregaPanelLayout.setVerticalGroup(
             jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jEntregaPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel33)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jEntregaPanelLayout.createSequentialGroup()
                         .addComponent(jLabel35)
@@ -1195,7 +1204,7 @@ public class Frame_ATM  extends JFrame{
                         .addComponent(jRadioButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRadioButton4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jEntregaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1487,7 +1496,6 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
-        DBHandler.close();
     }//GEN-LAST:event_jSairButton3ActionPerformed
 
     private void jSairButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButton6ActionPerformed
@@ -1501,7 +1509,6 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
-        DBHandler.close();
     }//GEN-LAST:event_jSairButton6ActionPerformed
 
     private void jSairButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButton5ActionPerformed
@@ -1515,7 +1522,6 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
-        DBHandler.close();
     }//GEN-LAST:event_jSairButton5ActionPerformed
 
     private void jSairButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButton4ActionPerformed
@@ -1529,7 +1535,6 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
-        DBHandler.close();
     }//GEN-LAST:event_jSairButton4ActionPerformed
 
     private void jSairButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButton2ActionPerformed
@@ -1543,7 +1548,6 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
-        DBHandler.close();
     }//GEN-LAST:event_jSairButton2ActionPerformed
 
     private void jSairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButtonActionPerformed
@@ -1557,7 +1561,6 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
-        DBHandler.close();
     }//GEN-LAST:event_jSairButtonActionPerformed
 
     private void jVoltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarButtonActionPerformed
@@ -1834,7 +1837,6 @@ public class Frame_ATM  extends JFrame{
         jMenuPanel.setVisible(false);
         jResultadosPanel.setVisible(false);
         jPesquisarPanel.setVisible(false);
-        DBHandler.close();
     }//GEN-LAST:event_jSairButton1ActionPerformed
 /*
      * Botões _______________Botões___________________Botões__________Botões
