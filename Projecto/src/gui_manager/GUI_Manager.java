@@ -1826,8 +1826,7 @@ public class GUI_Manager extends javax.swing.JFrame implements PropertyChangeLis
 
         jLabel64.setText("ID:");
 
-        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Blu-Ray", "DVD", "UMD"}));
-
+        listaFormatosAdicionaFilme.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Blu-ray","DVD","UMD"}));
         jLabel65.setText("Formato:");
 
         jLabel66.setText("Custo:");

@@ -1584,9 +1584,10 @@ public class DBHandler
             Vector <String []> out=select("SELECT col1, col2, col4 FROM temp");
             conn.commit();
             conn.setAutoCommit(true);
-            return "LUCRO: "+out.get(0)[0]+
-                    "€\n DESPESAS "+out.get(0)[1]+
-                    "€\n TOTALFACTURADO "+out.get(0)[2]+"€";
+        	if(out.get(0).length == 3)
+	            return "LUCRO: "+out.get(0)[0]+
+	                    "€\n DESPESAS "+out.get(0)[1]+
+	                    "€\n TOTALFACTURADO "+out.get(0)[2]+"€";
         } catch (SQLException ex) {
             try {
                 conn.setAutoCommit(true);
@@ -1607,9 +1608,10 @@ public class DBHandler
             Vector <String []> out=select("SELECT col1, col2, col4 FROM temp");
             conn.commit();
             conn.setAutoCommit(true);
-            return "LUCRO: "+out.get(0)[0]+
-                    "€\n DESPESAS "+out.get(0)[1]+
-                    "€\n TOTALFACTURADO "+out.get(0)[2]+"€";
+        	if(out.get(0).length == 3)
+        		return "LUCRO: "+out.get(0)[0]+
+        				"€\n DESPESAS "+out.get(0)[1]+
+                    	"€\n TOTALFACTURADO "+out.get(0)[2]+"€";
         } catch (SQLException ex) {
             try {
                 conn.setAutoCommit(true);
@@ -1634,7 +1636,8 @@ public class DBHandler
             String output="TOP 10 Clientes\nID:\tBI:\tNOME:\tNº Requisições\n";
             if(out!=null){
                 for(int i=0; i<out.size();i++){
-                    output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[3]+"\n";
+                	if(out.get(i).length == 4)
+                		output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[3]+"\n";
                 }
                 conn.setAutoCommit(true);
                 return output;
@@ -1667,7 +1670,8 @@ public class DBHandler
             String output="TOP 10 Clientes\nID:\tBI:\tNOME:\tNº Requisições\n";
             if(out!=null){
                 for(int i=0; i<out.size();i++){
-                    output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[3]+"\n";
+                	if(out.get(i).length == 4)
+                		output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[3]+"\n";
                 }
                 conn.setAutoCommit(true);
                 return output;
@@ -1699,7 +1703,8 @@ public class DBHandler
             String output="TOP Maquinas\nID:\tNº Requisições\n";
             if(out!=null){
                 for(int i=0; i<out.size();i++){
-                    output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\n";
+                	if(out.get(i).length == 2)
+                		output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\n";
                 }
                 conn.setAutoCommit(true);
                 return output;
@@ -1731,7 +1736,8 @@ public class DBHandler
             String output="TOP Maquinas\nID:\tNº Requisições\n";
             if(out!=null){
                 for(int i=0; i<out.size();i++){
-                    output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\n";
+                	if(out.get(i).length == 2)
+                		output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\n";
                 }
                 conn.setAutoCommit(true);
                 return output;
@@ -1762,7 +1768,8 @@ public class DBHandler
             String output="TOP 10 filmes\nID:\tTITULO:\tNº Requisições\n";
             if(out!=null){
                 for(int i=0; i<out.size();i++){
-                    output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\n";
+                	if(out.get(i).length == 3)
+                		output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\n";
                 }
                 conn.setAutoCommit(true);
                 return output;
@@ -1792,7 +1799,8 @@ public class DBHandler
             String output="TOP 10 filmes\nID:\tTITULO:\tNº Requisições\n";
             if(out!=null){
                 for(int i=0; i<out.size();i++){
-                    output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\n";
+                	if(out.get(i).length == 3)
+                		output+=out.get(i)[0]+"\t"+out.get(i)[1]+"\t"+out.get(i)[2]+"\n";
                 }
                 conn.setAutoCommit(true);
                 return output;
@@ -1820,12 +1828,11 @@ public class DBHandler
             Vector <String []> out=select("SELECT col1, col2, col3, col4 FROM temp");
             conn.commit();
 
-           if((out!=null)&&(out.get(0).length>1)){
-               String output="Total Generos: "+out.get(0)[1]+"\nGénero mais Popular\nID_GEN:\tNOME:\tNº Requisições\n";
-            
-                output+=out.get(0)[0]+"\t"+out.get(0)[2]+"\t"+out.get(0)[3]+"\n";
-                conn.setAutoCommit(true);
-                return output;
+           if((out!=null)&&(out.size()>1) && out.get(0).length>1){
+        	   String output="Total Generos: "+out.get(0)[1]+"\nGénero mais Popular\nID_GEN:\tNOME:\tNº Requisições\n";
+        	   output+=out.get(0)[0]+"\t"+out.get(0)[2]+"\t"+out.get(0)[3]+"\n";
+        	   conn.setAutoCommit(true);
+               return output;
             }
             conn.setAutoCommit(true);
             return "";
@@ -1912,7 +1919,8 @@ public class DBHandler
             String output="NºEMPREGADOS:\t% ADMINISTRADORES:\tDESPESAS C/ORDENADOS\n";
             if(out!=null){
                 for(int i=0; i<out.size();i++){
-                    output+=out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[0]+"\n";
+                	if(out.get(i).length == 3)
+                		output+=out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[0]+"\n";
                 }
                 conn.setAutoCommit(true);
                 return output;
@@ -1941,6 +1949,7 @@ public class DBHandler
             String output="NºEMPREGADOS:\t% ADMINISTRADORES:\tDESPESAS C/ORDENADOS\n";
             if(out!=null){
                 for(int i=0; i<out.size();i++){
+                	if(out.get(i).length == 3)
                     output+=out.get(i)[1]+"\t"+out.get(i)[2]+"\t"+out.get(i)[0]+"\n";
                 }
                 conn.setAutoCommit(true);
